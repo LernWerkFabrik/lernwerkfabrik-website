@@ -6,37 +6,64 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
-type WaitlistEntry = {
-  email: string;
-  createdAt: string;
-  source?: string;
-};
-
-const WAITLIST_STORAGE_KEY = "lwf.waitlist.v1";
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/i;
 
-function readWaitlist(): WaitlistEntry[] {
-  try {
-    const raw = window.localStorage.getItem(WAITLIST_STORAGE_KEY);
-    if (!raw) return [];
-    const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? (parsed as WaitlistEntry[]) : [];
-  } catch {
-    return [];
-  }
+type WaitlistApiResponse = {
+  status?: "ok" | "already_registered" | "error";
+  waitlist_position?: number | null;
+  message?: string;
+};
+
+function getCookie(name: string): string | null {
+  if (typeof document === "undefined") return null;
+
+  const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const match = document.cookie.match(new RegExp(`(?:^|; )${escapedName}=([^;]*)`));
+  if (!match) return null;
+
+  const value = decodeURIComponent(match[1] ?? "").trim();
+  return value || null;
 }
 
-function writeWaitlist(entries: WaitlistEntry[]) {
-  window.localStorage.setItem(WAITLIST_STORAGE_KEY, JSON.stringify(entries));
+function detectDeviceType(userAgent: string): "mobile" | "tablet" | "desktop" {
+  const ua = userAgent.toLowerCase();
+
+  if (/ipad|tablet|playbook|silk|kindle/.test(ua) || (/android/.test(ua) && !/mobile/.test(ua))) {
+    return "tablet";
+  }
+  if (/mobi|iphone|ipod|android/.test(ua)) {
+    return "mobile";
+  }
+  return "desktop";
+}
+
+function readSourceFromUrl(): string {
+  if (typeof window === "undefined") return "direct";
+
+  const params = new URLSearchParams(window.location.search);
+  const utmSource = (params.get("utm_source") ?? "").trim().toLowerCase();
+  return utmSource || "direct";
+}
+
+function buildSuccessMessage(position: number | null | undefined) {
+  if (typeof position === "number" && Number.isFinite(position) && position > 0) {
+    return `Du bist auf der Warteliste (Platz #${position}). Wir informieren dich zum Launch. Kein Spam.`;
+  }
+  return "Du bist auf der Warteliste! Wir informieren dich zum Launch. Kein Spam.";
+}
+
+function buildAlreadyRegisteredMessage(position: number | null | undefined) {
+  if (typeof position === "number" && Number.isFinite(position) && position > 0) {
+    return `Du bist schon eingetragen (Platz #${position}).`;
+  }
+  return "Du bist schon eingetragen.";
 }
 
 export default function WaitlistForm({
-  source = "landing",
   className,
   buttonLabel = "Warteliste beitreten",
   inputClassName,
 }: {
-  source?: string;
   className?: string;
   buttonLabel?: string;
   inputClassName?: string;
@@ -61,40 +88,56 @@ export default function WaitlistForm({
 
     if (!normalizedEmail || !EMAIL_REGEX.test(normalizedEmail)) {
       setState("error");
-      setMessage("Bitte eine gültige E-Mail-Adresse eingeben.");
+      setMessage("Bitte eine gueltige E-Mail-Adresse eingeben.");
       return;
     }
+
+    const source = readSourceFromUrl();
+    const referrer =
+      typeof document !== "undefined" && document.referrer.trim() ? document.referrer.trim() : "direct";
+    const deviceType =
+      typeof navigator !== "undefined" ? detectDeviceType(navigator.userAgent || "") : "desktop";
+    const country = getCookie("lw_country");
 
     setIsSubmitting(true);
     setMessage(null);
     setState("idle");
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 450));
+      const response = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: normalizedEmail,
+          source,
+          referrer,
+          device_type: deviceType,
+          country,
+        }),
+      });
 
-      const current = readWaitlist();
-      const alreadyExists = current.some(
-        (entry) => String(entry.email).trim().toLowerCase() === normalizedEmail
-      );
+      const payload = (await response.json().catch(() => ({}))) as WaitlistApiResponse;
+      if (!response.ok) {
+        throw new Error(payload.message || "request_failed");
+      }
 
-      if (alreadyExists) {
+      if (payload.status === "already_registered") {
         setState("already");
-        setMessage("Du bist schon eingetragen.");
+        setMessage(buildAlreadyRegisteredMessage(payload.waitlist_position));
         return;
       }
 
-      const next: WaitlistEntry[] = [
-        { email: normalizedEmail, createdAt: new Date().toISOString(), source },
-        ...current,
-      ];
-      writeWaitlist(next);
+      if (payload.status === "ok") {
+        setState("success");
+        setMessage(buildSuccessMessage(payload.waitlist_position));
+        setEmail("");
+        return;
+      }
 
-      setState("success");
-      setMessage("Du bist auf der Warteliste!");
-      setEmail("");
+      throw new Error("unexpected_response");
     } catch {
       setState("error");
-      setMessage("Bitte später erneut versuchen.");
+      setMessage("Bitte spaeter erneut versuchen.");
     } finally {
       setIsSubmitting(false);
     }
@@ -112,16 +155,20 @@ export default function WaitlistForm({
           onChange={(event) => setEmail(event.target.value)}
           placeholder="name@beispiel.de"
           className={cn("h-11 rounded-full md:w-[20rem] md:min-w-0", inputClassName)}
-          aria-label="E-Mail für Warteliste"
+          aria-label="E-Mail fuer Warteliste"
           pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
         />
-        <Button type="submit" disabled={isSubmitting} className="h-11 rounded-full px-5 md:whitespace-nowrap">
+        <Button
+          type="submit"
+          disabled={isSubmitting}
+          className="h-11 rounded-full px-5 md:whitespace-nowrap"
+        >
           {isSubmitting ? "Wird eingetragen..." : buttonLabel}
         </Button>
       </div>
 
       <p className="text-center text-[0.78rem] leading-tight text-muted-foreground/90 md:text-left">
-        Die Plattform startet bald. Sichere dir jetzt deinen Platz auf der Warteliste – wir informieren dich zum Launch. Kein Spam.
+        Die Plattform startet bald. Sichere dir jetzt deinen Platz auf der Warteliste - wir informieren dich zum Launch. Kein Spam.
       </p>
       {message ? (
         <p role="status" className={cn("text-center text-xs md:text-left", messageClassName)}>

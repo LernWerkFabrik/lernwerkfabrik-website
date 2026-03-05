@@ -239,7 +239,7 @@ export default function HomeClient() {
                 {/* Mobile CTA (früh sichtbar) */}
                 <div className="md:hidden">
                   <div className="flex flex-col gap-2">
-                    <WaitlistForm source="hero-mobile" />
+                    <WaitlistForm />
                   </div>
                   <div className="ml-1 mt-2.5 border-l border-border/80 pl-3 text-[0.82rem] text-foreground/80 dark:text-white/85">
                     <ul className="space-y-2.5">
@@ -395,7 +395,6 @@ export default function HomeClient() {
                 {/* CTAs */}
                 <div className="hidden flex-wrap items-start gap-3 pt-2 md:flex md:justify-center">
                   <WaitlistForm
-                    source="hero-desktop"
                     buttonLabel="Early Access sichern"
                     inputClassName="md:w-full md:flex-1"
                     className="min-w-[24rem]"
@@ -628,7 +627,7 @@ export default function HomeClient() {
           {/* VALUE GRID */}
           <section className="space-y-4">
             <div className="md:hidden">
-              <WaitlistForm source="value-mobile" />
+              <WaitlistForm />
             </div>
             <SectionHeader
               title="Ein System, das sich wie Praxis anfühlt"
@@ -728,7 +727,6 @@ export default function HomeClient() {
               </div>
               <div className="flex w-full flex-col gap-2 md:flex-1 md:items-end">
                 <WaitlistForm
-                  source="footer-cta"
                   buttonLabel="Warteliste beitreten"
                   inputClassName="md:w-[24rem]"
                   className="md:ml-auto md:w-[36rem] md:[&>div]:justify-end [&>p]:md:text-right"

@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
+const useStaticExport = process.env.NEXT_STATIC_EXPORT === "1";
+
 const nextConfig: NextConfig = {
-  output: process.env.NODE_ENV === "production" ? "export" : undefined,
+  output: useStaticExport ? "export" : undefined,
   images: {
     unoptimized: true,
   },
