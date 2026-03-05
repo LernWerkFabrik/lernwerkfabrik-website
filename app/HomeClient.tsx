@@ -648,9 +648,9 @@ export default function HomeClient() {
                   desc: "Du trainierst genau das, was zählt: Teilpunkte, Zeitdruck, typische Fallen.",
                 },
                 {
-                  title: "Skalierbare Inhalte",
-                  label: "Pipeline",
-                  desc: "Inhalte sind klar strukturiert und leicht erweiterbar - ohne Umwege.",
+                  title: "Frühzugang mit Plan",
+                  label: "Launch",
+                  desc: "Zum Start erhältst du direkten Zugang und klare nächste Schritte per E-Mail.",
                 },
               ].map((it) => (
                 <Card
