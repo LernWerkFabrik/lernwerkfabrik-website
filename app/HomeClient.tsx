@@ -718,7 +718,7 @@ export default function HomeClient() {
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
               <div>
                 <div className="text-sm text-muted-foreground">Bald live</div>
-                <div className="mt-1 text-xl font-semibold">Sichere dir Early Access zur LernWerkFabrik</div>
+                <div className="mt-1 text-xl font-semibold md:whitespace-nowrap">Sichere dir Early Access zur LernWerkFabrik</div>
                 <div className="mt-2 text-sm text-muted-foreground">
                   Die Plattform startet in Kürze. Trage dich ein und wir informieren
                   <br />
