@@ -75,7 +75,7 @@ export default function BrandFooter() {
             <div className="mt-3 flex items-center gap-4">
               <SocialIconLink href="/out/c1" label="Einblicke Kanal 1">
                 <img
-                  src="/social/c1.svg?v=3"
+                  src="/social/c1.svg?v=4"
                   alt=""
                   aria-hidden="true"
                   className="block h-[24px] w-[24px] object-contain md:h-[22px] md:w-[22px]"
