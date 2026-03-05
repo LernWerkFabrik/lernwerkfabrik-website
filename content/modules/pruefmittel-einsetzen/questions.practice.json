@@ -1,0 +1,626 @@
+[
+  {
+    "id": "pme-01-fachgerechter-einsatz",
+    "type": "single_choice",
+    "prompt": "Was bedeutet es in der Prüfung, Prüfmittel fachgerecht einzusetzen?",
+    "answer": {
+      "choices": [
+        "Nur schnell messen und den ersten Wert notieren",
+        "Prüfmittel passend zu Merkmal und Toleranz auswählen, korrekt anwenden und Ergebnis dokumentieren",
+        "Nur das Nennmaß auswendig kennen",
+        "Auf Dokumentation verzichten, wenn das Teil montierbar ist"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "pme-02-auswahlkriterien",
+    "type": "multi_select",
+    "prompt": "Welche Kriterien sind für die Auswahl eines Prüfmittels entscheidend? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Merkmalsart und Toleranzanforderung",
+        "Messbereich und Auflösung",
+        "Zugänglichkeit der Messstelle",
+        "Farbe des Prüfmittels",
+        "Prüfumfang (Einzelteil, Stichprobe, Serie)"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "pme-03-pruefablauf-grundlagen",
+    "type": "order",
+    "prompt": "Ordne den fachgerechten Grundablauf einer Prüfaufgabe.",
+    "items": [
+      "Zeichnung und Prüfvorgabe lesen",
+      "Prüfmerkmale und Toleranzen festlegen",
+      "Passendes Prüfmittel auswählen",
+      "Einsatzfähigkeit des Prüfmittels prüfen",
+      "Messung/Prüfung durchführen",
+      "Ergebnis bewerten und dokumentieren"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "pme-04-pruefmittel-aussenmass",
+    "type": "single_choice",
+    "prompt": "Welches Prüfmittel ist für ein Außenmaß 24,00 ±0,02 mm am besten geeignet?",
+    "answer": {
+      "choices": [
+        "Meterstab",
+        "Messschieber",
+        "Bügelmessschraube",
+        "Anschlagwinkel"
+      ],
+      "correctIndex": 2
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "pme-05-pruefmittel-bohrung-h7",
+    "type": "single_choice",
+    "prompt": "Welches Prüfmittel passt besonders zur Bewertung einer Bohrung 12H7?",
+    "answer": {
+      "choices": [
+        "Stahllineal",
+        "Grenzlehrdorn",
+        "Federwaage",
+        "Anreißnadel"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "pme-06-einsatzfaehigkeit-check",
+    "type": "multi_select",
+    "prompt": "Welche Punkte gehören zur Prüfung der Einsatzfähigkeit eines Prüfmittels? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Prüfflächen auf Sauberkeit und Beschädigung kontrollieren",
+        "Nullpunkt/Funktionsprüfung durchführen",
+        "Gültigen Überwachungs- oder Kalibrierstatus prüfen",
+        "Messwert vorab schätzen und direkt eintragen",
+        "Leichtgängigkeit und Bedienbarkeit prüfen"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "pme-07-attributiv-begriff",
+    "type": "single_choice",
+    "prompt": "Was kennzeichnet ein attributives Prüfmerkmal?",
+    "answer": {
+      "choices": [
+        "Es wird immer ein exakter Zahlenwert in mm ermittelt",
+        "Es wird nur über i. O./n. i. O. (Go/No-Go) entschieden",
+        "Es muss immer der Mittelwert berechnet werden",
+        "Es gilt nur für Oberflächenangaben"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "pme-08-messfehler-ursachen",
+    "type": "multi_select",
+    "prompt": "Welche Punkte sind typische Ursachen für Messfehler? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Grat oder Schmutz an der Messstelle",
+        "Verkantetes Ansetzen",
+        "Großer Temperaturunterschied zwischen Werkstück und Prüfmittel",
+        "Sauber geprüfter Nullpunkt",
+        "Uneinheitlicher Messdruck"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "pme-09-oberes-grenzmass",
+    "prompt": "Nennmaß 30,00 mm mit Toleranz ±0,03 mm. Wie groß ist das obere Grenzmaß?",
+    "answer": {
+      "value": 30.03,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Oberes Grenzmaß = 30,00 + 0,03 = 30,03 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "pme-10-unteres-grenzmass",
+    "prompt": "Nennmaß 30,00 mm mit Toleranz ±0,03 mm. Wie groß ist das untere Grenzmaß?",
+    "answer": {
+      "value": 29.97,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Unteres Grenzmaß = 30,00 - 0,03 = 29,97 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "pme-11-toleranzbreite",
+    "prompt": "Wie groß ist die Toleranzbreite bei ±0,03 mm?",
+    "answer": {
+      "value": 0.06,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Toleranzbreite = 2 · 0,03 = 0,06 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "pme-12-pruefurteil-zu-klein",
+    "type": "single_choice",
+    "prompt": "Sollmaß 30,00 ±0,03 mm, Messwert 29,96 mm. Wie lautet das Prüfurteil?",
+    "answer": {
+      "choices": [
+        "i. O.",
+        "n. i. O., zu klein",
+        "n. i. O., zu groß",
+        "Nicht bewertbar"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "pme-13-ueber-oberes-grenzmass",
+    "prompt": "Sollmaß 18,00 ±0,02 mm, Messwert 18,05 mm. Um wie viel mm liegt der Messwert über dem oberen Grenzmaß?",
+    "answer": {
+      "value": 0.03,
+      "unit": "mm"
+    },
+    "tolerance": 0.005,
+    "solution": "Oberes Grenzmaß = 18,02 mm. Abweichung = 18,05 - 18,02 = 0,03 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 3
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "pme-14-rauheit-pruefmittel",
+    "type": "single_choice",
+    "prompt": "Für eine vorgegebene Oberflächenangabe Rz 6,3 ist welches Prüfmittel am passendsten?",
+    "answer": {
+      "choices": [
+        "Rauheitsmessgerät (Tastschnittgerät)",
+        "Federwaage",
+        "Bügelmessschraube",
+        "Tiefenmaß"
+      ],
+      "correctIndex": 0
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "pme-15-pruefprotokoll-angaben",
+    "type": "multi_select",
+    "prompt": "Welche Angaben gehören in ein vollständiges Prüfprotokoll? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Sollmaß/Toleranz oder Prüfvorgabe",
+        "Istwert oder Prüfurteil",
+        "Verwendetes Prüfmittel",
+        "i. O./n. i. O.-Bewertung",
+        "Persönliche Notiz ohne Bezug zum Prüfmerkmal"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "pme-16-messschieber-ablauf",
+    "type": "order",
+    "prompt": "Ordne die Schritte für eine saubere Messung mit dem Messschieber.",
+    "items": [
+      "Messflächen und Werkstück reinigen",
+      "Nullstellung prüfen",
+      "Messschenkel korrekt ansetzen",
+      "Messwert ablesen",
+      "Ergebnis dokumentieren und bewerten"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "pme-17-rechtwinkligkeit-pruefen",
+    "type": "single_choice",
+    "prompt": "Welche Kombination ist für die Prüfung einer Rechtwinkligkeit im Werkstattbereich typisch?",
+    "answer": {
+      "choices": [
+        "Haarwinkel und Fühlerlehre",
+        "Messschieber und Gewindelehre",
+        "Grenzlehrdorn und Lehrring",
+        "Federwaage und Zollstock"
+      ],
+      "correctIndex": 0
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "pme-18-ausschussquote",
+    "prompt": "Von 120 geprüften Teilen sind 9 Teile n. i. O. Wie groß ist die Ausschussquote in Prozent?",
+    "answer": {
+      "value": 7.5,
+      "unit": "%"
+    },
+    "tolerance": 0.2,
+    "solution": "Ausschussquote = (9 / 120) · 100 = 7,5 %.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "pme-19-pruefplan-serie",
+    "type": "multi_select",
+    "prompt": "Welche Inhalte gehören in einen Prüfplan für die Serienfertigung? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Prüfmerkmale und Prüffrequenz",
+        "Zuordnung Prüfmittel je Merkmal",
+        "Grenzwerte und Bewertungskriterien",
+        "Prüfung nur bei Reklamation",
+        "Verantwortlichkeit und Dokumentationsweg"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "pme-20-grenzfall-vorgehen",
+    "type": "order",
+    "prompt": "Ordne das fachgerechte Vorgehen bei einem Messwert nahe am Grenzmaß.",
+    "items": [
+      "Messbedingungen prüfen (Sauberkeit, Temperatur, Anlage)",
+      "Mit geeignetem Prüfmittel gegenmessen",
+      "Messwert mit Grenzmaß vergleichen",
+      "i. O./n. i. O. entscheiden",
+      "Entscheidung mit Begründung dokumentieren"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "pme-21-maximales-spiel",
+    "prompt": "Bohrung 12,000 bis 12,018 mm, Welle 11,990 bis 12,000 mm. Wie groß ist das maximale Spiel?",
+    "answer": {
+      "value": 0.028,
+      "unit": "mm"
+    },
+    "tolerance": 0.005,
+    "solution": "Maximales Spiel = Bohrung max - Welle min = 12,018 - 11,990 = 0,028 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 3
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "pme-22-strategie-engtoleranz",
+    "type": "single_choice",
+    "prompt": "Für eine Serie mit enger Toleranz ±0,02 mm: Welche Prüfstrategie ist fachlich am sinnvollsten?",
+    "answer": {
+      "choices": [
+        "Nur das erste und letzte Teil messen",
+        "Messungen erst am Schichtende durchführen",
+        "Erstmuster prüfen, Prüffrequenz festlegen, Grenzfälle gegenmessen und alles dokumentieren",
+        "Nur mit einem einzigen Prüfmittel alle Merkmale prüfen"
+      ],
+      "correctIndex": 2
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "pme-23-structured-pruefplan",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (5-7 Sätze): Erstelle einen Prüfplan für ein Bauteil mit Außenmaß 40,00 ±0,03 mm, Bohrung 12H7 und Gewinde M8.",
+    "answer": {
+      "fields": [
+        {
+          "key": "ablauf",
+          "label": "Ablauf",
+          "minWords": 12
+        },
+        {
+          "key": "pruefmittel",
+          "label": "Prüfmittel",
+          "minWords": 12
+        },
+        {
+          "key": "bewertung",
+          "label": "Bewertung und Dokumentation",
+          "minWords": 12
+        }
+      ],
+      "keywords": {
+        "ablauf": [
+          "zeichnung",
+          "pruefmerkmal",
+          "prüfmerkmal",
+          "reihenfolge",
+          "grenzmaß",
+          "grenzmass"
+        ],
+        "pruefmittel": [
+          "bügelmessschraube",
+          "buegelmessschraube",
+          "grenzlehrdorn",
+          "gewindelehrdorn",
+          "prüfmittel",
+          "pruefmittel"
+        ],
+        "bewertung": [
+          "istwert",
+          "i. o.",
+          "n. i. o.",
+          "protokoll",
+          "dokumentation",
+          "datum"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 42
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Prüfmerkmale und Toleranzen aus der Zeichnung ableiten",
+        "Zu jedem Merkmal ein geeignetes Prüfmittel zuordnen",
+        "Prüfablauf mit Reihenfolge und Grenzmaßvergleich festlegen",
+        "Bewertung und Protokollierung eindeutig formulieren"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "pme-24-structured-abweichung",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (5-7 Sätze): Ein Messwert liegt wiederholt über dem oberen Grenzmaß. Beschreibe dein Vorgehen von der Ursachenanalyse bis zur Freigabeentscheidung.",
+    "answer": {
+      "fields": [
+        {
+          "key": "ursache",
+          "label": "Ursachenanalyse",
+          "minWords": 12
+        },
+        {
+          "key": "bewertung",
+          "label": "Bewertung",
+          "minWords": 12
+        },
+        {
+          "key": "massnahmen",
+          "label": "Maßnahmen",
+          "minWords": 12
+        }
+      ],
+      "keywords": {
+        "ursache": [
+          "messfehler",
+          "messdruck",
+          "temperatur",
+          "grat",
+          "prüfmittel",
+          "pruefmittel"
+        ],
+        "bewertung": [
+          "oberes grenzmaß",
+          "oberes grenzmass",
+          "abweichung",
+          "n. i. o.",
+          "vergleich"
+        ],
+        "massnahmen": [
+          "gegenmessen",
+          "nachstellen",
+          "prozess",
+          "sperren",
+          "dokumentieren",
+          "freigabe"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 42
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Abweichung rechnerisch mit Grenzmaß belegen",
+        "Messfehler und Prozessursachen getrennt prüfen",
+        "Korrekturmaßnahme und Gegenmessung festlegen",
+        "Freigabe oder Sperrung eindeutig dokumentieren"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "pme-25-structured-serie-doku",
+    "type": "structured_text",
+    "prompt": "Abschlussaufgabe (6-8 Sätze): Beschreibe, wie du in einer Serienfertigung Prüfmittelüberwachung, Prüfdokumentation und Rückverfolgbarkeit sicherstellst.",
+    "answer": {
+      "fields": [
+        {
+          "key": "ueberwachung",
+          "label": "Prüfmittelüberwachung",
+          "minWords": 12
+        },
+        {
+          "key": "dokumentation",
+          "label": "Prüfdokumentation",
+          "minWords": 12
+        },
+        {
+          "key": "rueckverfolgung",
+          "label": "Rückverfolgbarkeit",
+          "minWords": 12
+        }
+      ],
+      "keywords": {
+        "ueberwachung": [
+          "kalibrierung",
+          "einsatzfähigkeit",
+          "einsatzfaehigkeit",
+          "kennzeichnung",
+          "intervall",
+          "prüfmittel"
+        ],
+        "dokumentation": [
+          "prüfplan",
+          "pruefplan",
+          "prüfprotokoll",
+          "pruefprotokoll",
+          "soll",
+          "ist"
+        ],
+        "rueckverfolgung": [
+          "chargennummer",
+          "bauteilnummer",
+          "datum",
+          "prüfer",
+          "pruefer",
+          "nachweis"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 45
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Regeln zur Einsatzfähigkeit und Überwachung der Prüfmittel nennen",
+        "Inhalte einer prüfungstauglichen Dokumentation beschreiben",
+        "Zuordnung von Prüfergebnis, Bauteil und Zeitpunkt sicherstellen",
+        "Sicherheits- und Qualitätsnachweis für die Serie begründen"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  }
+]

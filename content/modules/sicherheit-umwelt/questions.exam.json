@@ -1,0 +1,166 @@
+[
+  {
+    "id": "su-e-01-altoel-menge",
+    "prompt": "In der Werkstatt werden 5 Altöl-Kanister mit je 18 l gesammelt. Wie groß ist die Gesamtmenge?",
+    "answer": {
+      "value": 90,
+      "unit": "l"
+    },
+    "tolerance": 0,
+    "solution": "Gesamtmenge = 5 * 18 l = 90 l.",
+    "input": {
+      "mode": "integer"
+    }
+  },
+  {
+    "id": "su-e-02-bindemittel",
+    "prompt": "1 kg Ölbindemittel bindet 0,8 l Öl. Es sind 6,4 l ausgelaufen. Wie viel Bindemittel wird mindestens benötigt?",
+    "answer": {
+      "value": 8,
+      "unit": "kg"
+    },
+    "tolerance": 0.1,
+    "solution": "Bindemittel = 6,4 / 0,8 = 8 kg.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    }
+  },
+  {
+    "id": "su-e-03-entsorgungskosten",
+    "prompt": "Für die fachgerechte Altöl-Entsorgung fallen 0,35 EUR pro Liter an. Bei 120 l: Wie hoch sind die Kosten?",
+    "answer": {
+      "value": 42,
+      "unit": "EUR"
+    },
+    "tolerance": 0.1,
+    "solution": "Kosten = 120 * 0,35 EUR = 42 EUR.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "su-e-04-psa-quote",
+    "prompt": "Von 14 Mitarbeitenden tragen 12 die geforderte PSA korrekt. Wie hoch ist die Quote in Prozent?",
+    "answer": {
+      "value": 85.71,
+      "unit": "%"
+    },
+    "tolerance": 0.3,
+    "solution": "Quote = 12/14 * 100 = 85,71 %.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "su-e-05-energieeinsparung",
+    "prompt": "Eine Anlage reduziert den Leerlauf von 6 h auf 2 h pro Arbeitstag. Leistung im Leerlauf: 1,5 kW. Bei 20 Tagen/Monat: Wie viel Energie wird monatlich eingespart?",
+    "answer": {
+      "value": 120,
+      "unit": "kWh"
+    },
+    "tolerance": 0.5,
+    "solution": "Einsparzeit pro Tag = 4 h. Energieersparnis = 4 * 1,5 * 20 = 120 kWh.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    }
+  },
+  {
+    "id": "su-e-06-abfallreduktion",
+    "prompt": "Der Materialabfall sinkt von 240 kg auf 180 kg. Wie groß ist die Reduktion in Prozent?",
+    "answer": {
+      "value": 25,
+      "unit": "%"
+    },
+    "tolerance": 0.2,
+    "solution": "Reduktion = 60 kg. Prozent = 60/240 * 100 = 25 %.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "su-e-07-kunststoff-sortenrein",
+    "prompt": "Von 320 kg Kunststoffresten können 65 % sortenrein erfasst werden. Wie viele kg sind das?",
+    "answer": {
+      "value": 208,
+      "unit": "kg"
+    },
+    "tolerance": 0.5,
+    "solution": "Masse = 320 * 0,65 = 208 kg.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    }
+  },
+  {
+    "id": "su-e-08-behaelteranzahl",
+    "prompt": "36 kontaminierte Putztücher müssen in Sicherheitsbehälter mit je 8 Stück gefüllt werden. Wie viele Behälter werden mindestens benötigt?",
+    "answer": {
+      "value": 5,
+      "unit": "Stk"
+    },
+    "tolerance": 0,
+    "solution": "36/8 = 4,5, also aufrunden auf 5 Behälter.",
+    "input": {
+      "mode": "integer"
+    }
+  },
+  {
+    "id": "su-e-09-uebungsintervall",
+    "prompt": "Eine Evakuierungsübung findet alle 6 Monate statt. Wie viele Übungen fallen in 3 Jahren an?",
+    "answer": {
+      "value": 6,
+      "unit": "Stk"
+    },
+    "tolerance": 0,
+    "solution": "3 Jahre = 36 Monate. 36/6 = 6 Übungen.",
+    "input": {
+      "mode": "integer"
+    }
+  },
+  {
+    "id": "su-e-10-luftaustausch",
+    "prompt": "Werkstattvolumen: 450 m3. Lüfterleistung: 900 m3/h. Laufzeit: 20 min. Wie viel Luftvolumen wird in dieser Zeit theoretisch ausgetauscht?",
+    "answer": {
+      "value": 300,
+      "unit": "m3"
+    },
+    "tolerance": 1,
+    "solution": "20 min = 1/3 h. Volumen = 900 * 1/3 = 300 m3.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    }
+  },
+  {
+    "id": "su-e-11-recyclingmasse",
+    "prompt": "Metallspaene: 4 Behälter a 15 kg. Sortenreiner Kunststoff: 3 Behälter a 12 kg. Wie groß ist die gesamte getrennt erfasste Recyclingmasse?",
+    "answer": {
+      "value": 96,
+      "unit": "kg"
+    },
+    "tolerance": 0,
+    "solution": "Metall: 4*15 = 60 kg. Kunststoff: 3*12 = 36 kg. Gesamt = 96 kg.",
+    "input": {
+      "mode": "integer"
+    }
+  },
+  {
+    "id": "su-e-12-checklistenquote",
+    "prompt": "Von 28 Punkten einer Sicherheits-Checkliste sind 25 erledigt. Wie hoch ist die ErfÖllungsquote in Prozent?",
+    "answer": {
+      "value": 89.29,
+      "unit": "%"
+    },
+    "tolerance": 0.3,
+    "solution": "Quote = 25/28 * 100 = 89,29 %.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  }
+]

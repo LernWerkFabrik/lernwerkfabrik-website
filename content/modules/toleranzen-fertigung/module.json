@@ -1,0 +1,34 @@
+{
+  "id": "toleranzen-fertigung",
+  "title": "Toleranzen in der Fertigung berücksichtigen",
+  "description": "Maße und Toleranzen in der Fertigung beachten und messbar absichern.",
+  "difficulty": "hard",
+  "tags": [
+    "Toleranzen",
+    "Messmittel",
+    "Qualität"
+  ],
+  "estimatedMinutes": 45,
+  "intro": {
+    "why": "In der Prüfung werden Toleranzen geprüft, weil sie entscheidend für Funktion, Passung und Austauschbarkeit von Bauteilen sind. Die IHK bewertet, ob du Grenzmaße korrekt ermittelst, die Passungsart fachlich richtig beurteilst und erkennst, welche Auswirkungen Maßabweichungen auf Montage und Funktion haben. Punktverluste entstehen häufig, wenn Toleranzen nur rechnerisch bestimmt werden, ohne ihre Bedeutung für die Fertigung und den späteren Einsatz zu bewerten.",
+    "trains": [
+      "Grenzmaße und Toleranzangaben aus Zeichnungen sicher bestimmen",
+      "Spiel-, Übergangs- und Übermaßpassungen fachlich korrekt einordnen",
+      "Zusammenhang zwischen Toleranzen, Fertigung und Montage verstehen",
+      "Maß- und Toleranzanforderungen mit geeigneten Messmitteln absichern"
+    ],
+    "traps": [
+      "Grenzmaße falsch ablesen oder Rechenzeichen vertauschen",
+      "Passungsart rechnerisch bestimmen, aber funktional falsch bewerten",
+      "Toleranzen isoliert betrachten, ohne Bezug zur Fertigung oder Montage",
+      "Messbarkeit der Toleranzen nicht berücksichtigen (falsches Messmittel)"
+    ]
+  },
+  "files": {
+    "explanation": "explanation.md",
+    "example": "example.md",
+    "practiceQuestions": "questions.practice.json",
+    "examQuestions": "questions.exam.json"
+  },
+  "kind": "learn"
+}

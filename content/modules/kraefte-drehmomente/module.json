@@ -1,0 +1,39 @@
+{
+  "id": "kraefte-drehmomente",
+  "title": "Kräfte und Drehmomente in Bauteilen beurteilen",
+  "description": "Kräfte sicher erfassen, Hebelarme korrekt bestimmen und daraus Drehmomente in Bauteilen/Verbindungen beurteilen – prüfungsnah mit typischen Fehlerquellen (senkrechter Abstand, Einheiten, Drehrichtung).",
+  "difficulty": "medium",
+  "tags": [
+    "Kräfte",
+    "Drehmoment",
+    "Statik-Grundlagen",
+    "AP1",
+    "Montage"
+  ],
+  "estimatedMinutes": 40,
+  "intro": {
+    "why": "In der Prüfung (und in der Werkstatt) geht es selten um „nur rechnen“. Du musst Kräfte richtig einordnen (wo greifen sie an, wohin wirken sie?) und daraus ableiten, welche Drehmomente und Belastungen an Schrauben, Konsolen, Hebeln oder Gelenken entstehen. Wer den Hebelarm falsch bestimmt oder mm nicht in m umrechnet, bekommt schnell unplausible Werte – und trifft im schlimmsten Fall falsche Montage- oder Sicherheitsentscheidungen.",
+    "trains": [
+      "Kräfte und Angriffspunkte in einfachen Bauteilsituationen erfassen",
+      "Hebelarm als senkrechten Abstand zur Wirkungslinie bestimmen",
+      "Drehmoment mit M = F·r berechnen und technisch interpretieren",
+      "Drehrichtung/Vorzeichen logisch beurteilen und Ergebnisse plausibilisieren",
+      "Prüfungstauglichen Rechenweg als Checkliste anwenden"
+    ],
+    "traps": [
+      "Hebelarm als schrägen Abstand statt senkrechten Abstand nehmen",
+      "mm ↔ m (oder kN ↔ N) nicht umrechnen",
+      "Ergebnis ohne Einheit oder mit falscher Einheit angeben",
+      "Drehrichtung ignorieren (Momente addieren/subtrahieren falsch)",
+      "Keine Plausibilitätsprüfung (z. B. zu kleines/zu großes Moment) durchführen"
+    ]
+  },
+  "files": {
+    "explanation": "explanation.md",
+    "formulas": "formulas.md",
+    "example": "example.md",
+    "practiceQuestions": "questions.practice.json",
+    "examQuestions": "questions.exam.json"
+  },
+  "kind": "learn"
+}

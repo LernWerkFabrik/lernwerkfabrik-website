@@ -1,0 +1,1026 @@
+[
+  {
+    "id": "ap1aw-a01-unterlagen-check",
+    "type": "multi_select",
+    "prompt": "Block 1 - Auftrag/Zeichnung: Du bereitest die Fertigung einer Tr?gerplatte vor. Welche Angaben m?ssen vor Fertigungsstart zwingend ausgewertet werden? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Werkstückbezeichnung und Stückzahl",
+        "Zeichnungsmaße mit Toleranzangaben (z. B. Ø20 H7)",
+        "Oberflächenangaben (z. B. Ra 3,2)",
+        "Allgemeintoleranz (z. B. ISO 2768-m)",
+        "Private Notiz der letzten Schicht"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "meta": {
+      "mode": "training",
+      "examRelevant": true,
+      "difficulty": 1,
+      "points": 2,
+      "block": "1",
+      "competency": "auftrag_zeichnen",
+      "subskills": [
+        "anforderungen",
+        "zeichnung_lesen",
+        "toleranzen"
+      ]
+    }
+  },
+  {
+    "id": "ap1aw-a02-zeichnung-o20h7",
+    "type": "single_choice",
+    "prompt": "Block 1 - Zeichnungsangabe: Du pr?fst die Bohrungsangaben einer Zeichnung. Welche Deutung ist f?r \"?20 H7\" fachlich korrekt?",
+    "answer": {
+      "choices": [
+        "Bohrung Nennmaß 20 mm mit Toleranzfeld H7",
+        "Welle Nennmaß 20 mm mit Toleranzfeld H7",
+        "Bohrung exakt 20,000 mm ohne Toleranz",
+        "Oberflächenangabe für eine 20-mm-Fläche"
+      ],
+      "correctIndex": 0
+    },
+    "meta": {
+      "mode": "training",
+      "examRelevant": true,
+      "difficulty": 1,
+      "points": 1,
+      "block": "1",
+      "competency": "auftrag_zeichnen",
+      "subskills": [
+        "zeichnung_lesen",
+        "toleranzen"
+      ]
+    }
+  },
+  {
+    "id": "ap1aw-a03-zeichnungsangaben-pruefrelevant",
+    "type": "single_choice",
+    "prompt": "Block 1 - Zeichnungsauswertung: Du ?bernimmst ein nicht einzeln toleriertes Ma? in den Arbeitsplan. F?r 25 mm nach ISO 2768-m gilt welche Toleranz?",
+    "answer": {
+      "choices": [
+        "±0,1 mm",
+        "±0,2 mm",
+        "±0,3 mm",
+        "±0,5 mm"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "mode": "training",
+      "examRelevant": true,
+      "difficulty": 1,
+      "points": 1,
+      "block": "1",
+      "competency": "auftrag_zeichnen",
+      "subskills": [
+        "zeichnung_lesen",
+        "toleranzen"
+      ]
+    }
+  },
+  {
+    "id": "ap1aw-a04-zeichnungsauswertung-order",
+    "prompt": "Block 1 - Zeichnungsangabe: Du kontrollierst eine Au?enkontur vor der Bearbeitung. Ma? 40 ?0,10 mm - welches untere Grenzma? tr?gst du in mm ein?",
+    "answer": {
+      "value": 39.9,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Unteres Grenzmaß = 40,00 - 0,10 = 39,90 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "mode": "training",
+      "examRelevant": true,
+      "difficulty": 1,
+      "points": 3,
+      "block": "1",
+      "competency": "auftrag_zeichnen",
+      "subskills": [
+        "toleranzen",
+        "zeichnung_lesen"
+      ]
+    }
+  },
+  {
+    "id": "ap1aw-a05-iso2768-toleranz",
+    "type": "multi_select",
+    "prompt": "Block 1 - Zeichnungsauswertung: Du legst vor Arbeitsbeginn die Pr?fpunkte fest. Welche Angaben sind direkt pr?frelevant? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Ø20 H7",
+        "Ra 1,6",
+        "Kante 0,5 x 45°",
+        "ISO 2768-m",
+        "Name der zeichnenden Person"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "meta": {
+      "mode": "training",
+      "examRelevant": true,
+      "difficulty": 1,
+      "points": 2,
+      "block": "1",
+      "competency": "auftrag_zeichnen",
+      "subskills": [
+        "zeichnung_lesen",
+        "oberflaeche",
+        "toleranzen",
+        "anforderungen"
+      ]
+    }
+  },
+  {
+    "id": "ap1aw-b06-grundablauf-order",
+    "type": "order",
+    "prompt": "Block 2 - Arbeitsplanung: Du planst den Ablauf f?r ein AP1-Einzelteil. Ordne die Arbeitsschritte.",
+    "items": [
+      "Auftrag und Zeichnung prüfen",
+      "Werkzeuge und Prüfmittel bereitstellen",
+      "Rüsten und Bezug festlegen",
+      "Bearbeiten bis zum Zwischenmesspunkt",
+      "Zwischenmessung dokumentieren und Fertigbearbeitung abschließen"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "mode": "training",
+      "examRelevant": true,
+      "difficulty": 2,
+      "points": 2,
+      "block": "2",
+      "competency": "arbeitsplanung",
+      "subskills": [
+        "reihenfolge",
+        "pruefpunkte_planen",
+        "werkzeugwahl"
+      ]
+    }
+  },
+  {
+    "id": "ap1aw-b07-arbeitsplan-inhalte",
+    "type": "order",
+    "prompt": "Block 2 - Arbeitsplanung: Du setzt f?r ein kritisches Ma? einen Zwischenmesspunkt. Ordne die Planungsschritte.",
+    "items": [
+      "Kritisches Merkmal aus der Zeichnung festlegen",
+      "Sollwert und Toleranz notieren",
+      "Passendes Prüfmittel bestimmen",
+      "Messzeitpunkt im Ablauf festlegen",
+      "Bewertung i. O./n. i. O. im Plan hinterlegen"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "mode": "training",
+      "examRelevant": true,
+      "difficulty": 2,
+      "points": 3,
+      "block": "2",
+      "competency": "arbeitsplanung",
+      "subskills": [
+        "reihenfolge",
+        "pruefpunkte_planen",
+        "pruefmittelwahl",
+        "soll_ist"
+      ]
+    }
+  },
+  {
+    "id": "ap1aw-b08-material-fehlt",
+    "type": "single_choice",
+    "prompt": "Block 2 - Vorbereitung: Du r?stest den Arbeitsplatz f?r die Bearbeitung. Das freigegebene Spannmittel fehlt. Was ist fachlich korrekt?",
+    "answer": {
+      "choices": [
+        "Mit einem ähnlichen Spannmittel improvisieren",
+        "Arbeitsauftrag stoppen, fehlendes Mittel melden und Ablauf anpassen",
+        "Bearbeitung starten und erst zur Endprüfung umrüsten",
+        "Ohne Eintrag weiterarbeiten"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "mode": "training",
+      "examRelevant": true,
+      "difficulty": 2,
+      "points": 1,
+      "block": "2",
+      "competency": "sicherheit_umwelt",
+      "subskills": [
+        "gefaehrdung",
+        "ordnung",
+        "psa"
+      ]
+    }
+  },
+  {
+    "id": "ap1aw-b09-gesamtzeit",
+    "prompt": "Block 2 - Zeitplanung: Du planst die Arbeitszeit f?r einen vollst?ndigen Durchlauf. R?sten 16 min, Bearbeitung 38 min, Zwischenmessung 9 min, Entgraten/Reinigen 7 min, Dokumentation 6 min. Wie gro? ist die Gesamtzeit in min?",
+    "answer": {
+      "value": 76,
+      "unit": "min"
+    },
+    "tolerance": 0,
+    "solution": "16 + 38 + 9 + 7 + 6 = 76 min.",
+    "input": {
+      "mode": "integer"
+    },
+    "meta": {
+      "mode": "training",
+      "examRelevant": true,
+      "difficulty": 2,
+      "points": 3,
+      "block": "2",
+      "competency": "arbeitsplanung",
+      "subskills": [
+        "zeitplanung",
+        "reihenfolge"
+      ]
+    }
+  },
+  {
+    "id": "ap1aw-b10-priorisierung",
+    "type": "structured_text",
+    "prompt": "Block 2 - Zwischenmesspunkt: Du dokumentierst eine Zwischenmessung w?hrend der Bearbeitung. Erstelle kurz den Eintrag f?r Ma? 30 ?0,05 mm mit Soll/Ist, Pr?fmittel und Bewertung.",
+    "answer": {
+      "fields": [
+        {
+          "key": "soll_ist",
+          "label": "Soll/Ist",
+          "minWords": 8
+        },
+        {
+          "key": "pruefmittel",
+          "label": "Prüfmittel",
+          "minWords": 4
+        },
+        {
+          "key": "bewertung",
+          "label": "Bewertung",
+          "minWords": 6
+        }
+      ],
+      "keywords": {
+        "soll_ist": [
+          "soll",
+          "ist",
+          "30",
+          "toleranz",
+          "grenz"
+        ],
+        "pruefmittel": [
+          "pruefmittel",
+          "messschieber",
+          "buegelmessschraube",
+          "innenmikrometer"
+        ],
+        "bewertung": [
+          "i. o.",
+          "n. i. o.",
+          "bewertung",
+          "abweichung"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 28,
+        "requiredConcepts": [
+          "dokumentation",
+          "soll",
+          "ist",
+          "toleranz",
+          "pruefmittel",
+          "bewertung"
+        ]
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Sollwert und Istwert als Paar eintragen.",
+        "Verwendetes Prüfmittel benennen.",
+        "Bewertung i. O./n. i. O. mit kurzer Begründung festhalten."
+      ]
+    },
+    "feedback": {
+      "checklist": [
+        "Soll und Ist vorhanden",
+        "Prüfmittel genannt",
+        "Bewertung klar formuliert"
+      ]
+    },
+    "meta": {
+      "mode": "training",
+      "examRelevant": true,
+      "difficulty": 2,
+      "points": 4,
+      "block": "2",
+      "competency": "arbeitsplanung",
+      "subskills": [
+        "pruefpunkte_planen",
+        "soll_ist",
+        "pruefmittelwahl"
+      ]
+    }
+  },
+  {
+    "id": "ap1aw-c11-drehzahl-bohren",
+    "prompt": "Block 3 - Fertigungsdaten: Du bohrst eine Funktionsbohrung und stellst die Maschine ein. F?r d = 12 mm und vc = 30 m/min berechne n in 1/min. (n = (1000 * vc) / (pi * d))",
+    "answer": {
+      "value": 796,
+      "unit": "1/min"
+    },
+    "tolerance": 20,
+    "solution": "n = (1000 * 30) / (pi * 12) = 795,8 1/min, gerundet 796 1/min.",
+    "input": {
+      "mode": "integer"
+    },
+    "meta": {
+      "mode": "training",
+      "examRelevant": true,
+      "difficulty": 3,
+      "points": 3,
+      "block": "3",
+      "competency": "fertigung_technologie",
+      "subskills": [
+        "schnittdaten",
+        "verfahren"
+      ]
+    }
+  },
+  {
+    "id": "ap1aw-c12-vorschub",
+    "prompt": "Block 3 - Fertigung: Du fr?st eine Nut und bestimmst den Vorschub. n = 620 1/min und f = 0,18 mm/U. Berechne vf in mm/min.",
+    "answer": {
+      "value": 112,
+      "unit": "mm/min"
+    },
+    "tolerance": 2,
+    "solution": "vf = n * f = 620 * 0,18 = 111,6 mm/min, gerundet 112 mm/min.",
+    "input": {
+      "mode": "integer"
+    },
+    "meta": {
+      "mode": "training",
+      "examRelevant": true,
+      "difficulty": 3,
+      "points": 3,
+      "block": "3",
+      "competency": "fertigung_technologie",
+      "subskills": [
+        "schnittdaten",
+        "verfahren"
+      ]
+    }
+  },
+  {
+    "id": "ap1aw-c13-masse-rohteil",
+    "prompt": "Block 3 - Grundrechnen: Du schneidest Rohmaterial f?r einen Bolzen zu. Stahlzylinder d = 20 mm, l = 50 mm, Dichte rho = 7,85 g/cm?. Berechne die Masse in g.",
+    "answer": {
+      "value": 123.3,
+      "unit": "g"
+    },
+    "tolerance": 2,
+    "solution": "V = pi * (10 mm)^2 * 50 mm = 15708 mm³ = 15,708 cm³; m = 7,85 * 15,708 = 123,3 g.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    },
+    "meta": {
+      "mode": "training",
+      "examRelevant": true,
+      "difficulty": 3,
+      "points": 3,
+      "block": "3",
+      "competency": "fertigung_technologie"
+    }
+  },
+  {
+    "id": "ap1aw-c14-keilwinkel",
+    "type": "single_choice",
+    "prompt": "Block 3 - Einflussgr??e: Du misst ein Werkst?ck direkt nach der Bearbeitung. Werkst?cktemperatur steigt von 20 ?C auf 40 ?C. Welche Aussage ist fachlich korrekt?",
+    "answer": {
+      "choices": [
+        "Das Maß bleibt unverändert.",
+        "Das Maß nimmt geringfügig zu; messen möglichst bei Referenztemperatur.",
+        "Das Maß steigt immer exakt um 0,20 mm.",
+        "Temperatur betrifft nur die Oberfläche."
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "mode": "training",
+      "examRelevant": true,
+      "difficulty": 3,
+      "points": 1,
+      "block": "3",
+      "competency": "fertigung_technologie"
+    }
+  },
+  {
+    "id": "ap1aw-c15-parameter-h7",
+    "prompt": "Block 3 - Basisrechnung: Du kalkulierst die Energiekosten f?r einen Bearbeitungsschritt. Maschine l?uft 18 min mit 5 kW, Strompreis 0,30 EUR/kWh. Welche Energiekosten entstehen in EUR?",
+    "answer": {
+      "value": 0.45,
+      "unit": "EUR"
+    },
+    "tolerance": 0.02,
+    "solution": "18 min = 0,3 h; Energie = 5 * 0,3 = 1,5 kWh; Kosten = 1,5 * 0,30 = 0,45 EUR.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "mode": "training",
+      "examRelevant": true,
+      "difficulty": 3,
+      "points": 3,
+      "block": "3",
+      "competency": "fertigung_technologie"
+    }
+  },
+  {
+    "id": "ap1aw-d16-pruefmittel-zeichnung",
+    "type": "multi_select",
+    "prompt": "Block 4 - Messen/Pr?fen: Du pr?fst ein Fertigteil nach Zeichnungsvorgabe. F?r ?20 H7, L?nge 50 ?0,1 und Ra 3,2 - welche Pr?fmittel sind passend? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Grenzlehrdorn für die H7-Bohrung",
+        "Messschieber oder Bügelmessschraube für 50 ±0,1",
+        "Oberflächenvergleichsnormal für Ra",
+        "Nur Stahlmaßstab für alle Merkmale",
+        "Reine Sichtprüfung für alle Merkmale"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2
+      ]
+    },
+    "meta": {
+      "mode": "training",
+      "examRelevant": true,
+      "difficulty": 3,
+      "points": 3,
+      "block": "4",
+      "competency": "messen_pruefen",
+      "subskills": [
+        "pruefmittelwahl",
+        "messstrategie",
+        "soll_ist"
+      ]
+    }
+  },
+  {
+    "id": "ap1aw-d17-toleranzentscheidung",
+    "type": "multi_select",
+    "prompt": "Block 4 - Soll/Ist: Du bewertest Messwerte nach der Zwischenpr?fung. Ma? 25 ?0,05 mm - welche Messwerte sind i. O.? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "24,96 mm",
+        "24,93 mm",
+        "25,00 mm",
+        "25,06 mm",
+        "25,04 mm"
+      ],
+      "correctIndices": [
+        0,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "mode": "training",
+      "examRelevant": true,
+      "difficulty": 3,
+      "points": 3,
+      "block": "4",
+      "competency": "messen_pruefen",
+      "subskills": [
+        "soll_ist",
+        "bewertung_io",
+        "toleranzen"
+      ]
+    }
+  },
+  {
+    "id": "ap1aw-d18-abweichung-order",
+    "type": "order",
+    "prompt": "Block 4 - Abweichung im Messprozess: Bei einer Ma?abweichung w?hrend der Bearbeitung legst du das Vorgehen fest. Ordne den fachlich korrekten Ablauf.",
+    "items": [
+      "Bearbeitung am betroffenen Merkmal stoppen",
+      "Soll/Ist mit Prüfmittel dokumentieren",
+      "Abweichung bewerten und Ursache eingrenzen",
+      "Maßnahme umsetzen (z. B. Nacharbeit)",
+      "Wiederholprüfung durchführen und Freigabe dokumentieren"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "mode": "training",
+      "examRelevant": true,
+      "difficulty": 3,
+      "points": 3,
+      "block": "4",
+      "competency": "messen_pruefen",
+      "subskills": [
+        "messstrategie",
+        "bewertung_io"
+      ]
+    }
+  },
+  {
+    "id": "ap1aw-d19-erfuellungsgrad",
+    "type": "structured_text",
+    "prompt": "Block 4 - Zwischenmessung: Du f?hrst eine Zwischenmessung an einem kritischen Merkmal durch. F?r 18 ?0,03 mm wurde Ist = 17,96 mm gemessen. Erstelle einen kurzen Pr?feintrag mit Soll/Ist, Pr?fmittel und Bewertung.",
+    "answer": {
+      "fields": [
+        {
+          "key": "soll_ist",
+          "label": "Soll/Ist-Eintrag",
+          "minWords": 8
+        },
+        {
+          "key": "pruefmittel",
+          "label": "Prüfmittel",
+          "minWords": 4
+        },
+        {
+          "key": "bewertung",
+          "label": "Bewertung",
+          "minWords": 6
+        }
+      ],
+      "keywords": {
+        "soll_ist": [
+          "soll",
+          "ist",
+          "18",
+          "toleranz",
+          "grenz"
+        ],
+        "pruefmittel": [
+          "pruefmittel",
+          "messschieber",
+          "messuhr",
+          "mikrometer"
+        ],
+        "bewertung": [
+          "i. o.",
+          "n. i. o.",
+          "bewertung",
+          "abweichung"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 30,
+        "requiredConcepts": [
+          "dokumentation",
+          "soll",
+          "ist",
+          "toleranz",
+          "pruefmittel",
+          "bewertung"
+        ]
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Sollwert, Istwert und Toleranzgrenze nennen.",
+        "Prüfmittel konkret benennen.",
+        "Bewertung i. O./n. i. O. mit kurzer Begründung dokumentieren."
+      ]
+    },
+    "feedback": {
+      "checklist": [
+        "Soll/Ist vollständig",
+        "Prüfmittel enthalten",
+        "Bewertung mit Abweichungsbezug"
+      ]
+    },
+    "meta": {
+      "mode": "training",
+      "examRelevant": true,
+      "difficulty": 3,
+      "points": 4,
+      "block": "4",
+      "competency": "messen_pruefen",
+      "subskills": [
+        "soll_ist",
+        "pruefmittelwahl",
+        "bewertung_io"
+      ]
+    }
+  },
+  {
+    "id": "ap1aw-d20-protokollpflichten",
+    "type": "structured_text",
+    "prompt": "Block 4 - Abweichung: Du dokumentierst eine festgestellte Bohrungsabweichung. Bohrung ?12 H7 ist n. i. O. Beschreibe den Protokollablauf von Abweichung bis Freigabe.",
+    "answer": {
+      "fields": [
+        {
+          "key": "abweichung",
+          "label": "Abweichung/Ursache",
+          "minWords": 8
+        },
+        {
+          "key": "massnahme",
+          "label": "Maßnahme",
+          "minWords": 8
+        },
+        {
+          "key": "wiederholpruefung",
+          "label": "Wiederholprüfung",
+          "minWords": 8
+        },
+        {
+          "key": "freigabe",
+          "label": "Freigabe",
+          "minWords": 6
+        }
+      ],
+      "keywords": {
+        "abweichung": [
+          "abweichung",
+          "ursache",
+          "n. i. o.",
+          "toleranz"
+        ],
+        "massnahme": [
+          "massnahme",
+          "nacharbeit",
+          "einstellung",
+          "korrig"
+        ],
+        "wiederholpruefung": [
+          "wiederholpruefung",
+          "erneut",
+          "soll",
+          "ist",
+          "pruefen"
+        ],
+        "freigabe": [
+          "freigabe",
+          "bewertung",
+          "i. o.",
+          "dokument"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 38,
+        "requiredConcepts": [
+          "abweichung",
+          "ursache",
+          "nacharbeit",
+          "wiederholpruefung",
+          "freigabe",
+          "bewertung"
+        ]
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Abweichung und vermutete Ursache beschreiben.",
+        "Konkrete Maßnahme benennen.",
+        "Wiederholprüfung mit Soll/Ist nennen.",
+        "Freigabeentscheidung dokumentieren."
+      ]
+    },
+    "feedback": {
+      "checklist": [
+        "Abweichung und Ursache genannt",
+        "Maßnahme konkret",
+        "Wiederholprüfung enthalten",
+        "Freigabe dokumentiert"
+      ]
+    },
+    "meta": {
+      "mode": "training",
+      "examRelevant": true,
+      "difficulty": 3,
+      "points": 4,
+      "block": "4",
+      "competency": "doku_bewertung",
+      "subskills": [
+        "protokoll",
+        "abweichung_massnahme",
+        "wirksamkeitspruefung"
+      ]
+    }
+  },
+  {
+    "id": "ap1aw-e21-structured-zwischenmessung",
+    "prompt": "Block 5 - Dokumentation: Du erg?nzt im Abschlussprotokoll den Abweichungswert. Sollma? 40,00 mm, Istma? 39,94 mm - welche Abweichung ? = Ist - Soll wird in mm eingetragen?",
+    "answer": {
+      "value": -0.06,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Δ = 39,94 - 40,00 = -0,06 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2,
+      "allowNegative": true
+    },
+    "meta": {
+      "mode": "training",
+      "examRelevant": true,
+      "difficulty": 4,
+      "points": 3,
+      "block": "5",
+      "competency": "doku_bewertung",
+      "subskills": [
+        "soll_ist",
+        "protokoll"
+      ]
+    }
+  },
+  {
+    "id": "ap1aw-e22-structured-abweichung",
+    "type": "structured_text",
+    "prompt": "Block 5 - Abschluss bei Abweichung: Du schlie?t einen Auftrag nach Nacharbeit dokumentationssicher ab. Formuliere den Vermerk mit Ursache, Ma?nahme, Wiederholpr?fung und Freigabeentscheidung.",
+    "answer": {
+      "fields": [
+        {
+          "key": "ursache",
+          "label": "Ursache",
+          "minWords": 8
+        },
+        {
+          "key": "massnahme",
+          "label": "Maßnahme",
+          "minWords": 8
+        },
+        {
+          "key": "wiederholpruefung",
+          "label": "Wiederholprüfung",
+          "minWords": 8
+        },
+        {
+          "key": "freigabe",
+          "label": "Freigabeentscheidung",
+          "minWords": 8
+        }
+      ],
+      "keywords": {
+        "ursache": [
+          "ursache",
+          "abweichung",
+          "fehler",
+          "toleranz"
+        ],
+        "massnahme": [
+          "massnahme",
+          "nacharbeit",
+          "korrig",
+          "einstellung"
+        ],
+        "wiederholpruefung": [
+          "wiederholpruefung",
+          "erneut",
+          "soll",
+          "ist",
+          "pruefen"
+        ],
+        "freigabe": [
+          "freigabe",
+          "bewertung",
+          "i. o.",
+          "n. i. o.",
+          "entscheidung"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 42,
+        "requiredConcepts": [
+          "abweichung",
+          "ursache",
+          "nacharbeit",
+          "wiederholpruefung",
+          "freigabe",
+          "bewertung"
+        ]
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Ursache der Abweichung knapp benennen.",
+        "Durchgeführte Maßnahme dokumentieren.",
+        "Wiederholprüfung mit Soll/Ist und Ergebnis nennen.",
+        "Freigabe oder Sperrung begründet abschließen."
+      ]
+    },
+    "feedback": {
+      "checklist": [
+        "Ursache vorhanden",
+        "Maßnahme enthalten",
+        "Wiederholprüfung enthalten",
+        "Freigabeentscheidung enthalten"
+      ]
+    },
+    "meta": {
+      "mode": "training",
+      "examRelevant": true,
+      "difficulty": 4,
+      "points": 4,
+      "block": "5",
+      "competency": "doku_bewertung",
+      "subskills": [
+        "abweichung_massnahme",
+        "wirksamkeitspruefung",
+        "abschlussvermerk"
+      ]
+    }
+  },
+  {
+    "id": "ap1aw-e23-abschluss-order",
+    "type": "order",
+    "prompt": "Block 5 - Abschluss: Du bereitest die ?bergabe eines gepr?ften Teils vor. Ordne die letzten Schritte bis zur ?bergabe.",
+    "items": [
+      "Messprotokoll auf Vollständigkeit prüfen",
+      "Abweichungen inkl. Maßnahme/Wiederholprüfung eintragen",
+      "Bauteil i. O./n. i. O. bewerten",
+      "Übergabe mit Datum/Unterschrift dokumentieren",
+      "Arbeitsplatz reinigen und Unterlagen ablegen"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "mode": "training",
+      "examRelevant": true,
+      "difficulty": 4,
+      "points": 3,
+      "block": "5",
+      "competency": "doku_bewertung",
+      "subskills": [
+        "protokoll",
+        "abschlussvermerk"
+      ]
+    }
+  },
+  {
+    "id": "ap1aw-e24-abschlussinhalt",
+    "type": "multi_select",
+    "prompt": "Block 5 - Abschluss/Umwelt: Du beendest den Auftrag und r?umst den Arbeitsplatz. Welche Punkte sind verbindlich? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "KSS-/Ölreste nach Vorgabe entsorgen",
+        "Arbeitsbereich reinigen und Stolperstellen beseitigen",
+        "Verwendete PSA prüfen und geordnet ablegen",
+        "Messprotokoll dem Auftrag zuordnen",
+        "Kühlmittel in den Restmüll geben"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "meta": {
+      "mode": "training",
+      "examRelevant": true,
+      "difficulty": 4,
+      "points": 2,
+      "block": "5",
+      "competency": "sicherheit_umwelt",
+      "subskills": [
+        "kss",
+        "altoel",
+        "ordnung",
+        "psa"
+      ]
+    }
+  },
+  {
+    "id": "ap1aw-e25-structured-abschlussvermerk",
+    "type": "structured_text",
+    "prompt": "Block 5 - ?bergabe: Du ?bergibst ein freigegebenes Bauteil an die n?chste Station. Erstelle einen kurzen Abschlussvermerk f?r ein i. O.-Teil mit Pr?fstatus, Protokollbezug und Freigabe.",
+    "answer": {
+      "fields": [
+        {
+          "key": "pruefstatus",
+          "label": "Prüfstatus",
+          "minWords": 8
+        },
+        {
+          "key": "protokoll",
+          "label": "Protokollbezug",
+          "minWords": 8
+        },
+        {
+          "key": "freigabe",
+          "label": "Freigabe/Übergabe",
+          "minWords": 8
+        }
+      ],
+      "keywords": {
+        "pruefstatus": [
+          "soll",
+          "ist",
+          "i. o.",
+          "bewertung",
+          "pruefstatus"
+        ],
+        "protokoll": [
+          "protokoll",
+          "pruefmittel",
+          "datum",
+          "merkmal"
+        ],
+        "freigabe": [
+          "freigabe",
+          "uebergabe",
+          "unterschrift",
+          "abgeschlossen"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 30,
+        "requiredConcepts": [
+          "dokumentation",
+          "soll",
+          "ist",
+          "pruefmittel",
+          "freigabe",
+          "bewertung"
+        ]
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Prüfstatus mit Soll/Ist und Bewertung nennen.",
+        "Protokollbezug mit Prüfmittel/Datum angeben.",
+        "Freigabe und Übergabe formell abschließen."
+      ]
+    },
+    "feedback": {
+      "checklist": [
+        "Prüfstatus vorhanden",
+        "Protokollbezug enthalten",
+        "Freigabe/Übergabe vorhanden"
+      ]
+    },
+    "meta": {
+      "mode": "training",
+      "examRelevant": true,
+      "difficulty": 4,
+      "points": 4,
+      "block": "5",
+      "competency": "doku_bewertung",
+      "subskills": [
+        "protokoll",
+        "abschlussvermerk"
+      ]
+    }
+  }
+]

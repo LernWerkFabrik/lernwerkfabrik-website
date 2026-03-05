@@ -1,0 +1,16 @@
+[
+  {
+    "id": "tss-exam-01-regelabweichung-temperatur",
+    "practiceId": "tss-13-regelabweichung-hub",
+    "prompt": "Bei einer geregelten Temperatur beträgt der Sollwert 72,0 °C und der Istwert 67,2 °C. Wie groß ist die Regelabweichung?",
+    "answer": {
+      "value": 4.8,
+      "unit": "°C"
+    },
+    "tolerance": 0.1,
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    }
+  }
+]

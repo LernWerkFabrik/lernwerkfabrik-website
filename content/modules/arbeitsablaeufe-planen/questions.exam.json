@@ -1,0 +1,16 @@
+[
+  {
+    "id": "apd-exam-01-terminabweichung",
+    "practiceId": "apd-13-terminabweichung",
+    "prompt": "Geplanter Abschluss eines Arbeitspakets: 10:25 Uhr. Tatsächlicher Abschluss: 10:58 Uhr. Wie groß ist die Terminabweichung?",
+    "answer": {
+      "value": 33,
+      "unit": "min"
+    },
+    "tolerance": 0.1,
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    }
+  }
+]

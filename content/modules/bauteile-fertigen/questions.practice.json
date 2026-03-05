@@ -1,0 +1,1113 @@
+[
+  {
+    "id": "bf-p-01-drawing-focus",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "x": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "variants": [
+        {
+          "type": "single_choice",
+          "template": {
+            "prompt": "Welche Information ist für die Fertigungsreihenfolge zuerst entscheidend?"
+          },
+          "answer": {
+            "choices": [
+              "Farbe des Zeichnungsrahmens",
+              "Bezugskanten, Funktionsmasse und Toleranzen",
+              "Unterschrift im Titelblock",
+              "Papierformat der Zeichnung"
+            ],
+            "correctIndex": 1
+          }
+        },
+        {
+          "type": "multi_select",
+          "template": {
+            "prompt": "Was solltest du vor dem Start aus der Zeichnung markieren? (Mehrfachauswahl)"
+          },
+          "answer": {
+            "choices": [
+              "Bezüge/Nullpunkte",
+              "Passungen und Toleranzen",
+              "Bohrungspositionen",
+              "Druckdatum der Zeichnung",
+              "Oberflächen- und Kantenangaben"
+            ],
+            "correctIndices": [
+              0,
+              1,
+              2,
+              4
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "bf-p-02-workflow-order",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "x": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "variants": [
+        {
+          "type": "order",
+          "template": {
+            "prompt": "Ordne die Arbeitsschritte in eine fertigungsgerechte Reihenfolge."
+          },
+          "items": [
+            "Zeichnung auswerten und Bezüge festlegen",
+            "Rohteil vorbereiten und spannen",
+            "Aussenkontur/Vorbearbeitung herstellen",
+            "Funktionsbohrungen und Gewinde fertigen",
+            "Entgraten, reinigen",
+            "Endkontrolle und dokumentieren"
+          ],
+          "answer": {
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        },
+        {
+          "type": "order",
+          "template": {
+            "prompt": "Prüfungsnah: Reihenfolge bei einer Reibbohrung H7 mit Gewinde im gleichen Teil."
+          },
+          "items": [
+            "Kern- und Vorbohrungen herstellen",
+            "Bezug und Bohrungspositionen festlegen",
+            "Reiben auf Endmass",
+            "Gewinde schneiden",
+            "Prüfen und protokollieren"
+          ],
+          "answer": {
+            "correctOrder": [
+              1,
+              0,
+              2,
+              3,
+              4
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "bf-p-03-core-hole",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "x": {
+          "min": 1,
+          "max": 2,
+          "step": 1
+        }
+      },
+      "variants": [
+        {
+          "type": "single_choice",
+          "template": {
+            "prompt": "Welcher Kernlochdurchmesser passt typischerweise zu M5?"
+          },
+          "answer": {
+            "choices": [
+              "3,5 mm",
+              "4,2 mm",
+              "5,0 mm",
+              "6,8 mm"
+            ],
+            "correctIndex": 1
+          }
+        },
+        {
+          "type": "single_choice",
+          "template": {
+            "prompt": "Welche Reihenfolge ist für Innengewinde M5 korrekt?"
+          },
+          "answer": {
+            "choices": [
+              "Gewindebohrer -> Kernloch bohren -> Senken",
+              "Kernloch bohren -> Senken -> Vorschneider -> Mittelschneider -> Fertigschneider",
+              "Reiben -> Kernloch bohren -> Gewindebohrer",
+              "Senken -> Reiben -> Gewindebohrer"
+            ],
+            "correctIndex": 1
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "bf-p-04-machine-params",
+    "tolerance": 30,
+    "template": {
+      "kind": "static",
+      "vars": {
+        "vc": {
+          "min": 20,
+          "max": 35,
+          "step": 5
+        },
+        "d": {
+          "min": 5,
+          "max": 12,
+          "step": 1
+        }
+      },
+      "variants": [
+        {
+          "type": "integer",
+          "template": {
+            "prompt": "Bohren: vc={{vc}} m/min, d={{d}} mm. Berechne die Drehzahl n in 1/min (Formel n = (1000*vc)/(pi*d))."
+          },
+          "answer": {
+            "formula": "(1000*{{vc}})/(3.1416*{{d}})",
+            "unit": "1/min"
+          },
+          "input": {
+            "mode": "integer"
+          }
+        }
+      ]
+    },
+    "input": {
+      "mode": "integer"
+    }
+  },
+  {
+    "id": "bf-p-05-upper-limit",
+    "tolerance": 0.01,
+    "template": {
+      "kind": "static",
+      "vars": {
+        "nom": {
+          "min": 20,
+          "max": 80,
+          "step": 5
+        },
+        "tol": {
+          "min": 0.05,
+          "max": 0.2,
+          "step": 0.05
+        }
+      },
+      "variants": [
+        {
+          "type": "decimal",
+          "template": {
+            "prompt": "Mass {{nom}} +/-{{tol}} mm. Wie gro? ist das obere Grenzmass in mm?"
+          },
+          "answer": {
+            "formula": "{{nom}}+{{tol}}",
+            "unit": "mm"
+          },
+          "input": {
+            "mode": "decimal",
+            "maxDecimals": 2
+          }
+        }
+      ]
+    },
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "bf-p-06-lower-limit",
+    "tolerance": 0.01,
+    "template": {
+      "kind": "static",
+      "vars": {
+        "nom": {
+          "min": 20,
+          "max": 80,
+          "step": 5
+        },
+        "tol": {
+          "min": 0.05,
+          "max": 0.2,
+          "step": 0.05
+        }
+      },
+      "variants": [
+        {
+          "type": "decimal",
+          "template": {
+            "prompt": "Mass {{nom}} +/-{{tol}} mm. Wie gro? ist das untere Grenzmass in mm?"
+          },
+          "answer": {
+            "formula": "{{nom}}-{{tol}}",
+            "unit": "mm"
+          },
+          "input": {
+            "mode": "decimal",
+            "maxDecimals": 2
+          }
+        }
+      ]
+    },
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "bf-p-07-reaming-allowance",
+    "tolerance": 0.02,
+    "template": {
+      "kind": "static",
+      "vars": {
+        "final": {
+          "value": 8
+        },
+        "pre": {
+          "min": 7.7,
+          "max": 7.9,
+          "step": 0.1
+        }
+      },
+      "variants": [
+        {
+          "type": "decimal",
+          "template": {
+            "prompt": "Vorbohrung {{pre}} mm, Reiben auf {{final}} mm. Wie gro? ist das Reibaufmass in mm?"
+          },
+          "answer": {
+            "formula": "{{final}}-{{pre}}",
+            "unit": "mm"
+          },
+          "input": {
+            "mode": "decimal",
+            "maxDecimals": 2
+          }
+        }
+      ]
+    },
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "bf-p-08-checking-tools",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "x": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "variants": [
+        {
+          "type": "multi_select",
+          "template": {
+            "prompt": "Welche Prüfmittel sind für enge Fertigungsmerkmale passend? (Mehrfachauswahl)"
+          },
+          "answer": {
+            "choices": [
+              "Bügelmessschraube für enge Aussenmasse",
+              "Grenzlehrdorn für H7-Bohrungen",
+              "Gewindelehre für Innengewinde",
+              "Meterstab für H7-Passung",
+              "Messschieber für Grobkontrolle"
+            ],
+            "correctIndices": [
+              0,
+              1,
+              2,
+              4
+            ]
+          }
+        },
+        {
+          "type": "single_choice",
+          "template": {
+            "prompt": "Welches Prüfmittel passt am besten für eine Passbohrung 8H7?"
+          },
+          "answer": {
+            "choices": [
+              "Stahlmassstab",
+              "Grenzlehrdorn",
+              "Winkelmesser",
+              "Schieblehre ohne Tiefenstange"
+            ],
+            "correctIndex": 1
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "bf-p-09-datum-logic",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "x": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "variants": [
+        {
+          "type": "single_choice",
+          "template": {
+            "prompt": "Warum wird bei Zeichnungsarbeit oft von einer Bezugskante aus gefertigt und gemessen?"
+          },
+          "answer": {
+            "choices": [
+              "Damit weniger Maschinen nötig sind",
+              "Damit Wiederholgenauigkeit und Funktionsbezug gesichert sind",
+              "Damit keine Toleranzen mehr gelten",
+              "Damit Entgraten entfällt"
+            ],
+            "correctIndex": 1
+          }
+        },
+        {
+          "type": "multi_select",
+          "template": {
+            "prompt": "Welche Folgen hat ein falscher Bezugspunkt? (Mehrfachauswahl)"
+          },
+          "answer": {
+            "choices": [
+              "Masskettenfehler",
+              "Funktionsmasse können auÃŸerhalb der Toleranz liegen",
+              "Mehr Messsicherheit",
+              "Nacharbeit/Ausschuss steigt"
+            ],
+            "correctIndices": [
+              0,
+              1,
+              3
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "bf-p-10-quality-order",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "x": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "variants": [
+        {
+          "type": "order",
+          "template": {
+            "prompt": "Ordne die qualitätsgerechte Prüffolge."
+          },
+          "items": [
+            "Sollmasse und Toleranzen lesen",
+            "Kritische Merkmale zuerst messen",
+            "Messwerte mit Grenzmassen vergleichen",
+            "OK/NOK entscheiden",
+            "Ergebnis dokumentieren"
+          ],
+          "answer": {
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "bf-p-11-traps",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "x": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "variants": [
+        {
+          "type": "multi_select",
+          "template": {
+            "prompt": "Welche Fehler kosten in Fertigungsaufgaben besonders häufig Punkte? (Mehrfachauswahl)"
+          },
+          "answer": {
+            "choices": [
+              "Zwischenmessungen auslassen",
+              "Reihenfolge grob -> fein ignorieren",
+              "Toleranzangaben ?bersehen",
+              "Bezugskante festlegen",
+              "falsches Prüfmittel für enge Masse"
+            ],
+            "correctIndices": [
+              0,
+              1,
+              2,
+              4
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "bf-p-12-structured-plan",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "x": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "variants": [
+        {
+          "type": "structured_text",
+          "template": {
+            "prompt": "Kurzantwort (4-6 Sätze): Beschreibe deinen Ablauf für ein Bauteil mit Bohrung H7 und Gewinde M5. Gehe auf Bezug, Reihenfolge und Prüfung ein."
+          },
+          "answer": {
+            "fields": [
+              {
+                "key": "method",
+                "label": "Vorgehen",
+                "minWords": 35
+              }
+            ],
+            "keywords": {
+              "method": [
+                "zeichnung",
+                "bezug",
+                "spannen",
+                "bohren",
+                "reiben",
+                "gewinde",
+                "zwischenmessung",
+                "prüfmittel",
+                "grenzmass",
+                "dokumentation"
+              ]
+            }
+          },
+          "grading": {
+            "auto": {
+              "minWordsTotal": 35
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "bf-p-13-process-choice",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "x": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "variants": [
+        {
+          "type": "single_choice",
+          "template": {
+            "prompt": "Welches Verfahren ist für eine Passbohrung 8H7 am ehesten erforderlich?"
+          },
+          "answer": {
+            "choices": [
+              "Nur bohren auf Endmass",
+              "Reiben nach passender Vorbohrung",
+              "Nur ansenken",
+              "Gewindeschneiden"
+            ],
+            "correctIndex": 1
+          }
+        },
+        {
+          "type": "multi_select",
+          "template": {
+            "prompt": "Welche Schritte gehören typischerweise zur Herstellung einer Passbohrung? (Mehrfachauswahl)"
+          },
+          "answer": {
+            "choices": [
+              "Positionieren/ankernen",
+              "Vorbohren mit Aufmass",
+              "Reiben auf Endmass",
+              "Kernloch für Gewinde bohren",
+              "Zwischen- oder Endprüfung"
+            ],
+            "correctIndices": [
+              0,
+              1,
+              2,
+              4
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "bf-p-14-clamping-basics",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "x": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "variants": [
+        {
+          "type": "single_choice",
+          "template": {
+            "prompt": "Warum ist das Festlegen eines einheitlichen Bezugs für Fertigung und Prüfung wichtig?"
+          },
+          "answer": {
+            "choices": [
+              "Damit die Maschine leiser läuft",
+              "Damit Massketten und Wiederholgenauigkeit stimmen",
+              "Damit Kühlschmierstoff entfällt",
+              "Damit keine Dokumentation nötig ist"
+            ],
+            "correctIndex": 1
+          }
+        },
+        {
+          "type": "multi_select",
+          "template": {
+            "prompt": "Welche Kriterien muss ein gutes Spannkonzept erfüllen? (Mehrfachauswahl)"
+          },
+          "answer": {
+            "choices": [
+              "Lagegerecht ausrichten",
+              "Verzugsarm und sicher spannen",
+              "Bearbeitungsflächen frei zugänglich halten",
+              "Nur mit maximaler Spannkraft arbeiten",
+              "Wiederholbar einrichten"
+            ],
+            "correctIndices": [
+              0,
+              1,
+              2,
+              4
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "bf-p-15-tolerance-width",
+    "tolerance": 0.01,
+    "template": {
+      "kind": "static",
+      "vars": {
+        "tol": {
+          "min": 0.05,
+          "max": 0.3,
+          "step": 0.05
+        }
+      },
+      "variants": [
+        {
+          "type": "decimal",
+          "template": {
+            "prompt": "Massangabe +/-{{tol}} mm. Wie gro? ist die gesamte Toleranzbreite in mm?"
+          },
+          "answer": {
+            "formula": "2*{{tol}}",
+            "unit": "mm"
+          },
+          "input": {
+            "mode": "decimal",
+            "maxDecimals": 2
+          }
+        }
+      ]
+    },
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "bf-p-16-measurement-judgement",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "x": {
+          "min": 1,
+          "max": 2,
+          "step": 1
+        }
+      },
+      "variants": [
+        {
+          "type": "single_choice",
+          "template": {
+            "prompt": "Sollmass 25,00 +/-0,05 mm, Messwert 25,03 mm. Wie lautet das Prüfurteil?"
+          },
+          "answer": {
+            "choices": [
+              "i. O.",
+              "nicht i. O. zu klein",
+              "nicht i. O. zu gro?",
+              "nicht beurteilbar"
+            ],
+            "correctIndex": 0
+          }
+        },
+        {
+          "type": "single_choice",
+          "template": {
+            "prompt": "Sollmass 25,00 +/-0,05 mm, Messwert 24,93 mm. Wie lautet das Prüfurteil?"
+          },
+          "answer": {
+            "choices": [
+              "i. O.",
+              "nicht i. O. zu klein",
+              "nicht i. O. zu gro?",
+              "nicht beurteilbar"
+            ],
+            "correctIndex": 1
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "bf-p-17-hole-series-position",
+    "tolerance": 0,
+    "template": {
+      "kind": "static",
+      "vars": {
+        "x0": {
+          "min": 10,
+          "max": 30,
+          "step": 2
+        },
+        "p": {
+          "min": 20,
+          "max": 50,
+          "step": 5
+        },
+        "n": {
+          "min": 3,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "variants": [
+        {
+          "type": "integer",
+          "template": {
+            "prompt": "Bohrungsreihe: erste Bohrung bei x={{x0}} mm, Abstand p={{p}} mm. Wie weit liegt die {{n}}. Bohrung von links?"
+          },
+          "answer": {
+            "formula": "{{x0}}+({{n}}-1)*{{p}}",
+            "unit": "mm"
+          },
+          "input": {
+            "mode": "integer"
+          }
+        }
+      ]
+    },
+    "input": {
+      "mode": "integer"
+    }
+  },
+  {
+    "id": "bf-p-18-drilling-order",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "x": {
+          "min": 1,
+          "max": 2,
+          "step": 1
+        }
+      },
+      "variants": [
+        {
+          "type": "order",
+          "template": {
+            "prompt": "Ordne die Schritte für eine gena? Bohrung mit anschlieÃŸendem Reiben."
+          },
+          "items": [
+            "Bohrposition festlegen und ankernen",
+            "Vorbohren",
+            "Bohren auf Vorbohrmass für Reiben",
+            "Reiben auf Endmass",
+            "Mass prüfen"
+          ],
+          "answer": {
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "bf-p-19-safety-kss",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "x": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "variants": [
+        {
+          "type": "multi_select",
+          "template": {
+            "prompt": "Welche Aussagen zu Arbeitssicherheit und Kühlschmierstoff sind richtig? (Mehrfachauswahl)"
+          },
+          "answer": {
+            "choices": [
+              "Sichere Spannlage vor Start kontrollieren",
+              "KSS-Konzentration regelmäÃŸig prüfen",
+              "Späne mit der Hand entfernen",
+              "PSA passend zum Arbeitsplatz nutzen",
+              "Leckagen ignorieren, solange die Masse stimmen"
+            ],
+            "correctIndices": [
+              0,
+              1,
+              3
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "bf-p-20-surface-and-edge",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "x": {
+          "min": 1,
+          "max": 2,
+          "step": 1
+        }
+      },
+      "variants": [
+        {
+          "type": "single_choice",
+          "template": {
+            "prompt": "Was bedeutet eine Kantenangabe wie 1x45 Grad in der Fertigung?"
+          },
+          "answer": {
+            "choices": [
+              "Bohrung mit 45 Grad",
+              "Fase mit 1 mm Schenkellänge bei 45 Grad",
+              "Radius 45 mm",
+              "Schleifwinkel 1 Grad"
+            ],
+            "correctIndex": 1
+          }
+        },
+        {
+          "type": "single_choice",
+          "template": {
+            "prompt": "Welche Aussage zu Oberflächenkennwerten ist korrekt?"
+          },
+          "answer": {
+            "choices": [
+              "GröÃŸeres Ra bedeutet feinere Oberfläche",
+              "Kleineres Ra bedeutet in der Regel feinere Oberfläche",
+              "Ra hat nichts mit Fertigungsverfahren zu tun",
+              "Ra ersetzt die Massangabe"
+            ],
+            "correctIndex": 1
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "bf-p-21-reaming-prehole-choice",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "x": {
+          "min": 1,
+          "max": 2,
+          "step": 1
+        }
+      },
+      "variants": [
+        {
+          "type": "single_choice",
+          "template": {
+            "prompt": "Welche Vorbohrung ist für eine Endbohrung 10H7 am ehesten geeignet?"
+          },
+          "answer": {
+            "choices": [
+              "10,0 mm",
+              "9,8 mm",
+              "9,0 mm",
+              "10,5 mm"
+            ],
+            "correctIndex": 1
+          }
+        },
+        {
+          "type": "single_choice",
+          "template": {
+            "prompt": "Welches Reibaufmass ist typischerweise plausibel?"
+          },
+          "answer": {
+            "choices": [
+              "0,00 mm",
+              "0,10 bis 0,30 mm",
+              "1,00 mm",
+              "2,00 mm"
+            ],
+            "correctIndex": 1
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "bf-p-22-thread-cutting-order",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "x": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "variants": [
+        {
+          "type": "order",
+          "template": {
+            "prompt": "Ordne die Fertigungsfolge für ein Innengewinde M6."
+          },
+          "items": [
+            "Kernloch bohren",
+            "Ansenken",
+            "Vorschneider",
+            "Mittelschneider",
+            "Fertigschneider",
+            "Gewinde prüfen"
+          ],
+          "answer": {
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "bf-p-23-structured-measurement-plan",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "x": {
+          "min": 1,
+          "max": 2,
+          "step": 1
+        }
+      },
+      "variants": [
+        {
+          "type": "structured_text",
+          "template": {
+            "prompt": "Kurzantwort (4-6 Sätze): Erkläre, wie du die Prüfung für ein Bauteil mit H7-Bohrung und Aussenmass 50,00 +/-0,10 planst."
+          },
+          "answer": {
+            "fields": [
+              {
+                "key": "plan",
+                "label": "Prüfplan",
+                "minWords": 35
+              }
+            ],
+            "keywords": {
+              "plan": [
+                "sollmass",
+                "grenzmass",
+                "prüfmittel",
+                "lehrdorn",
+                "messschieber",
+                "zwischenmessung",
+                "endkontrolle",
+                "dokumentation",
+                "i.o.",
+                "n.i.o."
+              ]
+            }
+          },
+          "grading": {
+            "auto": {
+              "minWordsTotal": 35
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "bf-p-24-documentation",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "x": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "variants": [
+        {
+          "type": "multi_select",
+          "template": {
+            "prompt": "Welche Angaben gehören in ein sauberes Prüfprotokoll? (Mehrfachauswahl)"
+          },
+          "answer": {
+            "choices": [
+              "Sollmass/Toleranz",
+              "Istwert",
+              "Prüfmittel",
+              "OK/NOK-Entscheidung",
+              "Lieblingsfarbe des Prüfers"
+            ],
+            "correctIndices": [
+              0,
+              1,
+              2,
+              3
+            ]
+          }
+        },
+        {
+          "type": "single_choice",
+          "template": {
+            "prompt": "Warum ist Dokumentation in Fertigungsaufgaben wichtig?"
+          },
+          "answer": {
+            "choices": [
+              "Nur für schöne Unterlagen",
+              "Nachvollziehbarkeit, Qualitätssicherung und Bewertung",
+              "Damit weniger gemessen werden muss",
+              "Sie ersetzt die Endkontrolle"
+            ],
+            "correctIndex": 1
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "bf-p-25-master-flow",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "x": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "variants": [
+        {
+          "type": "order",
+          "template": {
+            "prompt": "Master-Flow: Ordne die komplette Bearbeitung für 'Bauteil nach Zeichnung fertigen'."
+          },
+          "items": [
+            "Zeichnung + kritische Merkmale analysieren",
+            "Werkzeuge/Spannmittel und Bezüge festlegen",
+            "Grob- und Feinbearbeitung in passender Reihenfolge durchführen",
+            "Prozessbegleitend messen und korrigieren",
+            "Endprüfung und Dokumentation abschlieÃŸen"
+          ],
+          "answer": {
+            "correctOrder": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        },
+        {
+          "type": "multi_select",
+          "template": {
+            "prompt": "Master-Check: Welche Aussagen treffen zu? (Mehrfachauswahl)"
+          },
+          "answer": {
+            "choices": [
+              "Fertigung und Prüfung sollten auf denselben Bezügen basieren",
+              "Zwischenmessungen reduzieren Risiko von Ausschuss",
+              "H7-Passungen werden häufig nur mit Meterstab geprüft",
+              "Dokumentation ist Teil der Qualitätssicherung"
+            ],
+            "correctIndices": [
+              0,
+              1,
+              3
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,164 @@
+[
+  {
+    "id": "idok-e-01-fehlende-felder",
+    "prompt": "Ein Abnahmeprotokoll hat 14 Pflichtfelder. 11 Felder sind ausgefüllt. Wie viele Felder fehlen?",
+    "answer": {
+      "value": 3,
+      "unit": "Stk"
+    },
+    "tolerance": 0,
+    "solution": "Fehlende Felder = 14 - 11 = 3 Stk.",
+    "input": {
+      "mode": "integer"
+    }
+  },
+  {
+    "id": "idok-e-02-dauer",
+    "prompt": "Die Instandsetzung beginnt um 07:40 Uhr und endet um 08:25 Uhr. Berechne die Dauer in Minuten.",
+    "answer": {
+      "value": 45,
+      "unit": "min"
+    },
+    "tolerance": 0,
+    "solution": "08:25 - 07:40 = 45 min.",
+    "input": {
+      "mode": "integer"
+    }
+  },
+  {
+    "id": "idok-e-03-pruefpunktquote",
+    "prompt": "Von 18 dokumentierten Prüfpunkten sind 15 i. O. Wie groß ist der i. O.-Anteil in Prozent?",
+    "answer": {
+      "value": 83.3,
+      "unit": "%"
+    },
+    "tolerance": 0.5,
+    "solution": "(15 / 18) * 100 = 83,33 %.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    }
+  },
+  {
+    "id": "idok-e-04-schwingungsdifferenz",
+    "prompt": "Vor der Maßnahme wurden 3,2 mm/s Schwinggeschwindigkeit gemessen, nach der Maßnahme 1,1 mm/s. Wie groß ist die Differenz?",
+    "answer": {
+      "value": 2.1,
+      "unit": "mm/s"
+    },
+    "tolerance": 0.1,
+    "solution": "Differenz = 3,2 - 1,1 = 2,1 mm/s.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    }
+  },
+  {
+    "id": "idok-e-05-nachfuellmenge",
+    "prompt": "Soll-Füllmenge im Getriebe: 1,80 l. Nach dem Ablassen und Teilverlust sind noch 1,25 l vorhanden. Welche Nachfüllmenge ist erforderlich?",
+    "answer": {
+      "value": 0.55,
+      "unit": "l"
+    },
+    "tolerance": 0.02,
+    "solution": "Nachfüllmenge = 1,80 - 1,25 = 0,55 l.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "idok-e-06-stillstand",
+    "prompt": "Drei protokollierte Stillstände dauern 22 min, 35 min und 18 min. Wie hoch ist die Gesamtstillstandszeit?",
+    "answer": {
+      "value": 75,
+      "unit": "min"
+    },
+    "tolerance": 0,
+    "solution": "22 + 35 + 18 = 75 min.",
+    "input": {
+      "mode": "integer"
+    }
+  },
+  {
+    "id": "idok-e-07-ausfallkosten",
+    "prompt": "Ausfallkosten: 95 EUR pro Stunde. Dokumentierter Stillstand: 75 min. Wie hoch sind die Ausfallkosten?",
+    "answer": {
+      "value": 118.8,
+      "unit": "EUR"
+    },
+    "tolerance": 1,
+    "solution": "Kosten = 95 * (75/60) = 118,75 EUR, gerundet 118,8 EUR.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    }
+  },
+  {
+    "id": "idok-e-08-wiederholfehlerquote",
+    "prompt": "Bei 16 Probeläufen sind 2 wegen gleicher Ursache n. i. O. Wie groß ist die Wiederholfehlerquote in Prozent?",
+    "answer": {
+      "value": 12.5,
+      "unit": "%"
+    },
+    "tolerance": 0.3,
+    "solution": "(2 / 16) * 100 = 12,5 %.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    }
+  },
+  {
+    "id": "idok-e-09-nio-anzahl",
+    "prompt": "Von 24 Prüfmerkmalen wurden 87,5 % als i. O. bewertet. Wie viele Merkmale sind n. i. O.?",
+    "answer": {
+      "value": 3,
+      "unit": "Stk"
+    },
+    "tolerance": 0,
+    "solution": "i. O. = 24 * 0,875 = 21. n. i. O. = 24 - 21 = 3 Stk.",
+    "input": {
+      "mode": "integer"
+    }
+  },
+  {
+    "id": "idok-e-10-mttr",
+    "prompt": "Für 5 dokumentierte Störungen wurden insgesamt 150 min Instandsetzungszeit benötigt. Berechne die mittlere Instandsetzungszeit je Störung (MTTR).",
+    "answer": {
+      "value": 30,
+      "unit": "min"
+    },
+    "tolerance": 0,
+    "solution": "MTTR = 150 / 5 = 30 min.",
+    "input": {
+      "mode": "integer"
+    }
+  },
+  {
+    "id": "idok-e-11-grenzwert",
+    "prompt": "Zulässiger maximaler Rundlauf laut Protokoll: 0,20 mm. Gemessen wurden 0,27 mm. Um wie viel mm ist der Grenzwert überschritten?",
+    "answer": {
+      "value": 0.07,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Überschreitung = 0,27 - 0,20 = 0,07 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "idok-e-12-restintervall",
+    "prompt": "Letzte Wartung bei Betriebsstundenzähler 1240 h, Wartungsintervall 300 h, aktueller Stand 1500 h. Wie viele Betriebsstunden bleiben bis zur nächsten Wartung?",
+    "answer": {
+      "value": 40,
+      "unit": "h"
+    },
+    "tolerance": 0,
+    "solution": "Nächste Wartung bei 1240 + 300 = 1540 h. Rest = 1540 - 1500 = 40 h.",
+    "input": {
+      "mode": "integer"
+    }
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "id": "tb-e-01",
+    "prompt": "Wandle 0,0035 m² in mm² um.",
+    "answer": { "value": 3500, "unit": "mm²" },
+    "tolerance": 0,
+    "solution": "1 m² = 1 000 000 mm² → 0,0035 · 1 000 000 = 3500 mm²."
+  },
+  {
+    "id": "tb-e-02",
+    "prompt": "Berechne die Gewichtskraft einer Masse von 7,5 kg (g = 9,81 m/s²).",
+    "answer": { "value": 73.58, "unit": "N" },
+    "tolerance": 0.2,
+    "solution": "F = m·g = 7,5·9,81 = 73,575 N ≈ 73,58 N."
+  },
+  {
+    "id": "tb-e-03",
+    "prompt": "Ein Zylinder hat d = 30 mm und h = 80 mm. Berechne das Volumen in cm³ (π=3,1416).",
+    "answer": { "value": 56.55, "unit": "cm³" },
+    "tolerance": 0.2,
+    "solution": "r=15 mm. V=π·r²·h=3,1416·225·80=56548,8 mm³=56,5488 cm³≈56,55 cm³."
+  },
+  {
+    "id": "tb-e-04",
+    "prompt": "Berechne den Druck: F = 12 kN wirkt auf A = 20 cm². Ergebnis in bar.",
+    "answer": { "value": 60, "unit": "bar" },
+    "tolerance": 0.2,
+    "solution": "F=12000 N. A=20 cm²=0,002 m². p=12000/0,002=6 000 000 Pa=60 bar."
+  },
+  {
+    "id": "tb-e-05",
+    "prompt": "Ein Hebelarm beträgt r = 0,18 m. Für ein Drehmoment von M = 28 N·m: Welche Kraft F ist nötig?",
+    "answer": { "value": 155.56, "unit": "N" },
+    "tolerance": 0.3,
+    "solution": "F=M/r=28/0,18=155,555... N ≈ 155,56 N."
+  },
+  {
+    "id": "tb-e-06",
+    "prompt": "Wandle 5,4 kW in W um.",
+    "answer": { "value": 5400, "unit": "W" },
+    "tolerance": 0,
+    "solution": "1 kW=1000 W → 5,4 kW=5400 W."
+  },
+  {
+    "id": "tb-e-07",
+    "prompt": "Rotierende Leistung: n = 900 min⁻¹, M = 24 N·m. Berechne P in W (π=3,1416).",
+    "answer": { "value": 2262, "unit": "W" },
+    "tolerance": 4,
+    "solution": "P=2π·n·M/60=2·3,1416·900·24/60=2·3,1416·15·24=2261,95 W≈2262 W."
+  },
+  {
+    "id": "tb-e-08",
+    "prompt": "Berechne die Dichte: m = 1,56 kg bei V = 200 cm³. Ergebnis in g/cm³.",
+    "answer": { "value": 7.8, "unit": "g/cm³" },
+    "tolerance": 0.05,
+    "solution": "m=1560 g. ρ=1560/200=7,8 g/cm³."
+  },
+  {
+    "id": "tb-e-09",
+    "prompt": "Wandle 0,12 m³ in Liter um. (1 L = 0,001 m³)",
+    "answer": { "value": 120, "unit": "L" },
+    "tolerance": 0,
+    "solution": "0,12 m³ / 0,001 = 120 L."
+  },
+  {
+    "id": "tb-e-10",
+    "prompt": "Eine Arbeit von W = 2400 J wird in t = 30 s verrichtet. Berechne die Leistung P in W.",
+    "answer": { "value": 80, "unit": "W" },
+    "tolerance": 0.2,
+    "solution": "P=W/t=2400/30=80 W."
+  },
+  {
+    "id": "tb-e-11",
+    "prompt": "Berechne die Fläche eines Rechtecks: l = 0,45 m und b = 22 cm. Ergebnis in m².",
+    "answer": { "value": 0.099, "unit": "m²" },
+    "tolerance": 0.001,
+    "solution": "b=22 cm=0,22 m. A=0,45·0,22=0,099 m²."
+  },
+  {
+    "id": "tb-e-12",
+    "prompt": "Wandle 18 000 Pa in bar um.",
+    "answer": { "value": 0.18, "unit": "bar" },
+    "tolerance": 0,
+    "solution": "1 bar=100000 Pa → 18000/100000=0,18 bar."
+  },
+  {
+    "id": "tb-e-13",
+    "prompt": "Eine Welle läuft mit n = 1800 min⁻¹. Wie viele Umdrehungen macht sie in 45 s?",
+    "answer": { "value": 1350, "unit": "U" },
+    "tolerance": 0,
+    "solution": "1800/min = 30/s. In 45 s: 30·45=1350 U."
+  },
+  {
+    "id": "tb-e-14",
+    "prompt": "Quader: l = 12 cm, b = 6 cm, h = 3,5 cm. Berechne V in cm³.",
+    "answer": { "value": 252, "unit": "cm³" },
+    "tolerance": 0.2,
+    "solution": "V=12·6·3,5=252 cm³."
+  },
+  {
+    "id": "tb-e-15",
+    "prompt": "Berechne die Kraft: p = 50 bar wirkt auf A = 8 cm². Ergebnis in kN.",
+    "answer": { "value": 4, "unit": "kN" },
+    "tolerance": 0.05,
+    "solution": "p=50 bar=5 000 000 Pa. A=8 cm²=0,0008 m². F=p·A=5 000 000·0,0008=4000 N=4 kN."
+  },
+  {
+    "id": "tb-e-16",
+    "prompt": "Eine Strecke s = 150 m wird in t = 2 min zurückgelegt. Berechne v in m/s.",
+    "answer": { "value": 1.25, "unit": "m/s" },
+    "tolerance": 0.02,
+    "solution": "2 min = 120 s. v=s/t=150/120=1,25 m/s."
+  },
+  {
+    "id": "tb-e-17",
+    "prompt": "Wandle 0,0065 m in mm um.",
+    "answer": { "value": 6.5, "unit": "mm" },
+    "tolerance": 0,
+    "solution": "1 m = 1000 mm → 0,0065 m = 6,5 mm."
+  },
+  {
+    "id": "tb-e-18",
+    "prompt": "Berechne das Drehmoment: F = 250 N, r = 120 mm. Ergebnis in N·m.",
+    "answer": { "value": 30, "unit": "N·m" },
+    "tolerance": 0.1,
+    "solution": "r=120 mm=0,12 m. M=F·r=250·0,12=30 N·m."
+  },
+  {
+    "id": "tb-e-19",
+    "prompt": "Dichte umstellen: ρ = 7,85 g/cm³, V = 60 cm³. Berechne die Masse m in g.",
+    "answer": { "value": 471, "unit": "g" },
+    "tolerance": 1,
+    "solution": "m=ρ·V=7,85·60=471 g."
+  },
+  {
+    "id": "tb-e-20",
+    "prompt": "Wandle 3,6 m/s in km/h um.",
+    "answer": { "value": 12.96, "unit": "km/h" },
+    "tolerance": 0.05,
+    "solution": "1 m/s = 3,6 km/h → 3,6 m/s = 3,6·3,6 = 12,96 km/h."
+  }
+]

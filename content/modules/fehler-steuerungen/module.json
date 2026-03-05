@@ -1,0 +1,35 @@
+{
+  "id": "fehler-steuerungen",
+  "title": "Fehler in Steuerungen systematisch suchen",
+  "description": "Fehlerbilder erkennen und Schritt-für-Schritt eingrenzen.",
+  "difficulty": "hard",
+  "tags": [
+    "Fehlersuche",
+    "Steuerung",
+    "Systematik"
+  ],
+  "estimatedMinutes": 45,
+  "intro": {
+    "why": "In der Prüfung wird bei Steuerungen nicht erwartet, dass du einen Fehler sofort „siehst“, sondern dass du ihn systematisch eingrenzt. Bewertet wird dein Vorgehen: vom Verstehen der Steuerungslogik über das gezielte Prüfen einzelner Funktionen bis zur nachvollziehbaren Fehlerursache. Punktverluste entstehen häufig, wenn planlos geprüft wird, Schritte übersprungen werden oder Vermutungen nicht fachlich begründet sind. Entscheidend ist, dass dein Lösungsweg logisch, reproduzierbar und prüfungstauglich ist.",
+    "trains": [
+      "Steuerungsabläufe anhand von Funktions-, Ablauf- oder Schaltplänen logisch nachvollziehen",
+      "Fehler systematisch eingrenzen (Signalfluss, Bedingungen, Wirkzusammenhänge)",
+      "Gezielte Prüf- und Messschritte ableiten und sinnvoll begründen",
+      "Fehlerursachen klar benennen und passende Maßnahmen fachlich ableiten"
+    ],
+    "traps": [
+      "Planloses Tauschen von Bauteilen oder wahlloses Messen ohne System",
+      "Steuerungslogik nicht vollständig verstehen und dadurch falsche Schlussfolgerungen ziehen",
+      "Prüfschritte nicht dokumentieren oder nicht logisch aufeinander aufbauen",
+      "Symptome beschreiben, ohne die eigentliche Ursache der Störung zu identifizieren"
+    ]
+  },
+  "files": {
+    "explanation": "explanation.md",
+    "workflow": "workflow.md",
+    "example": "example.md",
+    "practiceQuestions": "questions.practice.json",
+    "examQuestions": "questions.exam.json"
+  },
+  "kind": "learn"
+}

@@ -1,0 +1,561 @@
+[
+  {
+    "id": "bm-01-stueckliste-zweck",
+    "type": "single_choice",
+    "prompt": "Wozu dient die Stückliste bei der Montage einer Baugruppe in erster Linie?",
+    "answer": {
+      "choices": [
+        "Nur zur Preisberechnung",
+        "Zur Zuordnung von Position, Benennung, Normteil und Menge",
+        "Nur für die Lagerverwaltung",
+        "Ausschließlich für die Entsorgung"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "bm-02-vorbereitung-check",
+    "type": "multi_select",
+    "prompt": "Welche Punkte gehören vor dem Zusammenbau zur fachgerechten Vorbereitung? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Zeichnung und Stückliste abgleichen",
+        "Bauteile auf Beschädigung und Sauberkeit prüfen",
+        "Werkzeuge und Prüfmittel bereitstellen",
+        "Montage ohne Unterlagen starten, um Zeit zu sparen",
+        "Sicherheits- und Umweltschutzmaßnahmen festlegen"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "bm-03-order-grundablauf",
+    "type": "order",
+    "prompt": "Ordne den prüfungssicheren Grundablauf beim Montieren und Prüfen.",
+    "items": [
+      "Unterlagen prüfen (Zeichnung, Stückliste, Vorgaben)",
+      "Bauteile zuordnen und vorbereiten",
+      "Montagefolge festlegen",
+      "Lage- und funktionsgerecht montieren",
+      "Funktionsprüfung durchführen",
+      "Ergebnisse dokumentieren"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "bm-04-lagegerecht",
+    "type": "single_choice",
+    "prompt": "Was bedeutet 'lagegerecht montieren'?",
+    "answer": {
+      "choices": [
+        "Bauteile nur handfest einsetzen",
+        "Bauteile in der vorgegebenen Einbaulage und Orientierung montieren",
+        "Nur sichtbare Teile montieren",
+        "Teile nach Gefühl ausrichten"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "bm-05-passfeder-funktion",
+    "type": "single_choice",
+    "prompt": "Welche Hauptfunktion hat eine Passfeder in einer Welle-Nabe-Verbindung?",
+    "answer": {
+      "choices": [
+        "Sie dichtet gegen Öl ab",
+        "Sie überträgt Drehmoment und sichert die relative Lage",
+        "Sie ersetzt das Lager",
+        "Sie dient als Schmierstoffspeicher"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "bm-06-schraubverbindung",
+    "type": "multi_select",
+    "prompt": "Welche Aussagen zu Schraubverbindungen sind fachlich richtig? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Drehmomentvorgaben sind einzuhalten",
+        "Sicherungen (z. B. Konterung) sind je nach Vorgabe umzusetzen",
+        "Gewinde können beliebig vertauscht werden, wenn es passt",
+        "Auflageflächen und Sitz müssen sauber sein",
+        "Hebelverlängerung ohne Vorgabe ist unkritisch"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        3
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "bm-07-kontermutter",
+    "type": "single_choice",
+    "prompt": "Wozu wird bei einer Nutmuttereinstellung eine zweite Mutter als Konterung verwendet?",
+    "answer": {
+      "choices": [
+        "Zur Dekoration der Welle",
+        "Um das eingestellte Spiel gegen Verdrehen zu sichern",
+        "Um den Schmierstoff zu ersetzen",
+        "Nur damit die Baugruppe schwerer wird"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "bm-08-order-lagerspiel",
+    "type": "order",
+    "prompt": "Ordne den fachgerechten Ablauf zum Einstellen von Lagerspiel.",
+    "items": [
+      "erste Nutmutter kontrolliert einstellen",
+      "Spiel mit Fühlerlehre prüfen",
+      "zweite Nutmutter zum Kontern setzen",
+      "Sicherung kontrollieren",
+      "Funktionsprüfung wiederholen"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "bm-09-merkmale-fehlmontage",
+    "type": "multi_select",
+    "prompt": "Welche Merkmale sprechen beim Probelauf für eine nicht ordnungsgemäße Montage? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "ungewöhnliche Laufgeräusche",
+        "erhöhte Erwärmung",
+        "ruhiger und gleichmäßiger Lauf",
+        "Vibrationen oder Ruckeln",
+        "Leckage"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "bm-10-pruefmittel-aussendurchmesser",
+    "type": "single_choice",
+    "prompt": "Welches Prüfmittel ist für einen präzisen Außendurchmesser an einer Welle am besten geeignet?",
+    "answer": {
+      "choices": [
+        "Stahllineal",
+        "Messschieber als Grobkontrolle",
+        "Bügelmessschraube (Mikrometer)",
+        "Wasserwaage"
+      ],
+      "correctIndex": 2
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "bm-11-pruefprotokoll-inhalt",
+    "type": "multi_select",
+    "prompt": "Welche Inhalte gehören in ein prüfungstaugliches Prüfprotokoll? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "geprüftes Merkmal mit Sollwert",
+        "Messwert bzw. Ist-Zustand",
+        "i. O./n. i. O.-Entscheidung",
+        "bei Abweichung: Ursache und Maßnahme",
+        "private Meinung ohne Bezug zur Baugruppe"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "bm-12-order-fehleranalyse",
+    "type": "order",
+    "prompt": "Ordne die systematische Fehleranalyse.",
+    "items": [
+      "Symptom erfassen",
+      "mögliche Ursachen eingrenzen",
+      "gezielte Prüfung durchführen",
+      "Maßnahme festlegen und umsetzen",
+      "erneut prüfen und dokumentieren"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "bm-13-funktionsgerecht",
+    "type": "single_choice",
+    "prompt": "Was trifft 'funktionsgerecht montieren' am besten?",
+    "answer": {
+      "choices": [
+        "Es reicht, wenn alle Schrauben sichtbar sind",
+        "Die Baugruppe erfüllt nach Montage die geforderte Funktion sicher",
+        "Nur die Optik der Baugruppe ist entscheidend",
+        "Die Montage ist abgeschlossen, sobald alle Teile verbaut sind"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "bm-14-oelaustritt-umwelt",
+    "type": "multi_select",
+    "prompt": "Welche Maßnahmen sind bei Ölaustritt während Montage/Demontage richtig? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Bereich sichern (Rutschgefahr)",
+        "Öl mit geeignetem Bindemittel aufnehmen",
+        "Öl mit Druckluft verteilen",
+        "kontaminiertes Material getrennt entsorgen",
+        "Vorgang dokumentieren"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "bm-15-schmierung",
+    "type": "single_choice",
+    "prompt": "Wann wird an einer Baugruppe fachlich korrekt geschmiert?",
+    "answer": {
+      "choices": [
+        "Immer maximal viel, unabhängig von Vorgaben",
+        "Nur nach Zeichnungs-/Herstellervorgabe und an vorgesehenen Stellen",
+        "Nur wenn die Baugruppe laut wird",
+        "Erst nach Abschluss aller Prüfungen"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "bm-16-ursachen-klemmen",
+    "type": "multi_select",
+    "prompt": "Welche Ursachen können zu Klemmen oder Schwergang nach Montage führen? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "falsche Montagefolge",
+        "verspannte Einbaulage",
+        "fehlende oder falsche Distanzteile",
+        "korrekt eingestelltes Spiel",
+        "Sicherungselement falsch eingesetzt"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "bm-17-abweichung-reaktion",
+    "type": "single_choice",
+    "prompt": "Ein Messwert liegt außerhalb der Toleranz. Was ist der erste fachliche Schritt?",
+    "answer": {
+      "choices": [
+        "Wert ignorieren und weiter montieren",
+        "Abweichung dokumentieren und Ursache systematisch prüfen",
+        "Messwert im Protokoll nach unten korrigieren",
+        "Baugruppe sofort freigeben"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "bm-18-order-demontage",
+    "type": "order",
+    "prompt": "Ordne den sicheren Grundablauf bei der Demontage einer Baugruppe.",
+    "items": [
+      "Anlage sichern und Energiequellen trennen",
+      "Ausgangszustand markieren und dokumentieren",
+      "Baugruppe schrittweise und geordnet zerlegen",
+      "Teile kennzeichnen und geordnet ablegen",
+      "Auffälligkeiten dokumentieren"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "bm-19-qualitaetssicherung",
+    "type": "multi_select",
+    "prompt": "Welche Aussagen zur Qualitätssicherung im Montageprozess sind richtig? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Prüfmittel passend zum Merkmal auswählen",
+        "Prüfergebnisse dokumentieren",
+        "Ursachen von Qualitätsmängeln systematisch suchen",
+        "Nur Endkontrolle ohne Zwischenschritte reicht immer aus",
+        "Montageablaeufe auf Basis der Ergebnisse verbessern"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "bm-20-pruefschritt",
+    "type": "single_choice",
+    "prompt": "Welche Aussage beschreibt einen fachgerechten Prüfschritt?",
+    "answer": {
+      "choices": [
+        "Es wird nur gesagt: läuft oder läuft nicht",
+        "Merkmal, Prüfmittel, Sollwert und Bewertung sind eindeutig definiert",
+        "Nur der Monteur entscheidet aus dem Bauchgefühl",
+        "Prüfung ist nur bei Beanstandung notwendig"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "bm-21-structured-montageplan",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (5-7 Sätze): Beschreibe, wie du aus Zeichnung und Stückliste einen prüfungstauglichen Montageplan ableitest.",
+    "answer": {
+      "fields": [
+        {
+          "key": "vorgehen",
+          "label": "Vorgehen",
+          "minWords": 45,
+          "placeholder": "z. B. Unterlagen analysieren, Reihenfolge festlegen, Werkzeuge/Prüfmittel, Sicherungen, Zwischenschritte"
+        }
+      ],
+      "keywords": {
+        "vorgehen": [
+          "zeichnung",
+          "stückliste",
+          "positionsnummer",
+          "montagefolge",
+          "werkzeug",
+          "prüfmittel",
+          "sicherung"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 45
+      }
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "bm-22-structured-funktionspruefung",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (5-7 Sätze): Erkläre, wie du eine Funktionsprüfung in den Stufen Sichtprüfung, Bewegungsprüfung und Probelauf durchführst.",
+    "answer": {
+      "fields": [
+        {
+          "key": "vorgehen",
+          "label": "Vorgehen",
+          "minWords": 45,
+          "placeholder": "z. B. Prüfkriterien, Soll/Ist, Laufverhalten, Temperatur, Leckage, Dokumentation"
+        }
+      ],
+      "keywords": {
+        "vorgehen": [
+          "sichtprüfung",
+          "bewegungsprüfung",
+          "probelauf",
+          "soll",
+          "ist",
+          "dokumentation",
+          "i.o."
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 45
+      }
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "bm-23-pruefungsfallen",
+    "type": "multi_select",
+    "prompt": "Welche Punkte sind typische Prüfungsfallen bei Baugruppen? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Einbaulage verwechseln",
+        "Sicherungsmaßnahmen weglassen",
+        "Prüfschritte klar dokumentieren",
+        "Montagefolge nicht beachten",
+        "nur auf Endfunktion ohne Nachweis setzen"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "bm-24-order-vor-probelauf",
+    "type": "order",
+    "prompt": "Ordne den kompakten Sicherheits- und Funktionscheck vor dem Probelauf.",
+    "items": [
+      "Sicherungen und Verbindungen kontrollieren",
+      "Arbeitsbereich auf Leckage/lose Teile prüfen",
+      "Prüfkriterien und Sollwerte bereitlegen",
+      "Probelauf unter definierten Bedingungen starten",
+      "Ergebnis dokumentieren"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "bm-25-structured-abschlusscheck",
+    "type": "structured_text",
+    "prompt": "Abschlusscheck (6-8 Sätze): Beschreibe, wie du bei einer fehlerhaften Baugruppe von der Beobachtung bis zur wirksamen Korrektur vorgehst.",
+    "answer": {
+      "fields": [
+        {
+          "key": "vorgehen",
+          "label": "Vorgehen",
+          "minWords": 55,
+          "placeholder": "Symptom, Ursache, Prüfung, Maßnahme, Wiederholprüfung, Protokoll"
+        }
+      ],
+      "keywords": {
+        "vorgehen": [
+          "symptom",
+          "ursache",
+          "prüfung",
+          "maßnahme",
+          "wiederholprüfung",
+          "dokumentation"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 55
+      }
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  }
+]

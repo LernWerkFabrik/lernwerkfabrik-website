@@ -1,0 +1,56 @@
+{
+  "id": "ap1-arbeitsaufgaben",
+  "title": "AP1 Training - Arbeitsaufgaben",
+  "description": "Prüfungscoach für AP1-Arbeitsaufgaben: Zeichnung auswerten, Ablauf sichern, prüfen, dokumentieren, bewerten.",
+  "kind": "prep",
+  "prep": {
+    "focus": "strategy",
+    "competencies": [
+      "zeichnen",
+      "planung",
+      "fertigung",
+      "pruefen",
+      "dokumentation",
+      "sicherheit"
+    ],
+    "examSimulators": [
+      {
+        "id": "Kompetenz-Check",
+        "durationMinutes": 15
+      }
+    ]
+  },
+  "difficulty": "hard",
+  "tags": [
+    "AP1",
+    "Arbeitsaufgaben",
+    "Prüfung",
+    "IHK",
+    "Zeichnung"
+  ],
+  "estimatedMinutes": 60,
+  "intro": {
+    "why": "In AP Teil 1 zählt nicht nur das Maß. Entscheidend ist: Zeichnung auswerten, Ablauf planen, messen und dokumentieren. Hier passieren die meisten Punktverluste.",
+    "trains": [
+      "Zeichnung und Stückliste in prüfbare Teilschritte auswerten.",
+      "Arbeitsschritte in prüfungslogischer Reihenfolge planen.",
+      "Prüfmittel passend auswählen und Zwischenmesspunkte setzen.",
+      "Soll/Ist bewerten und Ergebnisse nachvollziehbar dokumentieren.",
+      "Abweichungen sicher abarbeiten: Stop → Ursache → Maßnahme → Wiederholprüfung → Freigabe."
+    ],
+    "traps": [
+      "Zu spät gemessen oder dokumentiert → Punktverlust.",
+      "Zeichnung nicht vollständig ausgewertet → Punktverlust.",
+      "Toleranz- oder Oberflächenangaben übersehen.",
+      "Prüfmittel unpassend gewählt.",
+      "Abweichung ohne Wirksamkeitsprüfung abgeschlossen → Punktverlust.",
+      "Dokumentation zu knapp oder nicht nachvollziehbar → Punktverlust."
+    ]
+  },
+  "files": {
+    "explanation": "explanation.md",
+    "example": "example.md",
+    "practiceQuestions": "questions.practice.json",
+    "examQuestions": "questions.exam.json"
+  }
+}

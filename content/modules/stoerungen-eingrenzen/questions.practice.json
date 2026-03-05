@@ -1,0 +1,647 @@
+[
+  {
+    "id": "sei-01-ziel-fehlereingrenzung",
+    "type": "single_choice",
+    "prompt": "Was ist das Hauptziel der systematischen Fehlereingrenzung?",
+    "answer": {
+      "choices": [
+        "Möglichst schnell ein Bauteil austauschen",
+        "Die Ursache logisch eingrenzen und durch Prüfschritte absichern",
+        "Nur den letzten Fehler aus dem Protokoll übernehmen",
+        "Eine Vermutung ohne Messung als Ergebnis festlegen"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "sei-02-stoerungsmeldung-angaben",
+    "type": "multi_select",
+    "prompt": "Welche Angaben gehören in eine fachlich gute Störungsmeldung? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Betroffene Anlage/Baugruppe",
+        "Konkretes Symptom und Zeitpunkt",
+        "Betriebszustand beim Auftreten",
+        "Nur der Satz: \"Anlage defekt\"",
+        "Meldende Person/Schicht"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "sei-03-grundablauf",
+    "type": "order",
+    "prompt": "Ordne den Grundablauf einer systematischen Fehlereingrenzung.",
+    "items": [
+      "Anlage sichern und Zustand aufnehmen",
+      "Symptom konkret beschreiben",
+      "Startbedingungen und Grundstellung prüfen",
+      "Teilsysteme/Schnittstellen eingrenzen",
+      "Ursache durch Prüfschritte absichern",
+      "Maßnahme, Wirksamkeitsnachweis und Dokumentation"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "sei-04-grundstellung",
+    "type": "single_choice",
+    "prompt": "Wann ist bei einer automatisierten Anlage die Grundstellung fachlich korrekt erreicht?",
+    "answer": {
+      "choices": [
+        "Wenn ein beliebiger Zylinder ausgefahren ist",
+        "Wenn die im Ablauf festgelegten Startzustände aller relevanten Aktoren/Sensoren vorliegen",
+        "Wenn nur der Hauptschalter eingeschaltet ist",
+        "Wenn nach einem Fehler ein Reset durchgeführt wurde"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "sei-05-startbedingungen-foerderanlage",
+    "type": "multi_select",
+    "prompt": "Welche Bedingungen müssen für den Start eines Förderzyklus erfüllt sein? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Grundstellung ist vorhanden",
+        "Werkstück liegt an der Sperre an (BG7 aktiv)",
+        "Rollbahn ist frei (BG9 meldet frei)",
+        "Hubzylinder steht in Endlage oben",
+        "Anlagenschalter ist eingeschaltet"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "sei-06-din31051",
+    "type": "single_choice",
+    "prompt": "Welche vier Teilbereiche gehören zur Instandhaltung nach DIN 31051?",
+    "answer": {
+      "choices": [
+        "Wartung, Inspektion, Instandsetzung, Verbesserung",
+        "Wartung, Instandhaltung, Qualität, Dokumentation",
+        "Inspektion, Verschleiß, Abnutzung, Zuverlässigkeit",
+        "Reparatur, Wartung, Montage, Optimierung"
+      ],
+      "correctIndex": 0
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "sei-07-oelverschuettung-ablauf",
+    "type": "order",
+    "prompt": "Ordne den fachgerechten Ablauf bei verschüttetem Öl während einer Demontage.",
+    "items": [
+      "Gefahrenstelle absichern und kennzeichnen",
+      "Öl mit geeignetem Bindemittel aufnehmen",
+      "Kontaminiertes Material getrennt sammeln",
+      "Fachgerecht entsorgen",
+      "Vorfall dokumentieren"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "sei-08-symptom-ursache",
+    "type": "single_choice",
+    "prompt": "Welche Aussage trennt Symptom und Ursache fachlich korrekt?",
+    "answer": {
+      "choices": [
+        "Symptom: Lager defekt. Ursache: Geräusch vorhanden.",
+        "Symptom: periodisches Geräusch bei 1500 1/min. Ursache: vermutete Mangelschmierung, durch Prüfung zu bestätigen.",
+        "Symptom und Ursache sind in der Fehlersuche identisch.",
+        "Ursache muss nicht geprüft werden, wenn das Symptom deutlich ist."
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "sei-09-startblockade-bg9",
+    "type": "single_choice",
+    "prompt": "Die Grundstellung ist vorhanden und BG7 meldet Werkstück anliegend. Der Zyklus startet trotzdem nicht, weil BG9 \"belegt\" meldet. Was ist die technisch sinnvollste Erstbewertung?",
+    "answer": {
+      "choices": [
+        "Startbedingung nicht erfüllt, daher Rollbahn/Sensor BG9 zuerst prüfen",
+        "Sofort den Hubzylinder austauschen",
+        "Nur den Hauptschalter ein- und ausschalten",
+        "Fehler ignorieren, da BG7 aktiv ist"
+      ],
+      "correctIndex": 0
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "sei-10-pruefmittel-und-unterlagen",
+    "type": "multi_select",
+    "prompt": "Welche Informationen/Unterlagen helfen bei der systematischen Fehlereingrenzung besonders? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Schalt- und Funktionsplan",
+        "Aktuelle Fehler-/Funktionsprotokolle",
+        "I/O- und Statusanzeigen der Steuerung",
+        "Messung von Druck/Versorgung am Aktor",
+        "Nur persönliche Erfahrung ohne Nachweis"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "sei-11-grenzwert-schwingung",
+    "prompt": "Zulässige Schwinggeschwindigkeit: 2,0 mm/s. Gemessen werden 2,9 mm/s. Um wie viel ist der Grenzwert überschritten?",
+    "answer": {
+      "value": 0.9,
+      "unit": "mm/s"
+    },
+    "tolerance": 0.05,
+    "solution": "Überschreitung = 2,9 - 2,0 = 0,9 mm/s.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "sei-12-prozessfolge-foerderanlage",
+    "type": "order",
+    "prompt": "Ordne die Prozessfolge der Förderanlage in die richtige Reihenfolge.",
+    "items": [
+      "MM1 fährt zurück",
+      "Werkstück löst BG8 aus",
+      "MM1 fährt wieder in Sperrstellung",
+      "MM2 hebt an",
+      "MM3 schiebt auf die Rollbahn",
+      "Nach BG9 fahren MM2 und MM3 in Grundstellung"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "sei-13-mttr",
+    "prompt": "Bei 9 Störungen wurden insgesamt 225 min Instandsetzungszeit benötigt. Wie groß ist die mittlere Instandsetzungszeit je Störung (MTTR)?",
+    "answer": {
+      "value": 25,
+      "unit": "min"
+    },
+    "tolerance": 0.2,
+    "solution": "MTTR = 225 / 9 = 25 min.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "sei-14-fehlerhaeufigkeit",
+    "prompt": "In einem Zeitraum traten 24 Störungen auf, davon 6 mit derselben Ursache. Wie hoch ist die Fehlerhäufigkeit dieser Ursache in Prozent?",
+    "answer": {
+      "value": 25,
+      "unit": "%"
+    },
+    "tolerance": 0.2,
+    "solution": "Fehlerhäufigkeit = (6 / 24) * 100 = 25 %.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "sei-15-bg8-kein-signal",
+    "type": "single_choice",
+    "prompt": "Nach Zyklusstart fährt MM1 zurück, aber BG8 wird nicht ausgelöst. Was ist als nächster Prüfschritt am sinnvollsten?",
+    "answer": {
+      "choices": [
+        "Nur die SPS neu starten",
+        "Werkstücklauf zur Hubplattform und die Sensorposition BG8 mechanisch/funktional prüfen",
+        "Sofort MM3 austauschen",
+        "Den Fehler als Zufall dokumentieren"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "sei-16-schnittstellenfehler",
+    "type": "multi_select",
+    "prompt": "Welche Befunde sprechen typisch für Schnittstellenprobleme zwischen Steuerung und Aktorik? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Ventil wird elektrisch angesteuert, aber am Aktor liegt kein ausreichender Druck an",
+        "Druck liegt an, aber das Ventil erhält kein Schaltsignal",
+        "Wackelkontakt am Sensorsignal führt zu sporadischen Fehlauslösungen",
+        "Mechanischer Anschlag blockiert den Aktor trotz korrekter Ansteuerung",
+        "Sauberer Sollablauf ohne jede Abweichung"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "sei-17-verfuegbarkeit",
+    "prompt": "Eine Anlage läuft pro Schicht 40 h geplant. Wegen Störungen stand sie 2 h 30 min still. Wie hoch ist die Verfügbarkeit in Prozent?",
+    "answer": {
+      "value": 93.8,
+      "unit": "%"
+    },
+    "tolerance": 0.3,
+    "solution": "Verfügbarkeit = ((40 - 2,5) / 40) * 100 = 93,75 %.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "sei-18-wirksamkeitsnachweis",
+    "type": "single_choice",
+    "prompt": "Welche Vorgehensweise ist ein vollständiger Wirksamkeitsnachweis nach einer Störungsbehebung?",
+    "answer": {
+      "choices": [
+        "Kurz anlaufen lassen und ohne Messwerte freigeben",
+        "Nur den getauschten Teil im Lager verbuchen",
+        "Probelauf mit definierten Prüfkriterien, Soll/Ist-Vergleich und dokumentierter i. O./n. i. O.-Bewertung",
+        "Ausschließlich eine mündliche Rückmeldung an die Schicht geben"
+      ],
+      "correctIndex": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "sei-19-schwachstellenanalyse",
+    "type": "multi_select",
+    "prompt": "Welche Schritte helfen bei der nachhaltigen Schwachstellenanalyse wiederkehrender Störungen? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Fehlerursachen nach Häufigkeit (z. B. Pareto) auswerten",
+        "Trend über Zeit und Betriebszustände vergleichen",
+        "Belastung, Verschleiß und Schnittstellen gemeinsam bewerten",
+        "Prüf- und Wartungsplan aus den Ergebnissen anpassen",
+        "Nur den letzten Fehler betrachten und alle älteren Daten verwerfen"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "sei-20-wiederkehrende-stoerung-order",
+    "type": "order",
+    "prompt": "Ordne das Vorgehen bei einer wiederkehrenden Störung nach bereits erfolgter Erstinstandsetzung.",
+    "items": [
+      "Störung erneut unter gleichen Bedingungen reproduzieren und erfassen",
+      "Sollablauf mit Istablauf vergleichen",
+      "Teilsysteme/Schnittstellen neu eingrenzen und Hypothesen priorisieren",
+      "Gezielte Nachmessung zur Hauptursache durchführen",
+      "Korrekturmaßnahme umsetzen",
+      "Wirksamkeit per Probelauf nachweisen und dokumentiert übergeben"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "sei-21-ausfallkosten",
+    "prompt": "Die Ausfallkosten betragen 95 EUR pro Stunde. Die Störung verursachte 2 h 45 min Stillstand. Wie hoch sind die Ausfallkosten?",
+    "answer": {
+      "value": 261.3,
+      "unit": "EUR"
+    },
+    "tolerance": 0.6,
+    "solution": "2 h 45 min = 2,75 h. Kosten = 2,75 * 95 = 261,25 EUR (gerundet 261,3 EUR).",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "sei-22-strategie-teilsysteme",
+    "type": "single_choice",
+    "prompt": "Welche Strategie ist bei einer komplexen elektropneumatischen Störung am fachlich besten?",
+    "answer": {
+      "choices": [
+        "Alle Aktoren gleichzeitig tauschen, um Zeit zu sparen",
+        "Nur die elektrische Seite prüfen, da Pneumatik selten die Ursache ist",
+        "System in Teilsysteme gliedern, Eingangs-/Ausgangsgrößen prüfen und die Ursache schrittweise absichern",
+        "Ausschließlich auf Erfahrungswerte vertrauen und keine Messung durchführen"
+      ],
+      "correctIndex": 2
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "sei-23-structured-erstanalyse",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (6-8 Sätze): Bei einer Förderanlage liegt ein Werkstück an, aber der Zyklus startet nicht. Beschreibe deine systematische Erstanalyse.",
+    "answer": {
+      "fields": [
+        {
+          "key": "symptom",
+          "label": "Symptom und Ausgangszustand",
+          "minWords": 20,
+          "placeholder": "z. B. Grundstellung, betroffene Signale, beobachtete Abweichung"
+        },
+        {
+          "key": "eingrenzung",
+          "label": "Eingrenzungsschritte",
+          "minWords": 22,
+          "placeholder": "z. B. Startbedingungen, Sensorik, Aktorik, Schnittstellen"
+        },
+        {
+          "key": "bewertung",
+          "label": "Erste Bewertung",
+          "minWords": 20,
+          "placeholder": "z. B. wahrscheinlichste Hauptursache, nächste gezielte Prüfung"
+        }
+      ],
+      "keywords": {
+        "symptom": [
+          "grundstellung",
+          "signal",
+          "stoerung",
+          "symptom",
+          "istzustand",
+          "startbedingung"
+        ],
+        "eingrenzung": [
+          "sensor",
+          "aktor",
+          "schnittstelle",
+          "pruefen",
+          "signalfluss",
+          "druck"
+        ],
+        "bewertung": [
+          "ursache",
+          "nachweis",
+          "hypothese",
+          "messung",
+          "prioritaet",
+          "weiteres"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 68
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Start- und Grundzustand konkret benennen",
+        "Prüfschritte entlang des Signal- und Funktionsablaufs strukturieren",
+        "Schnittstellen explizit berücksichtigen",
+        "Erste Hauptursache mit weiterem Nachweis begründen"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "sei-24-structured-diagnoseplan",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (6-8 Sätze): Erstelle einen Diagnoseplan für eine wiederkehrende Störung an einem elektropneumatischen Teilsystem.",
+    "answer": {
+      "fields": [
+        {
+          "key": "sicherheit",
+          "label": "Sicherheit und Vorbereitung",
+          "minWords": 20,
+          "placeholder": "z. B. Freigabe, Absicherung, Betriebszustand, Dokumente"
+        },
+        {
+          "key": "diagnose",
+          "label": "Diagnosekette",
+          "minWords": 24,
+          "placeholder": "z. B. Startbedingung, Signalprüfung, Druck-/Funktionsprüfung, Teilsysteme"
+        },
+        {
+          "key": "nachweis",
+          "label": "Wirksamkeitsnachweis",
+          "minWords": 20,
+          "placeholder": "z. B. Probelauf, Soll/Ist, Protokoll, Übergabe"
+        }
+      ],
+      "keywords": {
+        "sicherheit": [
+          "freigabe",
+          "sichern",
+          "schutz",
+          "arbeitsumgebung",
+          "zustand",
+          "dokument"
+        ],
+        "diagnose": [
+          "teilsystem",
+          "eingrenzen",
+          "sensor",
+          "aktor",
+          "signal",
+          "messung"
+        ],
+        "nachweis": [
+          "probelauf",
+          "soll",
+          "ist",
+          "bewertung",
+          "dokumentation",
+          "uebergabe"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 70
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Sicherheits- und Vorbereitungsphase zuerst darstellen",
+        "Diagnose entlang der Prozesskette strukturieren",
+        "Nachweis der Ursache und der Maßnahme klar trennen",
+        "Freigabe nur mit dokumentiertem Wirksamkeitsnachweis formulieren"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "sei-25-structured-abschluss",
+    "type": "structured_text",
+    "prompt": "Abschlussaufgabe (7-9 Sätze): Nach einer Instandsetzung läuft die Anlage zunächst 20 Minuten stabil, danach tritt die gleiche Störung erneut auf. Beschreibe dein Vorgehen bis zur erneuten Übergabe.",
+    "answer": {
+      "fields": [
+        {
+          "key": "analyse",
+          "label": "Erneute Analyse",
+          "minWords": 22,
+          "placeholder": "z. B. Vergleich mit Erstbefund, erneute Eingrenzung, Daten/Protokolle"
+        },
+        {
+          "key": "entscheidung",
+          "label": "Entscheidung und Maßnahme",
+          "minWords": 22,
+          "placeholder": "z. B. technische Entscheidung, Nacharbeit, wirtschaftliche Begründung"
+        },
+        {
+          "key": "abschluss",
+          "label": "Nachweis und Übergabe",
+          "minWords": 22,
+          "placeholder": "z. B. Probelauf, Soll/Ist, Restmängelstatus, Übergabeprotokoll"
+        }
+      ],
+      "keywords": {
+        "analyse": [
+          "vergleich",
+          "stoerungsbild",
+          "ursache",
+          "schnittstelle",
+          "protokoll",
+          "messung"
+        ],
+        "entscheidung": [
+          "massnahme",
+          "nacharbeit",
+          "begruendung",
+          "wirtschaftlich",
+          "risiko",
+          "prioritaet"
+        ],
+        "abschluss": [
+          "wirksamkeit",
+          "probelauf",
+          "soll",
+          "ist",
+          "dokumentation",
+          "uebergabe"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 75
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Wiederkehrende Störung mit Vergleich zum Erstfall neu bewerten",
+        "Ursache erneut absichern statt gleiche Maßnahme zu wiederholen",
+        "Technische und wirtschaftliche Entscheidung nachvollziehbar begründen",
+        "Übergabe erst nach dokumentiertem Wirksamkeitsnachweis formulieren"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  }
+]

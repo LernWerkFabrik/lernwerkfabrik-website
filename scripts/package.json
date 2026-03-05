@@ -1,0 +1,9 @@
+{
+  "name": "lernplattform-scripts",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "scaffold:modules": "node scaffold-moduls.mjs",
+    "validate:content": "node validate-content.mjs"
+  }
+}

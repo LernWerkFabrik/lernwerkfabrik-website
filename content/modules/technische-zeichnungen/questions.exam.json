@@ -1,0 +1,86 @@
+[
+  {
+    "id": "tz-e-01",
+    "prompt": "In der Zeichnung steht Ø 26 mm. Berechne den Radius R.",
+    "answer": { "value": 13, "unit": "mm" },
+    "tolerance": 0,
+    "solution": "Radius ist die Hälfte des Durchmessers: R = 26/2 = 13 mm."
+  },
+  {
+    "id": "tz-e-02",
+    "prompt": "In der Zeichnung steht R 7,5 mm. Berechne den Durchmesser Ø.",
+    "answer": { "value": 15, "unit": "mm" },
+    "tolerance": 0.1,
+    "solution": "Durchmesser ist das Doppelte des Radius: Ø = 2·7,5 = 15 mm."
+  },
+  {
+    "id": "tz-e-03",
+    "prompt": "Maß: 40,00 ± 0,15 mm. Bestimme das Grenzmaß MAX.",
+    "answer": { "value": 40.15, "unit": "mm" },
+    "tolerance": 0.01,
+    "solution": "MAX = 40,00 + 0,15 = 40,15 mm."
+  },
+  {
+    "id": "tz-e-04",
+    "prompt": "Maß: 40,00 ± 0,15 mm. Bestimme das Grenzmaß MIN.",
+    "answer": { "value": 39.85, "unit": "mm" },
+    "tolerance": 0.01,
+    "solution": "MIN = 40,00 − 0,15 = 39,85 mm."
+  },
+  {
+    "id": "tz-e-05",
+    "prompt": "Einseitige Toleranz: 12,00 +0,20 / 0,00 mm. Bestimme das Grenzmaß MAX.",
+    "answer": { "value": 12.2, "unit": "mm" },
+    "tolerance": 0.01,
+    "solution": "MAX = 12,00 + 0,20 = 12,20 mm."
+  },
+  {
+    "id": "tz-e-06",
+    "prompt": "Einseitige Toleranz: 12,00 +0,20 / 0,00 mm. Bestimme das Grenzmaß MIN.",
+    "answer": { "value": 12, "unit": "mm" },
+    "tolerance": 0,
+    "solution": "MIN = 12,00 + 0,00 = 12,00 mm."
+  },
+  {
+    "id": "tz-e-07",
+    "prompt": "Skala 1:2. Auf der Zeichnung misst du 36 mm. Wie groß ist das Echtmaß?",
+    "answer": { "value": 72, "unit": "mm" },
+    "tolerance": 0,
+    "solution": "Skala 1:2 → Echtmaß = Zeichnungsmaß·2 = 36·2 = 72 mm."
+  },
+  {
+    "id": "tz-e-08",
+    "prompt": "Skala 2:1. Auf der Zeichnung misst du 90 mm. Wie groß ist das Echtmaß?",
+    "answer": { "value": 45, "unit": "mm" },
+    "tolerance": 0,
+    "solution": "Skala 2:1 → Echtmaß = Zeichnungsmaß/2 = 90/2 = 45 mm."
+  },
+  {
+    "id": "tz-e-09",
+    "prompt": "Fase: 2×45°. Berechne die schräge Fasenlänge l (auf 2 Nachkommastellen).",
+    "answer": { "value": 2.83, "unit": "mm" },
+    "tolerance": 0.05,
+    "solution": "Bei 45° gilt l = a·√2. Mit a=2 mm: l = 2·√2 ≈ 2,828 → 2,83 mm."
+  },
+  {
+    "id": "tz-e-10",
+    "prompt": "Fase: 3×45°. Berechne die schräge Fasenlänge l (auf 2 Nachkommastellen).",
+    "answer": { "value": 4.24, "unit": "mm" },
+    "tolerance": 0.06,
+    "solution": "l = a·√2 = 3·√2 ≈ 4,2426 → 4,24 mm."
+  },
+  {
+    "id": "tz-e-11",
+    "prompt": "Bohrungsreihe: Erste Bohrung ist 18 mm von der linken Kante entfernt. Lochabstand ist 55 mm. Wie weit ist die dritte Bohrung von links entfernt?",
+    "answer": { "value": 128, "unit": "mm" },
+    "tolerance": 0,
+    "solution": "Dritte Bohrung = x0 + 2·p = 18 + 2·55 = 18 + 110 = 128 mm."
+  },
+  {
+    "id": "tz-e-12",
+    "prompt": "Bohrungsreihe: Erste Bohrung ist 25 mm von links entfernt. Lochabstand ist 40 mm. Wie weit ist die vierte Bohrung von links entfernt?",
+    "answer": { "value": 145, "unit": "mm" },
+    "tolerance": 0,
+    "solution": "Vierte Bohrung = x0 + 3·p = 25 + 3·40 = 25 + 120 = 145 mm."
+  }
+]

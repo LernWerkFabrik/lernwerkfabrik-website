@@ -1,0 +1,35 @@
+{
+  "id": "ap1-rechen-fachaufgaben",
+  "title": "AP1 Prüfungs-Simulator",
+  "description": "Prüfungsnahe Rechen- & Fachaufgaben: sicher, schnell, plausibel.",
+  "kind": "exam",
+  "exam": {
+    "durationMinutes": 90,
+    "noHelp": true,
+    "autoSubmit": true
+  },
+  "difficulty": "hard",
+  "tags": ["AP1", "Rechnen", "Fachkunde"],
+  "estimatedMinutes": 90,
+  "intro": {
+    "why": "In AP Teil 1 entscheiden Rechen- und Fachaufgaben maßgeblich über das Ergebnis, weil sie unter Zeitdruck sicher und fehlerfrei bearbeitet werden müssen. Die IHK bewertet nicht nur das richtige Ergebnis, sondern auch, ob Aufgabenstellungen korrekt verstanden, passende Formeln ausgewählt und Ergebnisse technisch plausibel beurteilt werden. Punktverluste entstehen häufig durch falsches Lesen der Aufgabe, Einheitenfehler oder weil Ergebnisse ungeprüft übernommen werden.",
+    "trains": [
+      "Typische AP1-Rechen- und Fachaufgaben sicher und strukturiert bearbeiten",
+      "Aufgabenstellungen korrekt analysieren und relevante Angaben herausfiltern",
+      "Passende Formeln auswählen, richtig umstellen und fachlich korrekt anwenden",
+      "Rechenergebnisse auf Plausibilität prüfen und fachlich einordnen"
+    ],
+    "traps": [
+      "Aufgabenstellung unvollständig oder falsch gelesen",
+      "Falsche Formel oder falsche Größe eingesetzt, obwohl sauber gerechnet wird",
+      "Einheitenfehler oder fehlende Umrechnungen unter Zeitdruck",
+      "Rechenergebnis übernommen, ohne technische Plausibilitätsprüfung"
+    ]
+  },
+  "files": {
+    "explanation": "explanation.md",
+    "example": "example.md",
+    "practiceQuestions": "questions.practice.json",
+    "examQuestions": "questions.exam.json"
+  }
+}

@@ -1,0 +1,649 @@
+[
+  {
+    "id": "fss-01-ziel-fehlersuche",
+    "type": "single_choice",
+    "prompt": "Was ist das Hauptziel bei der systematischen Fehlersuche in Steuerungen?",
+    "answer": {
+      "choices": [
+        "Möglichst schnell ein Bauteil tauschen",
+        "Die Ursache logisch eingrenzen und mit Prüfschritten absichern",
+        "Nur den letzten Fehler aus dem Protokoll übernehmen",
+        "Eine Vermutung ohne Nachweis als Ergebnis festlegen"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "fss-02-stoerungsbild-angaben",
+    "type": "multi_select",
+    "prompt": "Welche Angaben gehören zu einer fachlich guten Störungsbeschreibung? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Konkretes Symptom",
+        "Ort und Zeitpunkt des Auftretens",
+        "Betriebsart/Betriebszustand",
+        "Nur der Satz: \"Anlage defekt\"",
+        "Betroffene Baugruppe"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "fss-03-grundalgorithmus",
+    "type": "order",
+    "prompt": "Ordne den Grundablauf der systematischen Fehlersuche bei Steuerungen.",
+    "items": [
+      "Anlage sichern und Zustand aufnehmen",
+      "Störungsbild konkret erfassen",
+      "Grundstellung und Startbedingungen prüfen",
+      "Signal- und Funktionskette eingrenzen",
+      "Ursache mit Prüfschritten absichern",
+      "Maßnahme, Wirksamkeitsnachweis und Dokumentation"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "fss-04-grundstellung",
+    "type": "single_choice",
+    "prompt": "Wann ist bei einer elektropneumatischen Anlage die Grundstellung fachlich korrekt erreicht?",
+    "answer": {
+      "choices": [
+        "Wenn ein beliebiger Zylinder in Endlage steht",
+        "Wenn alle im Ablauf festgelegten Startzustände von Aktoren/Sensoren und die Anlagenfreigabe vorliegen",
+        "Wenn nur der Hauptschalter eingeschaltet ist",
+        "Wenn ein Reset ausgelöst wurde"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "fss-05-startbedingungen-foerderanlage",
+    "type": "multi_select",
+    "prompt": "Welche Bedingungen müssen für den Start eines Prozesszyklus erfüllt sein? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Grundstellung vorhanden",
+        "BG7 meldet Werkstück an der Sperre",
+        "BG9 meldet Rollbahn frei",
+        "MM2 steht in oberer Endlage",
+        "Anlagenschalter ist eingeschaltet"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "fss-06-flussarten",
+    "type": "single_choice",
+    "prompt": "Welche drei Flüsse helfen bei der systematischen Fehlereingrenzung in Steuerungen?",
+    "answer": {
+      "choices": [
+        "Materialfluss, Personalfluss, Kostenfluss",
+        "Signalfluss, Energiefluss, Informationsfluss",
+        "Lagerfluss, Datenfluss, Zahlungsfluss",
+        "Werkzeugfluss, Bewegungsfluss, Zeitfluss"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "fss-07-prozessfolge-mm-bg",
+    "type": "order",
+    "prompt": "Ordne die Prozessfolge der Förderanlage in die richtige Reihenfolge.",
+    "items": [
+      "MM1 fährt zurück",
+      "BG8 wird ausgelöst",
+      "MM1 fährt in Sperrstellung",
+      "MM2 hebt den Werkstückträger an",
+      "MM3 schiebt auf die Rollbahn",
+      "Nach BG9 fahren MM2 und MM3 in Grundstellung"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "fss-08-symptom-ursache",
+    "type": "single_choice",
+    "prompt": "Welche Aussage trennt Symptom und Ursache fachlich korrekt?",
+    "answer": {
+      "choices": [
+        "Symptom und Ursache sind in der Steuerung immer identisch.",
+        "Symptom: BG8 wird nicht erkannt. Ursache: Sensorposition verstellt, durch Prüfung zu bestätigen.",
+        "Wenn der Zylinder nicht fährt, ist automatisch das Ventil defekt.",
+        "Ursachen müssen nicht nachgewiesen werden, wenn das Symptom klar ist."
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "fss-09-startblockade-bg9",
+    "type": "single_choice",
+    "prompt": "Grundstellung und BG7 sind vorhanden, der Zyklus startet aber nicht, weil BG9 \"belegt\" meldet. Was ist die sinnvollste Erstbewertung?",
+    "answer": {
+      "choices": [
+        "Startbedingung fehlt, daher Rollbahn/BG9 zuerst prüfen",
+        "Sofort MM2 tauschen",
+        "Nur Steuerung neu starten und erneut testen",
+        "Fehler ignorieren, da BG7 aktiv ist"
+      ],
+      "correctIndex": 0
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "fss-10-bg8-kein-signal-pruefung",
+    "type": "multi_select",
+    "prompt": "Nach Zyklusstart fährt MM1 zurück, BG8 wird aber nicht erkannt. Welche Prüfschritte sind sinnvoll? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Werkstücklauf zur Hubplattform beobachten",
+        "Lage und Schaltabstand von BG8 prüfen",
+        "Signalstatus von BG8 an der Steuerung prüfen",
+        "Sofort MM3 austauschen",
+        "Mechanische Blockaden im Bereich BG8 prüfen"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "fss-11-zykluszeit-abweichung",
+    "prompt": "Soll-Zykluszeit: 6,0 s. Gemessen: 7,4 s. Um wie viel wird die Soll-Zykluszeit überschritten?",
+    "answer": {
+      "value": 1.4,
+      "unit": "s"
+    },
+    "tolerance": 0.05,
+    "solution": "Abweichung = 7,4 - 6,0 = 1,4 s.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "fss-12-signalweg-reihenfolge",
+    "type": "order",
+    "prompt": "Ordne den Signalweg vom Startimpuls bis zur Rückmeldung in die richtige Reihenfolge.",
+    "items": [
+      "Bedienelement gibt Startimpuls",
+      "Eingangssignal wird in der Steuerung erfasst",
+      "Logik/Freigaben werden verknüpft",
+      "Ausgangssignal steuert Ventil oder Schütz",
+      "Aktor führt Bewegung aus",
+      "Sensor meldet den erreichten Zustand zurück"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "fss-13-mttr",
+    "prompt": "Bei 7 Störungen wurden insgesamt 168 min Instandsetzungszeit erfasst. Wie groß ist die mittlere Instandsetzungszeit (MTTR)?",
+    "answer": {
+      "value": 24,
+      "unit": "min"
+    },
+    "tolerance": 0.2,
+    "solution": "MTTR = 168 / 7 = 24 min.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "fss-14-fehlerhaeufigkeit",
+    "prompt": "In einem Monat traten 30 Steuerungsstörungen auf, davon 9 mit derselben Ursache. Wie hoch ist die Fehlerhäufigkeit dieser Ursache in Prozent?",
+    "answer": {
+      "value": 30,
+      "unit": "%"
+    },
+    "tolerance": 0.2,
+    "solution": "Fehlerhäufigkeit = (9 / 30) * 100 = 30 %.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "fss-15-ausgang-aktiv-keine-bewegung",
+    "type": "single_choice",
+    "prompt": "Der Steuerausgang zum Ventil ist aktiv, der Zylinder bewegt sich trotzdem nicht. Welcher Prüfschritt ist am sinnvollsten?",
+    "answer": {
+      "choices": [
+        "Nur einen Reset ausführen und Anlage freigeben",
+        "Versorgung/Arbeitsdruck und Ventilausgang an der Aktorik prüfen",
+        "Sofort die SPS tauschen",
+        "Nur die Sensoren neu einlernen"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "fss-16-diagnoseunterlagen",
+    "type": "multi_select",
+    "prompt": "Welche Unterlagen und Hilfsmittel sind für die systematische Steuerungsdiagnose besonders wichtig? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Schalt- und Funktionsplan",
+        "I/O-Status und Fehlerspeicher",
+        "Messmittel für Spannung/Druck",
+        "Funktions- und Fehlerprotokolle",
+        "Nur persönliche Erfahrung ohne Nachweis"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "fss-17-verfuegbarkeit",
+    "prompt": "Geplante Laufzeit: 48 h. Störungsbedingter Stillstand: 3 h 20 min. Wie hoch ist die Verfügbarkeit in Prozent?",
+    "answer": {
+      "value": 93.1,
+      "unit": "%"
+    },
+    "tolerance": 0.3,
+    "solution": "3 h 20 min = 3,33 h. Verfügbarkeit = ((48 - 3,33) / 48) * 100 = 93,06 % (gerundet 93,1 %).",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "fss-18-wirksamkeitsnachweis",
+    "type": "single_choice",
+    "prompt": "Welche Vorgehensweise ist ein vollständiger Wirksamkeitsnachweis nach einer Steuerungsstörungsbehebung?",
+    "answer": {
+      "choices": [
+        "Kurz testen und mündlich rückmelden",
+        "Nur den getauschten Sensor im Lager buchen",
+        "Probelauf mit definierten Prüfkriterien, Soll/Ist-Vergleich und dokumentierter i. O./n. i. O.-Bewertung",
+        "Anlage ohne Nachweis sofort wieder in Automatik schalten"
+      ],
+      "correctIndex": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "fss-19-schwachstellenanalyse",
+    "type": "multi_select",
+    "prompt": "Welche Schritte gehören zu einer nachhaltigen Schwachstellenanalyse bei wiederkehrenden Steuerungsstörungen? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Fehlerursachen nach Häufigkeit auswerten (z. B. Pareto)",
+        "Trend über Betriebszustände und Zeit vergleichen",
+        "Belastung, Verschleiß und Schnittstellen gemeinsam bewerten",
+        "Prüf- und Wartungsplan anhand der Ergebnisse anpassen",
+        "Nur den letzten Fehlerfall betrachten"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "fss-20-wiederkehrende-stoerung-reihenfolge",
+    "type": "order",
+    "prompt": "Ordne das Vorgehen bei einer wiederkehrenden Steuerungsstörung.",
+    "items": [
+      "Störung unter gleichen Bedingungen reproduzieren",
+      "Sollablauf mit Istablauf vergleichen",
+      "Teilsysteme/Schnittstellen neu eingrenzen und Hypothesen priorisieren",
+      "Gezielte Nachmessungen zur Hauptursache durchführen",
+      "Korrekturmaßnahme umsetzen",
+      "Wirksamkeit nachweisen und dokumentiert übergeben"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "fss-21-ausfallkosten",
+    "prompt": "Ausfallkosten: 120 EUR pro Stunde. Stillstand: 4 h 15 min. Wie hoch sind die Ausfallkosten?",
+    "answer": {
+      "value": 510,
+      "unit": "EUR"
+    },
+    "tolerance": 0.6,
+    "solution": "4 h 15 min = 4,25 h. Kosten = 4,25 * 120 = 510 EUR.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "fss-22-strategie-komplex",
+    "type": "single_choice",
+    "prompt": "Welche Strategie ist bei einer komplexen, sporadischen Steuerungsstörung fachlich am besten?",
+    "answer": {
+      "choices": [
+        "Alle Sensoren und Aktoren gleichzeitig tauschen",
+        "Nur die Steuerung prüfen, Pneumatik und Mechanik auslassen",
+        "System in Teilsysteme gliedern, Eingangs-/Ausgangsgrößen prüfen und die Ursache schrittweise absichern",
+        "Nur auf Erfahrung vertrauen und auf Messungen verzichten"
+      ],
+      "correctIndex": 2
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "fss-23-structured-erstanalyse",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (6-8 Sätze): Bei einer Förderanlage ist ein Werkstück vorhanden, aber der Zyklus startet nicht. Beschreibe deine systematische Erstanalyse.",
+    "answer": {
+      "fields": [
+        {
+          "key": "symptom",
+          "label": "Symptom und Ausgangszustand",
+          "minWords": 20,
+          "placeholder": "z. B. Grundstellung, relevante Signale, beobachtete Abweichung"
+        },
+        {
+          "key": "eingrenzung",
+          "label": "Eingrenzungsschritte",
+          "minWords": 22,
+          "placeholder": "z. B. Startbedingungen, Signalkette, Sensorik/Aktorik, Schnittstellen"
+        },
+        {
+          "key": "bewertung",
+          "label": "Erste Bewertung",
+          "minWords": 20,
+          "placeholder": "z. B. wahrscheinlichste Ursache, nächster Nachweisschritt"
+        }
+      ],
+      "keywords": {
+        "symptom": [
+          "grundstellung",
+          "startbedingung",
+          "signal",
+          "stoerung",
+          "istzustand",
+          "betriebsart"
+        ],
+        "eingrenzung": [
+          "signalfluss",
+          "sensor",
+          "aktor",
+          "schnittstelle",
+          "pruefen",
+          "eingrenzen"
+        ],
+        "bewertung": [
+          "ursache",
+          "hypothese",
+          "nachweis",
+          "messung",
+          "prioritaet",
+          "naechster"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 68
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Ausgangszustand mit Signalen und Betriebsart konkret benennen",
+        "Startbedingungen und Signalweg vom Eingang bis zum Aktor prüfen",
+        "Schnittstellen explizit in die Eingrenzung einbeziehen",
+        "Erste Hauptursache mit einem klaren Nachweisschritt begründen"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "fss-24-structured-diagnoseplan",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (6-8 Sätze): Erstelle einen Diagnoseplan für eine sporadische Störung an einem elektropneumatischen Teilsystem.",
+    "answer": {
+      "fields": [
+        {
+          "key": "sicherheit",
+          "label": "Sicherheit und Vorbereitung",
+          "minWords": 20,
+          "placeholder": "z. B. Absicherung, Betriebszustand, Unterlagen, Freigaben"
+        },
+        {
+          "key": "diagnose",
+          "label": "Diagnosekette",
+          "minWords": 24,
+          "placeholder": "z. B. Signalweg, Teilsysteme, Messpunkte, Reproduzierbarkeit"
+        },
+        {
+          "key": "nachweis",
+          "label": "Wirksamkeitsnachweis",
+          "minWords": 20,
+          "placeholder": "z. B. Probelauf, Soll/Ist-Vergleich, Dokumentation, Übergabe"
+        }
+      ],
+      "keywords": {
+        "sicherheit": [
+          "sichern",
+          "freigabe",
+          "arbeitsschutz",
+          "zustand",
+          "unterlagen",
+          "vorbereitung"
+        ],
+        "diagnose": [
+          "teilsystem",
+          "signal",
+          "messung",
+          "schnittstelle",
+          "eingrenzen",
+          "sensor"
+        ],
+        "nachweis": [
+          "probelauf",
+          "soll",
+          "ist",
+          "bewertung",
+          "dokumentation",
+          "uebergabe"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 70
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Sicherheits- und Vorbereitungsphase zuerst darstellen",
+        "Diagnose entlang der Signal- und Funktionskette strukturieren",
+        "Nachweis der Ursache und Nachweis der Maßnahme klar trennen",
+        "Freigabe nur nach dokumentiertem Soll/Ist-Nachweis formulieren"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "fss-25-structured-abschluss",
+    "type": "structured_text",
+    "prompt": "Abschlussaufgabe (7-9 Sätze): Nach einer Reparatur läuft die Anlage 15 Minuten stabil, danach tritt dieselbe Störung erneut auf. Beschreibe dein Vorgehen bis zur erneuten Übergabe.",
+    "answer": {
+      "fields": [
+        {
+          "key": "analyse",
+          "label": "Erneute Analyse",
+          "minWords": 22,
+          "placeholder": "z. B. Vergleich mit Erstfall, Reproduktionsbedingungen, neue Messdaten"
+        },
+        {
+          "key": "entscheidung",
+          "label": "Entscheidung und Maßnahme",
+          "minWords": 22,
+          "placeholder": "z. B. technische Entscheidung, Priorisierung, wirtschaftliche Begründung"
+        },
+        {
+          "key": "abschluss",
+          "label": "Nachweis und Übergabe",
+          "minWords": 22,
+          "placeholder": "z. B. Probelauf unter Last, Soll/Ist, Restmängelstatus, Protokoll"
+        }
+      ],
+      "keywords": {
+        "analyse": [
+          "vergleich",
+          "stoerungsbild",
+          "protokoll",
+          "messung",
+          "ursache",
+          "schnittstelle"
+        ],
+        "entscheidung": [
+          "massnahme",
+          "prioritaet",
+          "begruendung",
+          "wirtschaftlich",
+          "risiko",
+          "nacharbeit"
+        ],
+        "abschluss": [
+          "wirksamkeit",
+          "probelauf",
+          "soll",
+          "ist",
+          "dokumentation",
+          "uebergabe"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 75
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Wiederkehrende Störung mit Erstbefund vergleichen und neu eingrenzen",
+        "Ursache erneut absichern statt die alte Maßnahme nur zu wiederholen",
+        "Technische und wirtschaftliche Entscheidung nachvollziehbar begründen",
+        "Übergabe erst nach dokumentiertem Wirksamkeitsnachweis formulieren"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  }
+]

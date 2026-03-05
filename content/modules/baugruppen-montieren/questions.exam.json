@@ -1,0 +1,166 @@
+[
+  {
+    "id": "bm-e-01-hebelarm",
+    "prompt": "Bei der Montage ist ein maximales Drehmoment von 9 N·m vorgegeben. Du drückst mit 120 N senkrecht am Werkzeug. Wie groß darf die wirksame Hebellänge maximal sein? (in mm)",
+    "answer": {
+      "value": 75,
+      "unit": "mm"
+    },
+    "tolerance": 0,
+    "solution": "l = M/F = 9/120 m = 0,075 m = 75 mm.",
+    "input": {
+      "mode": "integer"
+    }
+  },
+  {
+    "id": "bm-e-02-unterlegscheiben",
+    "prompt": "Eine Flanschverbindung hat 8 Schrauben. Pro Schraube sind 2 Unterlegscheiben vorgesehen. Wie viele Unterlegscheiben werden benötigt?",
+    "answer": {
+      "value": 16,
+      "unit": "Stk"
+    },
+    "tolerance": 0,
+    "solution": "8 * 2 = 16 Unterlegscheiben.",
+    "input": {
+      "mode": "integer"
+    }
+  },
+  {
+    "id": "bm-e-03-spiel-min",
+    "prompt": "Sollspiel: 0,20 +-0,05 mm. Bestimme das untere Grenzmaß.",
+    "answer": {
+      "value": 0.15,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Unteres Grenzmaß = 0,20 - 0,05 = 0,15 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "bm-e-04-spiel-max",
+    "prompt": "Sollspiel: 0,20 +-0,05 mm. Bestimme das obere Grenzmaß.",
+    "answer": {
+      "value": 0.25,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Oberes Grenzmaß = 0,20 + 0,05 = 0,25 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "bm-e-05-spiel-abweichung",
+    "prompt": "Sollspiel: 0,20 +-0,05 mm. Gemessen wurden 0,27 mm. Um wie viel mm liegt der Wert über dem oberen Grenzmaß?",
+    "answer": {
+      "value": 0.02,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Oberes Grenzmaß = 0,25 mm. Abweichung = 0,27 - 0,25 = 0,02 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "bm-e-06-probelaufzeit",
+    "prompt": "Für den Probelauf sind 12 Zyklen mit je 35 s vorgesehen. Wie lange dauert der Probelauf insgesamt in Minuten?",
+    "answer": {
+      "value": 7,
+      "unit": "min"
+    },
+    "tolerance": 0.05,
+    "solution": "12 * 35 s = 420 s. 420/60 = 7 min.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "bm-e-07-schmierstoffmenge",
+    "prompt": "Vier Schmierstellen erhalten je 1,5 ml Schmierstoff. Wie groß ist die Gesamtmenge?",
+    "answer": {
+      "value": 6,
+      "unit": "ml"
+    },
+    "tolerance": 0.1,
+    "solution": "Gesamtmenge = 4 * 1,5 ml = 6 ml.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    }
+  },
+  {
+    "id": "bm-e-08-entsorgungsmasse",
+    "prompt": "Bei der Demontage fallen 18 kg Stahl, 6 kg Aluminium und 4 kg Kunststoff an. Wie groß ist die gesamte getrennt zu entsorgende Masse?",
+    "answer": {
+      "value": 28,
+      "unit": "kg"
+    },
+    "tolerance": 0,
+    "solution": "18 + 6 + 4 = 28 kg.",
+    "input": {
+      "mode": "integer"
+    }
+  },
+  {
+    "id": "bm-e-09-mass-unterschreitung",
+    "prompt": "Nennmaß 32,00 +-0,10 mm. Gemessen 31,86 mm. Um wie viel mm unterschreitet der Messwert das untere Grenzmaß?",
+    "answer": {
+      "value": 0.04,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Unteres Grenzmaß = 31,90 mm. Unterschreitung = 31,90 - 31,86 = 0,04 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "bm-e-10-dokuzeit",
+    "prompt": "Es werden 5 Messpunkte dokumentiert. Pro Messpunkt sind 45 s vorgesehen. Wie lange dauert die Dokumentation in Minuten?",
+    "answer": {
+      "value": 3.75,
+      "unit": "min"
+    },
+    "tolerance": 0.05,
+    "solution": "5 * 45 s = 225 s. 225/60 = 3,75 min.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "bm-e-11-nacharbeitsquote",
+    "prompt": "Von 40 montierten Baugruppen müssen 3 wegen Montagefehlern nachgearbeitet werden. Wie hoch ist die Nacharbeitsquote in Prozent?",
+    "answer": {
+      "value": 7.5,
+      "unit": "%"
+    },
+    "tolerance": 0.1,
+    "solution": "Quote = 3/40 * 100 = 7,5 %.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "bm-e-12-reserve-schrauben",
+    "prompt": "Die Stückliste fordert 24 Schrauben. Für Montageausfall planst du 10 % Reserve ein. Wie viele Schrauben stellst du insgesamt bereit? (auf ganze Schrauben aufrunden)",
+    "answer": {
+      "value": 27,
+      "unit": "Stk"
+    },
+    "tolerance": 0,
+    "solution": "24 * 1,10 = 26,4. Aufrunden ergibt 27 Schrauben.",
+    "input": {
+      "mode": "integer"
+    }
+  }
+]

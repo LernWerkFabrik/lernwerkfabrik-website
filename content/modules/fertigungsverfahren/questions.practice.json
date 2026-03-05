@@ -1,0 +1,592 @@
+[
+  {
+    "id": "fv-01-pruefungslogik",
+    "type": "single_choice",
+    "prompt": "Was wird bei Aufgaben zur Verfahrensauswahl am stärksten bewertet?",
+    "answer": {
+      "choices": [
+        "Möglichst viele Verfahren auswendig nennen",
+        "Passendes Verfahren auswählen und fachlich begründen",
+        "Nur den Maschinenhersteller nennen",
+        "Nur die Rüstzeit ohne Technik betrachten"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "fv-02-auswahlkriterien",
+    "type": "multi_select",
+    "prompt": "Welche Kriterien müssen bei der Verfahrensauswahl berücksichtigt werden? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Werkstoff und Geometrie",
+        "Toleranz und Oberfläche",
+        "Stückzahl und Wirtschaftlichkeit",
+        "Lieblingsfarbe der Maschine",
+        "Verfügbare Werkzeuge und Spannmittel"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "fv-03-entscheidungsablauf",
+    "type": "order",
+    "prompt": "Ordne den prüfungssicheren Ablauf für die Auswahl eines Fertigungsverfahrens.",
+    "items": [
+      "Aufgabe und Muss-Merkmale analysieren",
+      "Geeignete Verfahren vorwählen",
+      "Verfahren technisch und wirtschaftlich vergleichen",
+      "Bearbeitungsfolge und Parameter festlegen",
+      "Prüfmittel und Dokumentation festlegen"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "fv-04-passbohrung-verfahren",
+    "type": "single_choice",
+    "prompt": "Welche Verfahrenskombination ist für eine Passbohrung 8H7 am geeignetsten?",
+    "answer": {
+      "choices": [
+        "Nur grob bohren",
+        "Vorbohren und anschließend reiben",
+        "Nur entgraten",
+        "Gewinde schneiden"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "fv-05-trennen-beispiele",
+    "type": "multi_select",
+    "prompt": "Welche Verfahren gehören zur Hauptgruppe Trennen? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Sägen",
+        "Bohren",
+        "Fräsen",
+        "Biegen",
+        "Scherschneiden"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "fv-06-umformen-beispiele",
+    "type": "multi_select",
+    "prompt": "Welche Verfahren sind Umformen? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Biegen",
+        "Tiefziehen",
+        "Walzen",
+        "Drehen",
+        "Reiben"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "fv-07-spanen-beispiele",
+    "type": "multi_select",
+    "prompt": "Welche Verfahren sind typische spanende Verfahren? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Drehen",
+        "Fräsen",
+        "Reiben",
+        "Biegen",
+        "Schmieden"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "fv-11-kernloch-m5",
+    "type": "single_choice",
+    "prompt": "Welcher Kernlochdurchmesser passt typischerweise zu M5?",
+    "answer": {
+      "choices": [
+        "3,5 mm",
+        "4,2 mm",
+        "5,0 mm",
+        "6,8 mm"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "fv-08-stueckzahl-denken",
+    "type": "single_choice",
+    "prompt": "Für 2000 gleiche Blechkonturen ist welches Verfahren meist am wirtschaftlichsten?",
+    "answer": {
+      "choices": [
+        "Feilen von Hand",
+        "Stanzen/Scherschneiden mit Werkzeug",
+        "Einzelfertigung mit Handsäge",
+        "Nur markieren, ohne trennen"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "fv-09-toleranzfokus",
+    "type": "single_choice",
+    "prompt": "Welcher Aspekt entscheidet hauptsächlich, ob nach dem Bohren noch Reiben nötig ist?",
+    "answer": {
+      "choices": [
+        "Farbe des Werkstücks",
+        "Geforderte Toleranz und Oberflächengüte",
+        "Name der Abteilung",
+        "Anzahl der Schrauben im Lager"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "fv-10-gewinde-reihenfolge",
+    "type": "order",
+    "prompt": "Ordne die richtige Folge für ein Innengewinde M5.",
+    "items": [
+      "Kernloch bohren (4,2 mm)",
+      "Ansenken",
+      "Vorschneider",
+      "Mittelschneider",
+      "Fertigschneider",
+      "Gewinde prüfen"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "fv-12-kernloch-m8",
+    "type": "single_choice",
+    "prompt": "Welcher Kernlochdurchmesser passt typischerweise zu M8?",
+    "answer": {
+      "choices": [
+        "5,0 mm",
+        "6,2 mm",
+        "6,8 mm",
+        "8,0 mm"
+      ],
+      "correctIndex": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "fv-13-reibaufmass",
+    "prompt": "Vorbohrung 7,8 mm, Endmaß nach Reiben 8,0 mm. Wie groß ist das Reibaufmaß?",
+    "answer": {
+      "value": 0.2,
+      "unit": "mm"
+    },
+    "tolerance": 0.02,
+    "solution": "Reibaufmaß = 8,0 - 7,8 = 0,2 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "fv-14-drehzahl-bohren",
+    "prompt": "Berechne die Bohrdrehzahl n bei vc = 30 m/min und d = 5 mm (n = (1000*vc)/(pi*d)).",
+    "answer": {
+      "value": 1910,
+      "unit": "1/min"
+    },
+    "tolerance": 40,
+    "solution": "n = (1000*30)/(pi*5) = 1909,9 1/min, gerundet 1910 1/min.",
+    "input": {
+      "mode": "integer"
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "fv-15-vorschubgeschwindigkeit",
+    "prompt": "n = 1200 1/min und f = 0,12 mm/U. Berechne die Vorschubgeschwindigkeit vf in mm/min.",
+    "answer": {
+      "value": 144,
+      "unit": "mm/min"
+    },
+    "tolerance": 1,
+    "solution": "vf = n * f = 1200 * 0,12 = 144 mm/min.",
+    "input": {
+      "mode": "integer"
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "fv-17-keilwinkel-standzeit",
+    "type": "single_choice",
+    "prompt": "Bei welchem Keilwinkel ist die Schneide eines Trennwerkzeuges in der Regel am stabilsten?",
+    "answer": {
+      "choices": [
+        "15 Grad",
+        "30 Grad",
+        "45 Grad",
+        "60 Grad"
+      ],
+      "correctIndex": 3
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "fv-18-pruefmittel-zuordnung",
+    "type": "multi_select",
+    "prompt": "Welche Prüfmittel sind für enge Fertigungsmerkmale passend? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Bügelmessschraube für enge Außenmaße",
+        "Grenzlehrdorn für H7-Bohrung",
+        "Gewindelehre für Innengewinde",
+        "Meterstab für H7-Bohrung",
+        "Messschieber für allgemeine Masse"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "fv-19-toleranzbeurteilung",
+    "type": "single_choice",
+    "prompt": "Sollmaß 20,00 +/-0,05 mm, Messwert 19,96 mm. Wie lautet das Prüfurteil?",
+    "answer": {
+      "choices": [
+        "i. O.",
+        "n. i. O. zu klein",
+        "n. i. O. zu groß",
+        "nicht beurteilbar"
+      ],
+      "correctIndex": 0
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "fv-20-prueffolge",
+    "type": "order",
+    "prompt": "Ordne die qualitätsgerechte Prüffolge.",
+    "items": [
+      "Sollmaß und Toleranz lesen",
+      "Geeignetes Prüfmittel wählen",
+      "Messung durchführen",
+      "Istwert mit Grenzmaßen vergleichen",
+      "Ergebnis dokumentieren"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "fv-21-fehlerquellen",
+    "type": "multi_select",
+    "prompt": "Welche Fehler kosten in Aufgaben zur Verfahrensauswahl häufig Punkte? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Verfahren ohne Begründung nennen",
+        "Reihenfolge grob -> fein missachten",
+        "Toleranzanforderungen ignorieren",
+        "Prüfmittel passend zur Toleranz wählen",
+        "Wirtschaftlichkeit nicht betrachten"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "fv-22-dokumentation",
+    "type": "multi_select",
+    "prompt": "Welche Angaben gehören in eine saubere Fertigungsdokumentation? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Verfahrenswahl mit Begründung",
+        "Wesentliche Bearbeitungsparameter",
+        "Prüfmittel und Messwerte",
+        "i. O./n. i. O.-Entscheidung",
+        "Beliebige private Notizen ohne Bezug"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "fv-16-zerspanvolumen-bohrung",
+    "prompt": "Bohrung d = 40 mm, Länge 40 mm. Wie groß ist das Zerspanungsvolumen in cm3?",
+    "answer": {
+      "value": 50.27,
+      "unit": "cm3"
+    },
+    "tolerance": 0.1,
+    "solution": "V = pi*(20 mm)^2*40 mm = 50265 mm3 = 50,27 cm3.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "fv-23-structured-vorgehen",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (4-6 Sätze): Du sollst ein Blechbauteil mit 2x d6,6, 1x 8H7 und 1x M5 herstellen. Beschreibe dein Vorgehen zur Verfahrensauswahl und Reihenfolge.",
+    "answer": {
+      "fields": [
+        {
+          "key": "decision",
+          "label": "Entscheidung",
+          "minWords": 12
+        },
+        {
+          "key": "reason",
+          "label": "Begründung",
+          "minWords": 14
+        },
+        {
+          "key": "check",
+          "label": "Prüfung",
+          "minWords": 8
+        }
+      ],
+      "keywords": {
+        "decision": [
+          "zeichnen",
+          "bezug",
+          "bohren",
+          "reiben",
+          "gewinde",
+          "reihenfolge"
+        ],
+        "reason": [
+          "toleranz",
+          "oberfläche",
+          "stückzahl",
+          "wirtschaftlichkeit",
+          "verfahren",
+          "begründung"
+        ],
+        "check": [
+          "prüfmittel",
+          "messwert",
+          "grenzmaß",
+          "lehrdorn",
+          "gewindelehre",
+          "dokumentation"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 38
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Muss-Merkmale aus Zeichnung markieren",
+        "Verfahren je Merkmal festlegen",
+        "Reihenfolge grob zu fein planen",
+        "Prüfmittel und Prüfpunkte benennen"
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "fv-24-structured-vergleich",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (4-6 Sätze): Vergleiche für eine Blechkontur die Verfahren Sägen/Fräsen (Einzelteil) und Stanzen (Serie). Gib eine begründete Entscheidung für 1 Stück und für 2000 Stück.",
+    "answer": {
+      "fields": [
+        {
+          "key": "decision",
+          "label": "Entscheidung",
+          "minWords": 12
+        },
+        {
+          "key": "reason",
+          "label": "Begründung",
+          "minWords": 14
+        },
+        {
+          "key": "check",
+          "label": "Kontrolle",
+          "minWords": 8
+        }
+      ],
+      "keywords": {
+        "decision": [
+          "einzelteil",
+          "serie",
+          "sägen",
+          "fräsen",
+          "stanzen",
+          "wahl"
+        ],
+        "reason": [
+          "rüstzeit",
+          "stückzahl",
+          "kosten",
+          "wiederholgenauigkeit",
+          "wirtschaftlich",
+          "produktivität"
+        ],
+        "check": [
+          "mass",
+          "toleranz",
+          "prüfmittel",
+          "dokumentation",
+          "i. o.",
+          "n. i. o."
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 38
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Beide Verfahren kurz technisch einordnen",
+        "Stückzahl als Hauptkriterium nutzen",
+        "Kosten und Wiederholbarkeit vergleichen",
+        "Entscheidung mit Prüfstrategie abschließen"
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "fv-25-master-check",
+    "type": "multi_select",
+    "prompt": "Master-Check: Welche Aussagen sind fachlich richtig? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Verfahrenswahl muss technisch und wirtschaftlich begründet sein",
+        "Bei Passbohrungen reicht meist nur grobes Bohren",
+        "Reihenfolge und Bezüge beeinflussen direkt die Maßhaltigkeit",
+        "Prozessbegleitendes Prüfen reduziert Ausschuss",
+        "Dokumentation ist Teil der Qualitätssicherung"
+      ],
+      "correctIndices": [
+        0,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  }
+]

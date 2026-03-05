@@ -1,0 +1,114 @@
+[
+  {
+    "id": "ap1-rf-01",
+    "prompt": "Einheiten-Training: 2,5 kN in N umrechnen.\n\nTipp: 1 kN = 1000 N.",
+    "answer": { "value": 2500, "unit": "N" },
+    "tolerance": 1,
+    "solution": "Umrechnen: 2,5 kN = 2,5 · 1000 N = 2500 N. Typischer Fehler: Komma verrutscht (250 N oder 25000 N)."
+  },
+  {
+    "id": "ap1-rf-02",
+    "prompt": "Druck (p) berechnen: Eine Kraft von 800 N wirkt auf eine Fläche von 20 cm2. Berechne den Druck in bar.\n\nHinweise:\n- p = F / A\n- 1 cm2 = 1e-4 m2\n- 1 bar = 100000 Pa",
+    "answer": { "value": 4, "unit": "bar" },
+    "tolerance": 0.05,
+    "solution": "Fläche: 20 cm² = 20 · 1e-4 m² = 0,002 m². Druck: p = 800 / 0,002 = 400000 Pa. In bar: 400000 / 100000 = 4 bar. Typische Fehler: cm² nicht in m² umrechnen oder bar/Pa verwechseln."
+  },
+  {
+    "id": "ap1-rf-03",
+    "prompt": "Drehmoment (M) berechnen: Hebelarm 0,25 m, Kraft 120 N. Berechne M in Nm.\n\nHinweis: M = F · l",
+    "answer": { "value": 30, "unit": "Nm" },
+    "tolerance": 0.2,
+    "solution": "M = 120 N · 0,25 m = 30 Nm. Typischer Fehler: Hebelarm in mm einsetzen (0,25 m = 250 mm) ohne Umrechnung."
+  },
+  {
+    "id": "ap1-rf-04",
+    "prompt": "Leistung (P) berechnen: 18 kJ Arbeit werden in 30 s verrichtet. Berechne P in W.\n\nHinweis: P = W / t, 1 kJ = 1000 J",
+    "answer": { "value": 600, "unit": "W" },
+    "tolerance": 5,
+    "solution": "18 kJ = 18000 J. P = 18000 J / 30 s = 600 W. Typischer Fehler: kJ nicht in J umrechnen (würde 0,6 W ergeben)."
+  },
+  {
+    "id": "ap1-rf-05",
+    "prompt": "Dichte (ρ) berechnen: Masse 2,7 kg, Volumen 1,0 dm3. Berechne ρ in kg/m3.\n\nHinweis: ρ = m / V, 1 dm3 = 0,001 m3",
+    "answer": { "value": 2700, "unit": "kg/m3" },
+    "tolerance": 10,
+    "solution": "V = 1,0 dm³ = 0,001 m³. ρ = 2,7 kg / 0,001 m³ = 2700 kg/m³. Typische Fehler: dm³ nicht umrechnen oder 0,01 statt 0,001 einsetzen."
+  },
+  {
+    "id": "ap1-rf-06",
+    "prompt": "Volumen Zylinder: Durchmesser 40 mm, Höhe 60 mm. Berechne das Volumen in cm3.\n\nHinweise:\n- V = π · r² · h\n- 10 mm = 1 cm\n- π = 3,1416",
+    "answer": { "value": 75.4, "unit": "cm3" },
+    "tolerance": 0.3,
+    "solution": "Umrechnen: d = 40 mm = 4 cm → r = 2 cm. h = 60 mm = 6 cm. V = 3,1416 · (2 cm)² · 6 cm = 3,1416 · 4 · 6 = 75,3984 cm³ ≈ 75,4 cm³. Typische Fehler: Durchmesser als Radius nutzen oder mm und cm mischen."
+  },
+  {
+    "id": "ap1-rf-07",
+    "prompt": "Fläche Rechteck: 120 mm × 80 mm. Berechne die Fläche in mm2.\n\nHinweis: A = a · b",
+    "answer": { "value": 9600, "unit": "mm2" },
+    "tolerance": 5,
+    "solution": "A = 120 · 80 = 9600 mm². Typischer Fehler: Umrechnen in cm ohne gefragt zu sein oder Null vergessen (960 statt 9600)."
+  },
+  {
+    "id": "ap1-rf-08",
+    "prompt": "Drehzahl umrechnen: 1500 1/min in 1/s.\n\nHinweis: 1 min = 60 s",
+    "answer": { "value": 25, "unit": "1/s" },
+    "tolerance": 0.1,
+    "solution": "1500 1/min ÷ 60 = 25 1/s. Typischer Fehler: mit 60 multiplizieren statt teilen."
+  },
+  {
+    "id": "ap1-rf-09",
+    "prompt": "Umfangsgeschwindigkeit: d = 50 mm, n = 600 1/min. Berechne v in m/min.\n\nFormel: v = π · d · n (d in m)\nπ = 3,1416",
+    "answer": { "value": 94.25, "unit": "m/min" },
+    "tolerance": 0.3,
+    "solution": "d = 50 mm = 0,05 m. v = 3,1416 · 0,05 · 600 = 3,1416 · 30 = 94,248 m/min ≈ 94,25 m/min. Typische Fehler: d nicht in m umrechnen oder n in 1/s umrechnen obwohl m/min gefragt ist."
+  },
+  {
+    "id": "ap1-rf-10",
+    "prompt": "Kolbenkraft Pneumatik: d = 50 mm, p = 6 bar. Berechne F in N.\n\nHinweise:\n- F = p · A\n- 1 bar = 100000 Pa\n- A = π · (d/2)^2 (d in m)\nπ = 3,1416",
+    "answer": { "value": 1178, "unit": "N" },
+    "tolerance": 15,
+    "solution": "p = 6 bar = 600000 Pa. d = 50 mm = 0,05 m → r = 0,025 m. A = 3,1416 · (0,025)² = 3,1416 · 0,000625 = 0,0019635 m². F = 600000 · 0,0019635 = 1178,1 N ≈ 1178 N. Typische Fehler: bar nicht in Pa umrechnen oder Durchmesser als Radius einsetzen."
+  },
+  {
+    "id": "ap1-rf-11",
+    "prompt": "Elektrische Leistung: U = 24 V, I = 2,5 A. Berechne P in W.\n\nHinweis: P = U · I",
+    "answer": { "value": 60, "unit": "W" },
+    "tolerance": 1,
+    "solution": "P = 24 · 2,5 = 60 W. Typische Fehler: 24 + 2,5 statt mal oder Kommafehler (600 W)."
+  },
+  {
+    "id": "ap1-rf-12",
+    "prompt": "Masse aus Dichte: Stahlblock 50 mm × 30 mm × 10 mm. Dichte 7,85 g/cm3. Berechne die Masse in g.\n\nHinweise:\n- V = a · b · c\n- 1 cm3 = 1000 mm3\n- m = ρ · V",
+    "answer": { "value": 117.75, "unit": "g" },
+    "tolerance": 1,
+    "solution": "Volumen: 50 · 30 · 10 = 15000 mm³. In cm³: 15000 / 1000 = 15 cm³. Masse: m = 7,85 · 15 = 117,75 g. Typische Fehler: mm³ nicht in cm³ umrechnen oder ρ in falscher Einheit nutzen."
+  },
+  {
+    "id": "ap1-rf-13",
+    "prompt": "Einheiten umrechnen: 0,8 MPa in bar.\n\nHinweis: 1 MPa = 10 bar",
+    "answer": { "value": 8, "unit": "bar" },
+    "tolerance": 0.05,
+    "solution": "0,8 MPa = 0,8 · 10 bar = 8 bar. Typische Fehler: durch 10 teilen oder MPa mit kPa verwechseln."
+  },
+  {
+    "id": "ap1-rf-14",
+    "prompt": "Wirkungsgrad: P_zu = 1,5 kW, P_ab = 1,2 kW. Berechne η in %.\n\nFormel: η = (P_ab / P_zu) · 100",
+    "answer": { "value": 80, "unit": "%" },
+    "tolerance": 1,
+    "solution": "η = (1,2 / 1,5) · 100 = 0,8 · 100 = 80 %. Typische Fehler: falsche Reihenfolge (P_zu/P_ab) oder Prozent vergessen."
+  },
+  {
+    "id": "ap1-rf-15",
+    "prompt": "Vorschub (Drehen/Bohren): n = 1200 1/min, f = 0,2 mm/U. Berechne v_f in mm/min.\n\nFormel: v_f = n · f",
+    "answer": { "value": 240, "unit": "mm/min" },
+    "tolerance": 2,
+    "solution": "v_f = 1200 · 0,2 = 240 mm/min. Typische Fehler: f als mm/min interpretieren oder Kommafehler (24 oder 2400)."
+  },
+  {
+    "id": "ap1-rf-16",
+    "prompt": "Zeit umrechnen: 0,75 h in Minuten.\n\nHinweis: 1 h = 60 min",
+    "answer": { "value": 45, "unit": "min" },
+    "tolerance": 0.1,
+    "solution": "0,75 h · 60 = 45 min. Typische Fehler: durch 60 teilen oder 0,75 h als 75 min interpretieren."
+  }
+]

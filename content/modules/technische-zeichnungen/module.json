@@ -1,0 +1,32 @@
+{
+  "id": "technische-zeichnungen",
+  "title": "Technische Zeichnungen lesen und nutzen",
+  "description": "Grundlagen: Ansichten, Maßangaben, Skalierung, Symbole (Ø/R, Senkung, Fase), Toleranzen und Oberflächen – prüfungsnah mit typischen Fallen.",
+  "difficulty": "medium",
+  "tags": ["Zeichnung", "Bemaßung", "Toleranzen", "AP1", "Normen"],
+  "estimatedMinutes": 70,
+  "intro": {
+    "why": "In der Prüfung und in der Werkstatt ist die technische Zeichnung die wichtigste Informationsquelle. Punktverluste entstehen selten, weil man „nicht rechnen kann“, sondern weil man Maße falsch interpretiert (Ø/R, Ansichten, Fasen), Toleranzen verwechselt oder aus der falschen Ansicht liest. Dieses Modul trainiert das sichere Lesen und das saubere Ableiten von Fertigungsmaßen.",
+    "trains": [
+      "Ansichten sicher zuordnen (Vorderansicht, Draufsicht, Seitenansicht) und Maße korrekt lesen",
+      "Zeichnungssymbole verstehen und anwenden (Ø, R, Senkung, Fase 2×45°)",
+      "Toleranzen in Grenzmaße (min/max) umrechnen und prüfen",
+      "Skalenrechnen in typischen Aufgaben (z. B. für Prüfungsaufgaben mit Skalenangabe)",
+      "Oberflächenangaben (Ra) als Fertigungsanforderung einordnen"
+    ],
+    "traps": [
+      "Ø und R verwechselt (Durchmesser ≠ Radius)",
+      "Maße aus der falschen Ansicht gelesen (z. B. Bohrabstand aus Draufsicht statt Seitenansicht)",
+      "Toleranz falsch herum angewendet (Max/Min vertauscht)",
+      "Fase 2×45° falsch interpretiert (2 mm sind die Schenkellängen, nicht die Schräge)",
+      "Skalierung falsch gerechnet (1:2 vs. 2:1)"
+    ]
+  },
+  "files": {
+    "explanation": "explanation.md",
+    "example": "example.md",
+    "practiceQuestions": "questions.practice.json",
+    "examQuestions": "questions.exam.json"
+  },
+  "kind": "learn"
+}

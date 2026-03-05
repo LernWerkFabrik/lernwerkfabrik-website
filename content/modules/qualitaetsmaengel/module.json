@@ -1,0 +1,34 @@
+{
+  "id": "qualitaetsmaengel",
+  "title": "Qualitätsmängel erkennen und bewerten",
+  "description": "Abweichungen analysieren, Ursachen ableiten und Maßnahmen planen.",
+  "difficulty": "hard",
+  "tags": [
+    "Qualität",
+    "Analyse",
+    "Ursachen"
+  ],
+  "estimatedMinutes": 45,
+  "intro": {
+    "why": "In der Prüfung wird bei Qualitätsmängeln nicht nur erwartet, dass du Abweichungen erkennst, sondern dass du sie fachlich korrekt bewertest und begründest. Die IHK prüft, ob du zwischen Symptom und Ursache unterscheiden kannst, Qualitätsanforderungen richtig heranziehst und daraus sinnvolle Maßnahmen ableitest. Punktverluste entstehen häufig, wenn Mängel nur beschrieben, aber nicht systematisch analysiert werden oder wenn Maßnahmen nicht zur tatsächlichen Ursache passen.",
+    "trains": [
+      "Qualitätsmängel anhand von Zeichnungen, Prüfergebnissen und Anforderungen erkennen",
+      "Abweichungen fachlich bewerten (Maß, Funktion, Sicherheit, Weiterverwendbarkeit)",
+      "Ursachen systematisch ableiten (z. B. Fertigung, Montage, Prüfmittel, Prozess)",
+      "Geeignete Maßnahmen begründet festlegen (Nacharbeit, Ausschuss, Prozessanpassung)"
+    ],
+    "traps": [
+      "Symptome mit Ursachen verwechseln (z. B. Maßabweichung statt fehlerhafte Bearbeitung)",
+      "Qualitätsanforderungen nicht eindeutig heranziehen oder falsch interpretieren",
+      "Maßnahmen nennen, ohne die tatsächliche Ursache zu beseitigen",
+      "Bewertung ohne klare Entscheidung (i. O. / n. i. O., verwendbar / nicht verwendbar)"
+    ]
+  },
+  "files": {
+    "explanation": "explanation.md",
+    "example": "example.md",
+    "practiceQuestions": "questions.practice.json",
+    "examQuestions": "questions.exam.json"
+  },
+  "kind": "learn"
+}

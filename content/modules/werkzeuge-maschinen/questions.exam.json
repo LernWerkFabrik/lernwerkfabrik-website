@@ -1,0 +1,165 @@
+[
+  {
+    "id": "wm-e-01-drehzahl-d5",
+    "prompt": "Berechne die Drehzahl n für d = 5 mm bei vc = 30 m/min.",
+    "answer": {
+      "value": 1910,
+      "unit": "1/min"
+    },
+    "tolerance": 5,
+    "solution": "n = (1000 · 30) / (π · 5) = 1909,86 1/min, gerundet 1910 1/min.",
+    "input": {
+      "mode": "integer"
+    }
+  },
+  {
+    "id": "wm-e-02-drehzahl-d8",
+    "prompt": "Berechne die Drehzahl n für d = 8 mm bei vc = 25 m/min.",
+    "answer": {
+      "value": 995,
+      "unit": "1/min"
+    },
+    "tolerance": 4,
+    "solution": "n = (1000 · 25) / (π · 8) = 994,72 1/min, gerundet 995 1/min.",
+    "input": {
+      "mode": "integer"
+    }
+  },
+  {
+    "id": "wm-e-03-vorschubgeschwindigkeit",
+    "prompt": "Gegeben: n = 1250 1/min und f = 0,12 mm/U. Berechne vf in mm/min.",
+    "answer": {
+      "value": 150,
+      "unit": "mm/min"
+    },
+    "tolerance": 0.5,
+    "solution": "vf = n · f = 1250 · 0,12 = 150 mm/min.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "wm-e-04-bearbeitungszeit",
+    "prompt": "Gegeben: Bearbeitungslänge L = 90 mm, Vorschubgeschwindigkeit vf = 150 mm/min. Berechne die Bearbeitungszeit t in min.",
+    "answer": {
+      "value": 0.6,
+      "unit": "min"
+    },
+    "tolerance": 0.02,
+    "solution": "t = L / vf = 90 / 150 = 0,60 min.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "wm-e-05-reibaufmass",
+    "prompt": "Vorbohrung 7,8 mm, Endmaß 8,0 mm. Wie groß ist das Reibaufmaß in mm?",
+    "answer": {
+      "value": 0.2,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Reibaufmaß = 8,0 - 7,8 = 0,2 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "wm-e-06-hebelarm-max",
+    "prompt": "Maximales Drehmoment: 9 N·m. Aufgebrachte Kraft: 120 N. Wie groß darf die wirksame Hebellänge maximal sein? (in mm)",
+    "answer": {
+      "value": 75,
+      "unit": "mm"
+    },
+    "tolerance": 0,
+    "solution": "l = M / F = 9 / 120 m = 0,075 m = 75 mm.",
+    "input": {
+      "mode": "integer"
+    }
+  },
+  {
+    "id": "wm-e-07-seilkraft-transport",
+    "prompt": "Ein Getriebe mit m = 36 kg wird mit zwei gleich belasteten Seilen transportiert. Der eingeschlossene Seilwinkel beträgt 60°. Wie groß ist die Kraft pro Seil in N? (g = 9,81 m/s²)",
+    "answer": {
+      "value": 204,
+      "unit": "N"
+    },
+    "tolerance": 2,
+    "solution": "Gesamtgewicht Fg = 36 · 9,81 = 353,16 N. Bei 60° eingeschlossenem Winkel gilt pro Seil F = Fg / (2 · cos 30°) = 203,9 N ≈ 204 N.",
+    "input": {
+      "mode": "integer"
+    }
+  },
+  {
+    "id": "wm-e-08-kss-gesamtmenge",
+    "prompt": "Sechs Schmierstellen erhalten jeweils 1,5 ml KSS. Wie groß ist die Gesamtmenge in ml?",
+    "answer": {
+      "value": 9,
+      "unit": "ml"
+    },
+    "tolerance": 0.1,
+    "solution": "Gesamtmenge = 6 · 1,5 ml = 9 ml.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    }
+  },
+  {
+    "id": "wm-e-09-unteres-grenzmass",
+    "prompt": "Nennmaß 25,00 ±0,05 mm. Bestimme das untere Grenzmaß.",
+    "answer": {
+      "value": 24.95,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Unteres Grenzmaß = 25,00 - 0,05 = 24,95 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "wm-e-10-oberes-grenzmass",
+    "prompt": "Nennmaß 25,00 ±0,05 mm. Bestimme das obere Grenzmaß.",
+    "answer": {
+      "value": 25.05,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Oberes Grenzmaß = 25,00 + 0,05 = 25,05 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "wm-e-11-ueberschreitung",
+    "prompt": "Nennmaß 25,00 ±0,05 mm. Gemessen wurden 25,08 mm. Um wie viel mm liegt der Wert über dem oberen Grenzmaß?",
+    "answer": {
+      "value": 0.03,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Oberes Grenzmaß 25,05 mm. Überschreitung = 25,08 - 25,05 = 0,03 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "wm-e-12-reserve-schrauben",
+    "prompt": "Die Stückliste fordert 24 Schrauben. Du planst 10 % Reserve ein. Wie viele Schrauben stellst du insgesamt bereit? (auf ganze Schrauben aufrunden)",
+    "answer": {
+      "value": 27,
+      "unit": "Stk"
+    },
+    "tolerance": 0,
+    "solution": "24 · 1,10 = 26,4 -> aufrunden auf 27 Schrauben.",
+    "input": {
+      "mode": "integer"
+    }
+  }
+]

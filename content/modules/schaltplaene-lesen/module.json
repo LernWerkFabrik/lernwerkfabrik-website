@@ -1,0 +1,35 @@
+{
+  "id": "schaltplaene-lesen",
+  "title": "Schalt- und Funktionspläne lesen",
+  "description": "Symbole, Signalfluss und Funktionslogik verstehen (AP2-klassisch).",
+  "difficulty": "medium",
+  "tags": [
+    "Schaltplan",
+    "Funktion",
+    "Elektrik"
+  ],
+  "estimatedMinutes": 45,
+  "intro": {
+    "why": "In AP2-nahen Aufgaben ist der Schalt- oder Funktionsplan die zentrale Informationsquelle. Bewertet wird nicht, ob du einzelne Symbole nur auswendig kennst, sondern ob du Signalfluss, logische Verknüpfungen und die Gesamtfunktion fachlich erklären kannst. Punktverluste entstehen häufig, wenn Pläne nur oberflächlich gelesen, Freigaben falsch gedeutet oder Zusammenhänge zwischen Sensorik, Logik und Aktorik nicht sauber dargestellt werden.",
+    "trains": [
+      "Symbole und Bezeichnungen in Schalt- und Funktionsplänen sicher deuten",
+      "Signalwege von der Startbedingung bis zur Rückmeldung logisch verfolgen",
+      "Freigaben, Verriegelungen und Ablaufbedingungen korrekt bewerten",
+      "Funktionen und Abweichungen planbasiert und prüfungstauglich erklären"
+    ],
+    "traps": [
+      "Symbole isoliert benennen, ohne den Funktionszusammenhang zu zeigen",
+      "Signalfluss in falscher Richtung oder mit übersprungenen Bedingungen verfolgen",
+      "Grundstellung, Startbedingungen und Verriegelungen nicht vollständig prüfen",
+      "Aussagen zur Funktion machen, ohne sie direkt am Plan zu begründen"
+    ]
+  },
+  "files": {
+    "explanation": "explanation.md",
+    "symbols": "symbols.md",
+    "example": "example.md",
+    "practiceQuestions": "questions.practice.json",
+    "examQuestions": "questions.exam.json"
+  },
+  "kind": "learn"
+}

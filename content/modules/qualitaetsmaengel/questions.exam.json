@@ -1,0 +1,12 @@
+[
+  {
+    "id": "q1",
+    "prompt": "Platzhalter-Aufgabe (bitte ersetzen).",
+    "answer": {
+      "value": 0,
+      "unit": ""
+    },
+    "tolerance": 0,
+    "solution": "Platzhalter-Lösung."
+  }
+]

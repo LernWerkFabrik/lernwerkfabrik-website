@@ -1,0 +1,168 @@
+[
+  {
+    "id": "tf-e-01-oberes-grenzmass",
+    "prompt": "Nennmaß 32,00 mm mit Toleranz ±0,08 mm. Bestimme das obere Grenzmaß.",
+    "answer": {
+      "value": 32.08,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Oberes Grenzmaß = 32,00 + 0,08 = 32,08 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "tf-e-02-unteres-grenzmass",
+    "prompt": "Nennmaß 32,00 mm mit Toleranz ±0,08 mm. Bestimme das untere Grenzmaß.",
+    "answer": {
+      "value": 31.92,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Unteres Grenzmaß = 32,00 - 0,08 = 31,92 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "tf-e-03-toleranzbreite",
+    "prompt": "Wie groß ist die gesamte Toleranzbreite bei ±0,08 mm?",
+    "answer": {
+      "value": 0.16,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Toleranzbreite = 2 · 0,08 mm = 0,16 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "tf-e-04-abweichung-vom-oberen-grenzmass",
+    "prompt": "Sollmaß 32,00 ±0,08 mm, Messwert 32,11 mm. Um wie viel mm liegt der Messwert über dem oberen Grenzmaß?",
+    "answer": {
+      "value": 0.03,
+      "unit": "mm"
+    },
+    "tolerance": 0.005,
+    "solution": "Oberes Grenzmaß 32,08 mm. Abweichung = 32,11 - 32,08 = 0,03 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 3
+    }
+  },
+  {
+    "id": "tf-e-05-reibaufmass-10h7",
+    "prompt": "Vorbohrung 9,80 mm, Endmaß 10,00 mm (Reiben). Berechne das Reibaufmaß.",
+    "answer": {
+      "value": 0.2,
+      "unit": "mm"
+    },
+    "tolerance": 0.02,
+    "solution": "Reibaufmaß = 10,00 - 9,80 = 0,20 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "tf-e-06-drehzahl-d8",
+    "prompt": "Berechne die Bohrdrehzahl n bei vc = 25 m/min und d = 8 mm. Formel: n = (1000·vc)/(π·d).",
+    "answer": {
+      "value": 995,
+      "unit": "1/min"
+    },
+    "tolerance": 30,
+    "solution": "n = (1000·25)/(π·8) = 994,7 1/min, gerundet 995 1/min.",
+    "input": {
+      "mode": "integer"
+    }
+  },
+  {
+    "id": "tf-e-07-vorschubgeschwindigkeit",
+    "prompt": "n = 950 1/min und f = 0,14 mm/U. Berechne die Vorschubgeschwindigkeit vf in mm/min.",
+    "answer": {
+      "value": 133,
+      "unit": "mm/min"
+    },
+    "tolerance": 2,
+    "solution": "vf = n · f = 950 · 0,14 = 133 mm/min.",
+    "input": {
+      "mode": "integer"
+    }
+  },
+  {
+    "id": "tf-e-08-minimales-spiel",
+    "prompt": "Bohrung 25,000 bis 25,021 mm, Welle 24,990 bis 25,000 mm. Wie groß ist das minimale Spiel?",
+    "answer": {
+      "value": 0,
+      "unit": "mm"
+    },
+    "tolerance": 0.005,
+    "solution": "Minimales Spiel = Bohrung min - Welle max = 25,000 - 25,000 = 0,000 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 3
+    }
+  },
+  {
+    "id": "tf-e-09-maximales-spiel",
+    "prompt": "Bohrung 25,000 bis 25,021 mm, Welle 24,990 bis 25,000 mm. Wie groß ist das maximale Spiel?",
+    "answer": {
+      "value": 0.031,
+      "unit": "mm"
+    },
+    "tolerance": 0.005,
+    "solution": "Maximales Spiel = Bohrung max - Welle min = 25,021 - 24,990 = 0,031 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 3
+    }
+  },
+  {
+    "id": "tf-e-10-maximales-uebermass",
+    "prompt": "Bohrung 40,000 bis 40,025 mm, Welle 40,010 bis 40,035 mm. Wie groß ist das maximale Übermaß?",
+    "answer": {
+      "value": 0.035,
+      "unit": "mm"
+    },
+    "tolerance": 0.005,
+    "solution": "Maximales Übermaß = Welle max - Bohrung min = 40,035 - 40,000 = 0,035 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 3
+    }
+  },
+  {
+    "id": "tf-e-11-ausschussquote",
+    "prompt": "In einer Serie von 80 Teilen sind 4 Teile außerhalb der Toleranz. Wie groß ist die Ausschussquote in Prozent?",
+    "answer": {
+      "value": 5,
+      "unit": "%"
+    },
+    "tolerance": 0.1,
+    "solution": "Ausschussquote = (4/80) · 100 = 5 %.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    }
+  },
+  {
+    "id": "tf-e-12-abstand-zum-unteren-grenzmass",
+    "prompt": "Sollmaß 50,00 ±0,10 mm, Messwert 49,94 mm. Wie groß ist der Abstand zum unteren Grenzmaß?",
+    "answer": {
+      "value": 0.04,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Unteres Grenzmaß = 49,90 mm. Abstand = 49,94 - 49,90 = 0,04 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  }
+]

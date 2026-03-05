@@ -1,0 +1,169 @@
+[
+  {
+    "id": "wev-e-01-stress",
+    "prompt": "Berechne die Spannung: F = 18 kN, A = 90 mm2. Ergebnis in N/mm2.",
+    "answer": {
+      "value": 200,
+      "unit": "N/mm2"
+    },
+    "tolerance": 1,
+    "solution": "F=18000 N. sigma=F/A=18000/90=200 N/mm2.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "wev-e-02-utilization",
+    "prompt": "Re = 225 N/mm2, sigma = 180 N/mm2. Berechne die Ausnutzung in %.",
+    "answer": {
+      "value": 80,
+      "unit": "%"
+    },
+    "tolerance": 0.2,
+    "solution": "Ausnutzung=sigma/Re*100=180/225*100=80 %.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "wev-e-03-safety-factor",
+    "prompt": "Berechne den Sicherheitsfaktor n = Re/sigma für Re = 235 N/mm2 und sigma = 188 N/mm2.",
+    "answer": {
+      "value": 1.25,
+      "unit": "-"
+    },
+    "tolerance": 0.02,
+    "solution": "n=235/188=1.25.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "wev-e-04-force-at-yield",
+    "prompt": "Wie groß ist die Kraft bei Erreichen von Re = 215 N/mm2 bei A = 140 mm2? Ergebnis in kN.",
+    "answer": {
+      "value": 30.1,
+      "unit": "kN"
+    },
+    "tolerance": 0.1,
+    "solution": "F=Re*A=215*140=30100 N=30.1 kN.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "wev-e-05-re-drop-percent",
+    "prompt": "Die Streckgrenze sinkt von 235 auf 215 N/mm2. Wie groß ist die Abnahme in %?",
+    "answer": {
+      "value": 8.51,
+      "unit": "%"
+    },
+    "tolerance": 0.15,
+    "solution": "Abnahme=(235-215)/235*100=8.51 %.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "wev-e-06-rm-re-gap",
+    "prompt": "Berechne Rm - Re für Rm = 360 N/mm2 und Re = 235 N/mm2.",
+    "answer": {
+      "value": 125,
+      "unit": "N/mm2"
+    },
+    "tolerance": 1,
+    "solution": "Rm-Re=360-235=125 N/mm2.",
+    "input": {
+      "mode": "integer"
+    }
+  },
+  {
+    "id": "wev-e-07-rm-re-ratio",
+    "prompt": "Berechne das Verhältnis Rm/Re für Rm = 510 N/mm2 und Re = 235 N/mm2.",
+    "answer": {
+      "value": 2.17,
+      "unit": "-"
+    },
+    "tolerance": 0.03,
+    "solution": "Rm/Re=510/235=2.17.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "wev-e-08-hardness-increase",
+    "prompt": "Die Härte steigt von 320 HV auf 640 HV. Wie groß ist die Steigerung in %?",
+    "answer": {
+      "value": 100,
+      "unit": "%"
+    },
+    "tolerance": 0.2,
+    "solution": "Steigerung=(640-320)/320*100=100 %.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "wev-e-09-hardness-ratio",
+    "prompt": "Randschicht 690 HV, Kern 520 HV. Berechne das Verhältnis H_rand/H_kern.",
+    "answer": {
+      "value": 1.33,
+      "unit": "-"
+    },
+    "tolerance": 0.03,
+    "solution": "Verhältnis=690/520=1.3269, gerundet 1.33.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "wev-e-10-kv-reserve",
+    "prompt": "Mindest-Kerbschlagarbeit 27 J, vorhandener Wert 34 J. Wie groß ist die Reserve in % bezogen auf den Mindestwert?",
+    "answer": {
+      "value": 25.93,
+      "unit": "%"
+    },
+    "tolerance": 0.25,
+    "solution": "Reserve=(34-27)/27*100=25.93 %.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "wev-e-11-stress-second",
+    "prompt": "Berechne die Spannung: F = 12.5 kN, A = 80 mm2. Ergebnis in N/mm2.",
+    "answer": {
+      "value": 156.25,
+      "unit": "N/mm2"
+    },
+    "tolerance": 0.5,
+    "solution": "F=12500 N. sigma=12500/80=156.25 N/mm2.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "wev-e-12-allowable-force",
+    "prompt": "Re = 225 N/mm2, A = 160 mm2, geforderter Sicherheitsfaktor n = 1.5. Wie groß ist die zulässige Kraft in kN?",
+    "answer": {
+      "value": 24,
+      "unit": "kN"
+    },
+    "tolerance": 0.1,
+    "solution": "sigma_zul=Re/n=225/1.5=150 N/mm2. F_zul=sigma_zul*A=150*160=24000 N=24 kN.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  }
+]

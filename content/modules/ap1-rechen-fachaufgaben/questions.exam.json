@@ -1,0 +1,130 @@
+[
+  {
+    "id": "ap1-rf-01",
+    "practiceId": "ap1-rf-01",
+    "prompt": "Einheiten umrechnen: 2,5 kN in Newton (N) umrechnen.",
+    "answer": { "value": 2500, "unit": "N" },
+    "tolerance": 1,
+    "input": { "mode": "decimal", "maxDecimals": 0, "allowNegative": false }
+  },
+  {
+    "id": "ap1-rf-02",
+    "practiceId": "ap1-rf-02",
+    "prompt": "Druck berechnen: Eine Kraft von 800 N wirkt auf eine Fläche von 20 cm2. Berechne den Druck in bar. (1 bar = 100000 Pa, 1 cm2 = 1e-4 m2)",
+    "answer": { "value": 4, "unit": "bar" },
+    "tolerance": 0.05,
+    "input": { "mode": "decimal", "maxDecimals": 2, "allowNegative": false }
+  },
+  {
+    "id": "ap1-rf-03",
+    "practiceId": "ap1-rf-03",
+    "prompt": "Drehmoment berechnen: An einem Hebelarm von 0,25 m wirkt eine Kraft von 120 N. Berechne das Drehmoment in Nm.",
+    "answer": { "value": 30, "unit": "Nm" },
+    "tolerance": 0.2,
+    "input": { "mode": "decimal", "maxDecimals": 2, "allowNegative": false }
+  },
+  {
+    "id": "ap1-rf-04",
+    "practiceId": "ap1-rf-04",
+    "prompt": "Leistung berechnen: Es werden 18 kJ Arbeit in 30 s verrichtet. Berechne die Leistung in Watt (W).",
+    "answer": { "value": 600, "unit": "W" },
+    "tolerance": 5,
+    "input": { "mode": "decimal", "maxDecimals": 0, "allowNegative": false }
+  },
+  {
+    "id": "ap1-rf-05",
+    "practiceId": "ap1-rf-05",
+    "prompt": "Dichte berechnen: Ein Werkstück hat die Masse 2,7 kg und ein Volumen von 1,0 dm3. Berechne die Dichte in kg/m3. (1 dm3 = 0,001 m3)",
+    "answer": { "value": 2700, "unit": "kg/m3" },
+    "tolerance": 10,
+    "input": { "mode": "decimal", "maxDecimals": 0, "allowNegative": false }
+  },
+  {
+    "id": "ap1-rf-06",
+    "practiceId": "ap1-rf-06",
+    "prompt": "Volumen berechnen: Zylinder mit Durchmesser 40 mm und Höhe 60 mm. Berechne das Volumen in cm3. (π = 3,1416; 10 mm = 1 cm)",
+    "answer": { "value": 75.4, "unit": "cm3" },
+    "tolerance": 0.3,
+    "input": { "mode": "decimal", "maxDecimals": 1, "allowNegative": false }
+  },
+  {
+    "id": "ap1-rf-07",
+    "practiceId": "ap1-rf-07",
+    "prompt": "Fläche berechnen: Rechteck mit 120 mm × 80 mm. Berechne die Fläche in mm2.",
+    "answer": { "value": 9600, "unit": "mm2" },
+    "tolerance": 5,
+    "input": { "mode": "decimal", "maxDecimals": 0, "allowNegative": false }
+  },
+  {
+    "id": "ap1-rf-08",
+    "practiceId": "ap1-rf-08",
+    "prompt": "Drehzahl umrechnen: 1500 1/min in 1/s umrechnen.",
+    "answer": { "value": 25, "unit": "1/s" },
+    "tolerance": 0.1,
+    "input": { "mode": "decimal", "maxDecimals": 2, "allowNegative": false }
+  },
+  {
+    "id": "ap1-rf-09",
+    "practiceId": "ap1-rf-09",
+    "prompt": "Umfangsgeschwindigkeit berechnen: Ein Werkstück mit Durchmesser 50 mm dreht mit 600 1/min. Berechne die Umfangsgeschwindigkeit v in m/min. (v = π · d · n, d in m)",
+    "answer": { "value": 94.25, "unit": "m/min" },
+    "tolerance": 0.3,
+    "input": { "mode": "decimal", "maxDecimals": 2, "allowNegative": false }
+  },
+  {
+    "id": "ap1-rf-10",
+    "practiceId": "ap1-rf-10",
+    "prompt": "Kraft aus Druck berechnen: Pneumatikzylinder mit Durchmesser 50 mm, Betriebsdruck 6 bar. Berechne die Kolbenkraft in N. (F = p · A, p in Pa; 1 bar = 100000 Pa; A = π · (d/2)^2, d in m)",
+    "answer": { "value": 1178, "unit": "N" },
+    "tolerance": 15,
+    "input": { "mode": "decimal", "maxDecimals": 0, "allowNegative": false }
+  },
+  {
+    "id": "ap1-rf-11",
+    "practiceId": "ap1-rf-11",
+    "prompt": "Elektrische Leistung: An einer Anlage liegen 24 V an, der Strom beträgt 2,5 A. Berechne die Leistung in W. (P = U · I)",
+    "answer": { "value": 60, "unit": "W" },
+    "tolerance": 1,
+    "input": { "mode": "decimal", "maxDecimals": 0, "allowNegative": false }
+  },
+  {
+    "id": "ap1-rf-12",
+    "practiceId": "ap1-rf-12",
+    "prompt": "Masse aus Dichte (Fachkunde): Ein Stahlblock hat 50 mm × 30 mm × 10 mm. Dichte von Stahl: 7,85 g/cm3. Berechne die Masse in g. (1 cm3 = 1000 mm3)",
+    "answer": { "value": 117.75, "unit": "g" },
+    "tolerance": 1,
+    "input": { "mode": "decimal", "maxDecimals": 2, "allowNegative": false }
+  },
+  {
+    "id": "ap1-rf-13",
+    "practiceId": "ap1-rf-13",
+    "prompt": "Einheiten umrechnen: 0,8 MPa in bar umrechnen. (1 MPa = 10 bar)",
+    "answer": { "value": 8, "unit": "bar" },
+    "tolerance": 0.05,
+    "input": { "mode": "decimal", "maxDecimals": 2, "allowNegative": false }
+  },
+  {
+    "id": "ap1-rf-14",
+    "practiceId": "ap1-rf-14",
+    "prompt": "Wirkungsgrad berechnen: Ein Motor nimmt 1,5 kW auf und gibt 1,2 kW ab. Berechne den Wirkungsgrad in %. (η = P_ab / P_zu · 100)",
+    "answer": { "value": 80, "unit": "%" },
+    "tolerance": 1,
+    "input": { "mode": "decimal", "maxDecimals": 1, "allowNegative": false }
+  },
+  {
+    "id": "ap1-rf-15",
+    "practiceId": "ap1-rf-15",
+    "prompt": "Vorschub berechnen (Fachkunde): Drehzahl n = 1200 1/min, Vorschub pro Umdrehung f = 0,2 mm/U. Berechne den Vorschub v_f in mm/min. (v_f = n · f)",
+    "answer": { "value": 240, "unit": "mm/min" },
+    "tolerance": 2,
+    "input": { "mode": "decimal", "maxDecimals": 0, "allowNegative": false }
+  },
+  {
+    "id": "ap1-rf-16",
+    "practiceId": "ap1-rf-16",
+    "prompt": "Zeit umrechnen: 0,75 h in Minuten umrechnen.",
+    "answer": { "value": 45, "unit": "min" },
+    "tolerance": 0.1,
+    "input": { "mode": "decimal", "maxDecimals": 1, "allowNegative": false }
+  }
+]

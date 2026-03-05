@@ -1,0 +1,651 @@
+[
+  {
+    "id": "sfl-01-ziel-planlesen",
+    "type": "single_choice",
+    "prompt": "Was ist beim Lesen von Schalt- und Funktionsplänen das wichtigste Prüfungsziel?",
+    "answer": {
+      "choices": [
+        "Möglichst viele Symbole auswendig aufzählen",
+        "Signal- und Funktionszusammenhang logisch nachvollziehen und erklären",
+        "Nur Endlagen von Zylindern benennen",
+        "Bauteile ohne Analyse austauschen"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "sfl-02-planinhalte",
+    "type": "multi_select",
+    "prompt": "Welche Informationen entnimmst du einem Schalt- oder Funktionsplan für die Aufgabenlösung? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Versorgung und Bezugspotenzial",
+        "Zuordnung von Sensoren und Aktoren",
+        "Freigaben, Verriegelungen und logische Verknüpfungen",
+        "Nur Leitungsfarben ohne Funktionsbezug",
+        "Bezeichnungen von Signalen, Klemmen und Baugruppen"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "sfl-03-grundstellung",
+    "type": "single_choice",
+    "prompt": "Wann ist die Grundstellung einer Steuerung fachlich korrekt erreicht?",
+    "answer": {
+      "choices": [
+        "Wenn ein beliebiger Aktor in Endlage steht",
+        "Wenn alle im Plan definierten Startzustände und Freigaben gleichzeitig vorliegen",
+        "Wenn nur der Hauptschalter eingeschaltet ist",
+        "Wenn ein Reset ausgeführt wurde"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "sfl-04-planleseablauf",
+    "type": "order",
+    "prompt": "Ordne einen praxistauglichen Ablauf zum Lesen eines Schalt- und Funktionsplans.",
+    "items": [
+      "Aufgabenstellung und Legende prüfen",
+      "Grundstellung und Startbedingungen markieren",
+      "Signalweg vom Auslöser bis zum Aktor verfolgen",
+      "Rückmeldungen und Verriegelungen prüfen",
+      "Funktion in fachlicher Kurzform zusammenfassen"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "sfl-05-startbedingungen-foerderanlage",
+    "type": "multi_select",
+    "prompt": "Welche Bedingungen müssen für den Start eines Prozesszyklus erfüllt sein? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Grundstellung ist vorhanden",
+        "BG7 meldet Werkstück an der Sperre",
+        "BG9 meldet Rollbahn frei",
+        "MM3 ist bereits ausgefahren",
+        "Anlagenschalter GQ1 ist eingeschaltet"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "sfl-06-planarten",
+    "type": "single_choice",
+    "prompt": "Welche Aussage beschreibt den Unterschied zwischen Schaltplan und Funktionsplan am besten?",
+    "answer": {
+      "choices": [
+        "Der Schaltplan zeigt die technische Verschaltung, der Funktionsplan den logischen Ablauf",
+        "Der Funktionsplan zeigt nur Bauteilmaße, der Schaltplan nur Stücklisten",
+        "Schaltplan und Funktionsplan sind immer vollständig identisch",
+        "Funktionspläne sind nur für mechanische Systeme relevant"
+      ],
+      "correctIndex": 0
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "sfl-07-prozessfolge",
+    "type": "order",
+    "prompt": "Ordne die Prozessfolge der Förderanlage richtig.",
+    "items": [
+      "MM1 fährt zurück",
+      "Werkstück löst BG8 aus",
+      "MM1 fährt wieder in Sperrstellung",
+      "MM2 hebt den Werkstückträger an",
+      "MM3 schiebt auf die Rollbahn",
+      "Nach BG9 fahren MM2 und MM3 in Grundstellung"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "sfl-08-schliesser",
+    "type": "single_choice",
+    "prompt": "Welche Aussage zum Schließer ist richtig?",
+    "answer": {
+      "choices": [
+        "Ein Schließer ist im Ruhezustand geschlossen und öffnet bei Betätigung",
+        "Ein Schließer ist im Ruhezustand offen und schließt bei Betätigung",
+        "Ein Schließer trennt immer beide Leitungen dauerhaft",
+        "Ein Schließer darf nur zusammen mit Zeitgliedern verwendet werden"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "sfl-09-startblockade-bg9",
+    "type": "single_choice",
+    "prompt": "Grundstellung und BG7 sind vorhanden, der Zyklus startet aber nicht, weil BG9 \"belegt\" meldet. Was ist die sinnvollste Erstbewertung?",
+    "answer": {
+      "choices": [
+        "Startbedingung fehlt, daher Rollbahn und BG9 zuerst prüfen",
+        "Sofort MM2 austauschen",
+        "Nur einen Neustart durchführen und freigeben",
+        "Fehler ignorieren, weil BG7 aktiv ist"
+      ],
+      "correctIndex": 0
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "sfl-10-und-verknuepfung",
+    "type": "multi_select",
+    "prompt": "Welche Aussagen beschreiben eine UND-Verknüpfung im Startzweig korrekt? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Der Start wird nur freigegeben, wenn alle geforderten Signale anliegen",
+        "Ein einzelnes erfülltes Signal reicht für den Start aus",
+        "Fällt eine Bedingung weg, fällt auch die Freigabe",
+        "UND bedeutet mehrere alternative Startwege",
+        "Alle beteiligten Bedingungen müssen gleichzeitig wahr sein"
+      ],
+      "correctIndices": [
+        0,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "sfl-11-versorgung-grenzwert",
+    "prompt": "Eine Versorgung ist mit 24,0 V ± 5 % angegeben. Wie groß ist der untere Grenzwert?",
+    "answer": {
+      "value": 22.8,
+      "unit": "V"
+    },
+    "tolerance": 0.05,
+    "solution": "Unterer Grenzwert = 24,0 · 0,95 = 22,8 V.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "sfl-12-signalkette-start",
+    "type": "order",
+    "prompt": "Ordne die Signalkette vom Startimpuls bis zur Rückmeldung in die richtige Reihenfolge.",
+    "items": [
+      "Starttaster SJ1 wird betätigt",
+      "Eingangssignal wird in der Steuerung erfasst",
+      "Freigaben (Grundstellung/BG7/BG9) werden logisch verknüpft",
+      "Ausgang für MM1 wird gesetzt",
+      "MM1 fährt zurück",
+      "BG8 meldet Werkstück auf der Hubplattform"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "sfl-13-zeitbedingung",
+    "prompt": "Im Ablauf ist \"mindestens 1,0 s in Grundstellung\" gefordert. Gemessen werden 0,7 s. Um wie viel ist die Vorgabe unterschritten?",
+    "answer": {
+      "value": 0.3,
+      "unit": "s"
+    },
+    "tolerance": 0.03,
+    "solution": "Unterschreitung = 1,0 - 0,7 = 0,3 s.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "sfl-14-verriegelung",
+    "type": "single_choice",
+    "prompt": "Was bedeutet eine Verriegelung zwischen MM2 und MM3 fachlich korrekt?",
+    "answer": {
+      "choices": [
+        "MM2 und MM3 fahren immer gleichzeitig aus",
+        "MM3 darf erst arbeiten, wenn die im Plan geforderte Bedingung für MM2 erfüllt ist",
+        "Eine Verriegelung ersetzt alle Sensoren",
+        "Verriegelungen gelten nur im Handbetrieb"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "sfl-15-lesefehler",
+    "type": "multi_select",
+    "prompt": "Welche Punkte sind typische Lesefehler bei Schalt- und Funktionsplänen? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Signalfluss in falscher Richtung verfolgen",
+        "Bezeichnungen wie BG/MM/SJ ignorieren",
+        "Rückmeldesensoren und Startsensoren verwechseln",
+        "Bedingungen direkt aus dem Plan begründet ableiten",
+        "Grundstellung nicht prüfen"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "sfl-16-pruefkette-aktor",
+    "type": "order",
+    "prompt": "Ordne die planbasierte Prüfkette, wenn ein Aktor nicht schaltet.",
+    "items": [
+      "Symptom konkret erfassen (z. B. MM3 fährt nicht)",
+      "Im Plan zugehörigen Ausgang und alle Freigaben identifizieren",
+      "Eingangssignale und Bedingungen einzeln prüfen",
+      "Ausgangssignal und Versorgung am Aktor prüfen",
+      "Ursache mit Planbezug dokumentieren"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "sfl-17-anteil-korrekt",
+    "prompt": "Du hast 12 Signalverknüpfungen geprüft und 9 korrekt interpretiert. Wie hoch ist der Anteil in Prozent?",
+    "answer": {
+      "value": 75,
+      "unit": "%"
+    },
+    "tolerance": 0.2,
+    "solution": "Anteil = (9 / 12) · 100 = 75 %.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "sfl-18-bg8-kein-signal",
+    "type": "single_choice",
+    "prompt": "MM1 fährt zurück, aber BG8 wird nicht erkannt. Was ist als nächster Schritt am sinnvollsten?",
+    "answer": {
+      "choices": [
+        "Nur SPS neu starten",
+        "Werkstücklauf zur Hubplattform sowie Position/Funktion von BG8 prüfen",
+        "Sofort MM2 austauschen",
+        "Prüfung beenden, weil MM1 reagiert"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "sfl-19-ausgang-aktiv-keine-bewegung",
+    "type": "multi_select",
+    "prompt": "Der Ausgang zum Ventil ist aktiv, der Zylinder bewegt sich nicht. Welche Ursachen sind typisch? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Kein Arbeitsdruck am Ventil/Aktor",
+        "Leitungsunterbrechung zwischen Ausgang und Spule",
+        "Mechanische Blockade am Zylinder",
+        "BG9 meldet korrekt frei",
+        "Defekte Ventilspule"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "sfl-20-wiederkehrende-abweichung",
+    "type": "order",
+    "prompt": "Ordne das Vorgehen bei einer wiederkehrenden Abweichung im Ablaufplan.",
+    "items": [
+      "Störung unter gleichen Bedingungen reproduzieren",
+      "Soll-Ablauf aus dem Funktionsplan mit Ist-Ablauf vergleichen",
+      "Abweichende Signalstelle lokalisieren",
+      "Gezielte Nachprüfung an der Hauptursache durchführen",
+      "Korrektur umsetzen und Wirksamkeit per Probelauf nachweisen"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "sfl-21-verfuegbarkeit",
+    "prompt": "Geplante Laufzeit: 32 h. Durch eine falsch interpretierte Startverknüpfung entstehen 1 h 20 min Stillstand. Wie hoch ist die Verfügbarkeit in Prozent?",
+    "answer": {
+      "value": 95.8,
+      "unit": "%"
+    },
+    "tolerance": 0.3,
+    "solution": "1 h 20 min = 1,33 h. Verfügbarkeit = ((32 - 1,33) / 32) · 100 = 95,84 % (gerundet 95,8 %).",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "sfl-22-strategie-komplexplan",
+    "type": "single_choice",
+    "prompt": "Welche Strategie ist beim Lesen eines komplexen Schaltplans mit mehreren Verzweigungen fachlich am besten?",
+    "answer": {
+      "choices": [
+        "Nur das zuletzt aktive Signal betrachten",
+        "Plan in Teilsysteme gliedern, Freigaben zuerst prüfen, dann Signalfluss bis zum Aktor verfolgen",
+        "Alle Sensoren gleichzeitig tauschen",
+        "Ausschließlich die mechanische Seite prüfen"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "sfl-23-structured-erstanalyse",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (6-8 Sätze): Ein Werkstück liegt an der Sperre an, der Zyklus startet aber nicht. Beschreibe deine planbasierte Erstanalyse.",
+    "answer": {
+      "fields": [
+        {
+          "key": "ausgangszustand",
+          "label": "Ausgangszustand",
+          "minWords": 20,
+          "placeholder": "z. B. Grundstellung, beteiligte Signale, beobachtete Abweichung"
+        },
+        {
+          "key": "signalkette",
+          "label": "Signalkette prüfen",
+          "minWords": 22,
+          "placeholder": "z. B. Start, BG7/BG9, Verknüpfung, Ausgang, Aktor"
+        },
+        {
+          "key": "erstbewertung",
+          "label": "Erste Bewertung",
+          "minWords": 20,
+          "placeholder": "z. B. wahrscheinlichste Ursache und nächster Nachweisschritt"
+        }
+      ],
+      "keywords": {
+        "ausgangszustand": [
+          "grundstellung",
+          "startbedingung",
+          "signal",
+          "istzustand",
+          "abweichung",
+          "betriebsart"
+        ],
+        "signalkette": [
+          "signalfluss",
+          "verknuepfung",
+          "freigabe",
+          "ausgang",
+          "aktor",
+          "pruefen"
+        ],
+        "erstbewertung": [
+          "ursache",
+          "hypothese",
+          "nachweis",
+          "messung",
+          "prioritaet",
+          "naechster"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 68
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Grundstellung und Startbedingungen zuerst vollständig benennen",
+        "Signalkette vom Auslöser bis zum Aktor Schritt für Schritt darstellen",
+        "Verknüpfungen und Verriegelungen explizit prüfen",
+        "Erste Ursache mit einem konkreten Nachweisschritt begründen"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "sfl-24-structured-diagnoseplan",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (6-8 Sätze): In der Anlage fährt MM3 aus, obwohl BG9 \"belegt\" meldet. Erstelle einen Diagnoseplan anhand von Schalt- und Funktionsplan.",
+    "answer": {
+      "fields": [
+        {
+          "key": "plananalyse",
+          "label": "Plananalyse",
+          "minWords": 20,
+          "placeholder": "z. B. Soll-Bedingung, Verknüpfung, betroffene Planstelle"
+        },
+        {
+          "key": "diagnose",
+          "label": "Diagnosekette",
+          "minWords": 24,
+          "placeholder": "z. B. Eingänge, Logik, Ausgang, Aktor, Rückmeldung"
+        },
+        {
+          "key": "nachweis",
+          "label": "Nachweis und Bewertung",
+          "minWords": 20,
+          "placeholder": "z. B. Soll/Ist-Vergleich, Befund, dokumentierte Bewertung"
+        }
+      ],
+      "keywords": {
+        "plananalyse": [
+          "soll",
+          "freigabe",
+          "verriegelung",
+          "planstelle",
+          "bedingung",
+          "logik"
+        ],
+        "diagnose": [
+          "eingang",
+          "verknuepfung",
+          "ausgang",
+          "aktor",
+          "rueckmeldung",
+          "signal"
+        ],
+        "nachweis": [
+          "ist",
+          "vergleich",
+          "befund",
+          "ursache",
+          "dokumentation",
+          "bewertung"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 70
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Sollbedingung aus dem Plan zuerst klar formulieren",
+        "Signalweg inklusive Logikstufe schrittweise prüfen",
+        "Befund und Ursache sauber trennen",
+        "Abschluss mit dokumentiertem Soll/Ist-Vergleich formulieren"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "sfl-25-structured-abschluss",
+    "type": "structured_text",
+    "prompt": "Abschlussaufgabe (7-9 Sätze): Nach einer Korrektur läuft der Ablauf zunächst 20 Minuten stabil, danach tritt derselbe Fehler erneut auf. Beschreibe dein Vorgehen bis zur erneuten Übergabe.",
+    "answer": {
+      "fields": [
+        {
+          "key": "erneute_analyse",
+          "label": "Erneute Analyse",
+          "minWords": 22,
+          "placeholder": "z. B. Vergleich Erstfall, Reproduktionsbedingungen, neue Planprüfung"
+        },
+        {
+          "key": "entscheidung",
+          "label": "Entscheidung und Maßnahme",
+          "minWords": 22,
+          "placeholder": "z. B. priorisierte Ursache, technische Entscheidung, Umsetzung"
+        },
+        {
+          "key": "abschluss",
+          "label": "Nachweis und Übergabe",
+          "minWords": 22,
+          "placeholder": "z. B. Probelauf, Soll/Ist, Restmängelstatus, Protokoll"
+        }
+      ],
+      "keywords": {
+        "erneute_analyse": [
+          "vergleich",
+          "stoerungsbild",
+          "reproduzieren",
+          "plan",
+          "messung",
+          "ursache"
+        ],
+        "entscheidung": [
+          "massnahme",
+          "prioritaet",
+          "begruendung",
+          "technisch",
+          "risiko",
+          "nacharbeit"
+        ],
+        "abschluss": [
+          "probelauf",
+          "soll",
+          "ist",
+          "wirksamkeit",
+          "dokumentation",
+          "uebergabe"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 75
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Wiederkehrenden Fehler mit Erstbefund direkt vergleichen",
+        "Signal- und Funktionskette erneut vollständig absichern",
+        "Maßnahme technisch begründet priorisieren",
+        "Übergabe nur nach dokumentiertem Wirksamkeitsnachweis formulieren"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  }
+]

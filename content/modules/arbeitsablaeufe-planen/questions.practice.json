@@ -1,0 +1,647 @@
+[
+  {
+    "id": "apd-01-ziel-planung",
+    "type": "single_choice",
+    "prompt": "Was ist das Hauptziel beim Planen von Arbeitsabläufen?",
+    "answer": {
+      "choices": [
+        "Nur möglichst viele Schritte aufzählen",
+        "Arbeitsschritte logisch anordnen und sicher zur geforderten Qualität führen",
+        "Ausschließlich die Endkontrolle dokumentieren",
+        "Nur die Maschinenlaufzeit erfassen"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "apd-02-bestandteile-arbeitsplan",
+    "type": "multi_select",
+    "prompt": "Welche Punkte gehören in einen vollständigen Arbeitsablaufplan? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Arbeitsschritte mit Reihenfolge",
+        "benötigte Werkzeuge/Prüfmittel",
+        "Prüfpunkte und Freigaben",
+        "Zeitbedarf je Schritt",
+        "Nur die Aussage: 'Ablauf wie immer'"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "apd-03-grundablauf-order",
+    "type": "order",
+    "prompt": "Ordne den Grundablauf eines Arbeitsauftrags.",
+    "items": [
+      "Auftrag und Anforderungen klären",
+      "Arbeitsschritte und Reihenfolge planen",
+      "Ressourcen bereitstellen",
+      "Ablauf durchführen",
+      "Ergebnis prüfen",
+      "Dokumentation und Übergabe abschließen"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "apd-04-zweck-dokumentation",
+    "type": "single_choice",
+    "prompt": "Warum ist eine saubere Ablaufdokumentation prüfungsrelevant?",
+    "answer": {
+      "choices": [
+        "Nur damit die Datei nicht leer bleibt",
+        "Weil Planung, Durchführung und Ergebnis nachvollziehbar nachgewiesen werden",
+        "Damit man weniger prüfen muss",
+        "Nur zur Archivpflicht ohne technischen Nutzen"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "apd-05-planungsunterlagen",
+    "type": "multi_select",
+    "prompt": "Welche Unterlagen unterstützen die Ablaufplanung fachlich? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Arbeitsauftrag mit Anforderungen",
+        "technische Zeichnungen/Funktionsunterlagen",
+        "Prüf- oder Wartungsanweisungen",
+        "frühere Störungs- oder Abschlussprotokolle",
+        "private Notizen ohne Anlagenbezug"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "apd-06-arbeitsgang-beschreibung",
+    "type": "single_choice",
+    "prompt": "Welche Formulierung ist für einen Arbeitsschritt fachlich am besten?",
+    "answer": {
+      "choices": [
+        "Schritt irgendwie durchführen",
+        "Später schauen, was passt",
+        "Baugruppe ausrichten, Maß X prüfen, bei i. O. freigeben",
+        "Nur auf Erfahrung verlassen"
+      ],
+      "correctIndex": 2
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "apd-07-uebergabepunkt-order",
+    "type": "order",
+    "prompt": "Ordne den Ablauf an einem Übergabepunkt zwischen zwei Arbeitsschritten.",
+    "items": [
+      "Arbeitsschritt abschließen",
+      "Zwischenergebnis prüfen",
+      "Ergebnis dokumentieren",
+      "Freigabe erteilen",
+      "Folgeschritt starten"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "apd-08-abschlussdoku-inhalt",
+    "type": "single_choice",
+    "prompt": "Wann ist eine Ablaufdokumentation fachlich vollständig?",
+    "answer": {
+      "choices": [
+        "Wenn nur der Endzeitpunkt notiert ist",
+        "Wenn Auftrag, Durchführung, Prüfergebnis, Abweichung und Übergabe nachvollziehbar erfasst sind",
+        "Wenn keine Abweichung erwähnt wird",
+        "Wenn nur der Name des Bearbeiters eingetragen ist"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "apd-09-fehlendes-material",
+    "type": "single_choice",
+    "prompt": "Der Ablauf ist geplant, aber ein notwendiges Material fehlt vor Start. Was ist die fachlich beste Reaktion?",
+    "answer": {
+      "choices": [
+        "Trotzdem starten und später improvisieren",
+        "Fehlteil erfassen, Reihenfolge neu bewerten und nur freigegebene Teilschritte vorziehen",
+        "Planung ignorieren und alles neu beginnen",
+        "Fehlteil nicht dokumentieren"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "apd-10-zeitarten-planung",
+    "type": "multi_select",
+    "prompt": "Welche Zeitarten sollten in der Ablaufplanung berücksichtigt werden? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Rüstzeit",
+        "Bearbeitungszeit",
+        "Prüfzeit",
+        "Puffer-/Wartezeit",
+        "Nur die Endzeit"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "apd-11-gesamtzeit-berechnen",
+    "prompt": "Rüstzeit: 22 min, Bearbeitungszeit: 88 min, Prüfzeit: 16 min, Puffer: 9 min. Wie groß ist die geplante Gesamtzeit?",
+    "answer": {
+      "value": 135,
+      "unit": "min"
+    },
+    "tolerance": 0.1,
+    "solution": "Gesamtzeit = 22 + 88 + 16 + 9 = 135 min.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "apd-12-ablauf-stoerung-order",
+    "type": "order",
+    "prompt": "Ordne das Vorgehen bei einer Ablaufstörung während der Durchführung.",
+    "items": [
+      "Abweichung klar erfassen",
+      "Auswirkung auf Folgeschritte bewerten",
+      "Ursache eingrenzen",
+      "Korrekturmaßnahme festlegen und umsetzen",
+      "Wirksamkeit prüfen",
+      "Dokumentation aktualisieren"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "apd-13-terminabweichung",
+    "prompt": "Geplanter Abschluss: 14:10 Uhr. Tatsächlicher Abschluss: 14:37 Uhr. Wie groß ist die Terminabweichung?",
+    "answer": {
+      "value": 27,
+      "unit": "min"
+    },
+    "tolerance": 0.1,
+    "solution": "14:37 - 14:10 = 27 min.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "apd-14-priorisierung-engpass",
+    "type": "single_choice",
+    "prompt": "Bei einem Engpass können nicht alle Schritte gleichzeitig gestartet werden. Welche Priorisierung ist fachlich sinnvoll?",
+    "answer": {
+      "choices": [
+        "Zufällig starten",
+        "Nach Kritikalität, Abhängigkeiten und Terminwirkung priorisieren",
+        "Nur die kürzesten Schritte zuerst",
+        "Nur nach persönlicher Präferenz"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "apd-15-pruefpunkte-prozess",
+    "type": "multi_select",
+    "prompt": "Welche Punkte gehören zu einer wirksamen Prüfplanung im Ablauf? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Prüfmerkmale mit Grenzwerten",
+        "Prüfzeitpunkt im Ablauf",
+        "Verantwortlichkeit der Prüfung",
+        "Dokumentation des Ergebnisses",
+        "Nur die Aussage: 'später prüfen'"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "apd-16-termintreue-prozent",
+    "prompt": "Von 25 Arbeitspaketen wurden 21 termingerecht abgeschlossen. Wie hoch ist die Termintreue in Prozent?",
+    "answer": {
+      "value": 84,
+      "unit": "%"
+    },
+    "tolerance": 0.2,
+    "solution": "Termintreue = (21 / 25) * 100 = 84 %.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "apd-17-wirksamkeitsnachweis-aenderung",
+    "type": "single_choice",
+    "prompt": "Welche Aussage beschreibt einen vollständigen Wirksamkeitsnachweis nach einer Ablaufänderung?",
+    "answer": {
+      "choices": [
+        "Ein Teammitglied sagt, es passt jetzt",
+        "Einmaliger Kurztest ohne Protokoll",
+        "Soll-/Ist-Vergleich mit Prüfkriterien, dokumentiertem Ergebnis und Freigabe",
+        "Nur die geänderte Reihenfolge notieren"
+      ],
+      "correctIndex": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "apd-18-ruestkosten",
+    "prompt": "Rüstaufwand: 1 h 20 min. Kostensatz: 78 EUR/h. Wie hoch sind die Rüstkosten?",
+    "answer": {
+      "value": 104,
+      "unit": "EUR"
+    },
+    "tolerance": 0.5,
+    "solution": "1 h 20 min = 1,333... h. Kosten = 1,333... * 78 = 104 EUR.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "apd-19-nachhaltige-prozessdoku",
+    "type": "multi_select",
+    "prompt": "Welche Elemente unterstützen eine nachhaltige Prozessdokumentation? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Versionierte Planstände",
+        "Abweichungsursache und Maßnahme",
+        "Prüfergebnisse mit Datum und Verantwortlichkeit",
+        "Rückverfolgbare Übergabevermerke",
+        "Nur ein Eintrag: 'erledigt'"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "apd-20-wiederkehrender-konflikt-order",
+    "type": "order",
+    "prompt": "Ordne das Vorgehen bei einem wiederkehrenden Ablaufkonflikt zwischen zwei Arbeitsschritten.",
+    "items": [
+      "Konfliktbild unter gleichen Bedingungen erfassen",
+      "Schnittstelle und Abhängigkeit analysieren",
+      "Soll-Ablauf mit Ist-Ablauf vergleichen",
+      "angepasste Reihenfolge oder Ressourcenzuteilung festlegen",
+      "Pilotdurchlauf durchführen",
+      "Ergebnis bewerten und neuen Standard dokumentieren"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "apd-21-nacharbeitsquote",
+    "prompt": "In einer Woche wurden 96 Arbeitspakete abgeschlossen, davon 18 mit Nacharbeit. Wie hoch ist die Nacharbeitsquote in Prozent?",
+    "answer": {
+      "value": 18.75,
+      "unit": "%"
+    },
+    "tolerance": 0.3,
+    "solution": "Nacharbeitsquote = (18 / 96) * 100 = 18,75 %.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "apd-22-strategie-komplexauftrag",
+    "type": "single_choice",
+    "prompt": "Welche Strategie ist bei einem komplexen Auftrag mit mehreren Schnittstellen fachlich am besten?",
+    "answer": {
+      "choices": [
+        "Alle Schritte parallel starten",
+        "In Teilsysteme gliedern, Übergabepunkte definieren und je Abschnitt prüfen",
+        "Nur den letzten Schritt detailliert planen",
+        "Nur die Zeitplanung ohne Prüfpunkte erstellen"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "apd-23-structured-planerstellung",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (6-8 Sätze): Du sollst einen Arbeitsauftrag für ein Fördermodul planen. Beschreibe dein Vorgehen von der Auftragsanalyse bis zur freigegebenen Ablaufplanung.",
+    "answer": {
+      "fields": [
+        {
+          "key": "analyse",
+          "label": "Auftragsanalyse",
+          "minWords": 20,
+          "placeholder": "z. B. Anforderungen, Abhängigkeiten, Risiken, Unterlagen"
+        },
+        {
+          "key": "planung",
+          "label": "Ablaufplanung",
+          "minWords": 22,
+          "placeholder": "z. B. Reihenfolge, Ressourcen, Zeiten, Prüfpunkte"
+        },
+        {
+          "key": "freigabe",
+          "label": "Freigabe",
+          "minWords": 20,
+          "placeholder": "z. B. Bewertungsmaßstab, Verantwortlichkeit, Startfreigabe"
+        }
+      ],
+      "keywords": {
+        "analyse": [
+          "anforderung",
+          "abhaengigkeit",
+          "unterlagen",
+          "schnittstelle",
+          "risiko",
+          "auftrag"
+        ],
+        "planung": [
+          "reihenfolge",
+          "ressource",
+          "zeit",
+          "pruefpunkt",
+          "arbeitsgang",
+          "planung"
+        ],
+        "freigabe": [
+          "freigabe",
+          "kriterium",
+          "verantwortlich",
+          "start",
+          "dokumentation",
+          "bewertung"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 68
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Auftrag mit Anforderungen und Abhängigkeiten vollständig erfassen",
+        "Ablauf mit Ressourcen, Zeiten und Prüfpunkten logisch strukturieren",
+        "Freigabekriterien vor Start eindeutig festlegen",
+        "Planstand nachvollziehbar dokumentieren"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "apd-24-structured-abweichung",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (6-8 Sätze): Während der Durchführung tritt eine Abweichung auf, die zwei Folgeschritte blockiert. Erstelle einen Diagnose- und Korrekturplan bis zur erneuten Freigabe.",
+    "answer": {
+      "fields": [
+        {
+          "key": "diagnose",
+          "label": "Diagnose",
+          "minWords": 22,
+          "placeholder": "z. B. Soll-/Ist-Vergleich, Ursache, Auswirkungen"
+        },
+        {
+          "key": "korrektur",
+          "label": "Korrekturplan",
+          "minWords": 22,
+          "placeholder": "z. B. Maßnahmen, Priorisierung, Teilschritte"
+        },
+        {
+          "key": "nachweis",
+          "label": "Nachweis und Freigabe",
+          "minWords": 20,
+          "placeholder": "z. B. Wiederholprüfung, Wirksamkeit, Dokumentation"
+        }
+      ],
+      "keywords": {
+        "diagnose": [
+          "soll",
+          "ist",
+          "ursache",
+          "auswirkung",
+          "abweichung",
+          "analyse"
+        ],
+        "korrektur": [
+          "massnahme",
+          "prioritaet",
+          "teilschritt",
+          "umsetzung",
+          "ressource",
+          "termin"
+        ],
+        "nachweis": [
+          "wirksamkeit",
+          "wiederholpruefung",
+          "freigabe",
+          "dokumentation",
+          "bewertung",
+          "uebergabe"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 70
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Abweichung mit Soll-/Ist und Folgewirkung klar eingrenzen",
+        "Korrekturmaßnahmen in priorisierter Reihenfolge planen",
+        "Wiederanlauf erst nach nachvollziehbarer Wirksamkeitsprüfung freigeben",
+        "Entscheidungen und Ergebnisse dokumentieren"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "apd-25-structured-abschluss",
+    "type": "structured_text",
+    "prompt": "Abschlussaufgabe (7-9 Sätze): Formuliere einen prüfungstauglichen Abschlussvermerk für einen Auftrag, bei dem Terminabweichung und Teilnacharbeit aufgetreten sind.",
+    "answer": {
+      "fields": [
+        {
+          "key": "durchfuehrung",
+          "label": "Durchführung",
+          "minWords": 22,
+          "placeholder": "z. B. geplanter Ablauf, durchgeführte Schritte, Teilnacharbeit"
+        },
+        {
+          "key": "bewertung",
+          "label": "Bewertung",
+          "minWords": 22,
+          "placeholder": "z. B. Soll-/Ist, Terminwirkung, Qualitätsstatus"
+        },
+        {
+          "key": "uebergabe",
+          "label": "Übergabe",
+          "minWords": 22,
+          "placeholder": "z. B. Restpunkte, Freigabe, Verantwortlichkeit, Protokoll"
+        }
+      ],
+      "keywords": {
+        "durchfuehrung": [
+          "ablauf",
+          "arbeitsschritt",
+          "nacharbeit",
+          "dokumentiert",
+          "durchgefuehrt",
+          "planstand"
+        ],
+        "bewertung": [
+          "soll",
+          "ist",
+          "terminabweichung",
+          "qualitaet",
+          "bewertung",
+          "ursache"
+        ],
+        "uebergabe": [
+          "uebergabe",
+          "freigabe",
+          "restpunkt",
+          "verantwortlich",
+          "protokoll",
+          "abschluss"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 75
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Durchführung und Teilnacharbeit klar voneinander trennen",
+        "Termin- und Qualitätswirkung nachvollziehbar bewerten",
+        "Restpunkte und Betriebsfreigabe eindeutig formulieren",
+        "Abschluss mit vollständigem Übergabenachweis dokumentieren"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  }
+]

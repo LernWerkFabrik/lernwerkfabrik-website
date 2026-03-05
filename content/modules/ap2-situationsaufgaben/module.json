@@ -1,0 +1,42 @@
+{
+  "id": "ap2-situationsaufgaben",
+  "title": "AP2 Training – Situationsaufgaben",
+  "description": "Situationsaufgaben: Planung, Qualität, Organisation, Bewertung (prüfungsnah).",
+  "kind": "prep",
+  "exam": {
+    "durationMinutes": 50,
+    "noHelp": true,
+    "autoSubmit": true
+  },
+  "difficulty": "hard",
+  "tags": [
+    "AP2",
+    "Situation",
+    "Organisation"
+  ],
+  "estimatedMinutes": 50,
+  "intro": {
+    "why": "In AP Teil 2 stehen Situationsaufgaben im Mittelpunkt, bei denen mehrere fachliche Bereiche zusammenkommen. Bewertet wird nicht das isolierte Fachwissen, sondern ob du eine Situation ganzheitlich analysierst, fachlich begründete Entscheidungen triffst und diese nachvollziehbar darstellst. Punktverluste entstehen häufig, wenn Antworten unstrukturiert sind, Begründungen fehlen oder einzelne Aspekte wie Qualität, Organisation oder Sicherheit nicht berücksichtigt werden.",
+    "trains": [
+      "Situationen fachlich analysieren und relevante Informationen gezielt herausfiltern",
+      "Planungs-, Organisations- und Qualitätsaspekte sinnvoll miteinander verknüpfen",
+      "Entscheidungen fachlich begründen und prüfungsgerecht darstellen",
+      "Auswirkungen von Maßnahmen auf Funktion, Qualität und Ablauf bewerten"
+    ],
+    "traps": [
+      "Situationsbeschreibung wiederholen, ohne sie fachlich zu analysieren",
+      "Einzelaspekte bearbeiten, aber den Gesamtzusammenhang außer Acht lassen",
+      "Maßnahmen nennen, ohne sie technisch oder organisatorisch zu begründen",
+      "Antworten liefern, die fachlich richtig sind, aber nicht zur konkreten Situation passen"
+    ]
+  },
+  "files": {
+    "explanation": "explanation.md",
+    "example": "example.md",
+    "practiceQuestions": "questions.practice.json",
+    "examQuestions": "questions.exam.json"
+  },
+  "prep": {
+    "focus": "strategy"
+  }
+}

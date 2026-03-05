@@ -1,0 +1,367 @@
+[
+  {
+    "id": "wev-01-hardness-definition",
+    "type": "single_choice",
+    "prompt": "Welche Aussage beschreibt die Härte eines Werkstoffs fachlich korrekt?",
+    "answer": {
+      "choices": [
+        "Widerstand gegen bleibende Verformung bei Zugbelastung",
+        "Widerstand gegen Eindringen und lokalen Verschleiß",
+        "Fähigkeit, Schlagenergie aufzunehmen",
+        "Elektrische Leitfähigkeit bei Raumtemperatur"
+      ],
+      "correctIndex": 1
+    }
+  },
+  {
+    "id": "wev-02-strength-definition",
+    "type": "single_choice",
+    "prompt": "Welche Aussage trifft auf Festigkeit zu?",
+    "answer": {
+      "choices": [
+        "Festigkeit wird nur über die Dichte beschrieben",
+        "Festigkeit beschreibt den Widerstand gegen Verformung und Bruch unter Last",
+        "Festigkeit ist identisch mit Härte",
+        "Festigkeit spielt nur bei Kunststoffen eine Rolle"
+      ],
+      "correctIndex": 1
+    }
+  },
+  {
+    "id": "wev-03-toughness-definition",
+    "type": "single_choice",
+    "prompt": "Was beschreibt Zähigkeit am besten?",
+    "answer": {
+      "choices": [
+        "Widerstand gegen Kratzer auf der Oberfläche",
+        "Fähigkeit, Energie bis zum Bruch aufzunehmen",
+        "Wärmeleitfähigkeit bei Temperaturanstieg",
+        "Magnetisierbarkeit von Stahl"
+      ],
+      "correctIndex": 1
+    }
+  },
+  {
+    "id": "wev-04-property-interplay",
+    "type": "multi_select",
+    "prompt": "Welche Aussagen zum Zusammenspiel von Eigenschaften sind richtig? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Hohe Härte verbessert oft den Verschleißwiderstand",
+        "Hohe Zähigkeit reduziert das Risiko für Sprödbruch bei Stoß",
+        "Hohe Festigkeit bedeutet nicht automatisch hohe Zähigkeit",
+        "Härte und Zähigkeit sind immer gleichzeitig maximal"
+      ],
+      "correctIndices": [0, 1, 2]
+    }
+  },
+  {
+    "id": "wev-05-selection-order",
+    "type": "order",
+    "prompt": "Ordne den prüfungssicheren Ablauf für den Eigenschaftsvergleich.",
+    "items": [
+      "Belastungsfall aus der Aufgabe bestimmen",
+      "passende Eigenschaft festlegen (Härte/Festigkeit/Zähigkeit)",
+      "Kennwerte oder Prüfverfahren zuordnen",
+      "falls nötig rechnen (z. B. Spannung, Ausnutzung)",
+      "Entscheidung technisch begründen"
+    ],
+    "answer": {
+      "correctOrder": [0, 1, 2, 3, 4]
+    }
+  },
+  {
+    "id": "wev-06-hv-test-selection",
+    "type": "single_choice",
+    "prompt": "Eine gehärtete Welle soll 690 HV nachweisen. Welches Härteprüfverfahren ist in AP-Aufgaben meist die passende Wahl?",
+    "answer": {
+      "choices": [
+        "Brinell",
+        "Rockwell B",
+        "Vickers",
+        "Funkenprobe"
+      ],
+      "correctIndex": 2
+    }
+  },
+  {
+    "id": "wev-07-plus-n-meaning",
+    "type": "single_choice",
+    "prompt": "Im AP1-Kontext: Was bedeutet das Zusatzsymbol +N im Werkstoffkurzzeichen typischerweise?",
+    "answer": {
+      "choices": [
+        "Werkstoff ist nitriert",
+        "Werkstoff ist normalisiert/normalgeglüht",
+        "Werkstoff ist nur für Niedertemperatur einsetzbar",
+        "Werkstoff ist nichtmetallisch"
+      ],
+      "correctIndex": 1
+    }
+  },
+  {
+    "id": "wev-08-cusn12c-interpretation",
+    "type": "single_choice",
+    "prompt": "Welche Deutung von CuSn12-C ist fachlich am ehesten korrekt?",
+    "answer": {
+      "choices": [
+        "Kupfer-Zink-Legierung mit 12 % Zink, kaltverformt",
+        "Kupfer-Zinn-Legierung mit etwa 12 % Zinn, als Gusswerkstoff",
+        "Unlegierter Baustahl mit 12 % Kohlenstoff",
+        "Hartmetall auf Kupferbasis mit 12 % Wolfram"
+      ],
+      "correctIndex": 1
+    }
+  },
+  {
+    "id": "wev-09-tensile-labels",
+    "type": "multi_select",
+    "prompt": "Welche Zuordnungen aus dem Zugversuch sind korrekt? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Rm = Zugfestigkeit",
+        "Re = Streckgrenze",
+        "A = Bruchdehnung",
+        "KV = Zugfestigkeit"
+      ],
+      "correctIndices": [0, 1, 2]
+    }
+  },
+  {
+    "id": "wev-10-stress-calc",
+    "prompt": "Berechne die Spannung: F = 24 kN, A = 120 mm2. Ergebnis in N/mm2.",
+    "answer": {
+      "value": 200,
+      "unit": "N/mm2"
+    },
+    "tolerance": 1,
+    "solution": "F=24000 N. sigma=F/A=24000/120=200 N/mm2."
+  },
+  {
+    "id": "wev-11-safety-factor",
+    "prompt": "Gegeben Re = 235 N/mm2 und sigma = 200 N/mm2. Berechne den Sicherheitsfaktor n = Re/sigma.",
+    "answer": {
+      "value": 1.18,
+      "unit": "-"
+    },
+    "tolerance": 0.02,
+    "solution": "n=235/200=1.175, gerundet 1.18."
+  },
+  {
+    "id": "wev-12-re-drop-percent",
+    "prompt": "S235JR: Re sinkt von 235 auf 215 N/mm2. Wie groß ist die Abnahme in %?",
+    "answer": {
+      "value": 8.51,
+      "unit": "%"
+    },
+    "tolerance": 0.15,
+    "solution": "Delta=20. Prozent=20/235*100=8.51 %."
+  },
+  {
+    "id": "wev-13-force-at-yield",
+    "prompt": "Wie groß ist die Kraft bei Erreichen der Streckgrenze: Re = 225 N/mm2, A = 150 mm2? Ergebnis in kN.",
+    "answer": {
+      "value": 33.75,
+      "unit": "kN"
+    },
+    "tolerance": 0.1,
+    "solution": "F=Re*A=225*150=33750 N=33.75 kN."
+  },
+  {
+    "id": "wev-14-rm-re-span",
+    "prompt": "Berechne den Abstand Rm - Re für Rm = 510 N/mm2 und Re = 235 N/mm2.",
+    "answer": {
+      "value": 275,
+      "unit": "N/mm2"
+    },
+    "tolerance": 1,
+    "solution": "Rm-Re=510-235=275 N/mm2."
+  },
+  {
+    "id": "wev-15-impact-load-choice",
+    "type": "single_choice",
+    "prompt": "Welcher Werkstoff passt besser für eine stoßbelastete Verbindung?",
+    "answer": {
+      "choices": [
+        "Werkstoff A: sehr hohe Härte, sehr geringe Kerbschlagarbeit",
+        "Werkstoff B: mittlere Härte, hohe Kerbschlagarbeit",
+        "Werkstoff C: hohe Dichte, keine Kennwerte vorhanden",
+        "Werkstoff D: sehr niedrige Festigkeit, keine Zähigkeitsdaten"
+      ],
+      "correctIndex": 1
+    }
+  },
+  {
+    "id": "wev-16-cusn12c-criteria",
+    "type": "multi_select",
+    "prompt": "Welche Kriterien stützen die Werkstoffwahl für ein Schneckenrad aus CuSn12-C? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "günstiges Gleit-/Notlaufverhalten in Paarung mit Stahl",
+        "geeignetes Verschleißverhalten für kontaktbeanspruchte Flächen",
+        "technisch begründbare Werkstoffwahl für die gegebene Funktion",
+        "niedrigste Dichte aller metallischen Werkstoffe"
+      ],
+      "correctIndices": [0, 1, 2]
+    }
+  },
+  {
+    "id": "wev-17-designation-order",
+    "type": "order",
+    "prompt": "Ordne den Ablauf zur Deutung einer Werkstoffbezeichnung wie CuSn12-C.",
+    "items": [
+      "Grundwerkstoff identifizieren (z. B. Cu)",
+      "Legierungselement(e) lesen (z. B. Sn)",
+      "Zahlwert deuten (z. B. etwa 12 % Legierungsanteil)",
+      "Zusatz zur Herstellart/Produktform einordnen (z. B. -C)"
+    ],
+    "answer": {
+      "correctOrder": [0, 1, 2, 3]
+    }
+  },
+  {
+    "id": "wev-18-hardness-increase",
+    "prompt": "Eine Randhärte steigt von 240 HV auf 690 HV. Wie groß ist die Steigerung in %?",
+    "answer": {
+      "value": 187.5,
+      "unit": "%"
+    },
+    "tolerance": 0.3,
+    "solution": "Steigerung=(690-240)/240*100=187.5 %."
+  },
+  {
+    "id": "wev-19-utilization",
+    "prompt": "Berechne die Ausnutzung in %: sigma = 150 N/mm2 bei Re = 225 N/mm2.",
+    "answer": {
+      "value": 66.67,
+      "unit": "%"
+    },
+    "tolerance": 0.2,
+    "solution": "Ausnutzung=sigma/Re*100=150/225*100=66.67 %."
+  },
+  {
+    "id": "wev-20-structured-cusn-justification",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (5-7 Sätze): Begründe, warum ein Schneckenrad in einer AP2-Aufgabe aus CuSn12-C statt aus einem unlegierten Baustahl gefertigt sein kann.",
+    "answer": {
+      "fields": [
+        {
+          "key": "begründung",
+          "label": "Begründung",
+          "minWords": 45,
+          "placeholder": "Gehe auf Funktion, Reibkontakt, Verschleiß und Werkstoffentscheidung ein."
+        }
+      ],
+      "keywords": {
+        "begründung": [
+          "werkstoff",
+          "schneckenrad",
+          "kontakt",
+          "verschleiß",
+          "eigenschaften",
+          "funktion",
+          "begründung"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 45
+      }
+    }
+  },
+  {
+    "id": "wev-21-structured-tradeoff",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (6-8 Sätze): Vergleiche zwei Werkstoffe für ein stoßbelastetes Bauteil und erkläre den Zielkonflikt zwischen Härte und Zähigkeit.",
+    "answer": {
+      "fields": [
+        {
+          "key": "vergleich",
+          "label": "Vergleich",
+          "minWords": 48,
+          "placeholder": "Nenne Kennwerte, Belastungsfall und deine begründete Entscheidung."
+        }
+      ],
+      "keywords": {
+        "vergleich": [
+          "härte",
+          "zähigkeit",
+          "festigkeit",
+          "belastung",
+          "kerbschlag",
+          "entscheidung"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 48
+      }
+    }
+  },
+  {
+    "id": "wev-22-kv-reserve",
+    "prompt": "Erforderlich sind 27 J Kerbschlagarbeit, verfügbar sind 42 J. Wie groß ist die Reserve in % bezogen auf den Mindestwert?",
+    "answer": {
+      "value": 55.56,
+      "unit": "%"
+    },
+    "tolerance": 0.3,
+    "solution": "Reserve=(42-27)/27*100=55.56 %."
+  },
+  {
+    "id": "wev-23-thickness-effect",
+    "type": "single_choice",
+    "prompt": "Welche Aussage passt zur AP2-Stahltabelle für S235JR am besten?",
+    "answer": {
+      "choices": [
+        "Mit steigender Erzeugnisdicke steigt Re immer an",
+        "Mit steigender Erzeugnisdicke sinkt der angegebene Mindestwert für Re",
+        "Re und Rm sind in jeder Dicke gleich groß",
+        "Re ist nur von der Oberflächenrauheit abhängig"
+      ],
+      "correctIndex": 1
+    }
+  },
+  {
+    "id": "wev-24-hardness-ratio",
+    "prompt": "Eine gehärtete Randzone hat 690 HV, der Kern 460 HV. Wie groß ist das Verhältnis H_rand/H_kern?",
+    "answer": {
+      "value": 1.5,
+      "unit": "-"
+    },
+    "tolerance": 0.03,
+    "solution": "Verhältnis=690/460=1.5."
+  },
+  {
+    "id": "wev-25-structured-ap2-procedure",
+    "type": "structured_text",
+    "prompt": "Abschlussaufgabe (6-9 Sätze): Beschreibe, wie du in einer AP2-Aufgabe mit Zielhärte 690 HV systematisch vom Aufgabentext zur fachlich begründeten Antwort kommst.",
+    "answer": {
+      "fields": [
+        {
+          "key": "ablauf",
+          "label": "Ablauf",
+          "minWords": 55,
+          "placeholder": "Ablauf: Belastung, Verfahren, Prüfung, Kennwert, Begründung."
+        }
+      ],
+      "keywords": {
+        "ablauf": [
+          "härteverfahren",
+          "vickers",
+          "hv",
+          "belastung",
+          "randschicht",
+          "begründung",
+          "prüfung"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 55
+      }
+    }
+  }
+]

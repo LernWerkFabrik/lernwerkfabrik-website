@@ -1,0 +1,34 @@
+{
+  "id": "masse-toleranzen-pruefen",
+  "title": "Maße und Toleranzen prüfen",
+  "description": "Messmittel nutzen, Ergebnisse bewerten, Abweichungen beurteilen.",
+  "difficulty": "medium",
+  "tags": [
+    "Messen",
+    "Toleranzen",
+    "Qualität"
+  ],
+  "estimatedMinutes": 40,
+  "intro": {
+    "why": "In der Prüfung reicht es nicht, nur einen Messwert abzulesen. Entscheidend ist, dass du aus Zeichnung und Toleranzangaben die richtigen Sollgrenzen ableitest, das passende Prüfmittel auswählst und Messergebnisse eindeutig als i. O. oder n. i. O. bewertest. Punktverluste entstehen oft durch falsche Messmittelwahl, unsaubere Messdurchführung und fehlende Begründung bei Grenzfällen.",
+    "trains": [
+      "Messaufgaben systematisch vorbereiten und fachgerecht durchführen",
+      "Grenzmaße, Toleranzbreiten und Abweichungen sicher bestimmen",
+      "Prüfmittel passend zu Maß, Toleranz und Prüfsituation auswählen",
+      "Messergebnisse nachvollziehbar bewerten und dokumentieren"
+    ],
+    "traps": [
+      "Messmittel mit zu geringer Genauigkeit auswählen",
+      "Grenzmaße berechnen, aber i. O./n. i. O. nicht eindeutig entscheiden",
+      "Messfehler durch Schmutz, Grat, Temperatur oder falschen Messdruck übersehen",
+      "Prüfprotokoll unvollständig führen oder ohne Prüfmittelangabe abschließen"
+    ]
+  },
+  "files": {
+    "explanation": "explanation.md",
+    "example": "example.md",
+    "practiceQuestions": "questions.practice.json",
+    "examQuestions": "questions.exam.json"
+  },
+  "kind": "learn"
+}

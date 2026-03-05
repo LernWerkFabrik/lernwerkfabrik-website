@@ -1,0 +1,35 @@
+{
+  "id": "bauteile-fertigen",
+  "title": "Bauteile nach Zeichnung fertigen",
+  "description": "Arbeitsfolge ableiten und ein Bauteil nach Zeichnung herstellen (prüfungsnah).",
+  "difficulty": "medium",
+  "tags": [
+    "Fertigung",
+    "Zeichnung",
+    "Arbeitsfolge"
+  ],
+  "estimatedMinutes": 45,
+  "intro": {
+    "why": "In der Prüfung ist die Zeichnung die verbindliche Vorgabe: Du wirst daran bewertet, ob du MaÃŸe, Toleranzen, Oberflächen, Form- und Lagetoleranzen sowie Bearbeitungshinweise richtig liest und daraus eine fertigungsgerechte Arbeitsfolge ableitest. Typische Punktverluste entstehen nicht beim â€žHerstellen an sichâ€œ, sondern beim falschen Bezug (Nullpunkt), fehlender MaÃŸkette, falscher Reihenfolge der Bearbeitung oder wenn Toleranzen/Passungen ignoriert werden. Ziel ist ein Bauteil, das nicht nur ungefähr passt, sondern prüfungsnachweisbar maÃŸhaltig und funktionsgerecht ist.",
+    "trains": [
+      "Fertigungsrelevante Zeichnungsangaben sicher interpretieren (MaÃŸe, Toleranzen, Passungen, Oberflächen, Hinweise)",
+      "Bezüge/Nullpunkte festlegen und daraus eine sinnvolle Arbeitsfolge mit Spannlagen ableiten",
+      "MaÃŸketten und Prüfpunkte planen (wann wird was gemessen, womit, gegen welchen Sollwert)",
+      "Typische Bearbeitungen prüfungsnah auswählen und begründen (z. B. Bohren, Senken, Reiben, Gewinde, Planen, Entgraten)"
+    ],
+    "traps": [
+      "Falscher Bezug oder Spannkonzept: MaÃŸe werden â€žvon irgendwoâ€œ genommen und laufen aus der Toleranz",
+      "Toleranzen/Passungen übersehen oder als â€žunwichtigâ€œ behandeln (z. B. Bohrung für Passstift, ReibmaÃŸ, H7/g6)",
+      "Arbeitsfolge ungeeignet: erst EndmaÃŸ herstellen und danach Bearbeitungen, die MaÃŸhaltigkeit zerstören",
+      "Prüfen nur am Ende statt prozessbegleitend (keine Zwischenmessungen, falsches Messmittel, falsche Messstelle)"
+    ]
+  },
+  "files": {
+    "explanation": "explanation.md",
+    "workflow": "workflow.md",
+    "example": "example.md",
+    "practiceQuestions": "questions.practice.json",
+    "examQuestions": "questions.exam.json"
+  },
+  "kind": "learn"
+}

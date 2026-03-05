@@ -1,0 +1,35 @@
+{
+  "id": "elektrische-baugruppen",
+  "title": "Elektrische Baugruppen prüfen",
+  "description": "Grundlegende Prüfungen sicher durchführen (Sicherheit, Logik, Messung).",
+  "difficulty": "hard",
+  "tags": [
+    "Elektrik",
+    "Prüfen",
+    "Sicherheit"
+  ],
+  "estimatedMinutes": 45,
+  "intro": {
+    "why": "Bei elektrischen Baugruppen bewertet die Prüfung nicht nur das Messergebnis, sondern vor allem dein systematisches Vorgehen. Geprüft wird, ob du Sicherheitsregeln einhältst, Schaltunterlagen logisch nutzt und Messungen korrekt auswählst, durchführst und bewertest. Häufige Punktverluste entstehen, wenn ohne Prüfplan gearbeitet wird, das falsche Messverfahren gewählt wird oder Sollwerte nicht sauber bewertet werden. Entscheidend ist, dass dein Prüfablauf fachlich nachvollziehbar, sicher und dokumentierbar ist.",
+    "trains": [
+      "Elektrische Baugruppen anhand von Schalt- und Funktionsplänen logisch prüfen",
+      "Sicherheitsregeln vor, während und nach der Prüfung korrekt anwenden",
+      "Geeignete Messverfahren und Prüfmittel auswählen (z. B. Spannung, Strom, Widerstand, Durchgang)",
+      "Messwerte mit Sollwerten vergleichen und Abweichungen systematisch eingrenzen"
+    ],
+    "traps": [
+      "Messungen ohne vollständige Sicherheitsprüfung durchführen",
+      "Messgerät, Messbereich oder Messart falsch auswählen",
+      "Messwerte notieren, aber nicht mit Toleranzen oder Sollwerten abgleichen",
+      "Fehler vermuten, ohne sie aus Schaltplan, Messung und Funktion zu begründen"
+    ]
+  },
+  "files": {
+    "explanation": "explanation.md",
+    "workflow": "workflow.md",
+    "example": "example.md",
+    "practiceQuestions": "questions.practice.json",
+    "examQuestions": "questions.exam.json"
+  },
+  "kind": "learn"
+}

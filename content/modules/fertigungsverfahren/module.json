@@ -1,0 +1,34 @@
+{
+  "id": "fertigungsverfahren",
+  "title": "Fertigungsverfahren auswählen und anwenden",
+  "description": "Trennen/Umformen/Spanen: geeignetes Verfahren auswählen und begründen.",
+  "difficulty": "medium",
+  "tags": [
+    "Fertigungsverfahren",
+    "Spanen",
+    "Umformen"
+  ],
+  "estimatedMinutes": 45,
+  "intro": {
+    "why": "In der Prüfung wird nicht abgefragt, ob du möglichst viele Fertigungsverfahren kennst, sondern ob du für eine konkrete Aufgabe das passende Verfahren auswählst und fachlich begründen kannst. Bewertet wird, ob du Anforderungen wie Werkstoff, Maßgenauigkeit, Oberflächenqualität, Stückzahl und Wirtschaftlichkeit richtig einschätzt. Punktverluste entstehen häufig, wenn Verfahren nur genannt, aber nicht begründet werden oder wenn technische Anforderungen und Grenzen des Verfahrens nicht berücksichtigt sind.",
+    "trains": [
+      "Fertigungsverfahren den Hauptgruppen zuordnen (Trennen, Umformen, Spanen) und korrekt benennen",
+      "Geeignete Verfahren anhand von Werkstoff, Geometrie, Toleranz und Oberfläche auswählen",
+      "Vor- und Nachteile von Verfahren fachlich vergleichen und begründen",
+      "Verfahren prüfungsnah anwenden und die Auswahl nachvollziehbar dokumentieren"
+    ],
+    "traps": [
+      "Verfahren aufzählen, ohne sie auf die konkrete Aufgabe zu beziehen",
+      "Technische Grenzen ignorieren (z. B. erreichbare Toleranzen, Oberflächen, Formgebung)",
+      "Wirtschaftlichkeit und Stückzahl nicht berücksichtigen",
+      "Begründungen zu allgemein formulieren („ist schnell“, „ist genau“) statt fachlich präzise"
+    ]
+  },
+  "files": {
+    "explanation": "explanation.md",
+    "example": "example.md",
+    "practiceQuestions": "questions.practice.json",
+    "examQuestions": "questions.exam.json"
+  },
+  "kind": "learn"
+}

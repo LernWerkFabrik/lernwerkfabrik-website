@@ -1,0 +1,34 @@
+{
+  "id": "stoerungen-eingrenzen",
+  "title": "Störungen systematisch eingrenzen",
+  "description": "Fehlersuche strukturiert durchführen und Ursachen ableiten (AP2-typisch).",
+  "difficulty": "hard",
+  "tags": [
+    "Fehlersuche",
+    "Störung",
+    "Systematik"
+  ],
+  "estimatedMinutes": 45,
+  "intro": {
+    "why": "In der Prüfung wird bei Störungen nicht bewertet, wie schnell du eine Lösung nennst, sondern wie systematisch du die Ursache eingrenzt. Die IHK prüft, ob du den Normalablauf kennst, Abweichungen erkennst und deine Prüfschritte logisch aufeinander aufbaust. Punktverluste entstehen häufig, wenn Störungen nur vermutet, aber nicht methodisch geprüft oder wenn Prüfschritte nicht nachvollziehbar begründet werden.",
+    "trains": [
+      "Normalfunktion einer Anlage oder eines Systems fachlich beschreiben",
+      "Abweichungen vom Sollzustand erkennen und eingrenzen",
+      "Prüfschritte logisch ableiten und sinnvoll strukturieren",
+      "Störungsursachen fachlich begründet benennen und bewerten"
+    ],
+    "traps": [
+      "Direkt Lösungen nennen, ohne die Störung systematisch einzugrenzen",
+      "Prüfschritte unsystematisch oder in falscher Reihenfolge durchführen",
+      "Abweichungen beschreiben, ohne sie mit der Normalfunktion zu vergleichen",
+      "Ursachen vermuten, ohne sie durch Prüfungen abzusichern"
+    ]
+  },
+  "files": {
+    "explanation": "explanation.md",
+    "example": "example.md",
+    "practiceQuestions": "questions.practice.json",
+    "examQuestions": "questions.exam.json"
+  },
+  "kind": "learn"
+}

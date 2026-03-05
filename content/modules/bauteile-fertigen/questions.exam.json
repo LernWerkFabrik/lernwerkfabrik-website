@@ -1,0 +1,128 @@
+[
+  {
+    "id": "bf-e-01-upper-limit",
+    "prompt": "Mass: 50,00 +/-0,10 mm. Bestimme das obere Grenzmass.",
+    "answer": {
+      "value": 50.1,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Oberes Grenzmass = 50,00 + 0,10 = 50,10 mm."
+  },
+  {
+    "id": "bf-e-02-lower-limit",
+    "prompt": "Mass: 50,00 +/-0,10 mm. Bestimme das untere Grenzmass.",
+    "answer": {
+      "value": 49.9,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Unteres Grenzmass = 50,00 - 0,10 = 49,90 mm."
+  },
+  {
+    "id": "bf-e-03-one-sided-upper",
+    "prompt": "Einseitige Toleranz: 12,00 +0,20/0,00 mm. Wie gro? ist das obere Grenzmass?",
+    "answer": {
+      "value": 12.2,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Maximalmass = 12,00 + 0,20 = 12,20 mm."
+  },
+  {
+    "id": "bf-e-04-speed-d66",
+    "prompt": "Berechne die Bohrdrehzahl n bei vc=30 m/min und d=6,6 mm (n=(1000*vc)/(pi*d)).",
+    "answer": {
+      "value": 1447,
+      "unit": "1/min"
+    },
+    "tolerance": 35,
+    "solution": "n = (1000*30)/(pi*6,6) = 1447 1/min (gerundet).",
+    "input": {
+      "mode": "integer"
+    }
+  },
+  {
+    "id": "bf-e-05-speed-d78",
+    "prompt": "Berechne die Bohrdrehzahl n bei vc=25 m/min und d=7,8 mm.",
+    "answer": {
+      "value": 1020,
+      "unit": "1/min"
+    },
+    "tolerance": 30,
+    "solution": "n = (1000*25)/(pi*7,8) = 1020 1/min (gerundet).",
+    "input": {
+      "mode": "integer"
+    }
+  },
+  {
+    "id": "bf-e-06-hole-position",
+    "prompt": "Erste Bohrung bei x=18 mm, Lochabstand p=32 mm. Wie weit liegt die dritte Bohrung von links?",
+    "answer": {
+      "value": 82,
+      "unit": "mm"
+    },
+    "tolerance": 0,
+    "solution": "x3 = 18 + 2*32 = 82 mm."
+  },
+  {
+    "id": "bf-e-07-reaming-allowance",
+    "prompt": "Vorbohrung 7,8 mm, Endmass nach Reiben 8,0 mm. Wie gro? ist das Reibaufmass?",
+    "answer": {
+      "value": 0.2,
+      "unit": "mm"
+    },
+    "tolerance": 0.02,
+    "solution": "Aufmass = 8,0 - 7,8 = 0,2 mm."
+  },
+  {
+    "id": "bf-e-08-core-hole-m5",
+    "prompt": "Welcher Kernlochdurchmesser wird typischerweise für ein M5-Innengewinde verwendet?",
+    "answer": {
+      "value": 4.2,
+      "unit": "mm"
+    },
+    "tolerance": 0.1,
+    "solution": "Richtwert für M5: Kernloch 4,2 mm."
+  },
+  {
+    "id": "bf-e-09-chamfer-length",
+    "prompt": "Fase 1x45 Grad. Berechne die schräge Fasenlänge l (auf 2 Nachkommastellen).",
+    "answer": {
+      "value": 1.41,
+      "unit": "mm"
+    },
+    "tolerance": 0.05,
+    "solution": "l = a*sqrt(2) = 1*sqrt(2) = 1,41 mm."
+  },
+  {
+    "id": "bf-e-10-chain-dim",
+    "prompt": "Kettenmass: A=24 mm, B=36 mm, C=15 mm. Wie gro? ist die Gesamtlänge?",
+    "answer": {
+      "value": 75,
+      "unit": "mm"
+    },
+    "tolerance": 0,
+    "solution": "Gesamtlänge = 24 + 36 + 15 = 75 mm."
+  },
+  {
+    "id": "bf-e-11-overrun",
+    "prompt": "Sollmass 25,00 +/-0,05 mm, gemessen 25,06 mm. Um wie viel mm liegt der Messwert ?ber dem oberen Grenzmass?",
+    "answer": {
+      "value": 0.01,
+      "unit": "mm"
+    },
+    "tolerance": 0.005,
+    "solution": "Oberes Grenzmass = 25,05 mm. ?berschreitung = 25,06 - 25,05 = 0,01 mm."
+  },
+  {
+    "id": "bf-e-12-fourth-hole-position",
+    "prompt": "Erste Bohrung bei x=22 mm, Lochabstand p=45 mm. Wie weit liegt die vierte Bohrung von links?",
+    "answer": {
+      "value": 157,
+      "unit": "mm"
+    },
+    "tolerance": 0,
+    "solution": "x4 = 22 + 3*45 = 157 mm."
+  }
+]

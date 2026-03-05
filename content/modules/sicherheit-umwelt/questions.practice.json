@@ -1,0 +1,474 @@
+[
+  {
+    "id": "su-01-kss-handschuhe",
+    "type": "single_choice",
+    "prompt": "Auf einem KSS-Kanister ist ein Gefahrstoffkennzeichen. Welche Maßnahme schützt direkt beim Umgang?",
+    "answer": {
+      "choices": [
+        "Nur nach der Schicht Hände waschen",
+        "Geeignete Schutzhandschuhe tragen",
+        "Nur den pH-Wert kontrollieren",
+        "Hautcreme reicht als Schutz"
+      ],
+      "correctIndex": 1
+    }
+  },
+  {
+    "id": "su-02-energiefluss",
+    "type": "single_choice",
+    "prompt": "AP1-typisch: Wodurch geht die Hauptgefährdung bei Maschinen häufig aus?",
+    "answer": {
+      "choices": [
+        "Durch die Hallentemperatur",
+        "Durch den Aufstellort allein",
+        "Durch den Energiefluss",
+        "Nur durch die Farbe der Maschine"
+      ],
+      "correctIndex": 2
+    }
+  },
+  {
+    "id": "su-03-erste-hilfe-druckverband",
+    "type": "single_choice",
+    "prompt": "Ein Kollege hat eine stark blutende Handverletzung. Welche Erstmaßnahme ist fachgerecht?",
+    "answer": {
+      "choices": [
+        "Sofort Schmerzmittel geben",
+        "Druckverband mit Verbandsmaterial anlegen",
+        "Nur Boden reinigen",
+        "Erst nach 20 Minuten informieren"
+      ],
+      "correctIndex": 1
+    }
+  },
+  {
+    "id": "su-04-kunststoffreste",
+    "type": "single_choice",
+    "prompt": "Wie werden Kunststoffreste aus gewerblicher Verarbeitung prüfungsnah korrekt entsorgt?",
+    "answer": {
+      "choices": [
+        "Sortenrein sammeln und fachgerecht entsorgen lassen",
+        "In Restmüll ohne Trennung",
+        "Monatlich verbrennen",
+        "Mit Metallschrott mischen"
+      ],
+      "correctIndex": 0
+    }
+  },
+  {
+    "id": "su-05-zeichen-umweltgefaehrdend",
+    "type": "single_choice",
+    "prompt": "Welche Bezeichnung passt zum Symbol mit totem Fisch/Baum?",
+    "answer": {
+      "choices": [
+        "Rettungsweg",
+        "Warnung vor Rutschgefahr",
+        "Umweltgefährdend",
+        "Zutritt verboten"
+      ],
+      "correctIndex": 2
+    }
+  },
+  {
+    "id": "su-06-altoel-massnahmen",
+    "type": "multi_select",
+    "prompt": "Welche Maßnahmen sind beim Umgang mit Altöl korrekt? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Altöl getrennt und gekennzeichnet sammeln",
+        "Leckagen sofort mit Ölbindemittel aufnehmen",
+        "Altöl in den Abfluss kippen",
+        "Kontaminiertes Bindemittel fachgerecht entsorgen",
+        "Altöl mit Lösemitteln mischen"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        3
+      ]
+    }
+  },
+  {
+    "id": "su-07-oel-unfall-sofort",
+    "type": "multi_select",
+    "prompt": "Bei Ölaustritt während Demontage: Welche Sofortschritte sind richtig? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Unfallstelle absichern/kennzeichnen",
+        "Öl mit Bindemittel aufnehmen",
+        "Öl mit Druckluft verteilen",
+        "Verschmutztes Material geordnet entsorgen",
+        "Lüftung beachten"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        3,
+        4
+      ]
+    }
+  },
+  {
+    "id": "su-08-order-oelaustritt",
+    "type": "order",
+    "prompt": "Ordne den fachgerechten Ablauf bei Ölaustritt.",
+    "items": [
+      "Warnhinweis aufstellen und Bereich sichern",
+      "Öl mit Bindemittel aufnehmen",
+      "Bindemittel in geeignetem Behälter sammeln",
+      "Fachgerechte Entsorgung veranlassen",
+      "Vorgang dokumentieren"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  },
+  {
+    "id": "su-09-order-unfall",
+    "type": "order",
+    "prompt": "Ordne die Schritte bei einem Arbeitsunfall mit Verletzung.",
+    "items": [
+      "Eigenschutz und Unfallstelle sichern",
+      "Lage prüfen und verletzte Person ansprechen",
+      "Erste Hilfe durchführen",
+      "Notruf veranlassen",
+      "Person bis zum Rettungsdienst betreuen"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  },
+  {
+    "id": "su-10-stop-massnahmen",
+    "type": "multi_select",
+    "prompt": "Welche Aussagen zum STOP-Prinzip sind richtig? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Technische Maßnahmen haben Vorrang vor reiner PSA",
+        "PSA ist die erste und einzige Stufe",
+        "Organisatorische Regeln gehören zur Schutzkette",
+        "Substitution kann Gefährdung bereits an der Quelle reduzieren"
+      ],
+      "correctIndices": [
+        0,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "id": "su-11-elektrische-regeln",
+    "type": "single_choice",
+    "prompt": "Welche Aussage ist beim Arbeiten an elektrischen Betriebsmitteln prüfungsnah korrekt?",
+    "answer": {
+      "choices": [
+        "Vor Eingriff nur kurz auf Pause drücken",
+        "Energie trennen und gegen Wiedereinschalten sichern",
+        "Nur Handschuhe tragen reicht",
+        "Warnschilder ersetzen die Freischaltung"
+      ],
+      "correctIndex": 1
+    }
+  },
+  {
+    "id": "su-12-brandschutz",
+    "type": "multi_select",
+    "prompt": "Was gehört zum vorbeugenden Brandschutz im Betrieb? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Fluchtwege frei halten",
+        "Brennbare Stoffe geordnet lagern",
+        "Löschmittel und Alarmwege kennen",
+        "Zündquellen ignorieren, wenn Zeitdruck besteht"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "id": "su-13-entsorgung-getriebe",
+    "type": "single_choice",
+    "prompt": "Ausgedientes Getriebe: Welche Empfehlung ist fachgerecht?",
+    "answer": {
+      "choices": [
+        "Alles ungetrennt als Mischabfall entsorgen",
+        "Bauteile nach Werkstoff trennen und geordnet entsorgen",
+        "Nur die großen Teile entsorgen, Rest liegen lassen",
+        "RestÖl im normalen Restmüll entsorgen"
+      ],
+      "correctIndex": 1
+    }
+  },
+  {
+    "id": "su-14-doku-entsorgung",
+    "type": "multi_select",
+    "prompt": "Welche Punkte gehören in eine saubere Entsorgungsdokumentation? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Welche Stoffe angefallen sind",
+        "Menge bzw. Behälteranzahl",
+        "Entsorgungsweg/Abgabe",
+        "Beliebige private Notiz ohne Bezug"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "id": "su-15-zeichen-zuordnung",
+    "type": "single_choice",
+    "prompt": "Welche Zuordnung ist richtig?",
+    "answer": {
+      "choices": [
+        "Grünes Fluchtwegschild = Umweltgefährdend",
+        "Warnzeichen Rutschgefahr = Rettungsweg",
+        "Fisch/Baum-Symbol = Umweltgefährdend",
+        "Verbotsschild = Erste-Hilfe-Hinweis"
+      ],
+      "correctIndex": 2
+    }
+  },
+  {
+    "id": "su-16-order-maschinenstart",
+    "type": "order",
+    "prompt": "Ordne den Sicherheitscheck vor dem Probelauf.",
+    "items": [
+      "Schutz- und Sicherheitseinrichtungen prüfen",
+      "Arbeitsbereich auf Leckagen/Hindernisse kontrollieren",
+      "PSA anlegen",
+      "Not-Aus und Fluchtwege verifizieren",
+      "Probelauf freigeben"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  },
+  {
+    "id": "su-17-umweltbelastung",
+    "type": "multi_select",
+    "prompt": "Welche Beispiele sind betriebliche Umweltbelastungen? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Unkontrollierter Ölaustritt",
+        "Unnötiger Materialausschuss",
+        "Sortenreine Trennung von Reststoffen",
+        "Hoher unnötiger Energieverbrauch"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        3
+      ]
+    }
+  },
+  {
+    "id": "su-18-was-pruefung-will",
+    "type": "single_choice",
+    "prompt": "Was wird in AP-Aufgaben zu Sicherheit/Umwelt typischerweise bewertet?",
+    "answer": {
+      "choices": [
+        "Nur auswendig gelernte Gesetzesnummern",
+        "Konkrete, auf die Situation bezogene Maßnahmen",
+        "Möglichst lange Texte ohne Struktur",
+        "Nur ob Schutzbrille genannt wurde"
+      ],
+      "correctIndex": 1
+    }
+  },
+  {
+    "id": "su-19-structured-altoel",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (4-6 Sätze): Beschreibe einen fachgerechten Ablauf für den Umgang mit Altöl nach einer Instandhaltungsarbeit.",
+    "answer": {
+      "fields": [
+        {
+          "key": "vorgehen",
+          "label": "Vorgehen",
+          "minWords": 35,
+          "placeholder": "z. B. getrennt sammeln, kennzeichnen, Leckage binden, fachgerecht entsorgen, dokumentieren"
+        }
+      ],
+      "keywords": {
+        "vorgehen": [
+          "altöl",
+          "getrennt",
+          "kennzeichnen",
+          "bindemittel",
+          "entsorgung",
+          "dokumentation"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 35
+      }
+    }
+  },
+  {
+    "id": "su-20-structured-unfall",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (4-6 Sätze): Wie gehst du bei einer blutenden Handverletzung bis zum Eintreffen des Rettungsdienstes vor?",
+    "answer": {
+      "fields": [
+        {
+          "key": "vorgehen",
+          "label": "Vorgehen",
+          "minWords": 35,
+          "placeholder": "Eigenschutz, absichern, Druckverband, Notruf, betreuen"
+        }
+      ],
+      "keywords": {
+        "vorgehen": [
+          "eigenschutz",
+          "absichern",
+          "druckverband",
+          "notruf",
+          "rettungsdienst",
+          "betreuen"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 35
+      }
+    }
+  },
+  {
+    "id": "su-21-structured-stop",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (5-7 Sätze): Erkläre an einem Werkstattbeispiel, wie du das STOP-Prinzip konkret anwendest.",
+    "answer": {
+      "fields": [
+        {
+          "key": "vorgehen",
+          "label": "Vorgehen",
+          "minWords": 45,
+          "placeholder": "Substitution, Technik, Organisation, PSA mit begründeter Reihenfolge"
+        }
+      ],
+      "keywords": {
+        "vorgehen": [
+          "substitution",
+          "technik",
+          "organisation",
+          "psa",
+          "gefährdung",
+          "kontrolle"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 45
+      }
+    }
+  },
+  {
+    "id": "su-22-pruefungsfallen",
+    "type": "multi_select",
+    "prompt": "Welche Punkte sind typische Prüfungsfallen? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Nur allgemeine Aussagen ohne Situationsbezug",
+        "Umweltaspekte komplett weglassen",
+        "Maßnahmen in logischer Reihenfolge darstellen",
+        "Sicherheitszeichen verwechseln"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        3
+      ]
+    }
+  },
+  {
+    "id": "su-23-order-stop",
+    "type": "order",
+    "prompt": "Ordne das STOP-Prinzip korrekt.",
+    "items": [
+      "Substitution",
+      "Technische Maßnahmen",
+      "Organisatorische Maßnahmen",
+      "Persönliche Schutzmaßnahmen"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "id": "su-24-psa-kontext",
+    "type": "single_choice",
+    "prompt": "Welche Aussage zur PSA ist fachlich richtig?",
+    "answer": {
+      "choices": [
+        "PSA ersetzt alle technischen Schutzmaßnahmen",
+        "PSA wird situationsgerecht ergänzend eingesetzt",
+        "PSA ist nur für Besucher relevant",
+        "PSA ist bei Gefahrstoffen optional"
+      ],
+      "correctIndex": 1
+    }
+  },
+  {
+    "id": "su-25-structured-pruefungscheck",
+    "type": "structured_text",
+    "prompt": "Abschlusscheck (5-8 Sätze): Beschreibe, wie du in einer AP-Aufgabe Sicherheit und Umweltschutz systematisch in deinen Arbeitsplan integrierst.",
+    "answer": {
+      "fields": [
+        {
+          "key": "vorgehen",
+          "label": "Vorgehen",
+          "minWords": 50,
+          "placeholder": "Gefahr erkennen, STOP, Umweltmaßnahmen, Entsorgung, Kontrolle, Dokumentation"
+        }
+      ],
+      "keywords": {
+        "vorgehen": [
+          "gefährdung",
+          "stop",
+          "psa",
+          "umwelt",
+          "entsorgung",
+          "kontrolle",
+          "dokumentation"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 50
+      }
+    }
+  }
+]

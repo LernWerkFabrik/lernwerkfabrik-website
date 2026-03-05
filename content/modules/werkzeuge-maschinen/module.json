@@ -1,0 +1,35 @@
+{
+  "id": "werkzeuge-maschinen",
+  "title": "Werkzeuge und Maschinen fachgerecht einsetzen",
+  "description": "Werkzeuge auswählen, sicher einsetzen und typische Fehler vermeiden.",
+  "difficulty": "medium",
+  "tags": [
+    "Werkzeugauswahl",
+    "Werkzeugmaschine",
+    "Sicherheit",
+    "Spanntechnik"
+  ],
+  "estimatedMinutes": 45,
+  "intro": {
+    "why": "In der Prüfung reicht es nicht, Werkzeuge und Maschinen nur zu kennen. Bewertet wird, ob du sie passend zur Aufgabe auswählst, sicher einrichtest und den Arbeitsablauf fachlich begründest. Viele Punkte gehen verloren, wenn Spannmittel, Schnittdaten, Sicherheitsmaßnahmen oder Prüfschritte nicht systematisch angewendet werden.",
+    "trains": [
+      "Werkzeuge, Maschinen und Spannmittel auftragsbezogen auswählen",
+      "Maschinen sicher einrichten, bedienen und überwachen",
+      "Schnittdaten, Bearbeitungsreihenfolge und Standzeit fachgerecht nutzen",
+      "Prüfmittel passend einsetzen und Ergebnisse dokumentieren"
+    ],
+    "traps": [
+      "Mit ungeeignetem Werkzeug oder falschem Spannmittel starten",
+      "Einrichten ohne Sicherheits- und Funktionscheck durchführen",
+      "Einheiten und Schnittwerte verwechseln (mm/m, m/min, 1/min)",
+      "Abweichungen erkennen, aber nicht mit Ursache und Maßnahme belegen"
+    ]
+  },
+  "files": {
+    "explanation": "explanation.md",
+    "example": "example.md",
+    "practiceQuestions": "questions.practice.json",
+    "examQuestions": "questions.exam.json"
+  },
+  "kind": "learn"
+}

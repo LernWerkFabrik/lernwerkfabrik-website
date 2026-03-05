@@ -1,0 +1,34 @@
+{
+  "id": "instandhaltung-dokumentieren",
+  "title": "Instandhaltungsmaßnahmen dokumentieren",
+  "description": "Dokumentation, Protokolle, Übergabe: sauber und prüfungsfähig festhalten.",
+  "difficulty": "easy",
+  "tags": [
+    "Dokumentation",
+    "Prozess",
+    "Qualität"
+  ],
+  "estimatedMinutes": 30,
+  "intro": {
+    "why": "In der Prüfung wird bei Instandhaltungsaufgaben nicht nur bewertet, was technisch gemacht wurde, sondern ob die Maßnahme nachvollziehbar, vollständig und fachlich korrekt dokumentiert ist. Die IHK prüft, ob aus deiner Dokumentation klar hervorgeht, welcher Fehler vorlag, welche Maßnahmen durchgeführt wurden und in welchem Zustand die Anlage übergeben wird. Punktverluste entstehen häufig durch unvollständige Protokolle, unklare Formulierungen oder fehlende Angaben zur Kontrolle und Übergabe.",
+    "trains": [
+      "Instandhaltungsmaßnahmen strukturiert und prüfungsgerecht dokumentieren",
+      "Fehlerbeschreibung, Maßnahme und Ergebnis klar voneinander trennen",
+      "Protokolle so ausfüllen, dass sie für Dritte nachvollziehbar sind",
+      "Übergabe- und Kontrollangaben fachlich korrekt festhalten"
+    ],
+    "traps": [
+      "Nur Maßnahmen auflisten, ohne den ursprünglichen Fehler eindeutig zu beschreiben",
+      "Unklare oder umgangssprachliche Formulierungen in Protokollen verwenden",
+      "Kontroll- und Prüfergebnisse nach der Maßnahme weglassen",
+      "Dokumentation abschließen, ohne den Zustand der Anlage eindeutig zu bewerten"
+    ]
+  },
+  "files": {
+    "explanation": "explanation.md",
+    "example": "example.md",
+    "practiceQuestions": "questions.practice.json",
+    "examQuestions": "questions.exam.json"
+  },
+  "kind": "learn"
+}

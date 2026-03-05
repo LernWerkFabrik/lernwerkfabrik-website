@@ -1,0 +1,357 @@
+[
+  {
+    "id": "swb-01-density-definition",
+    "type": "single_choice",
+    "prompt": "Was beschreibt die Dichte eines Werkstoffs fachlich korrekt?",
+    "answer": {
+      "choices": [
+        "Die Härte eines Werkstoffs",
+        "Masse pro Volumen",
+        "Die elektrische Spannung",
+        "Die Oberflächenrauheit"
+      ],
+      "correctIndex": 1
+    }
+  },
+  {
+    "id": "swb-02-unit-equivalence",
+    "type": "single_choice",
+    "prompt": "Welche Aussage ist richtig?",
+    "answer": {
+      "choices": [
+        "1 kg/dm3 = 1000 g/cm3",
+        "1 kg/dm3 = 1 g/cm3",
+        "1 g/cm3 = 0.001 kg/m3",
+        "1 kg/dm3 = 10 g/cm3"
+      ],
+      "correctIndex": 1
+    }
+  },
+  {
+    "id": "swb-03-unit-conversions",
+    "type": "multi_select",
+    "prompt": "Welche Umrechnungen sind korrekt? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "1 cm3 = 1000 mm3",
+        "1 dm3 = 1000 cm3",
+        "1 g/cm3 = 1000 kg/m3",
+        "1 cm3 = 100 mm3"
+      ],
+      "correctIndices": [0, 1, 2]
+    }
+  },
+  {
+    "id": "swb-04-workflow-order",
+    "type": "order",
+    "prompt": "Ordne den prüfungssicheren Ablauf bei Stoffwert-Aufgaben.",
+    "items": [
+      "Gegeben und Gesucht mit Einheit notieren",
+      "Stoffwert aus Tabelle entnehmen",
+      "Einheiten vereinheitlichen",
+      "Rechnen",
+      "Ergebnis technisch plausibilisieren"
+    ],
+    "answer": {
+      "correctOrder": [0, 1, 2, 3, 4]
+    }
+  },
+  {
+    "id": "swb-05-ap1-what-needed",
+    "type": "single_choice",
+    "prompt": "AP1-typisch: Welche Größe brauchst du bei gleichem Bauteilraum direkt für den Massenvergleich zweier Werkstoffe?",
+    "answer": {
+      "choices": [
+        "Nur den Schmelzpunkt",
+        "Nur die Farbe",
+        "Die Dichte",
+        "Nur die Zugfestigkeit"
+      ],
+      "correctIndex": 2
+    }
+  },
+  {
+    "id": "swb-06-ap1-plate-mass-kg",
+    "prompt": "Trägerplatte: l=160 mm, b=100 mm, h=10 mm, rho(Stahl)=7.85 g/cm3. Berechne die Masse in kg.",
+    "answer": {
+      "value": 1.256,
+      "unit": "kg"
+    },
+    "tolerance": 0.01,
+    "solution": "V=160*100*10=160000 mm3=160 cm3. m=7.85*160=1256 g=1.256 kg."
+  },
+  {
+    "id": "swb-07-ap1-plate-mass-g",
+    "prompt": "Gleiche Trägerplatte wie zuvor: Wie groß ist die Masse in g?",
+    "answer": {
+      "value": 1256,
+      "unit": "g"
+    },
+    "tolerance": 1,
+    "solution": "Aus V=160 cm3 folgt m=7.85*160=1256 g."
+  },
+  {
+    "id": "swb-08-material-swap-mass",
+    "prompt": "Ein Gehäuse aus EN-GJL hat 2.27 kg. Bei gleichem Volumen wird auf Aluminium gewechselt (rho_Al=2.7 kg/dm3, rho_GJL=7.3 kg/dm3). Berechne die neue Masse in kg.",
+    "answer": {
+      "value": 0.84,
+      "unit": "kg"
+    },
+    "tolerance": 0.03,
+    "solution": "m_neu=m_alt*(rho_Al/rho_GJL)=2.27*(2.7/7.3)=0.8396 kg, gerundet 0.84 kg."
+  },
+  {
+    "id": "swb-09-density-backcalc",
+    "prompt": "Rückwärts gerechnet: m_alt=2.27 kg, m_neu=0.84 kg, rho_Al=2.7 kg/dm3 (gleiches Volumen). Welche Dichte hatte der Ausgangswerkstoff in kg/dm3?",
+    "answer": {
+      "value": 7.3,
+      "unit": "kg/dm3"
+    },
+    "tolerance": 0.1,
+    "solution": "rho_alt=rho_Al*(m_alt/m_neu)=2.7*(2.27/0.84)=7.30 kg/dm3."
+  },
+  {
+    "id": "swb-10-ap2-raw-volume",
+    "prompt": "AP2-Rohling (Zylinder): D=200 mm, B=40 mm. Berechne das Volumen in cm3.",
+    "answer": {
+      "value": 1256.64,
+      "unit": "cm3"
+    },
+    "tolerance": 1,
+    "solution": "r=10 cm, h=4 cm. V=pi*r^2*h=pi*10^2*4=1256.64 cm3."
+  },
+  {
+    "id": "swb-11-ap2-raw-mass",
+    "prompt": "Gleicher AP2-Rohling aus CuSn12-C mit rho=8.7 kg/dm3. Berechne die Masse in kg.",
+    "answer": {
+      "value": 10.93,
+      "unit": "kg"
+    },
+    "tolerance": 0.05,
+    "solution": "V=1256.64 cm3=1.25664 dm3. m=rho*V=8.7*1.25664=10.93 kg."
+  },
+  {
+    "id": "swb-12-ap2-bore-volume",
+    "prompt": "In den AP2-Rohling wird eine Bohrung d=40 mm über B=40 mm eingebracht. Berechne das Bohrungsvolumen in cm3.",
+    "answer": {
+      "value": 50.27,
+      "unit": "cm3"
+    },
+    "tolerance": 0.4,
+    "solution": "r=2 cm, h=4 cm. V_B=pi*2^2*4=50.27 cm3."
+  },
+  {
+    "id": "swb-13-ap2-bore-percent",
+    "prompt": "Bezogen auf den AP2-Rohling (V_Roh=1256.64 cm3): Wie groß ist der Zerspanungsanteil der Bohrung (V_B=50.27 cm3) in %?",
+    "answer": {
+      "value": 4,
+      "unit": "%"
+    },
+    "tolerance": 0.2,
+    "solution": "V_B/V_Roh*100=50.27/1256.64*100=4.0 %."
+  },
+  {
+    "id": "swb-14-lightweight-choice",
+    "type": "single_choice",
+    "prompt": "Welcher Werkstoff ist bei gleicher Geometrie am leichtesten?",
+    "answer": {
+      "choices": [
+        "CuSn12-C (8.7 g/cm3)",
+        "Stahl (7.85 g/cm3)",
+        "Aluminiumlegierung (2.7 g/cm3)",
+        "Messing (8.4 g/cm3)"
+      ],
+      "correctIndex": 2
+    }
+  },
+  {
+    "id": "swb-15-selection-criteria",
+    "type": "multi_select",
+    "prompt": "Welche Kriterien gehören zu einer sauberen Werkstoffauswahl? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Dichte/Masseziel",
+        "mechanische Anforderungen",
+        "Einsatzbedingungen (z. B. Korrosion)",
+        "nur die Farbe des Werkstoffs"
+      ],
+      "correctIndices": [0, 1, 2]
+    }
+  },
+  {
+    "id": "swb-16-same-volume-rule",
+    "type": "single_choice",
+    "prompt": "Welche Aussage gilt für gleiche Geometrie?",
+    "answer": {
+      "choices": [
+        "Die Masse ist immer gleich, egal welcher Werkstoff.",
+        "Die Masse ist proportional zur Dichte.",
+        "Die Dichte ist proportional zur Masse nur bei Stahl.",
+        "Das Volumen hängt von der Farbe ab."
+      ],
+      "correctIndex": 1
+    }
+  },
+  {
+    "id": "swb-17-mass-from-rho-v",
+    "prompt": "Berechne die Masse in kg: rho=7.85 g/cm3, V=380 cm3.",
+    "answer": {
+      "value": 2.983,
+      "unit": "kg"
+    },
+    "tolerance": 0.02,
+    "solution": "m=7.85*380=2983 g=2.983 kg."
+  },
+  {
+    "id": "swb-18-volume-from-m-rho",
+    "prompt": "Berechne das Volumen in cm3: m=1.62 kg, rho=2.7 g/cm3.",
+    "answer": {
+      "value": 600,
+      "unit": "cm3"
+    },
+    "tolerance": 1,
+    "solution": "m=1620 g. V=m/rho=1620/2.7=600 cm3."
+  },
+  {
+    "id": "swb-19-rho-from-m-v",
+    "prompt": "Berechne die Dichte in g/cm3: m=4.35 kg, V=500 cm3.",
+    "answer": {
+      "value": 8.7,
+      "unit": "g/cm3"
+    },
+    "tolerance": 0.05,
+    "solution": "m=4350 g. rho=4350/500=8.7 g/cm3."
+  },
+  {
+    "id": "swb-20-mass-limit-choice",
+    "type": "single_choice",
+    "prompt": "Ein Bauteil hat V=400 cm3 und darf maximal 2.0 kg wiegen. Welche Option erfüllt das sicher?",
+    "answer": {
+      "choices": [
+        "Stahl mit rho=7.85 g/cm3",
+        "CuSn12-C mit rho=8.7 g/cm3",
+        "Aluminiumlegierung mit rho=2.7 g/cm3",
+        "Messing mit rho=8.4 g/cm3"
+      ],
+      "correctIndex": 2
+    }
+  },
+  {
+    "id": "swb-21-structured-cusn",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (5-7 Sätze): Begründe die Werkstoffwahl CuSn12-C für ein Schneckenrad gegenüber einem leichteren Werkstoff.",
+    "answer": {
+      "fields": [
+        {
+          "key": "begruendung",
+          "label": "Begründung",
+          "minWords": 45,
+          "placeholder": "Nenne Funktionsanforderungen, Verschleiß, Kontaktverhalten und den Bezug zur Aufgabe."
+        }
+      ],
+      "keywords": {
+        "begruendung": [
+          "werkstoff",
+          "verschleiß",
+          "kontakt",
+          "eigenschaften",
+          "funktion",
+          "begruendung",
+          "begründung"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 45
+      }
+    }
+  },
+  {
+    "id": "swb-22-structured-workflow",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (4-6 Sätze): Beschreibe einen sicheren Rechenablauf für Stoffwertaufgaben inkl. Einheitenkontrolle.",
+    "answer": {
+      "fields": [
+        {
+          "key": "ablauf",
+          "label": "Ablauf",
+          "minWords": 38,
+          "placeholder": "Gegeben/Gesucht, Tabelle, Einheit, Formel, Ergebnis und Plausibilität."
+        }
+      ],
+      "keywords": {
+        "ablauf": [
+          "gegeben",
+          "einheit",
+          "tabelle",
+          "formel",
+          "rechnen",
+          "plausibilitaet"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 38
+      }
+    }
+  },
+  {
+    "id": "swb-23-order-units",
+    "type": "order",
+    "prompt": "Ordne die Umrechnungsschritte für 160000 mm3 bis zur Masse in kg bei rho=7.85 g/cm3.",
+    "items": [
+      "160000 mm3 in cm3 umrechnen",
+      "Masse in g mit m=rho*V berechnen",
+      "Masse von g in kg umrechnen"
+    ],
+    "answer": {
+      "correctOrder": [0, 1, 2]
+    }
+  },
+  {
+    "id": "swb-24-common-traps",
+    "type": "multi_select",
+    "prompt": "Welche Punkte sind typische Stoffwert-Fallen in AP-Aufgaben? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Volumen in mm3 belassen, aber mit g/cm3 rechnen",
+        "Dichte aus falscher Werkstoffzeile entnehmen",
+        "Ergebnis ohne technische Plausibilität übernehmen",
+        "Masse sauber in geforderter Einheit angeben"
+      ],
+      "correctIndices": [0, 1, 2]
+    }
+  },
+  {
+    "id": "swb-25-structured-decision",
+    "type": "structured_text",
+    "prompt": "Abschlussaufgabe (6-9 Sätze): Du sollst für ein neues Bauteil zwischen Stahl und Aluminium entscheiden. Beschreibe deinen Entscheidungsweg fachlich nachvollziehbar.",
+    "answer": {
+      "fields": [
+        {
+          "key": "entscheidung",
+          "label": "Entscheidungsweg",
+          "minWords": 55,
+          "placeholder": "Nenne Anforderungen, Stoffwerte, Massenvergleich und eine begründete Entscheidung."
+        }
+      ],
+      "keywords": {
+        "entscheidung": [
+          "anforderung",
+          "dichte",
+          "vergleich",
+          "masse",
+          "werkstoff",
+          "entscheidung"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 55
+      }
+    }
+  }
+]

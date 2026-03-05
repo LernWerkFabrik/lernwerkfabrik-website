@@ -1,0 +1,541 @@
+[
+  {
+    "id": "wm-01-fachgerecht-begriff",
+    "type": "single_choice",
+    "prompt": "Was bedeutet es im Metallbereich, Werkzeuge und Maschinen fachgerecht einzusetzen?",
+    "answer": {
+      "choices": [
+        "Möglichst schnell arbeiten, auch ohne feste Reihenfolge",
+        "Werkzeug, Maschine und Ablauf passend zur Aufgabe sicher und begründet auswählen",
+        "Nur nach persönlicher Erfahrung entscheiden",
+        "Nur das Endergebnis zählen lassen"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "wm-02-startcheck",
+    "type": "multi_select",
+    "prompt": "Welche Punkte gehören vor dem Bearbeitungsstart zwingend zum fachgerechten Maschinen-Check? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Schutz- und Sicherheitseinrichtungen prüfen",
+        "Werkzeugzustand kontrollieren",
+        "Spannung und Ausrichtung des Werkstücks prüfen",
+        "Mit maximaler Drehzahl starten, um Zeit zu sparen",
+        "Arbeitsbereich auf lose Teile und Hindernisse prüfen"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "wm-03-arbeitsfolge-grundablauf",
+    "type": "order",
+    "prompt": "Ordne den fachgerechten Grundablauf beim Einsatz von Werkzeugmaschinen.",
+    "items": [
+      "Auftrag und Zeichnung auswerten",
+      "Werkzeug, Maschine und Spannmittel auswählen",
+      "Maschine einrichten und Sicherheitscheck durchführen",
+      "Werkstück ausrichten und spannen",
+      "Bearbeitung durchführen",
+      "Prüfen und dokumentieren"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "wm-04-werkzeug-entgraten",
+    "type": "single_choice",
+    "prompt": "Welches Werkzeug ist für das gezielte Entgraten einer Bohrung am passendsten?",
+    "answer": {
+      "choices": [
+        "Gewindebohrer",
+        "Senker",
+        "Reibahle",
+        "Zentrierbohrer"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "wm-05-kernloch-m5",
+    "type": "single_choice",
+    "prompt": "Welcher Kernlochdurchmesser passt typischerweise für ein M5-Innengewinde?",
+    "answer": {
+      "choices": [
+        "3,5 mm",
+        "4,2 mm",
+        "5,0 mm",
+        "6,0 mm"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "wm-06-psa-kss",
+    "type": "multi_select",
+    "prompt": "Welche Maßnahmen sind beim Umgang mit Kühl- und Schmierstoffen fachlich richtig? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Schutzhandschuhe und Schutzbrille passend einsetzen",
+        "Verschüttete Stoffe sofort mit geeignetem Bindemittel aufnehmen",
+        "Kontaminiertes Material getrennt sammeln und entsorgen",
+        "Hautschutz und Händehygiene sind bei KSS unnötig",
+        "Arbeitsbereich gegen Rutschgefahr sichern"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "wm-07-hauptgefaehrdung",
+    "type": "single_choice",
+    "prompt": "Von wem oder was geht in der Praxis die häufigste Hauptgefährdung beim Umgang mit Maschinen aus?",
+    "answer": {
+      "choices": [
+        "Nur von der Umgebungstemperatur",
+        "Nur von der Konstruktion",
+        "Vom Bediener durch Fehlverhalten oder Fehlbedienung",
+        "Nur vom Aufstellort"
+      ],
+      "correctIndex": 2
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "wm-08-kss-funktion",
+    "type": "single_choice",
+    "prompt": "Welche Hauptaufgabe hat Kühlschmierstoff bei spanenden Verfahren?",
+    "answer": {
+      "choices": [
+        "Nur die Maschine reinigen",
+        "Kühlen, Schmieren und Spanabtransport unterstützen",
+        "Werkstück härten",
+        "Messfehler ausgleichen"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "wm-09-passbohrung-verfahren",
+    "type": "single_choice",
+    "prompt": "Welche Verfahrenskombination ist für eine Passbohrung 8H7 am geeignetsten?",
+    "answer": {
+      "choices": [
+        "Nur Bohren",
+        "Vorbohren und Reiben",
+        "Nur Senken",
+        "Gewindeschneiden"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "wm-10-spannmittel-kriterien",
+    "type": "multi_select",
+    "prompt": "Welche Kriterien sind für die Auswahl eines Spannmittels fachlich entscheidend? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Bauteilgeometrie und Bezugsflächen",
+        "Bearbeitungskräfte und Steifigkeit",
+        "Zugänglichkeit für Werkzeug und Prüfmittel",
+        "Farbe des Spannmittels",
+        "Wiederholgenauigkeit und Prozesssicherheit"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "wm-11-gewinde-reihenfolge",
+    "type": "order",
+    "prompt": "Ordne die fachgerechte Reihenfolge zum Herstellen eines M5-Innengewindes.",
+    "items": [
+      "Kernloch 4,2 mm bohren",
+      "Bohrung ansenken",
+      "Vorschneider einsetzen",
+      "Mittelschneider einsetzen",
+      "Fertigschneider einsetzen"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "wm-12-drehzahl-formel",
+    "type": "single_choice",
+    "prompt": "Welche Formel ist für die Drehzahlberechnung beim Bohren korrekt?",
+    "answer": {
+      "choices": [
+        "n = (π · d) / (1000 · vc)",
+        "n = (1000 · vc) / (π · d)",
+        "n = vc · d",
+        "n = f · d"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "wm-13-drehzahl-berechnen",
+    "prompt": "Berechne die Drehzahl n für eine Bohrung d = 5 mm bei vc = 30 m/min.",
+    "answer": {
+      "value": 1910,
+      "unit": "1/min"
+    },
+    "tolerance": 5,
+    "solution": "n = (1000 · 30) / (π · 5) = 1909,86 1/min, gerundet 1910 1/min.",
+    "input": {
+      "mode": "integer"
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "wm-14-reibaufmass",
+    "prompt": "Vorbohrung 7,8 mm, Zielmaß 8,0 mm (8H7). Wie groß ist das Reibaufmaß?",
+    "answer": {
+      "value": 0.2,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Reibaufmaß = 8,0 - 7,8 = 0,2 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "wm-15-keilwinkel-standzeit",
+    "type": "single_choice",
+    "prompt": "Bei welchem Keilwinkel ist ein Trennwerkzeug in der Regel am stabilsten und standfester?",
+    "answer": {
+      "choices": [
+        "15°",
+        "30°",
+        "45°",
+        "60°"
+      ],
+      "correctIndex": 3
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "wm-16-pruefmittel-zuordnung",
+    "type": "multi_select",
+    "prompt": "Welche Zuordnungen von Prüfmittel zu Merkmal sind fachlich richtig? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Messschieber für allgemeine Längenmaße",
+        "Grenzlehrdorn für H7-Bohrungen",
+        "Gewindelehre für Innengewinde",
+        "Meterstab für enge Passbohrung",
+        "Bügelmessschraube für enge Außenmaße"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "wm-17-werkzeugwechsel-order",
+    "type": "order",
+    "prompt": "Ordne den sicheren Ablauf für einen Werkzeugwechsel an der Maschine.",
+    "items": [
+      "Maschine stoppen",
+      "Gegen Wiedereinschalten sichern",
+      "Werkzeug fachgerecht wechseln",
+      "Spann- und Schutzeinrichtungen kontrollieren",
+      "Probelauf/Leerhub durchführen"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "wm-18-mindesteinschraubtiefe",
+    "type": "single_choice",
+    "prompt": "Wie groß sollte die Mindesteinschraubtiefe einer Zylinderschraube M6 in Stahl typischerweise mindestens sein?",
+    "answer": {
+      "choices": [
+        "Hälfte des Nenndurchmessers",
+        "Etwa fünf Gewindegänge unabhängig vom Werkstoff",
+        "Etwa das 1,5-fache des Nenndurchmessers",
+        "Immer genau 6 mm"
+      ],
+      "correctIndex": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "wm-19-fehleranalyse-bohrung",
+    "type": "multi_select",
+    "prompt": "Eine Bohrung liegt außerhalb der Toleranz. Welche Ursachen sind typisch? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Werkzeug ist verschlissen oder beschädigt",
+        "Schnittdaten sind unpassend eingestellt",
+        "Werkstück ist unzureichend gespannt",
+        "Prüfmittel ist für das Merkmal zu ungenau",
+        "Ausrichtung/Bezug wurde nicht sauber hergestellt"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "wm-20-oelverschuettung-order",
+    "type": "order",
+    "prompt": "Ordne den fachgerechten Ablauf bei verschüttetem Öl im Maschinenbereich.",
+    "items": [
+      "Gefahrenstelle absichern",
+      "Öl mit geeignetem Bindemittel aufnehmen",
+      "Kontaminiertes Material getrennt sammeln",
+      "Fachgerecht entsorgen",
+      "Vorfall dokumentieren"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "wm-21-maschinenwahl-szenario",
+    "type": "single_choice",
+    "prompt": "Für ein Einzelteil mit zwei Bohrungen d6,6, einer Passbohrung 8H7 und einem M5-Innengewinde: Welche Wahl ist fachlich am passendsten?",
+    "answer": {
+      "choices": [
+        "Nur Handbohrmaschine, weil sie flexibel ist",
+        "Säulenbohrmaschine mit passender Spannvorrichtung, Vorbohrer/Reibahle und Gewindewerkzeugen",
+        "Nur Fräsmaschine ohne Spannmittel, um Zeit zu sparen",
+        "Beliebige Maschine, Hauptsache hohe Drehzahl"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "wm-22-vorschubgeschwindigkeit",
+    "prompt": "Berechne die Vorschubgeschwindigkeit vf bei n = 1250 1/min und f = 0,12 mm/U.",
+    "answer": {
+      "value": 150,
+      "unit": "mm/min"
+    },
+    "tolerance": 0.5,
+    "solution": "vf = n · f = 1250 · 0,12 = 150 mm/min.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "wm-23-structured-arbeitsplanung",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (5-7 Sätze): Beschreibe, wie du für ein neues Bauteil Werkzeug, Maschine und Spannmittel fachgerecht auswählst und den Ablauf planst.",
+    "answer": {
+      "fields": [
+        {
+          "key": "vorgehen",
+          "label": "Vorgehen",
+          "minWords": 50,
+          "placeholder": "z. B. Zeichnung auswerten, Toleranzen erkennen, Verfahren wählen, Spannmittel festlegen, Prüfschritte planen"
+        }
+      ],
+      "keywords": {
+        "vorgehen": [
+          "zeichnung",
+          "werkstoff",
+          "toleranz",
+          "werkzeug",
+          "maschine",
+          "spannmittel",
+          "prüfmittel",
+          "arbeitsfolge"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 50
+      }
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "wm-24-structured-sicherheit-umwelt",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (5-7 Sätze): Erkläre, wie du beim Einrichten und Bedienen von Maschinen Arbeitssicherheit und Umweltschutz konkret umsetzt.",
+    "answer": {
+      "fields": [
+        {
+          "key": "massnahmen",
+          "label": "Maßnahmen",
+          "minWords": 50,
+          "placeholder": "z. B. Sicherheitscheck, PSA, KSS-Handhabung, Verschüttungen, Entsorgung, Dokumentation"
+        }
+      ],
+      "keywords": {
+        "massnahmen": [
+          "sicherheitseinrichtungen",
+          "psa",
+          "schutzbrille",
+          "handschuhe",
+          "kühlschmierstoff",
+          "bindemittel",
+          "entsorgung",
+          "dokumentation"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 50
+      }
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "wm-25-structured-stoerung",
+    "type": "structured_text",
+    "prompt": "Abschlussaufgabe (6-8 Sätze): Beschreibe dein Vorgehen, wenn nach der Bearbeitung Maßabweichungen auftreten und die Maschine auffällige Geräusche zeigt.",
+    "answer": {
+      "fields": [
+        {
+          "key": "analyse",
+          "label": "Analyse und Maßnahme",
+          "minWords": 55,
+          "placeholder": "Symptom, Ursachenprüfung, Prüfmittel, Korrektur, Wiederholprüfung, Protokoll"
+        }
+      ],
+      "keywords": {
+        "analyse": [
+          "symptom",
+          "ursache",
+          "prüfung",
+          "spannmittel",
+          "werkzeugzustand",
+          "schnittdaten",
+          "wiederholprüfung",
+          "protokoll"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 55
+      }
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  }
+]

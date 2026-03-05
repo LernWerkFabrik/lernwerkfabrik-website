@@ -1,0 +1,35 @@
+{
+  "id": "technische-berechnungen",
+  "title": "Technische Berechnungen",
+  "description": "Grundlagen: Einheiten, Formelumstellung sowie Kraft, Drehmoment, Leistung, Druck, Fläche/Volumen und Dichte – prüfungsnah mit typischen Fehlerquellen.",
+  "difficulty": "medium",
+  "tags": [
+    "Grundlagen",
+    "Mathe",
+    "Einheiten",
+    "AP1"
+  ],
+  "estimatedMinutes": 75,
+  "intro": {
+    "why": "Technische Berechnungen sind in der Abschlussprüfung kein Selbstzweck, sondern dienen dazu, technische Zusammenhänge sicher zu beurteilen. Bewertet wird nicht nur das Endergebnis, sondern vor allem ein sauberer Rechenweg, korrekt umgestellte Formeln und der sichere Umgang mit Einheiten. Punktverluste entstehen häufig, wenn falsche Größen eingesetzt, Einheiten nicht umgerechnet oder Ergebnisse nicht auf ihre technische Plausibilität geprüft werden.",
+    "trains": [
+      "Grundlegende technische Größen sicher berechnen (Kraft, Drehmoment, Leistung, Druck, Fläche, Volumen, Dichte)",
+      "Formeln fachlich korrekt umstellen und passende Größen einsetzen",
+      "Einheiten sicher umrechnen und Ergebnisse auf Plausibilität prüfen",
+      "Rechenwege prüfungsgerecht und nachvollziehbar darstellen"
+    ],
+    "traps": [
+      "Einheiten nicht oder falsch umrechnen (z. B. mm ↔ m, N ↔ kN)",
+      "Falsche Formel oder falsche Größe einsetzen, obwohl richtig gerechnet wird",
+      "Rechenweg nicht strukturiert oder nicht nachvollziehbar darstellen",
+      "Ergebnis rechnerisch korrekt übernehmen, obwohl es technisch unplausibel ist"
+    ]
+  },
+  "files": {
+    "explanation": "explanation.md",
+    "example": "example.md",
+    "practiceQuestions": "questions.practice.json",
+    "examQuestions": "questions.exam.json"
+  },
+  "kind": "learn"
+}

@@ -1,0 +1,169 @@
+[
+  {
+    "id": "eb-e-01-widerstand",
+    "prompt": "An einer Last liegen 24 V an, der Strom beträgt 3 A. Berechne den Widerstand R.",
+    "answer": {
+      "value": 8,
+      "unit": "Ω"
+    },
+    "tolerance": 0.1,
+    "solution": "R = U/I = 24/3 = 8 Ω.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "eb-e-02-strom",
+    "prompt": "Eine 24-V-Baugruppe nimmt 120 W auf. Wie groß ist der Strom I?",
+    "answer": {
+      "value": 5,
+      "unit": "A"
+    },
+    "tolerance": 0.05,
+    "solution": "I = P/U = 120/24 = 5 A.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "eb-e-03-leistung",
+    "prompt": "Bei einer Versorgung von 24 V wird ein Strom von 1,6 A gemessen. Berechne die elektrische Leistung P.",
+    "answer": {
+      "value": 38.4,
+      "unit": "W"
+    },
+    "tolerance": 0.2,
+    "solution": "P = U * I = 24 * 1,6 = 38,4 W.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "eb-e-04-arbeit",
+    "prompt": "Eine Baugruppe läuft mit P = 0,25 kW über t = 6 h. Wie groß ist die elektrische Arbeit W in kWh?",
+    "answer": {
+      "value": 1.5,
+      "unit": "kWh"
+    },
+    "tolerance": 0.02,
+    "solution": "W = P * t = 0,25 * 6 = 1,5 kWh.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "eb-e-05-grenzwert-unten",
+    "prompt": "Sollversorgung 24,0 V ± 10 %. Berechne den unteren Grenzwert.",
+    "answer": {
+      "value": 21.6,
+      "unit": "V"
+    },
+    "tolerance": 0.05,
+    "solution": "Unterer Grenzwert = 24,0 * 0,90 = 21,6 V.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "eb-e-06-grenzwert-oben",
+    "prompt": "Sollversorgung 24,0 V ± 10 %. Berechne den oberen Grenzwert.",
+    "answer": {
+      "value": 26.4,
+      "unit": "V"
+    },
+    "tolerance": 0.05,
+    "solution": "Oberer Grenzwert = 24,0 * 1,10 = 26,4 V.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "eb-e-07-reihe",
+    "prompt": "Zwei Widerstände mit 47 Ω und 68 Ω sind in Reihe geschaltet. Berechne den Gesamtwiderstand.",
+    "answer": {
+      "value": 115,
+      "unit": "Ω"
+    },
+    "tolerance": 0.5,
+    "solution": "Rges = 47 + 68 = 115 Ω.",
+    "input": {
+      "mode": "integer"
+    }
+  },
+  {
+    "id": "eb-e-08-parallel",
+    "prompt": "Zwei Widerstände mit 100 Ω und 200 Ω sind parallel geschaltet. Wie groß ist der Ersatzwiderstand Rges?",
+    "answer": {
+      "value": 66.67,
+      "unit": "Ω"
+    },
+    "tolerance": 0.2,
+    "solution": "Rges = (R1 * R2) / (R1 + R2) = (100 * 200) / 300 = 66,67 Ω.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "eb-e-09-teilerspannung",
+    "prompt": "In einem Spannungsteiler liegen R1 = 330 Ω und R2 = 220 Ω an Uges = 24 V. Berechne U1 über R1.",
+    "answer": {
+      "value": 14.4,
+      "unit": "V"
+    },
+    "tolerance": 0.1,
+    "solution": "U1 = Uges * R1 / (R1 + R2) = 24 * 330 / 550 = 14,4 V.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "eb-e-10-abweichung",
+    "prompt": "Sollwert 24,0 V, gemessen 22,9 V. Um wie viel Volt weicht der Istwert vom Sollwert ab?",
+    "answer": {
+      "value": 1.1,
+      "unit": "V"
+    },
+    "tolerance": 0.05,
+    "solution": "Abweichung = 24,0 - 22,9 = 1,1 V.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "eb-e-11-io-quote",
+    "prompt": "Bei 42 geprüften Baugruppen sind 5 n. i. O. Wie hoch ist die i. O.-Quote in Prozent?",
+    "answer": {
+      "value": 88.1,
+      "unit": "%"
+    },
+    "tolerance": 0.2,
+    "solution": "i. O. = 42 - 5 = 37. Quote = 37/42 * 100 = 88,1 %.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    }
+  },
+  {
+    "id": "eb-e-12-dokumentationszeit",
+    "prompt": "Für 18 Messpunkte sind je 35 s Dokumentationszeit vorgesehen. Wie lange dauert die Dokumentation in Minuten?",
+    "answer": {
+      "value": 10.5,
+      "unit": "min"
+    },
+    "tolerance": 0.1,
+    "solution": "18 * 35 s = 630 s. 630/60 = 10,5 min.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  }
+]

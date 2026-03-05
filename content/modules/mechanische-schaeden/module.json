@@ -1,0 +1,34 @@
+{
+  "id": "mechanische-schaeden",
+  "title": "Mechanische Schäden beurteilen",
+  "description": "Schadensbilder erkennen, Ursachen eingrenzen und Maßnahmen fachgerecht ableiten.",
+  "difficulty": "medium",
+  "tags": [
+    "Schäden",
+    "Instandhaltung",
+    "Schadensanalyse"
+  ],
+  "estimatedMinutes": 40,
+  "intro": {
+    "why": "In der Prüfung reicht es nicht, einen Schaden nur zu benennen. Bewertet wird, ob du Schadensmerkmale sauber erkennst, die Ursache systematisch eingrenzt, die Auswirkungen auf Funktion und Sicherheit bewertest und daraus eine fachlich passende Maßnahme ableitest. Punktverluste entstehen häufig, wenn Befund und Ursache vermischt oder Maßnahmen ohne Begründung genannt werden.",
+    "trains": [
+      "Typische mechanische Schadensbilder sicher erkennen (z. B. Verschleiß, Riss, Bruch, Verformung, Grübchenbildung)",
+      "Schadensauswirkungen auf Betriebssicherheit, Funktion und Verfügbarkeit einschätzen",
+      "Ursachen logisch herleiten (Belastung, Montage, Schmierung, Passung, Verunreinigung)",
+      "Geeignete Maßnahmen begründet auswählen und Wirksamkeit prüfen"
+    ],
+    "traps": [
+      "Schaden nur optisch beschreiben, ohne technische Bewertung",
+      "Ursache raten, statt Befund und Messwerte zu nutzen",
+      "Maßnahmen nennen, ohne die Ursache zu beseitigen",
+      "Sicherheitsrelevanz, Probelauf und Dokumentation vernachlässigen"
+    ]
+  },
+  "files": {
+    "explanation": "explanation.md",
+    "example": "example.md",
+    "practiceQuestions": "questions.practice.json",
+    "examQuestions": "questions.exam.json"
+  },
+  "kind": "learn"
+}

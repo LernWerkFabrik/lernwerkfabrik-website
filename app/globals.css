@@ -1,0 +1,520 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Industriemechaniker: kühles Stahlgrau + klares Gelb als Akzent */
+    --background: 210 5% 93%;
+    --foreground: 220 26% 14%;
+
+    --card: 210 6% 96%;
+    --card-foreground: 220 26% 14%;
+    --card-strong: 210 6% 97%;
+    --card-subtle: 210 4% 94%;
+
+    --popover: 32 12% 95%;
+    --popover-foreground: 220 22% 16%;
+
+    --muted: 210 5% 88%;
+    --muted-foreground: 220 18% 32%;
+
+    --border: 32 10% 78%;
+    --input: 32 10% 78%;
+
+    /* Yellow remains an accent only */
+    --primary: 42 96% 50%;
+    --primary-foreground: 220 22% 16%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 42 96% 50%;
+    --radius: 0.75rem;
+
+    /* kühler Gegenakzent */
+    --accent-cool: 210 18% 38%;
+
+    /* Surface Levels */
+    --surface-1: 210 5% 95%;
+    --surface-2: 210 4% 93%;
+    --surface-3: 210 4% 89%;
+
+    /* Motion */
+    --lp-motion-duration: 200ms;
+    --lp-motion-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 222 22% 6%;
+    --foreground: 210 32% 92%;
+
+    --card: 222 22% 9.5%;
+    --card-foreground: 210 32% 92%;
+
+    --popover: 222 22% 9%;
+    --popover-foreground: 210 32% 92%;
+
+    --muted: 222 18% 14%;
+    --muted-foreground: 215 18% 72%;
+
+    --border: 222 16% 18%;
+    --input: 222 16% 18%;
+
+    --primary: 42 96% 56%;
+    --primary-foreground: 222 22% 10%;
+
+    --secondary: 222 18% 14%;
+    --secondary-foreground: 210 32% 92%;
+
+    --destructive: 0 62% 48%;
+    --destructive-foreground: 210 32% 92%;
+
+    --ring: 42 96% 56%;
+    --accent-cool: 195 100% 55%;
+
+    --surface-1: 222 22% 8.2%;
+    --surface-2: 222 22% 10.2%;
+    --surface-3: 222 22% 12.2%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body {
+    height: 100%;
+  }
+
+  html {
+    color-scheme: light dark;
+  }
+
+  html:not(.dark) {
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  @media (prefers-color-scheme: light) {
+    html:not(.dark),
+    html:not(.dark) body {
+      background-color: hsl(var(--background));
+    }
+  }
+
+  /* =========================================================
+     Background Layers (ALLE pointer-events: none, KEIN transform auf fullscreen fixed)
+     ========================================================= */
+
+  body.lp-bg {
+    position: relative;
+    isolation: isolate;
+  }
+
+  body.lp-bg::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background:
+      radial-gradient(1200px circle at 18% 12%, hsl(var(--primary) / 0.032), transparent 58%),
+      radial-gradient(900px circle at 82% 28%, hsl(var(--accent-cool) / 0.024), transparent 60%),
+      radial-gradient(1400px circle at 50% 0%, hsl(0 0% 0% / 0.012), transparent 55%),
+      linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--background)) 100%);
+  }
+
+  body.lp-bg::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+      radial-gradient(circle at 20% 10%, hsl(0 0% 0% / 0.06) 0 1px, transparent 2px),
+      radial-gradient(circle at 80% 30%, hsl(0 0% 0% / 0.05) 0 1px, transparent 2px),
+      radial-gradient(circle at 40% 70%, hsl(0 0% 0% / 0.04) 0 1px, transparent 2px);
+    background-size: 140px 140px, 180px 180px, 220px 220px;
+    opacity: 0.10;
+    mix-blend-mode: multiply;
+  }
+
+  .dark body.lp-bg::before {
+    background:
+      radial-gradient(1200px circle at 18% 12%, hsl(var(--primary) / 0.14), transparent 58%),
+      radial-gradient(900px circle at 82% 28%, hsl(var(--accent-cool) / 0.12), transparent 60%),
+      radial-gradient(1600px circle at 50% 0%, hsl(0 0% 0% / 0.55), transparent 62%),
+      linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--background)) 100%);
+  }
+
+  .dark body.lp-bg::after {
+    background-image:
+      radial-gradient(circle at 20% 10%, hsl(0 0% 100% / 0.08) 0 1px, transparent 2px),
+      radial-gradient(circle at 80% 30%, hsl(0 0% 100% / 0.06) 0 1px, transparent 2px),
+      radial-gradient(circle at 40% 70%, hsl(0 0% 100% / 0.05) 0 1px, transparent 2px);
+    opacity: 0.08;
+    mix-blend-mode: screen;
+  }
+
+  /* 3D Grid Layer – WICHTIG: KEIN transform (sonst bricht fixed/click in manchen Browsern) */
+  .lp-bg-3d {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    pointer-events: none;
+
+    background-image:
+      linear-gradient(to right, hsl(0 0% 0% / 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(0 0% 0% / 0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.22;
+    mask-image: radial-gradient(900px circle at 50% 0%, black 0%, transparent 70%);
+  }
+
+  .dark .lp-bg-3d {
+    background-image:
+      linear-gradient(to right, hsl(0 0% 100% / 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(0 0% 100% / 0.08) 1px, transparent 1px);
+    opacity: 0.12;
+  }
+
+  /* =========================================================
+     Surface System
+     ========================================================= */
+
+  .lp-surface-1 {
+    background: hsl(var(--surface-1));
+    border: 1px solid transparent;
+    border-radius: calc(var(--radius) + 6px);
+    box-shadow:
+      0 22px 54px -40px rgba(20, 24, 32, 0.20),
+      inset 0 1px 0 rgba(255, 255, 255, 0.62),
+      inset 0 0 0 1px rgba(20, 24, 32, 0.045);
+    transition: box-shadow var(--lp-motion-duration) var(--lp-motion-ease), transform var(--lp-motion-duration) var(--lp-motion-ease);
+  }
+  /* Surface gradient used by Module-Auswahl cards (match Surface component) */
+  .lp-surface-grad {
+    background-image:
+      linear-gradient(to right, rgba(34, 211, 238, 0.18), transparent 45%, rgba(251, 191, 36, 0.14)),
+      radial-gradient(600px circle at 0% 0%, rgba(34, 211, 238, 0.14), transparent 55%),
+      radial-gradient(700px circle at 100% 0%, rgba(251, 191, 36, 0.12), transparent 60%);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .dark .lp-surface-1 {
+    border: 1px solid hsl(var(--border) / 0.55);
+    box-shadow:
+      0 26px 70px -50px rgba(0, 0, 0, 0.60),
+      inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  }
+  .dark .lp-surface-grad {
+    background-image:
+      linear-gradient(to right, rgba(34, 211, 238, 0.22), transparent 45%, rgba(251, 191, 36, 0.18)),
+      radial-gradient(600px circle at 0% 0%, rgba(34, 211, 238, 0.16), transparent 55%),
+      radial-gradient(700px circle at 100% 0%, rgba(251, 191, 36, 0.14), transparent 60%);
+    background-size: 100% 100%;
+  }
+
+  .lp-surface-2 {
+    background: hsl(var(--surface-2));
+    border: 1px solid transparent;
+    border-radius: calc(var(--radius) + 6px);
+    box-shadow:
+      inset 0 0 0 1px rgba(20, 24, 32, 0.042);
+    transition: box-shadow var(--lp-motion-duration) var(--lp-motion-ease), transform var(--lp-motion-duration) var(--lp-motion-ease);
+  }
+  .dark .lp-surface-2 {
+    border: 1px solid hsl(var(--border) / 0.55);
+    box-shadow:
+      0 22px 56px -42px rgba(0, 0, 0, 0.62),
+      inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  }
+
+  .lp-surface-3 {
+    background: hsl(var(--surface-3));
+    border-radius: calc(var(--radius) + 6px);
+    box-shadow:
+      inset 0 0 0 1px rgba(20, 24, 32, 0.05);
+    transition: box-shadow var(--lp-motion-duration) var(--lp-motion-ease), transform var(--lp-motion-duration) var(--lp-motion-ease);
+  }
+}
+
+/* (Removed global bg-background/xx overrides to avoid affecting other pages) */
+
+@layer components {
+  [data-slot="button"] {
+    transition-duration: var(--lp-motion-duration);
+    transition-timing-function: var(--lp-motion-ease);
+  }
+}
+
+/* Light-mode card accents (opt-in, for specific cards only) */
+@layer components {
+  html:not(.dark) .lp-card-grad {
+    /* Primary cards: subtle elevation + clean neutral gradient */
+    background: linear-gradient(180deg, #f1f2f2 0%, #e3e6e3 88%) !important;
+    background-color: #e3e6e3 !important;
+    background-clip: padding-box;
+    box-shadow:
+      0 26px 64px -46px rgba(20, 24, 32, 0.24),
+      inset 0 1px 0 rgba(255, 255, 255, 0.78),
+      inset 0 0 0 1px rgba(20, 24, 32, 0.06);
+  }
+
+  html:not(.dark) .lp-card-grad-subtle {
+    /* Secondary cards: calmer, no heavy outer shadow */
+    background: linear-gradient(180deg, #f5f6f6 0%, #eaede9 94%) !important;
+    background-color: #eaede9 !important;
+    background-clip: padding-box;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.72),
+      inset 0 0 0 1px rgba(20, 24, 32, 0.055);
+  }
+
+  .dark .lp-card-grad {
+    background: linear-gradient(180deg, rgba(22, 30, 36, 0.92) 0%, rgba(16, 20, 26, 0.96) 88%) !important;
+    background-color: rgba(16, 20, 26, 0.96) !important;
+    background-clip: padding-box;
+    box-shadow:
+      0 26px 64px -46px rgba(0, 0, 0, 0.55),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  }
+
+  .dark .lp-card-grad-subtle {
+    background: linear-gradient(180deg, rgba(20, 26, 32, 0.9) 0%, rgba(14, 18, 24, 0.96) 94%) !important;
+    background-color: rgba(14, 18, 24, 0.96) !important;
+    background-clip: padding-box;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  }
+
+  .lp-accent-top {
+    position: relative;
+  }
+
+  .lp-accent-top::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 2px;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    background: linear-gradient(to right, transparent, rgba(251, 191, 36, 0.72), transparent);
+    z-index: 1;
+  }
+
+  /* Very weak panel tint (outer containers only) */
+  html:not(.dark) .lp-card-panel-weak {
+    background: linear-gradient(180deg, #f6f1e6 0%, #eee5d6 96%) !important;
+    background-color: #eee5d6 !important;
+    background-clip: padding-box;
+    box-shadow:
+      0 8px 22px -34px rgba(20, 24, 32, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.64),
+      inset 0 0 0 1px rgba(20, 24, 32, 0.04);
+  }
+
+  /* Badge variant using the same tint stack as module cards */
+  html:not(.dark) .lp-module-chip-grad {
+    background-image:
+      linear-gradient(to right, rgba(34, 211, 238, 0.18), transparent 45%, rgba(251, 191, 36, 0.14)),
+      radial-gradient(600px circle at 0% 0%, rgba(34, 211, 238, 0.14), transparent 55%),
+      radial-gradient(700px circle at 100% 0%, rgba(251, 191, 36, 0.12), transparent 60%),
+      linear-gradient(180deg, #f6f1e6 0%, #eee5d6 96%) !important;
+    background-color: #eee5d6 !important;
+    background-clip: padding-box;
+    box-shadow:
+      0 8px 22px -34px rgba(20, 24, 32, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.64),
+      inset 0 0 0 1px rgba(20, 24, 32, 0.04) !important;
+  }
+
+  /* Stronger panel tint (large containers) */
+  html:not(.dark) .lp-card-panel-strong {
+    background: linear-gradient(180deg, #efe4d1 0%, #e3d5c1 96%) !important;
+    background-color: #e3d5c1 !important;
+    background-clip: padding-box;
+    box-shadow:
+      0 10px 26px -32px rgba(20, 24, 32, 0.16),
+      inset 0 1px 0 rgba(255, 255, 255, 0.64),
+      inset 0 0 0 1px rgba(20, 24, 32, 0.05);
+  }
+
+  /* Stronger dot tint (for empty question dots) */
+  html:not(.dark) .lp-dot-grad-strong {
+    background: linear-gradient(180deg, #efe6d6 0%, #e1d4bf 96%) !important;
+    background-color: #e1d4bf !important;
+    background-clip: padding-box;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.72),
+      inset 0 0 0 1px rgba(20, 24, 32, 0.06);
+  }
+}
+
+/* ✅ Typography Levels (opt-in Klassen) */
+@layer components {
+  .lp-kicker {
+    @apply text-xs font-medium tracking-wide text-foreground/75;
+  }
+
+  .lp-h1 {
+    @apply text-2xl font-semibold tracking-tight md:text-3xl;
+    color: hsl(var(--foreground) / 0.98);
+  }
+
+  .lp-h2 {
+    @apply text-xl font-semibold tracking-tight;
+    color: hsl(var(--foreground) / 0.95);
+  }
+
+  .lp-title {
+    @apply text-base font-semibold;
+    color: hsl(var(--foreground) / 0.94);
+  }
+
+  .lp-body {
+    @apply text-sm;
+    color: hsl(var(--foreground) / 0.86);
+  }
+
+  .lp-muted {
+    @apply text-sm;
+    color: hsl(var(--muted-foreground) / 0.92);
+  }
+
+  .lp-caption {
+    @apply text-xs;
+    color: hsl(var(--muted-foreground) / 0.86);
+  }
+}
+
+/* =========================================================
+   TOC Scrollbar (dezent) – Optik only
+   ========================================================= */
+
+.lp-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.14) transparent;
+}
+
+.lp-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.lp-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.16);
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
+.lp-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+.lp-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.lp-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.lp-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* =========================================================
+   ScrollRoot: eigener Stacking Context + Overflow-Clip
+   ========================================================= */
+
+main[data-scroll-root] {
+  isolation: isolate;
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   Markdown/Prose: verhindert Überhänge in Nachbarspalten
+   ========================================================= */
+
+.prose {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.prose table,
+.prose pre {
+  max-width: 100%;
+}
+
+/* =========================================================
+   🔥 FIX: TOC / Sidebar MUSS klickbar sein
+   ========================================================= */
+
+/* Das eigentliche TOC-Panel */
+.lp-toc-panel,
+.lp-toc-panel * {
+  pointer-events: auto !important;
+}
+
+/* Falls irgendwo ein Portal-Root existiert */
+#lp-toc-portal-root {
+  pointer-events: none !important;
+}
+
+
+/* =========================================================
+   TOC Portal Root: höchster Layer, aber NICHT klick-blockend
+   (Root selbst pointer-events: none, Panel pointer-events: auto)
+   ========================================================= */
+
+#lp-toc-portal-root {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  pointer-events: none;
+}
+
+/* Falls du dem Panel eine Klasse gibst (empfohlen): */
+.lp-toc-panel {
+  pointer-events: auto;
+}
+
+/* =========================================================
+   Safety Net gegen typische "unsichtbare Click-Blocker"
+   ========================================================= */
+
+/* Deko-Layer sollen nie klicks fangen */
+.lp-bg-3d,
+body.lp-bg::before,
+body.lp-bg::after {
+  pointer-events: none !important;
+}
+
+/* Manche Browser verhalten sich stabiler mit klarer Hit-Test Basis */
+html,
+body {
+  overflow-x: hidden;
+}

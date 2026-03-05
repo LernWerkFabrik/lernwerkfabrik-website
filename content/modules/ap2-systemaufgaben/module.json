@@ -1,0 +1,35 @@
+{
+  "id": "ap2-systemaufgaben",
+  "title": "AP2 Prüfungs-Simulator",
+  "description": "Systemaufgaben, Instandhaltung und Ursachenanalyse im Prüfungsstil.",
+  "kind": "exam",
+  "exam": {
+    "durationMinutes": 50,
+    "noHelp": true,
+    "autoSubmit": true
+  },
+  "difficulty": "hard",
+  "tags": ["AP2", "System", "Instandhaltung"],
+  "estimatedMinutes": 50,
+  "intro": {
+    "why": "In AP Teil 2 werden System- und Instandhaltungsaufgaben genutzt, um zu prüfen, ob du technische Zusammenhänge ganzheitlich verstehst. Bewertet wird, ob du Systeme analysierst, Störungen fachlich einordnest und Instandhaltungsmaßnahmen sinnvoll planst und begründest. Punktverluste entstehen häufig, wenn Aufgaben nur oberflächlich bearbeitet werden, Ursachen nicht klar benannt sind oder Maßnahmen nicht zum System passen.",
+    "trains": [
+      "Technische Systeme in ihrer Funktion und ihrem Zusammenwirken analysieren",
+      "Störungen und Abweichungen systematisch eingrenzen und bewerten",
+      "Instandhaltungsmaßnahmen fachlich korrekt auswählen und begründen",
+      "Auswirkungen von Maßnahmen auf Systemfunktion und Betrieb einschätzen"
+    ],
+    "traps": [
+      "Systeme oder Baugruppen isoliert betrachten und Zusammenhänge übersehen",
+      "Symptome beschreiben, ohne die eigentliche Ursache zu identifizieren",
+      "Maßnahmen nennen, ohne sie technisch oder organisatorisch zu begründen",
+      "Folgen für Betrieb, Sicherheit oder Qualität nicht berücksichtigen"
+    ]
+  },
+  "files": {
+    "explanation": "explanation.md",
+    "example": "example.md",
+    "practiceQuestions": "questions.practice.json",
+    "examQuestions": "questions.exam.json"
+  }
+}

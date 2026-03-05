@@ -1,0 +1,604 @@
+[
+  {
+    "id": "idok-01-ziel-dokumentation",
+    "type": "single_choice",
+    "prompt": "Was ist das Hauptziel einer Instandhaltungsdokumentation in der Prüfung?",
+    "answer": {
+      "choices": [
+        "Nur notieren, wer die Arbeit ausgeführt hat",
+        "Die Maßnahme für Dritte nachvollziehbar, vollständig und prüfbar festhalten",
+        "Nur den Zeitaufwand eintragen",
+        "Nur das Endergebnis i. O./n. i. O. ankreuzen"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "idok-02-stoerungsmeldung-pflicht",
+    "type": "multi_select",
+    "prompt": "Welche Angaben gehören in eine fachgerechte Störungsmeldung? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Anlage/Baugruppe eindeutig benennen",
+        "Symptom bzw. Fehlerbild konkret beschreiben",
+        "Zeitpunkt der Störung dokumentieren",
+        "Nur schreiben: \"Anlage kaputt\"",
+        "Meldende Person oder Schicht festhalten"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "idok-03-doku-grundablauf",
+    "type": "order",
+    "prompt": "Ordne den Grundablauf einer sauberen Instandhaltungsdokumentation.",
+    "items": [
+      "Fehlerbild aufnehmen",
+      "Ursache eingrenzen",
+      "Maßnahme durchführen",
+      "Prüf-/Kontrollschritt festhalten",
+      "Ergebnis bewerten",
+      "Übergabe dokumentieren"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "idok-04-din31051-teilbereiche",
+    "type": "single_choice",
+    "prompt": "Welche vier Teilbereiche gehören zur Instandhaltung nach DIN 31051?",
+    "answer": {
+      "choices": [
+        "Wartung, Inspektion, Instandsetzung, Verbesserung",
+        "Dokumentation, Fertigung, Montage, Qualitätssicherung",
+        "Wartung, Abnutzung, Verschleiß, Reparatur",
+        "Inspektion, Konstruktion, Inbetriebnahme, Entsorgung"
+      ],
+      "correctIndex": 0
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "idok-05-demontage-protokoll",
+    "type": "multi_select",
+    "prompt": "Welche Inhalte sind nach einer Demontage im Protokoll wichtig? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Ausgebautes Teil mit Bezeichnung/Position",
+        "Festgestellter Zustand (z. B. Verschleiß, Riefen, Leckage)",
+        "Verwendete Hilfs- und Betriebsstoffe",
+        "Privatmeinung über die Konstruktion",
+        "Kennzeichnung/Lagerung der ausgebauten Teile"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "idok-06-formulierung-objektiv",
+    "type": "single_choice",
+    "prompt": "Welche Formulierung ist dokumentationstechnisch am besten?",
+    "answer": {
+      "choices": [
+        "Maschine war irgendwie komisch laut.",
+        "Nach Lagerwechsel war alles wieder top.",
+        "Beim Probelauf traten bei 1500 1/min periodische Geräusche an Lagerstelle B auf.",
+        "Wahrscheinlich war das Lager schon alt."
+      ],
+      "correctIndex": 2
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "idok-07-oelverschuettung-ablauf",
+    "type": "order",
+    "prompt": "Ordne den fachgerechten Ablauf bei verschüttetem Öl während einer Instandhaltungsarbeit.",
+    "items": [
+      "Gefahrenstelle sichern",
+      "Öl mit geeignetem Bindemittel aufnehmen",
+      "Kontaminiertes Material getrennt sammeln",
+      "Fachgerecht entsorgen",
+      "Vorfall dokumentieren"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "idok-08-uebergabe-aussage",
+    "type": "single_choice",
+    "prompt": "Welche Aussage zur Übergabe nach Instandhaltung ist fachlich korrekt?",
+    "answer": {
+      "choices": [
+        "Eine mündliche Übergabe reicht immer aus.",
+        "Die Übergabe muss den Anlagenzustand und das Prüfergebnis nachvollziehbar enthalten.",
+        "Übergabeangaben sind nur bei Neuanlagen notwendig.",
+        "Wenn ein Teil getauscht wurde, ist keine Funktionsprüfung nötig."
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "idok-09-probelauf-merkmale",
+    "type": "multi_select",
+    "prompt": "Welche Merkmale sollten bei einem Probelauf dokumentiert werden? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Geräuschverhalten",
+        "Temperaturentwicklung",
+        "Leckagefreiheit",
+        "Lieblingswerkzeug des Mitarbeiters",
+        "Schwingungen/Laufverhalten"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "idok-10-fehlerbeschreibung-vs-ursache",
+    "type": "single_choice",
+    "prompt": "Welche Aussage trennt Fehlerbild und Ursache fachlich korrekt?",
+    "answer": {
+      "choices": [
+        "Fehlerbild: Lager verschlissen. Ursache: Geräusch hörbar.",
+        "Fehlerbild: Geräusch an Lagerstelle. Ursache: Verschleiß am Lagerlauf.",
+        "Fehlerbild: Alles i. O. Ursache: Unbekannt.",
+        "Fehlerbild und Ursache müssen nicht getrennt werden."
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "idok-11-fehlende-pflichtfelder",
+    "prompt": "Ein Protokoll hat 12 Pflichtfelder. 9 Felder sind ausgefüllt. Wie viele Felder fehlen?",
+    "answer": {
+      "value": 3,
+      "unit": "Stk"
+    },
+    "tolerance": 0,
+    "solution": "Fehlende Felder = 12 - 9 = 3 Stk.",
+    "input": {
+      "mode": "integer"
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "idok-12-instandsetzungsdauer",
+    "prompt": "Die Maßnahme startet um 08:15 Uhr und endet um 09:05 Uhr. Wie lange dauerte sie in Minuten?",
+    "answer": {
+      "value": 50,
+      "unit": "min"
+    },
+    "tolerance": 0,
+    "solution": "09:05 - 08:15 = 50 min.",
+    "input": {
+      "mode": "integer"
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "idok-13-ersatzteilnachweis",
+    "type": "single_choice",
+    "prompt": "Welche Angabe macht einen Ersatzteiltausch im Protokoll prüfungssicher nachvollziehbar?",
+    "answer": {
+      "choices": [
+        "Nur schreiben: \"Teil ersetzt\"",
+        "Positionsnummer, Bezeichnung und ggf. Chargen-/Artikelbezug des getauschten Teils",
+        "Nur den Preis des Teils angeben",
+        "Nur den Lieferanten nennen"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "idok-14-fehleranalyse-reihenfolge",
+    "type": "order",
+    "prompt": "Ordne die Reihenfolge einer systematischen Fehleranalyse mit Dokumentation.",
+    "items": [
+      "Symptom erfassen",
+      "Mess-/Prüfschritt durchführen",
+      "Ursache festlegen",
+      "Maßnahme durchführen",
+      "Wirksamkeit prüfen",
+      "Ergebnis dokumentieren"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "idok-15-abnahmeprotokoll-inhalt",
+    "type": "multi_select",
+    "prompt": "Welche Inhalte gehören typischerweise in ein Abnahmeprotokoll? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Soll/Ist-Ergebnis der Funktionsprüfung",
+        "Restmängel bzw. offene Punkte",
+        "Datum und beteiligte Personen",
+        "Private Bewertung des Kundencharakters",
+        "Freigabe-/Übergabevermerk"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "idok-16-stillstandszeit-gesamt",
+    "prompt": "Drei dokumentierte Stillstände dauerten 25 min, 40 min und 15 min. Wie hoch ist die Gesamtstillstandszeit?",
+    "answer": {
+      "value": 80,
+      "unit": "min"
+    },
+    "tolerance": 0,
+    "solution": "25 + 40 + 15 = 80 min.",
+    "input": {
+      "mode": "integer"
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "idok-17-vorbeugende-wartung",
+    "type": "single_choice",
+    "prompt": "Welche Maßnahme ist ein typisches Beispiel für vorbeugende Wartung?",
+    "answer": {
+      "choices": [
+        "Lager erst nach Totalausfall ersetzen",
+        "Regelmäßiger planmäßiger Ölwechsel nach Intervall",
+        "Keine Prüfung, solange die Anlage läuft",
+        "Nur bei Beschwerde des Kunden handeln"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "idok-18-erfuellungsgrad",
+    "prompt": "Von 6 Prüfschritten wurden 5 mit i. O. dokumentiert. Wie hoch ist der Erfüllungsgrad in Prozent?",
+    "answer": {
+      "value": 83.3,
+      "unit": "%"
+    },
+    "tolerance": 0.5,
+    "solution": "Erfüllungsgrad = (5 / 6) * 100 = 83,33 %.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "idok-19-nachvollziehbarkeit-kriterien",
+    "type": "multi_select",
+    "prompt": "Welche Kriterien erhöhen die Nachvollziehbarkeit einer Instandhaltungsdokumentation? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Zeitliche Reihenfolge klar erkennbar",
+        "Messwerte mit Einheit angegeben",
+        "Ursache und Maßnahme getrennt beschrieben",
+        "Unklare Sammelbegriffe ohne Bezug verwenden",
+        "Verwendete Prüfmittel benennen"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "idok-20-arbeitsplan-ausbau",
+    "type": "order",
+    "prompt": "Ordne den Arbeitsplan für den Ausbau einer Antriebswelle nach einer Störungsmeldung.",
+    "items": [
+      "Anlage sichern und Arbeitsfreigabe prüfen",
+      "Umgebung/Anschlussbereiche vorbereiten und kennzeichnen",
+      "Verbindungselemente lösen",
+      "Welle ausbauen und kennzeichnen",
+      "Bauteilzustand dokumentieren",
+      "Ausgebautes Teil fachgerecht lagern"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "idok-21-ausfallkosten",
+    "prompt": "Die Ausfallkosten betragen 85 EUR pro Stunde. Die dokumentierte Stillstandszeit liegt bei 42 min. Wie hoch sind die Ausfallkosten?",
+    "answer": {
+      "value": 59.5,
+      "unit": "EUR"
+    },
+    "tolerance": 0.5,
+    "solution": "Kosten = 85 * (42/60) = 59,5 EUR.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "idok-22-fehlerhaeufigkeit",
+    "prompt": "Bei 20 dokumentierten Störungen entfielen 5 auf dieselbe Ursache. Wie groß ist die Fehlerhäufigkeit dieser Ursache in Prozent?",
+    "answer": {
+      "value": 25,
+      "unit": "%"
+    },
+    "tolerance": 0.2,
+    "solution": "Fehlerhäufigkeit = (5/20) * 100 = 25 %.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "idok-23-structured-protokolltext",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (6-8 Sätze): Du hast eine Störung an einem Getriebe behoben. Formuliere einen prüfungstauglichen Protokolltext von Fehlerbild bis Übergabe.",
+    "answer": {
+      "fields": [
+        {
+          "key": "protokolltext",
+          "label": "Protokolltext",
+          "minWords": 55,
+          "placeholder": "z. B. Fehlerbild, Eingrenzung, Ursache, Maßnahme, Prüfergebnis, Übergabevermerk"
+        }
+      ],
+      "keywords": {
+        "protokolltext": [
+          "fehlerbild",
+          "ursache",
+          "maßnahme",
+          "prüfung",
+          "soll",
+          "ist",
+          "i. o.",
+          "übergabe",
+          "protokoll"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 55
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Fehlerbild konkret und beobachtbar beschreiben",
+        "Eingrenzung und Ursache fachlich trennen",
+        "Durchgeführte Maßnahmen mit Bezug zur Ursache nennen",
+        "Prüfschritt mit Soll/Ist und Einheit angeben",
+        "Anlagenzustand und Übergabe klar dokumentieren"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "idok-24-structured-wirksamkeit",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (6-8 Sätze): Beschreibe, wie du die Wirksamkeit einer Instandsetzungsmaßnahme nachweist und welche Angaben dafür ins Protokoll müssen.",
+    "answer": {
+      "fields": [
+        {
+          "key": "nachweis",
+          "label": "Wirksamkeitsnachweis",
+          "minWords": 28,
+          "placeholder": "z. B. Prüfkriterien, Messwerte, Vergleich Soll/Ist, Wiederholprüfung"
+        },
+        {
+          "key": "dokumentation",
+          "label": "Dokumentationsangaben",
+          "minWords": 24,
+          "placeholder": "z. B. Prüfmittel, Zeitstempel, Ergebnisbewertung, Restmängel"
+        }
+      ],
+      "keywords": {
+        "nachweis": [
+          "prüfkriterium",
+          "messwert",
+          "soll",
+          "ist",
+          "wiederholprüfung",
+          "funktion"
+        ],
+        "dokumentation": [
+          "prüfmittel",
+          "zeit",
+          "ergebnis",
+          "restmangel",
+          "freigabe",
+          "abnahme"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 60
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Prüfziel und Prüfkriterien benennen",
+        "Durchführung mit Messwerten und Einheiten beschreiben",
+        "Soll/Ist-Vergleich bewerten",
+        "Dokumentationspflichten für Abnahme und Übergabe ergänzen"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "idok-25-structured-abschluss",
+    "type": "structured_text",
+    "prompt": "Abschlussaufgabe (7-9 Sätze): Eine Anlage läuft nach Instandhaltung zunächst stabil, zeigt aber nach 20 min erneut Auffälligkeiten. Beschreibe dein dokumentiertes Vorgehen bis zur erneuten Übergabe.",
+    "answer": {
+      "fields": [
+        {
+          "key": "analyse",
+          "label": "Analyse",
+          "minWords": 22,
+          "placeholder": "z. B. neues Symptom erfassen, Ursache eingrenzen, Vergleich mit Erstbefund"
+        },
+        {
+          "key": "entscheidung",
+          "label": "Entscheidung und Maßnahme",
+          "minWords": 22,
+          "placeholder": "z. B. Nacharbeit, Teiletausch, Eskalation, Freigabekriterium"
+        },
+        {
+          "key": "abschluss",
+          "label": "Abschlussdokumentation",
+          "minWords": 20,
+          "placeholder": "z. B. zweiter Probelauf, Ergebnis, Restmangelstatus, Übergabeprotokoll"
+        }
+      ],
+      "keywords": {
+        "analyse": [
+          "symptom",
+          "ursache",
+          "fehlerprotokoll",
+          "eingrenzung",
+          "vergleich"
+        ],
+        "entscheidung": [
+          "maßnahme",
+          "nacharbeit",
+          "ersatzteil",
+          "freigabe",
+          "eskalation"
+        ],
+        "abschluss": [
+          "probelauf",
+          "prüfung",
+          "i. o.",
+          "restmangel",
+          "übergabe",
+          "abnahmeprotokoll"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 70
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Abweichung nach dem ersten Erfolg sauber erfassen",
+        "Ursache erneut eingrenzen und Entscheidung begründen",
+        "Nacharbeit mit Prüfschritten dokumentieren",
+        "Zweiten Nachweis und endgültige Übergabe eindeutig protokollieren"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  }
+]

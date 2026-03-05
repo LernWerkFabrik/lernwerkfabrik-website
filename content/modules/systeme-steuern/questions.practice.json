@@ -1,0 +1,649 @@
+[
+  {
+    "id": "tss-01-steuern-regeln-unterschied",
+    "type": "single_choice",
+    "prompt": "Welche Aussage beschreibt den Unterschied zwischen Steuern und Regeln fachlich korrekt?",
+    "answer": {
+      "choices": [
+        "Steuern vergleicht immer Soll- und Istwert und korrigiert automatisch.",
+        "Regeln arbeitet mit Soll-/Ist-Vergleich und Rückführung auf den Prozess.",
+        "Steuern und Regeln bedeuten in der Steuerungstechnik dasselbe.",
+        "Regeln wird nur bei hydraulischen Anlagen eingesetzt."
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "tss-02-regelkreis-elemente",
+    "type": "multi_select",
+    "prompt": "Welche Elemente gehören typischerweise zu einem Regelkreis? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Sollwertvorgabe",
+        "Regler",
+        "Stellglied",
+        "Messglied mit Rückführung",
+        "Regelstrecke/Prozess",
+        "Nur Hauptschalter und Sicherung"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "tss-03-ziel-ueberwachung",
+    "type": "single_choice",
+    "prompt": "Was ist das Hauptziel beim Überwachen technischer Systeme?",
+    "answer": {
+      "choices": [
+        "Nur den letzten Messwert notieren",
+        "Soll- und Istzustand vergleichen und Abweichungen früh erkennen",
+        "Ausschließlich die Endlage eines Aktors beobachten",
+        "Nur bei Stillstand mit Überwachung beginnen"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "tss-04-zustandsbewertung-reihenfolge",
+    "type": "order",
+    "prompt": "Ordne den Ablauf einer systematischen Zustandsbewertung.",
+    "items": [
+      "Grundstellung und Startbedingungen prüfen",
+      "Istzustand über Signale/Messwerte erfassen",
+      "Soll- und Istzustand vergleichen",
+      "Abweichung technisch bewerten",
+      "Maßnahme einleiten und dokumentieren"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "tss-05-startbedingungen-foerderanlage",
+    "type": "multi_select",
+    "prompt": "Welche Bedingungen müssen für den Start des Prozesszyklus erfüllt sein? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Grundstellung ist vorhanden",
+        "BG7 meldet Werkstück an der Sperre",
+        "BG9 meldet Rollbahn frei",
+        "MM3 ist bereits ausgefahren",
+        "Anlagenschalter GQ1 ist eingeschaltet"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "tss-06-grundstellung-definition",
+    "type": "single_choice",
+    "prompt": "Wann ist die Grundstellung der Förderanlage fachlich korrekt erreicht?",
+    "answer": {
+      "choices": [
+        "Wenn MM1 eingefahren und MM2/MM3 ausgefahren sind",
+        "Wenn MM1 ausgefahren, MM2/MM3 eingefahren und GQ1 eingeschaltet ist",
+        "Wenn nur der Starttaster gedrückt wurde",
+        "Wenn BG8 einmal kurz aktiv war"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "tss-07-prozessfolge-foerderanlage",
+    "type": "order",
+    "prompt": "Ordne die Prozessfolge der Förderanlage in die richtige Reihenfolge.",
+    "items": [
+      "MM1 fährt zurück",
+      "BG8 wird ausgelöst",
+      "MM1 fährt in Sperrstellung",
+      "MM2 hebt den Werkstückträger an",
+      "MM3 schiebt auf die Rollbahn",
+      "Nach BG9 fahren MM2 und MM3 in Ausgangsstellung"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "tss-08-startimpuls-zeitbedingung",
+    "type": "single_choice",
+    "prompt": "Ein Start ist nur zulässig, wenn Hand- oder Fußbetätigung erfolgt und der Zylinder mindestens 1 s in Grundstellung war. Welche Bewertung ist korrekt?",
+    "answer": {
+      "choices": [
+        "Jeder kurze Tastimpuls ist ausreichend, unabhängig von der Grundstellzeit.",
+        "Der Start ist nur bei erfüllter Zeitbedingung in Grundstellung gültig.",
+        "Die Zeitbedingung gilt nur für den ersten Zyklus nach Einschalten.",
+        "Die Zeitbedingung ist nur für die Dokumentation relevant."
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "tss-09-startblockade-bg9",
+    "type": "single_choice",
+    "prompt": "Grundstellung und BG7 sind vorhanden, der Zyklus startet nicht, weil BG9 \"belegt\" meldet. Was ist die sinnvollste Erstbewertung?",
+    "answer": {
+      "choices": [
+        "Startbedingung fehlt, daher Rollbahnzustand und BG9-Signalweg zuerst prüfen",
+        "Sofort MM2 austauschen",
+        "Nur die Steuerung neu starten",
+        "Fehler ignorieren, weil BG7 aktiv ist"
+      ],
+      "correctIndex": 0
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "tss-10-bg8-kein-signal",
+    "type": "multi_select",
+    "prompt": "Nach Zyklusstart fährt MM1 zurück, BG8 wird aber nicht erkannt. Welche Prüfschritte sind sinnvoll? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Werkstücklauf bis zur Hubplattform beobachten",
+        "Lage und Schaltabstand von BG8 prüfen",
+        "BG8-Signalstatus in der Steuerung prüfen",
+        "Sofort MM3 austauschen",
+        "Mechanische Blockaden im Bereich BG8 prüfen"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "tss-11-zykluszeit-ueberschreitung",
+    "prompt": "Soll-Zykluszeit: 6,5 s. Gemessen: 7,9 s. Um wie viel wird die Soll-Zykluszeit überschritten?",
+    "answer": {
+      "value": 1.4,
+      "unit": "s"
+    },
+    "tolerance": 0.05,
+    "solution": "Abweichung = 7,9 - 6,5 = 1,4 s.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "tss-12-signalkette-ablauf",
+    "type": "order",
+    "prompt": "Ordne die Signalkette vom Startimpuls bis zur Rückmeldung in die richtige Reihenfolge.",
+    "items": [
+      "Startimpuls wird ausgelöst",
+      "Eingang wird in der Steuerung erfasst",
+      "Freigaben und Verriegelungen werden logisch verknüpft",
+      "Ausgang steuert Ventil/Schütz an",
+      "Aktor führt die Bewegung aus",
+      "Sensor meldet den neuen Zustand zurück"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "tss-13-regelabweichung-hub",
+    "prompt": "Sollhub einer Achse: 50 mm. Gemessener Isthub: 47 mm. Wie groß ist die Regelabweichung?",
+    "answer": {
+      "value": 3,
+      "unit": "mm"
+    },
+    "tolerance": 0.05,
+    "solution": "Regelabweichung = 50 - 47 = 3 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "tss-14-ausgang-aktiv-keine-bewegung",
+    "type": "single_choice",
+    "prompt": "Der Steuerausgang zum Ventil ist aktiv, der Zylinder bewegt sich nicht. Welcher Prüfschritt ist am sinnvollsten?",
+    "answer": {
+      "choices": [
+        "Nur den Sensor am Startpunkt wechseln",
+        "Schnittstelle prüfen: Druckversorgung, Ventilschaltzustand, Leitungsweg und Mechanik",
+        "Sofort die komplette SPS tauschen",
+        "Fehler als sporadisch eintragen und freigeben"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "tss-15-geeignete-ueberwachungsgroessen",
+    "type": "multi_select",
+    "prompt": "Welche Größen sind für die technische Prozessüberwachung besonders geeignet? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Zykluszeit mit Trendverlauf",
+        "Endlagen- und Positionssignale",
+        "Druck oder Stromaufnahme des Antriebs",
+        "Temperatur an kritischen Komponenten",
+        "Nur die Lackfarbe des Bauteils"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "tss-16-verfuegbarkeit-berechnen",
+    "prompt": "Geplante Laufzeit: 36 h. Störungsbedingter Stillstand: 2 h 45 min. Wie hoch ist die Verfügbarkeit in Prozent?",
+    "answer": {
+      "value": 92.4,
+      "unit": "%"
+    },
+    "tolerance": 0.3,
+    "solution": "2 h 45 min = 2,75 h. Verfügbarkeit = ((36 - 2,75) / 36) * 100 = 92,36 % (gerundet 92,4 %).",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "tss-17-wirksamkeitsnachweis",
+    "type": "single_choice",
+    "prompt": "Welche Vorgehensweise ist ein vollständiger Wirksamkeitsnachweis nach einer Korrekturmaßnahme?",
+    "answer": {
+      "choices": [
+        "Ein kurzer Probelauf ohne Messwerte",
+        "Probelauf unter Last, Soll-/Ist-Vergleich und dokumentierte i. O./n. i. O.-Bewertung",
+        "Nur Sichtprüfung der Anlage",
+        "Bewertung durch Zuruf im Team"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "tss-18-stoerungsanteil-sensorik",
+    "prompt": "In einem Zeitraum traten 60 Störungen auf, davon 15 sensorbedingt. Wie hoch ist der Anteil in Prozent?",
+    "answer": {
+      "value": 25,
+      "unit": "%"
+    },
+    "tolerance": 0.2,
+    "solution": "Anteil = (15 / 60) * 100 = 25 %.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "tss-19-nachhaltige-ueberwachung",
+    "type": "multi_select",
+    "prompt": "Welche Schritte gehören zu einer nachhaltigen Überwachung bei wiederkehrenden Abweichungen? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Grenzwerte und Alarmkriterien eindeutig festlegen",
+        "Trenddaten über Schichten und Betriebsarten vergleichen",
+        "Schnittstellen zwischen Sensorik, Logik und Aktorik gezielt bewerten",
+        "Prüf- und Wartungsintervalle aus den Daten anpassen",
+        "Nur den letzten Einzelfall ohne Protokoll betrachten"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "tss-20-vorgehen-wiederkehrende-abweichung",
+    "type": "order",
+    "prompt": "Ordne das fachlich sinnvolle Vorgehen bei einer wiederkehrenden Zustandsabweichung.",
+    "items": [
+      "Abweichung unter gleichen Bedingungen reproduzieren",
+      "Soll- und Ist-Verlauf vergleichen",
+      "kritische Signalstelle oder Parameter eingrenzen",
+      "gezielte Nachmessung an der Schnittstelle durchführen",
+      "Korrekturmaßnahme umsetzen",
+      "Wirksamkeit überwachen und dokumentiert freigeben"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "tss-21-ausfallkosten",
+    "prompt": "Ausfallkosten: 145 EUR pro Stunde. Stillstand: 3 h 20 min. Wie hoch sind die Ausfallkosten?",
+    "answer": {
+      "value": 483.3,
+      "unit": "EUR"
+    },
+    "tolerance": 1.0,
+    "solution": "3 h 20 min = 3,33 h. Kosten = 3,33 * 145 = 483,3 EUR.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "tss-22-strategie-sporadische-stoerung",
+    "type": "single_choice",
+    "prompt": "Welche Strategie ist bei einer sporadischen Regelabweichung fachlich am besten?",
+    "answer": {
+      "choices": [
+        "Alle Sensoren und Aktoren gleichzeitig tauschen",
+        "Nur den letzten Einzelwert notieren und freigeben",
+        "System in Teilsysteme gliedern, Soll-/Ist-Daten vergleichen und Ursache schrittweise absichern",
+        "Nur die Mechanik prüfen und Steuerung auslassen"
+      ],
+      "correctIndex": 2
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "tss-23-structured-erstanalyse",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (6-8 Sätze): Bei einer Förderanlage ist die Grundstellung vorhanden, der Start wird ausgelöst, aber der Ablauf stoppt vor dem Hubzylinder MM2. Beschreibe deine systematische Erstanalyse.",
+    "answer": {
+      "fields": [
+        {
+          "key": "ausgangszustand",
+          "label": "Ausgangszustand",
+          "minWords": 20,
+          "placeholder": "z. B. Betriebsart, Grundstellung, Startbedingungen, beobachtete Abweichung"
+        },
+        {
+          "key": "signalkette",
+          "label": "Signalkette und Schnittstellen",
+          "minWords": 22,
+          "placeholder": "z. B. BG8/BG9, Logik, Ausgang, Aktorik, Versorgung, Mechanik"
+        },
+        {
+          "key": "erstbewertung",
+          "label": "Erste Bewertung",
+          "minWords": 20,
+          "placeholder": "z. B. wahrscheinlichste Ursache und nächster Nachweisschritt"
+        }
+      ],
+      "keywords": {
+        "ausgangszustand": [
+          "grundstellung",
+          "startbedingung",
+          "signal",
+          "betriebsart",
+          "istzustand",
+          "abweichung"
+        ],
+        "signalkette": [
+          "sensor",
+          "verknuepfung",
+          "ausgang",
+          "aktor",
+          "versorgung",
+          "schnittstelle"
+        ],
+        "erstbewertung": [
+          "ursache",
+          "hypothese",
+          "nachweis",
+          "messung",
+          "prioritaet",
+          "naechster"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 68
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Ausgangszustand mit Grundstellung und Startbedingungen vollständig benennen",
+        "Signalkette vom Auslöser bis zum betroffenen Aktor Schritt für Schritt prüfen",
+        "Schnittstellen zwischen Logik, Versorgung und Mechanik explizit absichern",
+        "Erste Ursache mit einem konkreten Nachweisschritt begründen"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "tss-24-structured-diagnoseplan",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (6-8 Sätze): Ein geregelter Achsantrieb überschwingt nach jeder Sollwertänderung. Erstelle einen Diagnoseplan zur Überwachung und Korrektur.",
+    "answer": {
+      "fields": [
+        {
+          "key": "vorbereitung",
+          "label": "Sicherheit und Vorbereitung",
+          "minWords": 20,
+          "placeholder": "z. B. sichere Betriebsart, Grenzwerte, Messpunkte, Freigaben"
+        },
+        {
+          "key": "diagnosekette",
+          "label": "Diagnosekette",
+          "minWords": 24,
+          "placeholder": "z. B. Soll-/Ist-Verlauf, Rückführung, Parameter, Teilsysteme"
+        },
+        {
+          "key": "nachweis",
+          "label": "Nachweis und Bewertung",
+          "minWords": 20,
+          "placeholder": "z. B. Maßnahme, Probelauf, Wirksamkeit, dokumentierte Freigabe"
+        }
+      ],
+      "keywords": {
+        "vorbereitung": [
+          "betriebsart",
+          "grenzwert",
+          "freigabe",
+          "messpunkt",
+          "schutz",
+          "vorbereitung"
+        ],
+        "diagnosekette": [
+          "soll",
+          "ist",
+          "rueckfuehrung",
+          "parameter",
+          "messung",
+          "teilsystem"
+        ],
+        "nachweis": [
+          "massnahme",
+          "probelauf",
+          "wirksamkeit",
+          "bewertung",
+          "dokumentation",
+          "freigabe"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 70
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Sicheren Prüfbetrieb und Grenzwerte zuerst festlegen",
+        "Regelkreis mit Soll-/Ist-Verlauf und Rückführung strukturiert analysieren",
+        "Korrekturmaßnahme nachvollziehbar aus dem Befund ableiten",
+        "Abschluss nur mit dokumentiertem Wirksamkeitsnachweis formulieren"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "tss-25-structured-abschluss",
+    "type": "structured_text",
+    "prompt": "Abschlussaufgabe (7-9 Sätze): Nach einer Korrektur läuft die Anlage 15 Minuten stabil, danach tritt dieselbe Zustandsabweichung erneut auf. Beschreibe dein Vorgehen bis zur erneuten Übergabe.",
+    "answer": {
+      "fields": [
+        {
+          "key": "erneute_analyse",
+          "label": "Erneute Analyse",
+          "minWords": 22,
+          "placeholder": "z. B. Vergleich mit Erstfall, Reproduktionsbedingungen, neue Messdaten"
+        },
+        {
+          "key": "entscheidung",
+          "label": "Entscheidung und Maßnahme",
+          "minWords": 22,
+          "placeholder": "z. B. priorisierte Ursache, technische/wirtschaftliche Begründung, Umsetzung"
+        },
+        {
+          "key": "abschluss",
+          "label": "Nachweis und Übergabe",
+          "minWords": 22,
+          "placeholder": "z. B. Probelauf unter Last, Soll-/Ist, Restmängelstatus, Protokoll"
+        }
+      ],
+      "keywords": {
+        "erneute_analyse": [
+          "vergleich",
+          "stoerung",
+          "reproduzieren",
+          "messung",
+          "ursache",
+          "protokoll"
+        ],
+        "entscheidung": [
+          "prioritaet",
+          "massnahme",
+          "begruendung",
+          "wirtschaftlich",
+          "risiko",
+          "nacharbeit"
+        ],
+        "abschluss": [
+          "probelauf",
+          "soll",
+          "ist",
+          "wirksamkeit",
+          "dokumentation",
+          "uebergabe"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 75
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Wiederkehrende Abweichung mit Erstbefund direkt vergleichen",
+        "Ursache erneut absichern statt die vorige Maßnahme nur zu wiederholen",
+        "Entscheidung technisch und wirtschaftlich nachvollziehbar begründen",
+        "Übergabe erst nach dokumentiertem Soll-/Ist-Nachweis formulieren"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  }
+]

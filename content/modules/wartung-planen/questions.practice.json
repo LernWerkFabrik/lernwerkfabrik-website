@@ -1,0 +1,642 @@
+[
+  {
+    "id": "wpd-01-ziel-wartung",
+    "type": "single_choice",
+    "prompt": "Was ist das Hauptziel geplanter Wartungsarbeiten?",
+    "answer": {
+      "choices": [
+        "Nur die Wartungszeit im System zu buchen",
+        "Verschleiß reduzieren, Betriebsbereitschaft sichern und Ausfälle vorbeugen",
+        "Nur defekte Teile zu ersetzen",
+        "Ausschließlich die Maschine zu reinigen"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "wpd-02-arbeitsauftrag-angaben",
+    "type": "multi_select",
+    "prompt": "Welche Angaben gehören in einen fachgerechten Wartungsauftrag? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Betroffene Anlage/Baugruppe",
+        "Wartungsumfang und Intervallbezug",
+        "Sicherheits- und Freigabehinweise",
+        "Nur der Satz: 'Bitte warten'",
+        "Termin bzw. geplanter Zeitrahmen"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "wpd-03-grundablauf",
+    "type": "order",
+    "prompt": "Ordne den Grundablauf einer geplanten Wartungsarbeit.",
+    "items": [
+      "Auftrag und Unterlagen prüfen",
+      "Anlage freischalten und sichern",
+      "Werkzeuge, Prüfmittel und Betriebsstoffe bereitstellen",
+      "Wartungsschritte durchführen",
+      "Funktionsprüfung mit Soll/Ist durchführen",
+      "Ergebnis dokumentieren und übergeben"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "wpd-04-din31051",
+    "type": "single_choice",
+    "prompt": "Welche vier Teilbereiche gehören zur Instandhaltung nach DIN 31051?",
+    "answer": {
+      "choices": [
+        "Wartung, Inspektion, Instandsetzung, Verbesserung",
+        "Wartung, Instandhaltung, Dokumentation, Fertigung",
+        "Abnutzung, Verschleiß, Reparatur, Optimierung",
+        "Inspektion, Montage, Qualitätskontrolle, Entsorgung"
+      ],
+      "correctIndex": 0
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "wpd-05-wartung-vs-instandsetzung",
+    "type": "single_choice",
+    "prompt": "Welche Aussage unterscheidet Wartung und Instandsetzung fachlich korrekt?",
+    "answer": {
+      "choices": [
+        "Wartung behebt akute Schäden, Instandsetzung ist vorbeugend",
+        "Wartung ist vorbeugend, Instandsetzung behebt bereits eingetretene Fehler",
+        "Beide Begriffe meinen in der Praxis dasselbe",
+        "Instandsetzung ist immer nur Reinigung"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "wpd-06-unterlagen",
+    "type": "multi_select",
+    "prompt": "Welche Unterlagen unterstützen die Wartungsplanung besonders? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Wartungsplan mit Intervallen",
+        "Anordnungs- und Funktionsplan",
+        "Betriebsanleitung",
+        "Frühere Wartungs-/Störungsprotokolle",
+        "Private Notizen ohne Anlagenbezug"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "wpd-07-oelverschuettung-ablauf",
+    "type": "order",
+    "prompt": "Ordne den fachgerechten Ablauf bei verschüttetem Öl während der Wartung.",
+    "items": [
+      "Gefahrenstelle sichern und kennzeichnen",
+      "Öl mit geeignetem Bindemittel aufnehmen",
+      "Kontaminiertes Material getrennt sammeln",
+      "Fachgerecht entsorgen",
+      "Vorfall dokumentieren"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "wpd-08-vorbeugende-wartung",
+    "type": "single_choice",
+    "prompt": "Welche Maßnahme ist ein typisches Beispiel für vorbeugende Wartung?",
+    "answer": {
+      "choices": [
+        "Lager erst nach Totalausfall tauschen",
+        "Planmäßiger Ölwechsel nach Wartungsintervall",
+        "Störung ignorieren, solange Anlage noch läuft",
+        "Nur auf Kundenbeschwerde reagieren"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "wpd-09-schmierstoffauswahl",
+    "type": "multi_select",
+    "prompt": "Welche Kriterien sind für die Auswahl eines Schmierstoffs entscheidend? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Herstellerfreigabe",
+        "Viskosität im passenden Temperaturbereich",
+        "Drehzahl und Belastung der Baugruppe",
+        "Farbe der Gebindeverpackung",
+        "Verträglichkeit mit Dichtungen und Werkstoffen"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "wpd-10-elektrische-sicherheit",
+    "type": "single_choice",
+    "prompt": "Welche Erstmaßnahme ist vor Wartungsarbeiten an elektrischen Betriebsmitteln fachlich korrekt?",
+    "answer": {
+      "choices": [
+        "Nur den Not-Halt drücken",
+        "Freischalten, gegen Wiedereinschalten sichern und Spannungsfreiheit prüfen",
+        "Direkt den Sensor öffnen",
+        "Nur mit Handschuhen arbeiten"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "wpd-11-restintervall",
+    "prompt": "Letzte Wartung bei 1260 h, Wartungsintervall 300 h, aktueller Zählerstand 1495 h. Wie viele Stunden bleiben bis zur nächsten Wartung?",
+    "answer": {
+      "value": 65,
+      "unit": "h"
+    },
+    "tolerance": 0,
+    "solution": "Nächste Wartung bei 1260 + 300 = 1560 h. Rest = 1560 - 1495 = 65 h.",
+    "input": {
+      "mode": "integer"
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "wpd-12-nachfuellmenge",
+    "prompt": "Soll-Füllmenge im Getriebe: 2,40 l. Aktuell vorhanden: 1,85 l. Welche Nachfüllmenge ist erforderlich?",
+    "answer": {
+      "value": 0.55,
+      "unit": "l"
+    },
+    "tolerance": 0.02,
+    "solution": "Nachfüllmenge = 2,40 - 1,85 = 0,55 l.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "wpd-13-wartungsdauer",
+    "prompt": "Die Wartung beginnt um 07:25 Uhr und endet um 08:10 Uhr. Wie lange dauert sie in Minuten?",
+    "answer": {
+      "value": 45,
+      "unit": "min"
+    },
+    "tolerance": 0,
+    "solution": "08:10 - 07:25 = 45 min.",
+    "input": {
+      "mode": "integer"
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "wpd-14-ausbau-arbeitsplan",
+    "type": "order",
+    "prompt": "Ordne den Arbeitsplan für den Ausbau einer Antriebswelle im Wartungsauftrag (Öl bereits abgelassen).",
+    "items": [
+      "Anlage sichern und Arbeitsfreigabe prüfen",
+      "Kupplung und Anbauteile kennzeichnen",
+      "Verbindungselemente lösen",
+      "Antriebswelle ausbauen und kennzeichnen",
+      "Lager- und Dichtstellen sichtprüfen",
+      "Ausgebaute Teile geordnet lagern"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "wpd-15-probelauf-merkmale",
+    "type": "multi_select",
+    "prompt": "Welche Merkmale sollten im Abschlussprobelauf dokumentiert werden? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Geräuschverhalten",
+        "Temperaturentwicklung",
+        "Leckagefreiheit",
+        "Lieblingswerkzeug des Mitarbeiters",
+        "Schwingungs-/Laufverhalten"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "wpd-16-erfuellungsgrad",
+    "prompt": "Von 8 Prüfkriterien wurden 7 als i. O. bewertet. Wie hoch ist der Erfüllungsgrad in Prozent?",
+    "answer": {
+      "value": 87.5,
+      "unit": "%"
+    },
+    "tolerance": 0.3,
+    "solution": "Erfüllungsgrad = (7 / 8) * 100 = 87,5 %.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "wpd-17-wann-instandsetzung",
+    "type": "single_choice",
+    "prompt": "Wann reicht Wartung nicht mehr aus und es ist Instandsetzung erforderlich?",
+    "answer": {
+      "choices": [
+        "Wenn planmäßig gereinigt und nachgeschmiert wird",
+        "Wenn ein Dichtungsschaden vorliegt und die Funktion bereits beeinträchtigt ist",
+        "Wenn das Wartungsintervall neu dokumentiert wird",
+        "Wenn ein Probelauf ohne Auffälligkeit abgeschlossen wurde"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "wpd-18-dokumentation-pflicht",
+    "type": "multi_select",
+    "prompt": "Welche Angaben gehören in eine vollständige Wartungsdokumentation? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Durchgeführte Wartungsschritte",
+        "Eingesetzte Betriebsstoffe und Mengen",
+        "Prüfergebnisse mit Soll/Ist",
+        "Nur Name der ausführenden Person",
+        "Bewertung, Restpunkte und Übergabevermerk"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "wpd-19-priorisierung",
+    "type": "multi_select",
+    "prompt": "Welche Faktoren sind für die Priorisierung mehrerer fälliger Wartungen fachlich relevant? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Sicherheitsrisiko",
+        "Anlagenkritikalität und Verfügbarkeit",
+        "Herstellerfristen und Prüfvorgaben",
+        "Zufällige Reihenfolge ohne Bewertung",
+        "Ausfallkosten bei Verschiebung"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "wpd-20-abweichung-im-probelauf",
+    "type": "order",
+    "prompt": "Ordne das fachgerechte Vorgehen, wenn beim Probelauf nach Wartung eine Auffälligkeit auftritt.",
+    "items": [
+      "Auffälligkeit eindeutig erfassen",
+      "Freigabe stoppen und Anlage sichern",
+      "Ursache systematisch eingrenzen",
+      "Korrekturmaßnahme/Nacharbeit durchführen",
+      "Probelauf mit Prüfkriterien wiederholen",
+      "Ergebnis neu dokumentieren und übergeben"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "wpd-21-ausfallkosten",
+    "prompt": "Die Ausfallkosten betragen 110 EUR pro Stunde. Eine ungeplante Unterbrechung dauert 1 h 45 min. Wie hoch sind die Ausfallkosten?",
+    "answer": {
+      "value": 192.5,
+      "unit": "EUR"
+    },
+    "tolerance": 0.6,
+    "solution": "1 h 45 min = 1,75 h. Kosten = 1,75 * 110 = 192,5 EUR.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "wpd-22-strategie-komplex",
+    "type": "single_choice",
+    "prompt": "Welche Strategie ist bei einer komplexen Wartungsaufgabe mit mehreren Baugruppen fachlich am besten?",
+    "answer": {
+      "choices": [
+        "Nur die am leichtesten erreichbare Baugruppe zuerst warten",
+        "Ohne Unterlagen sofort mit Demontage starten",
+        "Nach Risiko und Kritikalität priorisieren, in Teilsystemen arbeiten und Ergebnisse je Schritt prüfen",
+        "Alle Baugruppen gleichzeitig öffnen, um Zeit zu sparen"
+      ],
+      "correctIndex": 2
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "wpd-23-structured-planung",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (6-8 Sätze): Du sollst für ein Kettenfördermodul eine geplante Wartung vorbereiten. Beschreibe deine Planung von der Auftragsanalyse bis zur Sicherheitsfreigabe.",
+    "answer": {
+      "fields": [
+        {
+          "key": "auftragsanalyse",
+          "label": "Auftragsanalyse",
+          "minWords": 20,
+          "placeholder": "z. B. Wartungsplan, Intervalle, Unterlagen, Betriebszustand"
+        },
+        {
+          "key": "vorbereitung",
+          "label": "Vorbereitung",
+          "minWords": 22,
+          "placeholder": "z. B. Werkzeuge, Prüfmittel, Schmierstoffe, Arbeitsfolge"
+        },
+        {
+          "key": "sicherheit",
+          "label": "Sicherheit und Umweltschutz",
+          "minWords": 20,
+          "placeholder": "z. B. Freischalten, Sichern, PSA, Umgang mit Betriebsstoffen"
+        }
+      ],
+      "keywords": {
+        "auftragsanalyse": [
+          "wartungsplan",
+          "intervall",
+          "betriebsanleitung",
+          "betriebszustand",
+          "umfang"
+        ],
+        "vorbereitung": [
+          "werkzeug",
+          "prüfmittel",
+          "schmierstoff",
+          "ersatzteil",
+          "arbeitsablauf"
+        ],
+        "sicherheit": [
+          "freischalten",
+          "sichern",
+          "spannungsfreiheit",
+          "psa",
+          "umweltschutz"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 68
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Wartungsumfang aus Unterlagen und Intervall begründet ableiten",
+        "Arbeitsmittel und Ablauf in logischer Reihenfolge planen",
+        "Sicherheits- und Umweltschutzmaßnahmen vor Arbeitsbeginn festlegen",
+        "Freigabekriterien für den Start der Wartung nennen"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "wpd-24-structured-probelauf",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (6-8 Sätze): Nach der Wartung zeigt der Probelauf erhöhte Geräusche. Beschreibe dein fachgerechtes Vorgehen bis zur erneuten Bewertung.",
+    "answer": {
+      "fields": [
+        {
+          "key": "analyse",
+          "label": "Analyse",
+          "minWords": 22,
+          "placeholder": "z. B. Symptom erfassen, Ursache eingrenzen, Prüfschritte"
+        },
+        {
+          "key": "massnahme",
+          "label": "Maßnahme",
+          "minWords": 22,
+          "placeholder": "z. B. Nacharbeit, Korrektur, technischer Entscheidungsweg"
+        },
+        {
+          "key": "nachweis",
+          "label": "Nachweis und Bewertung",
+          "minWords": 20,
+          "placeholder": "z. B. Wiederholprobelauf, Soll/Ist, Dokumentation"
+        }
+      ],
+      "keywords": {
+        "analyse": [
+          "probelauf",
+          "auffälligkeit",
+          "ursache",
+          "eingrenzen",
+          "messwert"
+        ],
+        "massnahme": [
+          "nacharbeit",
+          "schmierung",
+          "ausrichtung",
+          "befestigung",
+          "korrektur"
+        ],
+        "nachweis": [
+          "soll",
+          "ist",
+          "prüfprotokoll",
+          "i. o.",
+          "freigabe"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 70
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Abweichung im Probelauf klar und beobachtbar beschreiben",
+        "Ursache systematisch eingrenzen und Maßnahme begründen",
+        "Korrektur und Wiederholprüfung sauber trennen",
+        "Bewertung mit Soll/Ist und dokumentierter Freigabe abschließen"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "wpd-25-structured-abschluss",
+    "type": "structured_text",
+    "prompt": "Abschlussaufgabe (7-9 Sätze): Erstelle einen prüfungstauglichen Abschlussvermerk nach einer geplanten Wartung mit notwendiger Teilnacharbeit.",
+    "answer": {
+      "fields": [
+        {
+          "key": "durchfuehrung",
+          "label": "Durchführung",
+          "minWords": 22,
+          "placeholder": "z. B. Arbeitsschritte, Betriebsstoffe, durchgeführte Nacharbeit"
+        },
+        {
+          "key": "bewertung",
+          "label": "Bewertung",
+          "minWords": 22,
+          "placeholder": "z. B. Funktionsprüfung, Soll/Ist, i. O./n. i. O."
+        },
+        {
+          "key": "uebergabe",
+          "label": "Übergabe",
+          "minWords": 22,
+          "placeholder": "z. B. Restpunkte, Hinweise, Freigabe, Protokoll"
+        }
+      ],
+      "keywords": {
+        "durchfuehrung": [
+          "wartungsschritte",
+          "betriebsstoff",
+          "prüfung",
+          "nacharbeit",
+          "dokumentation"
+        ],
+        "bewertung": [
+          "funktionsprüfung",
+          "soll",
+          "ist",
+          "i. o.",
+          "restmangel"
+        ],
+        "uebergabe": [
+          "freigabe",
+          "hinweis",
+          "datum",
+          "verantwortlich",
+          "protokoll"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 75
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Durchgeführte Wartung und Teilnacharbeit klar darstellen",
+        "Ergebnis über Prüfkriterien und Soll/Ist fachlich bewerten",
+        "Restpunkte und Bedingungen für den Betrieb nennen",
+        "Übergabe vollständig und prüfungstauglich dokumentieren"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  }
+]

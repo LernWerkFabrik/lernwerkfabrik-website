@@ -1,0 +1,86 @@
+[
+  {
+    "id": "swb-e-01",
+    "prompt": "Wandle 2.7 g/cm3 in kg/m3 um.",
+    "answer": { "value": 2700, "unit": "kg/m3" },
+    "tolerance": 0,
+    "solution": "1 g/cm3 = 1000 kg/m3 -> 2.7 g/cm3 = 2700 kg/m3."
+  },
+  {
+    "id": "swb-e-02",
+    "prompt": "Wandle 7.85 g/cm3 in kg/dm3 um.",
+    "answer": { "value": 7.85, "unit": "kg/dm3" },
+    "tolerance": 0,
+    "solution": "1 g/cm3 entspricht 1 kg/dm3 -> 7.85 bleibt 7.85."
+  },
+  {
+    "id": "swb-e-03",
+    "prompt": "Trägerplatte: l=160 mm, b=100 mm, h=10 mm, rho=7.85 g/cm3. Berechne die Masse in kg.",
+    "answer": { "value": 1.256, "unit": "kg" },
+    "tolerance": 0.01,
+    "solution": "V=160000 mm3=160 cm3. m=7.85*160=1256 g=1.256 kg."
+  },
+  {
+    "id": "swb-e-04",
+    "prompt": "Werkstofftausch bei gleichem Volumen: m_alt=2.27 kg, rho_alt=7.3 kg/dm3, rho_Al=2.7 kg/dm3. Berechne m_neu in kg.",
+    "answer": { "value": 0.84, "unit": "kg" },
+    "tolerance": 0.03,
+    "solution": "m_neu=m_alt*(rho_Al/rho_alt)=2.27*(2.7/7.3)=0.8396 kg."
+  },
+  {
+    "id": "swb-e-05",
+    "prompt": "AP2-Zylinderrohling: D=200 mm, B=40 mm. Berechne V in cm3.",
+    "answer": { "value": 1256.64, "unit": "cm3" },
+    "tolerance": 1,
+    "solution": "r=10 cm, h=4 cm. V=pi*10^2*4=1256.64 cm3."
+  },
+  {
+    "id": "swb-e-06",
+    "prompt": "Gleicher Rohling aus CuSn12-C (rho=8.7 kg/dm3): Berechne die Masse in kg.",
+    "answer": { "value": 10.93, "unit": "kg" },
+    "tolerance": 0.05,
+    "solution": "V=1256.64 cm3=1.25664 dm3. m=8.7*1.25664=10.93 kg."
+  },
+  {
+    "id": "swb-e-07",
+    "prompt": "Bohrung im Rohling: d=40 mm, B=40 mm. Berechne das Bohrungsvolumen in cm3.",
+    "answer": { "value": 50.27, "unit": "cm3" },
+    "tolerance": 0.4,
+    "solution": "r=2 cm, h=4 cm. V_B=pi*2^2*4=50.27 cm3."
+  },
+  {
+    "id": "swb-e-08",
+    "prompt": "Zerspanungsanteil: V_B=50.27 cm3, V_Roh=1256.64 cm3. Berechne den Anteil in %.",
+    "answer": { "value": 4, "unit": "%" },
+    "tolerance": 0.2,
+    "solution": "V_B/V_Roh*100=50.27/1256.64*100=4.0 %."
+  },
+  {
+    "id": "swb-e-09",
+    "prompt": "Berechne die Masse in kg für Stahl: rho=7.85 g/cm3, V=500 cm3.",
+    "answer": { "value": 3.925, "unit": "kg" },
+    "tolerance": 0.02,
+    "solution": "m=7.85*500=3925 g=3.925 kg."
+  },
+  {
+    "id": "swb-e-10",
+    "prompt": "Gleiches Volumen V=500 cm3: Wie groß ist die Massedifferenz Stahl minus Aluminium (rho_St=7.85, rho_Al=2.7 in g/cm3) in kg?",
+    "answer": { "value": 2.575, "unit": "kg" },
+    "tolerance": 0.02,
+    "solution": "m_St=3.925 kg, m_Al=1.35 kg, Differenz=2.575 kg."
+  },
+  {
+    "id": "swb-e-11",
+    "prompt": "Ein Bauteil hat V=400 cm3 und darf maximal 2.0 kg wiegen. Welche maximale Dichte ist zulässig (in g/cm3)?",
+    "answer": { "value": 5, "unit": "g/cm3" },
+    "tolerance": 0.05,
+    "solution": "m_max=2000 g. rho_max=m/V=2000/400=5 g/cm3."
+  },
+  {
+    "id": "swb-e-12",
+    "prompt": "Berechne das Volumen in cm3: m=2.35 kg, rho=8.7 g/cm3.",
+    "answer": { "value": 270.11, "unit": "cm3" },
+    "tolerance": 0.5,
+    "solution": "m=2350 g. V=m/rho=2350/8.7=270.11 cm3."
+  }
+]

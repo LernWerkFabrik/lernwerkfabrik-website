@@ -1,0 +1,34 @@
+{
+  "id": "baugruppen-montieren",
+  "title": "Baugruppen montieren und prüfen",
+  "description": "Baugruppen montieren, Funktionsprüfung durchführen, Fehler erkennen.",
+  "difficulty": "medium",
+  "tags": [
+    "Montage",
+    "Baugruppe",
+    "Prüfen"
+  ],
+  "estimatedMinutes": 45,
+  "intro": {
+    "why": "In der Prüfung geht es bei Baugruppen nicht nur darum, Teile „zusammenzuschrauben“. Bewertet wird, ob du nach Zeichnung/Stückliste korrekt montierst, Verwechslungen vermeidest, funktionsrelevante Merkmale beachtest (Lage, Richtung, Passung, Drehmoment, Sicherung) und eine Funktionsprüfung so durchführst, dass Fehler systematisch erkannt und begründet werden können. Viele Punkte gehen verloren, wenn die Montage zwar irgendwie funktioniert, aber Montagefolge, Sicherungsmaßnahmen oder Prüfschritte nicht fachgerecht sind.",
+    "trains": [
+      "Montage nach Zeichnung, Stückliste und Montagehinweisen (Bauteilzuordnung, Einbaulage, Reihenfolge)",
+      "Sicherungs- und Verbindungsarten korrekt anwenden (z. B. Schraubensicherung, Passfedern, Sicherungsringe)",
+      "Funktionsprüfungen planen und durchführen (Prüfmerkmale, Prüfschritte, Prüfmittel, Soll/Ist-Vergleich)",
+      "Fehlerbilder an Baugruppen erkennen und fachlich begründen (Ursache → Auswirkung → Maßnahme)"
+    ],
+    "traps": [
+      "Einbaulage/Orientierung verwechseln (z. B. Distanzhülsen, Dichtungen, Lager, Passfedern, Sicherungsringe)",
+      "Montagefolge ignorieren und dadurch Verspannung, Klemmen oder beschädigte Bauteile erzeugen",
+      "Sicherungsmaßnahmen und Anzugsmomente weglassen oder nicht dokumentieren",
+      "Funktionsprüfung nur „geht/geht nicht“ statt mit klaren Prüfkriterien, Prüfmitteln und Begründung"
+    ]
+  },
+  "files": {
+    "explanation": "explanation.md",
+    "example": "example.md",
+    "practiceQuestions": "questions.practice.json",
+    "examQuestions": "questions.exam.json"
+  },
+  "kind": "learn"
+}

@@ -1,0 +1,596 @@
+[
+  {
+    "id": "qm-01-qualitaetsmangel-begriff",
+    "type": "single_choice",
+    "prompt": "Was beschreibt einen Qualitätsmangel am treffendsten?",
+    "answer": {
+      "choices": [
+        "Jede sichtbare Farbabweichung ohne Einfluss auf Funktion oder Anforderungen",
+        "Eine Abweichung von festgelegten Anforderungen an Maß, Funktion, Oberfläche oder Sicherheit",
+        "Nur ein Schaden, der bereits zum vollständigen Ausfall geführt hat",
+        "Nur ein Fehler, den der Kunde bereits reklamiert hat"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "qm-02-pruefgrundlagen",
+    "type": "multi_select",
+    "prompt": "Welche Informationen brauchst du für eine fachlich saubere Mängelbewertung? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Zeichnung mit Toleranzen und Anforderungen",
+        "Arbeits- oder Prüfanweisung",
+        "Messwerte mit Angabe des verwendeten Prüfmittels",
+        "Persönliche Vermutung ohne Nachweis",
+        "Funktionsanforderung des Bauteils"
+      ],
+      "correctIndices": [0, 1, 2, 4]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "qm-03-symptom-ursache",
+    "type": "single_choice",
+    "prompt": "Welche Aussage trennt Symptom und Ursache fachlich korrekt?",
+    "answer": {
+      "choices": [
+        "Symptom: Bohrung zu groß. Ursache: Bohrung zu groß.",
+        "Symptom: Maßabweichung am Werkstück. Ursache: vermutlich Werkzeugverschleiß, durch Mess- und Prozessdaten zu verifizieren.",
+        "Symptom und Ursache müssen in der Prüfung nicht getrennt werden.",
+        "Wenn ein Teil n. i. O. ist, ist die Ursache immer ein Bedienfehler."
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "qm-04-io-entscheidung",
+    "type": "single_choice",
+    "prompt": "Sollmaß Welle: 20,00 ± 0,05 mm. Gemessen: 19,96 mm. Welche Bewertung ist korrekt?",
+    "answer": {
+      "choices": [
+        "Maß ist i. O.; Verwendung ist möglich, sofern weitere Merkmale ebenfalls i. O. sind.",
+        "Maß ist n. i. O., da 19,96 mm kleiner als 20,00 mm ist.",
+        "Ohne Kundenfreigabe ist grundsätzlich jede Abweichung n. i. O.",
+        "Bewertung ist erst nach dem Versand erforderlich."
+      ],
+      "correctIndex": 0
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "qm-05-grundablauf-bewertung",
+    "type": "order",
+    "prompt": "Ordne den Grundablauf zur Bewertung eines Qualitätsmangels.",
+    "items": [
+      "Abweichung feststellen und dokumentieren",
+      "Soll-Anforderungen eindeutig zuordnen",
+      "Auswirkung auf Funktion/Sicherheit bewerten",
+      "Ursache systematisch eingrenzen",
+      "Maßnahme festlegen und umsetzen",
+      "Wirksamkeit prüfen und Abschluss dokumentieren"
+    ],
+    "answer": {
+      "correctOrder": [0, 1, 2, 3, 4, 5]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "qm-06-pruefmittel-passbohrung",
+    "type": "single_choice",
+    "prompt": "Für eine passungsrelevante Bohrung in Serienfertigung soll schnell über i. O./n. i. O. entschieden werden. Welches Prüfmittel ist am geeignetsten?",
+    "answer": {
+      "choices": [
+        "Stahlmaßstab",
+        "Messschieber außen",
+        "Grenzlehrdorn (Go/No-Go)",
+        "Fühlerlehre"
+      ],
+      "correctIndex": 2
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "qm-07-probelauf-auffaelligkeiten",
+    "type": "multi_select",
+    "prompt": "Welche Merkmale deuten beim Probelauf auf einen verbleibenden Qualitätsmangel hin? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Zunehmende Laufgeräusche",
+        "Lokaler Temperaturanstieg",
+        "Leckage an Dichtstellen",
+        "Ruhiger, gleichmäßiger Lauf ohne Abweichung",
+        "Ungewöhnliche Vibrationen"
+      ],
+      "correctIndices": [0, 1, 2, 4]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "qm-08-attributiv-variable",
+    "type": "single_choice",
+    "prompt": "Was ist eine attributive Merkmalsprüfung?",
+    "answer": {
+      "choices": [
+        "Messung eines Ist-Maßes als Zahlenwert in mm",
+        "Einstufung in Kategorien wie i. O./n. i. O.",
+        "Ermittlung der Härte in HV",
+        "Berechnung des arithmetischen Mittelwerts"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "qm-09-grenzmass-bewertung",
+    "type": "single_choice",
+    "prompt": "Nennmaß: 35,00 ± 0,20 mm. Gemessen: 34,76 mm. Welche Bewertung ist korrekt?",
+    "answer": {
+      "choices": [
+        "i. O., da der Messwert nahe am Nennmaß liegt",
+        "n. i. O., da das untere Grenzmaß um 0,04 mm unterschritten ist",
+        "i. O., wenn die Oberfläche gut ist",
+        "Ohne zweite Messung ist keine Bewertung möglich"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "qm-10-ursachen-bohrung-zu-gross",
+    "type": "multi_select",
+    "prompt": "Bei einer Bohrung treten wiederholt zu große Durchmesser auf. Welche Ursachen sind plausibel? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Verschleiß am Reibwerkzeug",
+        "Falscher Korrekturwert im Programm",
+        "Ungeeignetes oder verschlissenes Prüfmittel",
+        "Ungünstige Prozessbedingungen mit thermischem Einfluss",
+        "Sauber durchgeführte Erststückfreigabe"
+      ],
+      "correctIndices": [0, 1, 2, 3]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "qm-11-nio-folge",
+    "type": "order",
+    "prompt": "Ordne das fachgerechte Vorgehen nach Feststellung eines n. i. O.-Teils in der laufenden Fertigung.",
+    "items": [
+      "Betroffene Teile kennzeichnen und sperren",
+      "Umfang der Abweichung eingrenzen (Los/Zeitraum)",
+      "Ursache mit Daten und Prüfungen absichern",
+      "Korrekturmaßnahme umsetzen",
+      "Nachprüfung und Freigabe von Folgeteilen durchführen",
+      "Ergebnis dokumentieren und rückmelden"
+    ],
+    "answer": {
+      "correctOrder": [0, 1, 2, 3, 4, 5]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "qm-12-haerteverfahren-vickers",
+    "type": "single_choice",
+    "prompt": "Eine gehärtete Wellenzone soll mit etwa 690 HV geprüft werden. Welches Härteprüfverfahren ist dafür am geeignetsten?",
+    "answer": {
+      "choices": [
+        "Rockwell B",
+        "Brinell mit großer Kugel",
+        "Vickers",
+        "Shore D"
+      ],
+      "correctIndex": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "qm-13-grenzmass-ueberschreitung",
+    "prompt": "Nennmaß: 30,00 ± 0,10 mm. Gemessen: 30,24 mm. Um wie viel ist das obere Grenzmaß überschritten?",
+    "answer": {
+      "value": 0.14,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Oberes Grenzmaß = 30,10 mm. Überschreitung = 30,24 - 30,10 = 0,14 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "qm-14-nacharbeit-oder-ausschuss",
+    "type": "single_choice",
+    "prompt": "Sollmaß Bohrung: 12H7. Gemessen: 12,18 mm. Welche Entscheidung ist fachlich am sinnvollsten?",
+    "answer": {
+      "choices": [
+        "Nacharbeit durch weiteres Aufbohren",
+        "Teil unverändert freigeben, wenn es montierbar wirkt",
+        "Teil als Sperrteil bewerten und in der Regel Ausschuss entscheiden",
+        "Nur den Messwert aufrunden und erneut prüfen"
+      ],
+      "correctIndex": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "qm-15-maengelbericht-inhalte",
+    "type": "multi_select",
+    "prompt": "Welche Angaben gehören in einen belastbaren Mängelbericht? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Bauteil/Los/Arbeitsgang",
+        "Soll-/Ist-Werte mit Einheit",
+        "Verwendetes Prüfmittel und Messzeitpunkt",
+        "Nur ein Foto ohne Messdaten",
+        "Sofortmaßnahme und Verantwortlichkeit",
+        "Bewertung i. O./n. i. O."
+      ],
+      "correctIndices": [0, 1, 2, 4, 5]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "qm-16-wiederholfehler-erstschritt",
+    "type": "single_choice",
+    "prompt": "Ein bereits korrigierter Fehler tritt erneut auf. Was ist der sinnvollste erste Schritt?",
+    "answer": {
+      "choices": [
+        "Produktion unverändert weiterlaufen lassen und am Schichtende auswerten",
+        "Betroffene Teile sofort sperren und Prozessdaten seit dem letzten i. O.-Teil prüfen",
+        "Alle Maschinen ohne weitere Analyse pauschal warten",
+        "Nur die Endkontrolle verdoppeln, ohne Ursachenanalyse"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "qm-17-ausschussquote",
+    "prompt": "In einem Los von 240 Teilen sind 18 Teile n. i. O. Wie hoch ist die Ausschussquote in Prozent?",
+    "answer": {
+      "value": 7.5,
+      "unit": "%"
+    },
+    "tolerance": 0.1,
+    "solution": "Ausschussquote = (18 / 240) * 100 = 7,5 %.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "qm-18-prozessueberwachung-methoden",
+    "type": "multi_select",
+    "prompt": "Welche Maßnahmen helfen, Qualitätsmängel im Prozess frühzeitig zu erkennen? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Prozessregelkarten führen und interpretieren",
+        "Attributive und variable Stichprobenprüfungen kombinieren",
+        "Ursache-Wirkungs-Diagramme bei Auffälligkeiten nutzen",
+        "Messdaten nur monatlich pauschal betrachten",
+        "Mittelwert- und Trendverläufe auswerten"
+      ],
+      "correctIndices": [0, 1, 2, 4]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "qm-19-oberflaeche-hauptursache",
+    "type": "single_choice",
+    "prompt": "Befund: Rauheit verschlechtert sich schrittweise, Gratbildung nimmt zu, Maße driften zur oberen Grenze. Welche Hauptursache ist am wahrscheinlichsten?",
+    "answer": {
+      "choices": [
+        "Werkzeugverschleiß ohne wirksame Wechselgrenze",
+        "Zu detaillierte Dokumentation",
+        "Zu kurze Übergabe im Schichtwechsel",
+        "Zu häufige Kalibrierung der Prüfmittel"
+      ],
+      "correctIndex": 0
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "qm-20-mittelwert-durchmesser",
+    "prompt": "Fünf Messwerte eines Durchmessers: 20,02 mm; 20,04 mm; 20,01 mm; 20,05 mm; 20,03 mm. Wie groß ist der arithmetische Mittelwert?",
+    "answer": {
+      "value": 20.03,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Mittelwert = (20,02 + 20,04 + 20,01 + 20,05 + 20,03) / 5 = 20,03 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "qm-21-ursache-wirkung-reihenfolge",
+    "type": "order",
+    "prompt": "Ordne den Ablauf einer systematischen Ursache-Wirkungs-Analyse.",
+    "items": [
+      "Problem messbar und eindeutig formulieren",
+      "Einflusskategorien festlegen (z. B. Mensch, Maschine, Material, Methode, Milieu)",
+      "Mögliche Ursachen je Kategorie sammeln",
+      "Ursachen mit Daten/Messungen bewerten",
+      "Hauptursache verifizieren",
+      "Korrekturmaßnahme mit Verantwortlichkeit festlegen"
+    ],
+    "answer": {
+      "correctOrder": [0, 1, 2, 3, 4, 5]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "qm-22-nachhaltige-verbesserung",
+    "type": "multi_select",
+    "prompt": "Welche Maßnahmen senken wiederkehrende Qualitätsmängel nachhaltig? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Werkzeugwechselgrenzen festlegen und vorbeugend einhalten",
+        "Rüst- und Nullpunktkontrollen standardisieren",
+        "Prüfmittel regelmäßig überwachen und kalibrieren",
+        "Nur nacharbeiten, ohne Ursachen dauerhaft zu beseitigen",
+        "Rückmeldung und Schulung für den betroffenen Prozess sicherstellen"
+      ],
+      "correctIndices": [0, 1, 2, 4]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "qm-23-structured-erstbewertung",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (6-8 Sätze): In der Serienfertigung einer Welle (25 h6) liegen zwei aktuelle Messwerte bei 24,97 mm und 24,96 mm (unteres Grenzmaß: 24,98 mm). Zusätzlich wird die Oberfläche rauer. Beschreibe deine fachliche Erstbewertung.",
+    "answer": {
+      "fields": [
+        {
+          "key": "befund",
+          "label": "Befund und Qualitätsbewertung",
+          "minWords": 22,
+          "placeholder": "Beschreibe Soll/Ist-Abweichung und Risiko für Funktion/Passung."
+        },
+        {
+          "key": "ursache",
+          "label": "Wahrscheinliche Hauptursache",
+          "minWords": 22,
+          "placeholder": "Leite die Ursache aus Messwerttrend und Oberflächenbild ab."
+        },
+        {
+          "key": "sofort",
+          "label": "Sofortmaßnahmen",
+          "minWords": 20,
+          "placeholder": "Nenne Sperrung, Eingrenzung und nächste Prüfschritte."
+        }
+      ],
+      "keywords": {
+        "befund": [
+          "grenzmass",
+          "unterschritten",
+          "nio",
+          "passung",
+          "oberflaeche",
+          "risiko"
+        ],
+        "ursache": [
+          "werkzeugverschleiss",
+          "prozessdrift",
+          "messdaten",
+          "trend",
+          "maschine",
+          "ursache"
+        ],
+        "sofort": [
+          "sperren",
+          "eingrenzen",
+          "pruefen",
+          "korrigieren",
+          "nachpruefung",
+          "dokumentieren"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 72
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Abweichung mit Soll-/Ist-Werten fachlich bewerten",
+        "Symptom und wahrscheinliche Hauptursache trennen",
+        "Sofortmaßnahmen für Sperrung und Eingrenzung nennen",
+        "Nachweis der Wirksamkeit für den nächsten Schritt formulieren"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "qm-24-structured-massnahmenplan",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (6-8 Sätze): Bei einer Bohrbearbeitung tritt derselbe Qualitätsmangel wiederholt auf. Erstelle einen Maßnahmenplan, der kurzfristig absichert und dauerhaft verbessert.",
+    "answer": {
+      "fields": [
+        {
+          "key": "analyseplan",
+          "label": "Analyse- und Prüfplan",
+          "minWords": 22,
+          "placeholder": "Nenne Prozessdaten, Prüfmerkmale, Prüfmittel und Vorgehen zur Ursachenverifikation."
+        },
+        {
+          "key": "korrektur",
+          "label": "Korrekturmaßnahmen im laufenden Prozess",
+          "minWords": 22,
+          "placeholder": "Beschreibe konkrete Eingriffe für Maschine, Werkzeug, Parameter und Freigabe."
+        },
+        {
+          "key": "vorbeugung",
+          "label": "Vorbeugende Maßnahmen",
+          "minWords": 22,
+          "placeholder": "Zeige, wie Wiederholfehler über Standards und Überwachung vermieden werden."
+        }
+      ],
+      "keywords": {
+        "analyseplan": [
+          "pruefplan",
+          "prozessdaten",
+          "stichprobe",
+          "regelkarte",
+          "ursache",
+          "verifizieren"
+        ],
+        "korrektur": [
+          "werkzeug",
+          "parameter",
+          "maschine",
+          "sperrung",
+          "nachpruefung",
+          "freigabe"
+        ],
+        "vorbeugung": [
+          "wechselgrenze",
+          "standard",
+          "kalibrierung",
+          "schulung",
+          "dokumentation",
+          "kontinuierlich"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 74
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Kurzfristige Absicherung und Ursachenanalyse klar trennen",
+        "Korrekturmaßnahmen mit technischem Nachweis beschreiben",
+        "Vorbeugende Standards zur Stabilisierung des Prozesses nennen",
+        "Rollen, Dokumentation und Freigabekriterien einbauen"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "qm-25-structured-abschluss",
+    "type": "structured_text",
+    "prompt": "Abschlussaufgabe (7-9 Sätze): Nach einer Korrekturmaßnahme wurden 30 Teile gefertigt, 2 Teile sind weiterhin n. i. O. (Grat und Maßausreißer). Beschreibe dein Vorgehen bis zur belastbaren Abschlussentscheidung.",
+    "answer": {
+      "fields": [
+        {
+          "key": "entscheidung",
+          "label": "Entscheidung zu Teilen und Prozess",
+          "minWords": 22,
+          "placeholder": "Lege nachvollziehbar fest, was freigegeben, nachgearbeitet oder ausgeschleust wird."
+        },
+        {
+          "key": "wirksamkeit",
+          "label": "Wirksamkeitsnachweis",
+          "minWords": 22,
+          "placeholder": "Beschreibe zusätzliche Prüfungen und Kriterien für stabile Prozessqualität."
+        },
+        {
+          "key": "dokumentation",
+          "label": "Dokumentation und Übergabe",
+          "minWords": 22,
+          "placeholder": "Formuliere Protokollinhalte, Rückmeldung und nächste Verbesserungsmaßnahme."
+        }
+      ],
+      "keywords": {
+        "entscheidung": [
+          "sperrteil",
+          "nacharbeit",
+          "ausschuss",
+          "freigabe",
+          "begruendung",
+          "risiko"
+        ],
+        "wirksamkeit": [
+          "stichprobe",
+          "soll",
+          "ist",
+          "trend",
+          "prozessfaehigkeit",
+          "nachweis"
+        ],
+        "dokumentation": [
+          "protokoll",
+          "ursache",
+          "massnahme",
+          "verantwortlich",
+          "uebergabe",
+          "verbesserung"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 78
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Restabweichungen fachlich bewerten und klare Entscheidung ableiten",
+        "Wirksamkeitsprüfung mit messbaren Kriterien darstellen",
+        "Dokumentation so formulieren, dass die Entscheidung nachvollziehbar ist",
+        "Nächste dauerhafte Verbesserungsmaßnahme benennen"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  }
+]

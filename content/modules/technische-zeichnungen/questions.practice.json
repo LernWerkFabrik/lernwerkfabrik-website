@@ -1,0 +1,702 @@
+[
+  {
+    "id": "tz-v-01-symbol-meaning",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "d": { "min": 6, "max": 80, "step": 1 },
+        "r": { "min": 1, "max": 20, "step": 1 },
+        "a": { "min": 0.5, "max": 4.0, "step": 0.5 }
+      },
+      "variants": [
+        {
+          "type": "single_choice",
+          "template": { "prompt": "Was bedeutet die Zeichnungsangabe „Ø{{d}}“?" },
+          "answer": {
+            "choices": ["Radius {{d}} mm", "Durchmesser {{d}} mm", "Tiefe {{d}} mm", "Senkung {{d}} mm"],
+            "correctIndex": 1
+          }
+        },
+        {
+          "type": "single_choice",
+          "template": { "prompt": "Was bedeutet „R{{r}}“ in einer Zeichnung?" },
+          "answer": {
+            "choices": ["Durchmesser {{r}} mm", "Radius {{r}} mm", "Fase {{r}}×45°", "Gewinde M{{r}}"],
+            "correctIndex": 1
+          }
+        },
+        {
+          "type": "single_choice",
+          "template": { "prompt": "Was beschreibt „{{a}}×45°“ an einer Kante?" },
+          "answer": {
+            "choices": ["Senkung", "Fase mit Breite {{a}} mm bei 45°", "Radius {{a}} mm", "Bohrtiefe {{a}} mm"],
+            "correctIndex": 1
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "tz-v-02-views-basics",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "n": { "min": 2, "max": 5, "step": 1 }
+      },
+      "variants": [
+        {
+          "type": "single_choice",
+          "template": { "prompt": "Welche Ansicht zeigt ein Bauteil von oben?" },
+          "answer": { "choices": ["Vorderansicht", "Seitenansicht", "Draufsicht", "Schnittansicht"], "correctIndex": 2 }
+        },
+        {
+          "type": "single_choice",
+          "template": { "prompt": "Wozu dient eine Schnittansicht in der technischen Zeichnung?" },
+          "answer": {
+            "choices": ["Zur Farbkennzeichnung", "Um verdeckte Innenkonturen sichtbar zu machen", "Um das Gewicht zu bestimmen", "Um den Maßstab zu ändern"],
+            "correctIndex": 1
+          }
+        },
+        {
+          "type": "multi_select",
+          "template": { "prompt": "Welche Informationen findest du typischerweise im Titelblock? (Mehrfachauswahl)" },
+          "answer": {
+            "choices": ["Maßstab", "Werkstoff", "Benennung/Zeichnungsnummer", "Wetter", "Toleranzhinweis/Normbezug"],
+            "correctIndices": [0, 1, 2, 4]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "tz-v-03-reading-order",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "x": { "min": 1, "max": 9, "step": 1 }
+      },
+      "variants": [
+        {
+          "type": "order",
+          "template": { "prompt": "Bringe die Schritte zum sicheren Lesen einer Zeichnung in eine prüfungsstarke Reihenfolge." },
+          "items": [
+            "Titelblock prüfen (Maßstab, Werkstoff, Normen)",
+            "Ansichten überblicken (Vorder/Seite/Drauf/Schnitt)",
+            "Maße & Bezugsmaße erfassen",
+            "Toleranzen & Passungen prüfen",
+            "Symbole/Zusatzangaben (Fase, Senkung, Gewinde, Oberfläche) prüfen",
+            "Plausibilität: passt das zu Fertigung & Funktion?"
+          ],
+          "answer": { "correctOrder": [0, 1, 2, 3, 4, 5] }
+        },
+        {
+          "type": "order",
+          "template": { "prompt": "Reihenfolge beim Prüfen eines gefertigten Teils nach Zeichnung:" },
+          "items": [
+            "Zeichnung/Revision prüfen",
+            "Bezugskante/Datum festlegen",
+            "kritische Maße zuerst messen",
+            "Toleranzvergleich (Grenzmaße)",
+            "Dokumentation (OK/NOK, Messwert)",
+            "Bei NOK: Ursache/Fehlerquelle prüfen"
+          ],
+          "answer": { "correctOrder": [0, 1, 2, 3, 4, 5] }
+        }
+      ]
+    }
+  },
+  {
+    "id": "tz-v-04-scale-1-to-n",
+    "tolerance": 2,
+    "template": {
+      "kind": "static",
+      "vars": {
+        "m": { "min": 2, "max": 20, "step": 1 },
+        "z": { "min": 10, "max": 160, "step": 5 }
+      },
+      "variants": [
+        {
+          "template": { "prompt": "Maßstab 1:{{m}}. In der Zeichnung misst du {{z}} mm. Wie groß ist das reale Maß in mm?" },
+          "answer": { "formula": "{{m}}*{{z}}", "unit": "mm" }
+        }
+      ]
+    },
+    "input": { "mode": "integer" }
+  },
+  {
+    "id": "tz-v-05-scale-n-to-1",
+    "tolerance": 1,
+    "template": {
+      "kind": "static",
+      "vars": {
+        "m": { "min": 2, "max": 10, "step": 1 },
+        "real": { "min": 80, "max": 1200, "step": 20 }
+      },
+      "variants": [
+        {
+          "template": { "prompt": "Maßstab {{m}}:1 (Zeichnung ist {{m}}× größer). Reales Maß {{real}} mm. Wie groß ist das Zeichnungsmaß in mm?" },
+          "answer": { "formula": "{{real}}/{{m}}", "unit": "mm" }
+        }
+      ]
+    },
+    "input": { "mode": "decimal", "maxDecimals": 1 }
+  },
+  {
+    "id": "tz-v-06-chain-dimensions",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "a": { "min": 15, "max": 60, "step": 5 },
+        "b": { "min": 10, "max": 55, "step": 5 },
+        "c": { "min": 20, "max": 70, "step": 5 }
+      },
+      "variants": [
+        {
+          "type": "integer",
+          "template": { "prompt": "Kettenmaß (Text): Abschnitt A={{a}} mm, B={{b}} mm, C={{c}} mm. Wie groß ist die Gesamtlänge in mm?" },
+          "answer": { "formula": "{{a}}+{{b}}+{{c}}" },
+          "input": { "mode": "integer" }
+        }
+      ]
+    }
+  },
+  {
+    "id": "tz-v-07-datum-reason",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "k": { "min": 1, "max": 4, "step": 1 }
+      },
+      "variants": [
+        {
+          "type": "single_choice",
+          "template": { "prompt": "Warum werden Maße oft von einer Bezugskante (Datum) aus angegeben?" },
+          "answer": {
+            "choices": [
+              "Damit weniger Maße nötig sind",
+              "Zur besseren Funktions- und Fertigungsgenauigkeit (Bezugssystem)",
+              "Nur aus optischen Gründen",
+              "Weil dann keine Toleranzen nötig sind"
+            ],
+            "correctIndex": 1
+          }
+        },
+        {
+          "type": "multi_select",
+          "template": { "prompt": "Welche Vorteile hat ein Bezugssystem (Datum) beim Messen? (Mehrfachauswahl)" },
+          "answer": {
+            "choices": [
+              "Wiederholbarkeit der Messung",
+              "Eindeutige Definition der Messrichtung",
+              "Maße werden automatisch kleiner",
+              "Fehler werden schneller sichtbar"
+            ],
+            "correctIndices": [0, 1, 3]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "tz-v-08-tolerance-meaning",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "nom": { "min": 10, "max": 120, "step": 5 },
+        "tol": { "min": 0.05, "max": 0.50, "step": 0.05 }
+      },
+      "variants": [
+        {
+          "type": "single_choice",
+          "template": { "prompt": "Was bedeutet die Angabe „{{nom}} ±{{tol}} mm“?" },
+          "answer": {
+            "choices": [
+              "Das Maß muss exakt {{nom}} mm sein",
+              "Das Maß darf zwischen {{nom}}-{{tol}} und {{nom}}+{{tol}} liegen",
+              "Das Maß ist immer {{nom}}+{{tol}}",
+              "Das Maß ist immer {{nom}}-{{tol}}"
+            ],
+            "correctIndex": 1
+          }
+        },
+        {
+          "type": "multi_select",
+          "template": { "prompt": "Welche Größen kannst du aus „{{nom}} ±{{tol}} mm“ direkt ableiten? (Mehrfachauswahl)" },
+          "answer": {
+            "choices": [
+              "oberes Grenzmaß",
+              "unteres Grenzmaß",
+              "Toleranzbreite gesamt",
+              "Werkstoff"
+            ],
+            "correctIndices": [0, 1, 2]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "tz-v-09-upper-limit",
+    "template": {
+      "kind": "work_j_from_f_s",
+      "vars": {
+        "nom": { "min": 20, "max": 120, "step": 5 },
+        "tol": { "min": 0.05, "max": 0.50, "step": 0.05 }
+      },
+      "variants": [
+        {
+          "template": { "prompt": "Grenzmaß: Maß {{nom}} ±{{tol}} mm. Wie groß ist das obere Grenzmaß in mm?" },
+          "vars": { "F_N": { "value": 1 }, "s_m": { "value": "{{nom}}+{{tol}}" } },
+          "round": 2,
+          "tolerance": 0.01
+        }
+      ]
+    },
+    "input": { "mode": "decimal", "maxDecimals": 2 }
+  },
+  {
+    "id": "tz-v-10-lower-limit",
+    "template": {
+      "kind": "work_j_from_f_s",
+      "vars": {
+        "nom": { "min": 20, "max": 120, "step": 5 },
+        "tol": { "min": 0.05, "max": 0.50, "step": 0.05 }
+      },
+      "variants": [
+        {
+          "template": { "prompt": "Grenzmaß: Maß {{nom}} ±{{tol}} mm. Wie groß ist das untere Grenzmaß in mm?" },
+          "vars": { "F_N": { "value": 1 }, "s_m": { "value": "{{nom}}-{{tol}}" } },
+          "round": 2,
+          "tolerance": 0.01
+        }
+      ]
+    },
+    "input": { "mode": "decimal", "maxDecimals": 2 }
+  },
+  {
+    "id": "tz-v-11-tolerance-width",
+    "template": {
+      "kind": "power_w_from_f_v",
+      "vars": {
+        "tol": { "min": 0.02, "max": 0.40, "step": 0.02 }
+      },
+      "variants": [
+        {
+          "template": { "prompt": "Toleranzbreite: Angabe ±{{tol}} mm. Wie groß ist die gesamte Toleranzbreite in mm?" },
+          "vars": { "F_N": { "value": 2 }, "v_ms": { "value": "{{tol}}" } },
+          "round": 2,
+          "tolerance": 0.01
+        }
+      ]
+    },
+    "input": { "mode": "decimal", "maxDecimals": 2 }
+  },
+  {
+    "id": "tz-v-12-measurement-judgement",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "nom": { "min": 30, "max": 90, "step": 5 },
+        "tol": { "min": 0.05, "max": 0.30, "step": 0.05 },
+        "delta": { "min": -0.35, "max": 0.35, "step": 0.05 }
+      },
+      "variants": [
+        {
+          "type": "single_choice",
+          "template": {
+            "prompt": "Messurteil: Sollmaß {{nom}} ±{{tol}} mm. Gemessen {{nom}}{{delta}} mm. Ist das Teil i. O.?"
+          },
+          "answer": {
+            "choices": ["Ja, innerhalb der Toleranz", "Nein, zu klein", "Nein, zu groß", "Nicht bestimmbar ohne Maßstab"],
+            "correctIndex": 0
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "tz-v-13-multi-traps-reading",
+    "template": {
+      "kind": "static",
+      "vars": { "x": { "min": 1, "max": 9, "step": 1 } },
+      "variants": [
+        {
+          "type": "multi_select",
+          "template": { "prompt": "Welche Punkte sind typische Fehlerquellen beim Lesen von Zeichnungen? (Mehrfachauswahl)" },
+          "answer": {
+            "choices": [
+              "Maßstab übersehen",
+              "Bezugskante/Datum ignorieren",
+              "Einheit (mm) nicht beachten",
+              "Toleranzbreite mit Grenzmaß verwechseln",
+              "Farbe der Zeichnung falsch interpretiert"
+            ],
+            "correctIndices": [0, 1, 2, 3]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "tz-v-14-thread-meaning",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "m": { "min": 6, "max": 20, "step": 2 },
+        "p": { "min": 0.75, "max": 2.00, "step": 0.25 }
+      },
+      "variants": [
+        {
+          "type": "single_choice",
+          "template": { "prompt": "Gewindeangabe: „M{{m}}×{{p}}“. Wofür steht „{{p}}“?" },
+          "answer": {
+            "choices": [
+              "Nenndurchmesser in mm",
+              "Gewindesteigung in mm",
+              "Kernlochdurchmesser in mm",
+              "Gewindelänge in mm"
+            ],
+            "correctIndex": 1
+          }
+        },
+        {
+          "type": "multi_select",
+          "template": { "prompt": "Gewinde „M{{m}}×{{p}}“: Welche Aussagen stimmen? (Mehrfachauswahl)" },
+          "answer": {
+            "choices": [
+              "{{m}} ist der Nenndurchmesser",
+              "{{p}} ist die Steigung",
+              "Das ist ein Zollgewinde",
+              "M bedeutet metrisches ISO-Gewinde"
+            ],
+            "correctIndices": [0, 1, 3]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "tz-v-15-surface-roughness",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "ra": { "min": 0.8, "max": 12.5, "step": 0.1 },
+        "rb": { "min": 0.8, "max": 6.3, "step": 0.1 }
+      },
+      "variants": [
+        {
+          "type": "single_choice",
+          "template": { "prompt": "Was beschreibt die Angabe „Ra {{ra}}“?" },
+          "answer": {
+            "choices": ["Radius", "Oberflächenrauheit", "Bohrtiefe", "Drehmoment"],
+            "correctIndex": 1
+          }
+        },
+        {
+          "type": "single_choice",
+          "template": { "prompt": "Welche Oberfläche ist feiner (glatter): Ra {{ra}} oder Ra {{rb}}?" },
+          "answer": {
+            "choices": ["Ra {{ra}}", "Ra {{rb}}", "Beide gleich", "Nicht bestimmbar"],
+            "correctIndex": 1
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "tz-v-16-countersink-text",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "d1": { "min": 6, "max": 14, "step": 1 },
+        "d2": { "min": 12, "max": 30, "step": 2 }
+      },
+      "variants": [
+        {
+          "type": "single_choice",
+          "template": { "prompt": "Angabe: „Bohrung Ø{{d1}}, Senkung Ø{{d2}}“. Was ist korrekt?" },
+          "answer": {
+            "choices": [
+              "Durchgangsbohrung Ø{{d2}}",
+              "Bohrung Ø{{d1}} mit größerer Senkung Ø{{d2}}",
+              "Gewinde M{{d1}}",
+              "Radius R{{d2}}"
+            ],
+            "correctIndex": 1
+          }
+        },
+        {
+          "type": "multi_select",
+          "template": { "prompt": "Wofür kann eine Senkung in der Praxis dienen? (Mehrfachauswahl)" },
+          "answer": {
+            "choices": [
+              "Schraubenkopf bündig versenken",
+              "Gratbildung verhindern",
+              "Gewinde schneiden",
+              "Passung herstellen"
+            ],
+            "correctIndices": [0, 1]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "tz-v-17-dimensioning-rules",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "L": { "min": 50, "max": 250, "step": 10 }
+      },
+      "variants": [
+        {
+          "type": "multi_select",
+          "template": { "prompt": "Welche Aussagen zur Bemaßung sind (prüfungsnah) richtig? (Mehrfachauswahl)" },
+          "answer": {
+            "choices": [
+              "Maße sollen eindeutig und ohne Rechenketten prüfbar sein",
+              "Doppelte Bemaßung kann zu Widersprüchen führen",
+              "Maße sollten bevorzugt von Bezugskanten aus angegeben werden",
+              "Je mehr Maße, desto besser – Toleranzen sind dann egal"
+            ],
+            "correctIndices": [0, 1, 2]
+          }
+        },
+        {
+          "type": "single_choice",
+          "template": { "prompt": "Warum ist doppelte Bemaßung oft kritisch?" },
+          "answer": {
+            "choices": [
+              "Weil dann keine Schnittansicht nötig ist",
+              "Weil bei Fertigungsabweichungen Widersprüche entstehen können",
+              "Weil Maße dann immer zu klein werden",
+              "Weil dadurch Gewinde entstehen"
+            ],
+            "correctIndex": 1
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "tz-v-18-fit-concept",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "d": { "min": 10, "max": 50, "step": 5 }
+      },
+      "variants": [
+        {
+          "type": "single_choice",
+          "template": { "prompt": "Bohrung Ø{{d}} H7 und Welle Ø{{d}} h6 ergeben typischerweise:" },
+          "answer": {
+            "choices": ["Spielpassung", "Übergangspassung", "Presspassung", "Keine Passung"],
+            "correctIndex": 0
+          }
+        },
+        {
+          "type": "multi_select",
+          "template": { "prompt": "Welche Faktoren beeinflussen die Passungswahl? (Mehrfachauswahl)" },
+          "answer": {
+            "choices": [
+              "Funktion (Spiel/Leichtlauf/Kraftschluss)",
+              "Montageart (pressen/schrumpfen/stecken)",
+              "Oberflächenqualität",
+              "Wetterlage"
+            ],
+            "correctIndices": [0, 1, 2]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "tz-v-19-missing-info",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "part": { "min": 1, "max": 3, "step": 1 }
+      },
+      "variants": [
+        {
+          "type": "multi_select",
+          "template": { "prompt": "Welche Angaben fehlen häufig in unvollständigen Zeichnungen? (Mehrfachauswahl)" },
+          "answer": {
+            "choices": [
+              "Maßstab",
+              "Werkstoff",
+              "Toleranz-/Passungsangaben",
+              "Farbe der Linien"
+            ],
+            "correctIndices": [0, 1, 2]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "tz-v-20-quality-check-order",
+    "template": {
+      "kind": "static",
+      "vars": { "x": { "min": 1, "max": 9, "step": 1 } },
+      "variants": [
+        {
+          "type": "order",
+          "template": { "prompt": "Prüfungsnah: Ordne die Prüfschritte bei einem Messprotokoll (Grenzmaße) richtig." },
+          "items": [
+            "Sollmaß und Toleranz aus der Zeichnung lesen",
+            "Grenzmaße berechnen (oben/unten)",
+            "Messwert aufnehmen",
+            "Messwert mit Grenzmaßen vergleichen",
+            "OK/NOK entscheiden und dokumentieren"
+          ],
+          "answer": { "correctOrder": [0, 1, 2, 3, 4] }
+        }
+      ]
+    }
+  },
+  {
+    "id": "tz-v-21-mm2-to-cm2",
+    "template": {
+      "kind": "speed_m_s",
+      "vars": {
+        "A": { "min": 200, "max": 5000, "step": 50 }
+      },
+      "variants": [
+        {
+          "template": { "prompt": "Umrechnung: Fläche A={{A}} mm². Wandle in cm² um." },
+          "vars": { "s_m": { "value": "{{A}}" }, "t_s": { "value": 100 } },
+          "round": 2,
+          "tolerance": 0.05
+        }
+      ]
+    },
+    "input": { "mode": "decimal", "maxDecimals": 2 }
+  },
+  {
+    "id": "tz-v-22-unit-consistency",
+    "template": {
+      "kind": "static",
+      "vars": { "x": { "min": 1, "max": 9, "step": 1 } },
+      "variants": [
+        {
+          "type": "single_choice",
+          "template": { "prompt": "Welche Einheit wird in technischen Zeichnungen standardmäßig für Längen verwendet?" },
+          "answer": { "choices": ["m", "cm", "mm", "µm"], "correctIndex": 2 }
+        },
+        {
+          "type": "multi_select",
+          "template": { "prompt": "Welche Umrechnungen brauchst du in der Prüfung besonders oft? (Mehrfachauswahl)" },
+          "answer": {
+            "choices": ["mm → m", "cm² → mm²", "mm² → cm²", "kg → mm"],
+            "correctIndices": [0, 1, 2]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "tz-v-23-fast-check",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "nom": { "min": 15, "max": 80, "step": 5 },
+        "tol": { "min": 0.05, "max": 0.25, "step": 0.05 }
+      },
+      "variants": [
+        {
+          "type": "structured_text",
+          "template": { "prompt": "Kurzantwort (4–6 Sätze): Wie gehst du vor, um zu prüfen, ob ein Maß {{nom}} ±{{tol}} mm i. O. ist? (Grenzmaße + Messwert + Entscheidung)" },
+          "answer": {
+            "fields": [
+              { "key": "method", "label": "Vorgehen", "minWords": 35 }
+            ],
+            "keywords": {
+              "method": [
+                "sollmass",
+                "nennmass",
+                "toleranz",
+                "oberes grenzmass",
+                "unteres grenzmass",
+                "messwert",
+                "messen",
+                "vergleichen",
+                "i.o.",
+                "n.i.o.",
+                "in ordnung",
+                "nicht in ordnung"
+              ]
+            }
+          },
+          "grading": {
+            "auto": { "minWordsTotal": 35 }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "tz-v-24-exam-traps",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "m": { "min": 2, "max": 15, "step": 1 },
+        "z": { "min": 10, "max": 120, "step": 5 }
+      },
+      "variants": [
+        {
+          "type": "multi_select",
+          "template": { "prompt": "Prüfungsfalle Maßstab 1:{{m}}: In der Zeichnung sind {{z}} mm eingetragen. Welche Aussagen sind richtig? (Mehrfachauswahl)" },
+          "answer": {
+            "choices": [
+              "Das reale Maß ist {{z}}·{{m}} mm",
+              "Ohne Maßstab kann ich das reale Maß nicht bestimmen",
+              "Das reale Maß ist {{z}}/{{m}} mm",
+              "Das reale Maß ist immer gleich dem Zeichnungsmaß"
+            ],
+            "correctIndices": [0, 1]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "tz-v-25-master-mix",
+    "template": {
+      "kind": "static",
+      "vars": {
+        "m": { "min": 2, "max": 20, "step": 1 },
+        "z": { "min": 15, "max": 140, "step": 5 },
+        "nom": { "min": 20, "max": 100, "step": 5 },
+        "tol": { "min": 0.05, "max": 0.30, "step": 0.05 }
+      },
+      "variants": [
+        {
+          "type": "order",
+          "template": { "prompt": "Master-Flow (prüfungsreif): Ordne die Arbeitsschritte für eine Zeichnungsaufgabe mit Maßstab 1:{{m}} und Maß {{nom}} ±{{tol}} mm." },
+          "items": [
+            "Titelblock/Normen prüfen (Maßstab 1:{{m}})",
+            "Gegebenes Zeichnungsmaß erfassen (z. B. {{z}} mm)",
+            "Reales Maß ableiten (Maßstab anwenden)",
+            "Toleranz verstehen: Grenzmaße bestimmen",
+            "Mess-/Ergebnisentscheidung (OK/NOK) + Plausibilität"
+          ],
+          "answer": { "correctOrder": [0, 1, 2, 3, 4] }
+        },
+        {
+          "type": "multi_select",
+          "template": { "prompt": "Master-Check: Welche Aussagen sind richtig? (Mehrfachauswahl)" },
+          "answer": {
+            "choices": [
+              "Bei 1:{{m}} ist das reale Maß größer als das Zeichnungsmaß",
+              "Bei {{nom}} ±{{tol}} liegen Grenzmaße bei {{nom}}-{{tol}} und {{nom}}+{{tol}}",
+              "Der Hebelarm bestimmt das Drehmoment",
+              "Ein sauberes Bezugssystem erhöht Messsicherheit"
+            ],
+            "correctIndices": [0, 1, 3]
+          }
+        }
+      ]
+    }
+  }
+]

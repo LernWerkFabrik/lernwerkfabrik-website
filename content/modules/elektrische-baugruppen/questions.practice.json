@@ -1,0 +1,487 @@
+[
+  {
+    "id": "eb-01-pruefstart",
+    "type": "single_choice",
+    "prompt": "Was ist bei der Prüfung einer elektrischen Baugruppe der erste fachliche Schritt?",
+    "answer": {
+      "choices": [
+        "Sofort an einer beliebigen Klemme Spannung messen",
+        "Prüfauftrag und Schaltunterlagen prüfen",
+        "Direkt den Aktor austauschen",
+        "Nur die Störung quittieren und neu starten"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "eb-02-unterlagen",
+    "type": "multi_select",
+    "prompt": "Welche Unterlagen unterstützen eine prüfungssichere elektrische Baugruppenprüfung? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Schaltplan oder Stromlaufplan",
+        "Funktionsbeschreibung des Ablaufs",
+        "Prüfplan oder Prüfanweisung",
+        "Private Notizen ohne Anlagenbezug",
+        "Klemmen-/Anschlussübersicht"
+      ],
+      "correctIndices": [0, 1, 2, 4]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "eb-03-durchgang",
+    "type": "single_choice",
+    "prompt": "Womit prüfst du in erster Linie, ob zwei Punkte elektrisch leitend verbunden sind?",
+    "answer": {
+      "choices": [
+        "Mit einer reinen Sichtprüfung",
+        "Mit einer Durchgangsprüfung",
+        "Mit einer Leistungsmessung in kWh",
+        "Mit einer Temperaturmessung"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "eb-04-sicherheitscheck",
+    "type": "multi_select",
+    "prompt": "Welche Punkte gehören vor einer Messung zum Sicherheitscheck? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Messgerät und Messbereich passend einstellen",
+        "Messleitungen auf Schäden prüfen",
+        "Bei spannungsfreiem Prüfschritt gegen Wiedereinschalten sichern",
+        "Messspitzen mit den Fingern an blanken Metallteilen halten",
+        "Arbeitsbereich übersichtlich und sicher halten"
+      ],
+      "correctIndices": [0, 1, 2, 4]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "eb-05-pruefablauf-order",
+    "type": "order",
+    "prompt": "Ordne den praxistauglichen Grundablauf beim Prüfen elektrischer Baugruppen.",
+    "items": [
+      "Unterlagen und Prüfauftrag prüfen",
+      "Sicherheitszustand herstellen",
+      "Prüfverfahren und Messpunkte festlegen",
+      "Messung durchführen und Soll/Ist vergleichen",
+      "Ergebnis dokumentieren"
+    ],
+    "answer": {
+      "correctOrder": [0, 1, 2, 3, 4]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "eb-06-sensor-aktor",
+    "type": "single_choice",
+    "prompt": "Welche Aussage zu Sensor und Aktor ist fachlich richtig?",
+    "answer": {
+      "choices": [
+        "Sensoren setzen das Werkstück mechanisch um",
+        "Aktoren liefern nur Messwerte an die Steuerung",
+        "Sensoren erfassen Zustände, Aktoren setzen Steuerbefehle um",
+        "Sensoren und Aktoren sind in der Prüfung gleichbedeutend"
+      ],
+      "correctIndex": 2
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "eb-07-groessen-einheiten",
+    "type": "multi_select",
+    "prompt": "Welche Zuordnungen von elektrischen Größen und Einheiten sind korrekt? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Spannung in Volt (V)",
+        "Strom in Ampere (A)",
+        "Widerstand in Ohm (Ω)",
+        "Leistung in Meter pro Sekunde (m/s)",
+        "Durchgang als qualitatives Kriterium (vorhanden/nicht vorhanden)"
+      ],
+      "correctIndices": [0, 1, 2, 4]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "eb-08-bewertung",
+    "type": "single_choice",
+    "prompt": "Wann ist ein Messwert fachlich korrekt bewertet?",
+    "answer": {
+      "choices": [
+        "Wenn er ungefähr passt",
+        "Wenn Sollwert, Istwert, Einheit und Bewertung angegeben sind",
+        "Wenn nur der Messwert notiert wurde",
+        "Wenn das Messgerät neu ist"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "eb-09-messpunkt-ausgang",
+    "type": "single_choice",
+    "prompt": "Ein Ausgang Y3 soll ein Ventil schalten, das Ventil reagiert nicht. Welcher erste Messpunkt ist am sinnvollsten?",
+    "answer": {
+      "choices": [
+        "Beliebige Klemme im Schaltschrank",
+        "Aktoranschluss gegen den vorgesehenen Bezugspunkt bei aktivem Ausgang",
+        "Nur den Sensoreingang erneut messen",
+        "Nur die Farbe der Leitung prüfen"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "eb-10-ursachen-ausgang",
+    "type": "multi_select",
+    "prompt": "Welche Ursachen können dazu führen, dass ein Aktor trotz Schaltbefehl nicht reagiert? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Leitungsunterbrechung zwischen Ausgang und Aktor",
+        "Lose oder fehlerhafte Klemme",
+        "Defekter Aktor (z. B. Spule)",
+        "Messung am falschen Punkt mit falscher Schlussfolgerung",
+        "Gleiche Leitungsfarbe wie im Nachbarkabel"
+      ],
+      "correctIndices": [0, 1, 2, 3]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "eb-11-ohm-gesetz-r",
+    "prompt": "An einer Spule werden U = 24 V und I = 0,4 A gemessen. Berechne den Widerstand R.",
+    "answer": {
+      "value": 60,
+      "unit": "Ω"
+    },
+    "tolerance": 0.5,
+    "solution": "R = U/I = 24/0,4 = 60 Ω.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "eb-12-strom-aus-leistung",
+    "prompt": "Eine 24-V-Baugruppe nimmt 18 W auf. Berechne den Strom I.",
+    "answer": {
+      "value": 0.75,
+      "unit": "A"
+    },
+    "tolerance": 0.02,
+    "solution": "I = P/U = 18/24 = 0,75 A.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "eb-13-reihe-widerstand",
+    "prompt": "Zwei Widerstände mit 120 Ω und 330 Ω sind in Reihe geschaltet. Wie groß ist der Gesamtwiderstand?",
+    "answer": {
+      "value": 450,
+      "unit": "Ω"
+    },
+    "tolerance": 1,
+    "solution": "Rges = R1 + R2 = 120 + 330 = 450 Ω.",
+    "input": {
+      "mode": "integer"
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "eb-14-spannungsteiler",
+    "prompt": "In einer Reihenschaltung liegen R1 = 100 Ω und R2 = 200 Ω an Uges = 24 V. Wie groß ist die Spannung U2 über R2?",
+    "answer": {
+      "value": 16,
+      "unit": "V"
+    },
+    "tolerance": 0.1,
+    "solution": "U2 = Uges * R2 / (R1 + R2) = 24 * 200 / 300 = 16 V.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "eb-15-toleranzbewertung",
+    "type": "single_choice",
+    "prompt": "Sollwert 24,0 V ± 5 %. Gemessen werden 25,4 V. Wie lautet die Bewertung?",
+    "answer": {
+      "choices": [
+        "i. O., weil der Wert nahe bei 24 V liegt",
+        "n. i. O., weil der obere Grenzwert überschritten ist",
+        "nicht beurteilbar ohne Strommessung",
+        "immer i. O., wenn die Anlage läuft"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "eb-16-fehlersuche-order",
+    "type": "order",
+    "prompt": "Ordne die Schritte einer systematischen elektrischen Fehlereingrenzung.",
+    "items": [
+      "Symptom und Betriebszustand festhalten",
+      "Versorgung am Eingang prüfen",
+      "Signalweg bis zum Ausgang abschnittsweise prüfen",
+      "Aktor und Rückmeldung prüfen",
+      "Ursache, Maßnahme und Ergebnis dokumentieren"
+    ],
+    "answer": {
+      "correctOrder": [0, 1, 2, 3, 4]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "eb-17-protokoll-inhalt",
+    "type": "multi_select",
+    "prompt": "Welche Angaben gehören in ein prüfungstaugliches Prüfprotokoll? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Prüfpunkt und Baugruppe",
+        "Verwendetes Prüfmittel",
+        "Soll- und Istwert mit Einheit",
+        "Bewertung i. O./n. i. O.",
+        "Unabhängige Privatmeinung ohne Messbezug"
+      ],
+      "correctIndices": [0, 1, 2, 3]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "eb-18-energie-kwh",
+    "prompt": "Eine elektrische Baugruppe hat eine Leistungsaufnahme von 0,12 kW und läuft 7,5 h. Wie groß ist die elektrische Arbeit W in kWh?",
+    "answer": {
+      "value": 0.9,
+      "unit": "kWh"
+    },
+    "tolerance": 0.02,
+    "solution": "W = P * t = 0,12 * 7,5 = 0,9 kWh.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "eb-19-pruefmittelwahl",
+    "type": "multi_select",
+    "prompt": "Welche Aussagen zur Prüfmittelwahl sind fachlich richtig? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Der Messbereich sollte zum erwarteten Sollwert passen",
+        "Beschädigte Messleitungen können bei Zeitdruck weitergenutzt werden",
+        "Vor Durchgangsprüfung muss ein geeigneter sicherer Zustand sichergestellt werden",
+        "Prüfmittel ohne Funktionskontrolle reichen aus",
+        "Toleranz und Messunsicherheit müssen bei der Bewertung berücksichtigt werden"
+      ],
+      "correctIndices": [0, 2, 4]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "eb-20-mittelwert-spannung",
+    "prompt": "Drei Messwerte an der Versorgung lauten 23,7 V, 24,0 V und 24,3 V. Berechne den Mittelwert.",
+    "answer": {
+      "value": 24,
+      "unit": "V"
+    },
+    "tolerance": 0.05,
+    "solution": "Mittelwert = (23,7 + 24,0 + 24,3) / 3 = 24,0 V.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "eb-21-pruefungsfallen",
+    "type": "multi_select",
+    "prompt": "Welche Punkte sind typische Prüfungsfallen bei elektrischen Baugruppen? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Messung ohne klaren Sicherheitscheck",
+        "Messwerte ohne Sollbezug notieren",
+        "Signalfluss systematisch prüfen",
+        "Ursache ohne Messnachweis behaupten",
+        "Dokumentation vollständig führen"
+      ],
+      "correctIndices": [0, 1, 3]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "eb-22-freigabe-order",
+    "type": "order",
+    "prompt": "Ordne den Ablauf nach einer elektrischen Korrekturmaßnahme bis zur Freigabe.",
+    "items": [
+      "Korrekturmaßnahme durchführen",
+      "Wiederholprüfung mit denselben Prüfpunkten durchführen",
+      "Soll/Ist erneut bewerten",
+      "Protokoll ergänzen",
+      "Anlage freigeben"
+    ],
+    "answer": {
+      "correctOrder": [0, 1, 2, 3, 4]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "eb-23-structured-pruefplan",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (5-7 Sätze): Beschreibe, wie du aus Schaltplan und Prüfauftrag einen prüfungstauglichen Prüfplan für eine elektrische Baugruppe ableitest.",
+    "answer": {
+      "fields": [
+        {
+          "key": "vorgehen",
+          "label": "Vorgehen",
+          "minWords": 50,
+          "placeholder": "z. B. Sicherheitszustand, Messpunkte, Messarten, Sollwerte, Reihenfolge, Dokumentation"
+        }
+      ],
+      "keywords": {
+        "vorgehen": [
+          "schaltplan",
+          "prüfauftrag",
+          "sicherheit",
+          "messpunkt",
+          "sollwert",
+          "reihenfolge",
+          "dokumentation"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 50
+      }
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "eb-24-structured-abweichung",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (5-7 Sätze): Ein Aktor schaltet nicht. Erkläre, wie du vom Symptom über Messungen zu einer abgesicherten Ursache und wirksamen Maßnahme kommst.",
+    "answer": {
+      "fields": [
+        {
+          "key": "analyse",
+          "label": "Analyse",
+          "minWords": 50,
+          "placeholder": "Symptom, Versorgung, Signalweg, Messbefund, Ursache, Maßnahme, Wiederholprüfung"
+        }
+      ],
+      "keywords": {
+        "analyse": [
+          "symptom",
+          "versorgung",
+          "signalweg",
+          "messung",
+          "ursache",
+          "maßnahme",
+          "wiederholprüfung"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 50
+      }
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "eb-25-structured-abschluss",
+    "type": "structured_text",
+    "prompt": "Abschlusscheck (6-8 Sätze): Formuliere, wie eine elektrische Baugruppenprüfung von der sicheren Vorbereitung bis zur dokumentierten Freigabe fachlich durchgeführt wird.",
+    "answer": {
+      "fields": [
+        {
+          "key": "gesamt",
+          "label": "Gesamtablauf",
+          "minWords": 60,
+          "placeholder": "Vorbereitung, Sicherheitscheck, Messung, Soll/Ist-Bewertung, Fehlerbehebung, Dokumentation, Freigabe"
+        }
+      ],
+      "keywords": {
+        "gesamt": [
+          "vorbereitung",
+          "sicherheitscheck",
+          "messung",
+          "soll",
+          "ist",
+          "dokumentation",
+          "freigabe"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 60
+      }
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  }
+]

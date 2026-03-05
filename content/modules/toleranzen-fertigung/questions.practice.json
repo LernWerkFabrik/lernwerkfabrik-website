@@ -1,0 +1,617 @@
+[
+  {
+    "id": "tf-01-toleranzbegriff",
+    "type": "single_choice",
+    "prompt": "Was beschreibt eine Maßtoleranz in der Fertigung?",
+    "answer": {
+      "choices": [
+        "Die Farbe des Bauteils",
+        "Den zulässigen Maßbereich um das Nennmaß",
+        "Nur das größte zulässige Maß",
+        "Die Reihenfolge der Arbeitsgänge"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "tf-02-iso2768-bedeutung",
+    "type": "single_choice",
+    "prompt": "Wofür steht eine allgemeine Toleranzangabe wie ISO 2768-m in der Zeichnung?",
+    "answer": {
+      "choices": [
+        "Für Gewindegrößen im Titelblock",
+        "Für Passungen mit H7/h6",
+        "Für allgemeine Maße ohne Einzeltoleranz",
+        "Für Oberflächenwerte Ra und Rz"
+      ],
+      "correctIndex": 2
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "tf-03-aus-plusminus-ableiten",
+    "type": "multi_select",
+    "prompt": "Welche Größen kannst du aus der Angabe 25,00 ±0,05 mm direkt bestimmen? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Oberes Grenzmaß",
+        "Unteres Grenzmaß",
+        "Toleranzbreite",
+        "Werkstoffkennwert",
+        "Prüfurteil ohne Messwert"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "tf-04-h7-interpretation",
+    "type": "single_choice",
+    "prompt": "Welche Aussage zu einer Bohrung Ø8H7 ist fachlich richtig?",
+    "answer": {
+      "choices": [
+        "H7 ist immer eine Übermaßpassung.",
+        "H7 ist ein Toleranzfeld für Bohrungen mit enger Maßanforderung.",
+        "H7 darf nur mit Messschieber geprüft werden.",
+        "H7 beschreibt die Oberflächenrauheit."
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "tf-05-reaming-principle",
+    "type": "single_choice",
+    "prompt": "Warum wird eine 8H7-Bohrung in der Praxis häufig nach dem Bohren noch gerieben?",
+    "answer": {
+      "choices": [
+        "Um den Gewindegang zu erzeugen",
+        "Um Maßhaltigkeit und Oberfläche für die enge Toleranz sicherzustellen",
+        "Um die Bohrung absichtlich zu vergrößern",
+        "Um das Entgraten zu ersetzen"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "tf-06-prueffolge-grundlagen",
+    "type": "order",
+    "prompt": "Ordne den grundlegenden Ablauf für eine Maßprüfung richtig.",
+    "items": [
+      "Sollmaß und Toleranz aus der Zeichnung lesen",
+      "Geeignetes Prüfmittel auswählen",
+      "Messung durchführen",
+      "Istwert mit Grenzmaßen vergleichen",
+      "i. O./n. i. O. dokumentieren"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "tf-07-pruefmittel-zuordnen",
+    "type": "multi_select",
+    "prompt": "Welche Prüfmittel sind für enge Fertigungsmerkmale geeignet? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Bügelmessschraube für enge Außenmaße",
+        "Grenzlehrdorn für H7-Bohrungen",
+        "Gewindelehre für M-Gewinde",
+        "Meterstab für H7-Passung",
+        "Messschieber für allgemeine Maßkontrolle"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "tf-08-oberes-grenzmass",
+    "prompt": "Nennmaß 25,00 mm mit Toleranz ±0,05 mm. Wie groß ist das obere Grenzmaß?",
+    "answer": {
+      "value": 25.05,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Oberes Grenzmaß = 25,00 + 0,05 = 25,05 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "tf-09-unteres-grenzmass",
+    "prompt": "Nennmaß 25,00 mm mit Toleranz ±0,05 mm. Wie groß ist das untere Grenzmaß?",
+    "answer": {
+      "value": 24.95,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Unteres Grenzmaß = 25,00 - 0,05 = 24,95 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "tf-10-toleranzbreite",
+    "prompt": "Wie groß ist die gesamte Toleranzbreite bei der Angabe ±0,05 mm?",
+    "answer": {
+      "value": 0.1,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Toleranzbreite = 2 · 0,05 mm = 0,10 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "tf-11-messurteil-einfach",
+    "type": "single_choice",
+    "prompt": "Sollmaß 25,00 ±0,05 mm, Messwert 24,93 mm. Wie lautet das Prüfurteil?",
+    "answer": {
+      "choices": [
+        "i. O.",
+        "n. i. O., zu klein",
+        "n. i. O., zu groß",
+        "Nicht bewertbar"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "tf-12-reibaufmass-8h7",
+    "prompt": "Vorbohrung 7,80 mm, Endmaß 8,00 mm (Reiben). Wie groß ist das Reibaufmaß?",
+    "answer": {
+      "value": 0.2,
+      "unit": "mm"
+    },
+    "tolerance": 0.02,
+    "solution": "Reibaufmaß = 8,00 - 7,80 = 0,20 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "tf-13-drehzahl-bohren-d5",
+    "prompt": "Berechne die Bohrdrehzahl n bei vc = 30 m/min und d = 5 mm. Formel: n = (1000·vc)/(π·d).",
+    "answer": {
+      "value": 1910,
+      "unit": "1/min"
+    },
+    "tolerance": 40,
+    "solution": "n = (1000·30)/(π·5) = 1909,9 1/min, gerundet 1910 1/min.",
+    "input": {
+      "mode": "integer"
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "tf-14-kernloch-m5",
+    "type": "single_choice",
+    "prompt": "Welcher Kernlochdurchmesser wird typischerweise für ein M5-Innengewinde verwendet?",
+    "answer": {
+      "choices": [
+        "3,5 mm",
+        "4,2 mm",
+        "5,0 mm",
+        "6,8 mm"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "tf-15-messfehler-quellen",
+    "type": "multi_select",
+    "prompt": "Welche Punkte sind typische Ursachen für Messfehler? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Schmutz oder Grat an Messflächen",
+        "Temperaturunterschiede zwischen Teil und Messmittel",
+        "Falsche Messkraft oder Schrägansetzen",
+        "Dokumentation der Messung",
+        "Nicht überprüfte Einsatzfähigkeit des Prüfmittels"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "tf-16-passungsart-klassifizieren",
+    "type": "single_choice",
+    "prompt": "Bohrung 20,000 bis 20,021 mm und Welle 19,980 bis 19,993 mm. Welche Passungsart liegt vor?",
+    "answer": {
+      "choices": [
+        "Spielpassung",
+        "Übergangspassung",
+        "Übermaßpassung",
+        "Nicht bestimmbar"
+      ],
+      "correctIndex": 0
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "tf-17-pruefprotokoll-inhalt",
+    "type": "multi_select",
+    "prompt": "Welche Angaben gehören in ein sauberes Prüfprotokoll? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Sollmaß und Toleranz",
+        "Istwert",
+        "Verwendetes Prüfmittel",
+        "i. O./n. i. O.-Entscheidung",
+        "Private Notizen ohne Prüfbezug"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "tf-18-fertigungsfolge-h7-m5",
+    "type": "order",
+    "prompt": "Ordne die Fertigungsfolge für ein Teil mit Bohrung 8H7 und Gewinde M5.",
+    "items": [
+      "Bezug festlegen und Werkstück sicher spannen",
+      "Bohrposition herstellen (ankörnen/anbohren)",
+      "Vorbohren für die Passbohrung",
+      "Reiben auf 8H7",
+      "Kernloch bohren + ansenken + M5 schneiden",
+      "Endprüfung und Dokumentation"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "tf-19-minimales-spiel",
+    "prompt": "Bohrung 30,000 bis 30,021 mm, Welle 29,990 bis 30,000 mm. Wie groß ist das minimale Spiel?",
+    "answer": {
+      "value": 0,
+      "unit": "mm"
+    },
+    "tolerance": 0.005,
+    "solution": "Minimales Spiel = Bohrung min - Welle max = 30,000 - 30,000 = 0,000 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 3
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "tf-20-maximales-uebermass",
+    "prompt": "Bohrung 19,980 bis 20,000 mm, Welle 19,995 bis 20,010 mm. Wie groß ist das maximale Übermaß?",
+    "answer": {
+      "value": 0.03,
+      "unit": "mm"
+    },
+    "tolerance": 0.005,
+    "solution": "Maximales Übermaß = Welle max - Bohrung min = 20,010 - 19,980 = 0,030 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 3
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "tf-21-zylinderstift-fachwissen",
+    "type": "multi_select",
+    "prompt": "Welche Aussagen zu Zylinderstiften und engen Toleranzen sind fachlich richtig? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "h6/j6 kennzeichnen enge Toleranzanforderungen.",
+        "Zylinderstifte werden häufig zur Lagefixierung eingesetzt.",
+        "Für genaue Stiftsitze wird die Bohrung häufig gerieben.",
+        "Ein Messschieber ersetzt bei Passsitzen immer Lehren oder Feinmessmittel.",
+        "Zylinderstifte sind nur für Zugbelastung vorgesehen."
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "tf-22-structured-pruefplan",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (4-6 Sätze): Erstelle einen Prüfplan für ein Bauteil mit Maß 25,00 ±0,05 mm, Bohrung 8H7 und Gewinde M5.",
+    "answer": {
+      "fields": [
+        {
+          "key": "decision",
+          "label": "Vorgehen",
+          "minWords": 12
+        },
+        {
+          "key": "reason",
+          "label": "Begründung",
+          "minWords": 14
+        },
+        {
+          "key": "check",
+          "label": "Prüfung",
+          "minWords": 10
+        }
+      ],
+      "keywords": {
+        "decision": [
+          "zeichnung",
+          "sollmaß",
+          "grenzmaß",
+          "reihenfolge",
+          "h7",
+          "m5"
+        ],
+        "reason": [
+          "toleranz",
+          "funktion",
+          "passung",
+          "messsicherheit",
+          "fertigung",
+          "qualität"
+        ],
+        "check": [
+          "prüfmittel",
+          "grenzlehrdorn",
+          "gewindelehre",
+          "messwert",
+          "i. o.",
+          "dokumentation"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 40
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Kritische Merkmale aus der Zeichnung markieren",
+        "Passendes Prüfmittel je Merkmal zuordnen",
+        "Grenzmaßvergleich für i. O./n. i. O. festlegen",
+        "Ergebnis nachvollziehbar dokumentieren"
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "tf-23-structured-abweichung",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (4-6 Sätze): Ein Maß 40,00 ±0,05 mm wurde mit 40,09 mm gemessen. Beschreibe Fehleranalyse und Korrekturmaßnahmen.",
+    "answer": {
+      "fields": [
+        {
+          "key": "finding",
+          "label": "Bewertung",
+          "minWords": 12
+        },
+        {
+          "key": "cause",
+          "label": "Ursachen",
+          "minWords": 14
+        },
+        {
+          "key": "action",
+          "label": "Maßnahmen",
+          "minWords": 12
+        }
+      ],
+      "keywords": {
+        "finding": [
+          "oberes grenzmaß",
+          "n. i. o.",
+          "abweichung",
+          "vergleich",
+          "toleranz"
+        ],
+        "cause": [
+          "messfehler",
+          "werkzeugverschleiß",
+          "spannen",
+          "temperatur",
+          "prozess"
+        ],
+        "action": [
+          "nachstellen",
+          "zwischenmessung",
+          "prüfmittel",
+          "erneut prüfen",
+          "dokumentieren"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 42
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Grenzmaßvergleich klar formulieren",
+        "Technische Ursachen benennen",
+        "Korrektur im Prozess festlegen",
+        "Wirkung über erneute Prüfung absichern"
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "tf-24-structured-serienstrategie",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (5-7 Sätze): Für eine Serie mit 200 Teilen sollen ein Maß ±0,03 mm und eine Bohrung 10H7 sicher eingehalten werden. Beschreibe Fertigungs- und Prüfstrategie.",
+    "answer": {
+      "fields": [
+        {
+          "key": "strategy",
+          "label": "Strategie",
+          "minWords": 12
+        },
+        {
+          "key": "economy",
+          "label": "Wirtschaftlichkeit",
+          "minWords": 14
+        },
+        {
+          "key": "quality",
+          "label": "Qualitätssicherung",
+          "minWords": 12
+        }
+      ],
+      "keywords": {
+        "strategy": [
+          "bezug",
+          "prozessfolge",
+          "vorbohren",
+          "reiben",
+          "stabil"
+        ],
+        "economy": [
+          "serie",
+          "rüstzeit",
+          "ausschuss",
+          "kosten",
+          "standzeit"
+        ],
+        "quality": [
+          "stichprobe",
+          "prüfplan",
+          "grenzlehrdorn",
+          "messmittelüberwachung",
+          "dokumentation"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 42
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Prozess stabil auf enge Toleranz auslegen",
+        "Seriengerechte Prüffrequenz festlegen",
+        "Wirtschaftlichkeit mit Qualitätsziel verknüpfen",
+        "Abweichungen früh erkennen und gegensteuern"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "tf-25-master-check",
+    "type": "multi_select",
+    "prompt": "Master-Check: Welche Aussagen sind fachlich richtig? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Bei ±0,05 mm beträgt die Toleranzbreite 0,10 mm.",
+        "Für eine 8H7-Bohrung ist Vorbohren plus Reiben ein typischer Weg.",
+        "Prüfmittel müssen zur geforderten Toleranz passen.",
+        "Ein Messwert außerhalb der Grenzmaße kann trotzdem i. O. sein.",
+        "Prüfprotokolle sind Teil der Qualitätssicherung."
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  }
+]

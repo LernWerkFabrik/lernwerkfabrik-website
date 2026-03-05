@@ -1,0 +1,398 @@
+[
+
+  {
+    "id": "tb-gen-01-speed-easy",
+    "template": {
+      "kind": "speed_m_s",
+      "prompt": "Ein Werkstück wird {{s_m}} m in {{t_s}} s bewegt. Berechne die Geschwindigkeit v in m/s.",
+      "vars": {
+        "s_m": { "min": 10, "max": 50, "step": 5 },
+        "t_s": { "min": 2, "max": 10, "step": 1 }
+      },
+      "round": 2,
+      "tolerance": 0.05,
+      "solution": "Formel: v = s/t. Einsetzen: v = {{s_m}}/{{t_s}} m/s."
+    },
+    "input": { "mode": "decimal", "maxDecimals": 2 }
+  },
+
+  {
+    "id": "tb-gen-02-work-easy",
+    "template": {
+      "kind": "work_j_from_f_s",
+      "prompt": "Eine Kraft von F={{F_N}} N wirkt über den Weg s={{s_m}} m. Berechne die Arbeit W in J.",
+      "vars": {
+        "F_N": { "min": 50, "max": 200, "step": 10 },
+        "s_m": { "min": 1, "max": 10, "step": 1 }
+      },
+      "round": 0,
+      "tolerance": 2,
+      "solution": "Formel: W = F·s. Einsetzen: W={{F_N}}·{{s_m}} J."
+    },
+    "input": { "mode": "integer" }
+  },
+
+  {
+    "id": "tb-gen-03-power-easy",
+    "template": {
+      "kind": "power_w_from_f_v",
+      "prompt": "Eine Kraft von F={{F_N}} N bewegt sich mit v={{v_ms}} m/s. Berechne die Leistung P in W.",
+      "vars": {
+        "F_N": { "min": 80, "max": 260, "step": 20 },
+        "v_ms": { "min": 0.4, "max": 1.6, "step": 0.2 }
+      },
+      "round": 1,
+      "tolerance": 2,
+      "solution": "Formel: P = F·v. Einsetzen: P={{F_N}}·{{v_ms}} W."
+    },
+    "input": { "mode": "decimal", "maxDecimals": 1 }
+  },
+
+  {
+    "id": "tb-static-04-unit-torque",
+    "type": "single_choice",
+    "template": { "kind": "static", "prompt": "Welche Einheit hat das Drehmoment?" },
+    "answer": {
+      "choices": ["N", "N/m", "N·m", "Pa"],
+      "correctIndex": 2
+    }
+  },
+
+
+  {
+    "id": "tb-gen-05-torque-mm",
+    "template": {
+      "kind": "torque_nm",
+      "prompt": "Ein Schraubenschlüssel hat einen Hebelarm r={{r_mm}} mm. Du drückst mit F={{F_N}} N. Berechne das Drehmoment M in N·m.",
+      "vars": {
+        "r_mm": { "min": 120, "max": 360, "step": 20 },
+        "F_N": { "min": 80, "max": 220, "step": 10 }
+      },
+      "round": 2,
+      "tolerance": 0.3,
+      "solution": "1) r in m: {{r_mm}}/1000. 2) M=F·r={{F_N}}·({{r_mm}}/1000)."
+    },
+    "input": { "mode": "decimal", "maxDecimals": 2 }
+  },
+
+  {
+    "id": "tb-gen-06-pressure-kn-cm2",
+    "template": {
+      "kind": "pressure_bar_from_kn_cm2",
+      "prompt": "Eine Kraft von F={{F_kN}} kN wirkt auf eine Fläche von A={{A_cm2}} cm². Berechne den Druck p in bar.",
+      "vars": {
+        "F_kN": { "min": 6, "max": 18, "step": 1 },
+        "A_cm2": { "min": 10, "max": 50, "step": 5 }
+      },
+      "round": 2,
+      "tolerance": 0.3,
+      "solution": "1) F in N: {{F_kN}}·1000. 2) A in m²: {{A_cm2}}·1e-4. 3) p=F/A (Pa). 4) bar: /100000."
+    },
+    "input": { "mode": "decimal", "maxDecimals": 2 }
+  },
+
+  {
+    "id": "tb-gen-07-speed-medium",
+    "template": {
+      "kind": "speed_m_s",
+      "prompt": "Förderband: Strecke s={{s_m}} m, Zeit t={{t_s}} s. Berechne v in m/s.",
+      "vars": {
+        "s_m": { "min": 15, "max": 75, "step": 5 },
+        "t_s": { "min": 3, "max": 18, "step": 1 }
+      },
+      "round": 2,
+      "tolerance": 0.05,
+      "solution": "v = s/t = {{s_m}}/{{t_s}}."
+    },
+    "input": { "mode": "decimal", "maxDecimals": 2 }
+  },
+
+  {
+    "id": "tb-static-08-trap-units",
+    "type": "multi_select",
+    "template": { "kind": "static", "prompt": "Welche Umrechnungen sind bei technischen Formeln besonders häufig notwendig? (Mehrfachauswahl)" },
+    "answer": {
+      "choices": [
+        "mm → m",
+        "cm² → m²",
+        "kN → N",
+        "bar → Pa",
+        "kg → mm"
+      ],
+      "correctIndices": [0, 1, 2, 3]
+    }
+  },
+
+
+  {
+    "id": "tb-gen-09-cylvol-1",
+    "template": {
+      "kind": "cylinder_volume_cm3",
+      "prompt": "Zylinder: Durchmesser d={{d_mm}} mm, Höhe h={{h_mm}} mm. Berechne das Volumen V in cm³.",
+      "vars": {
+        "d_mm": { "min": 20, "max": 60, "step": 5 },
+        "h_mm": { "min": 30, "max": 120, "step": 10 }
+      },
+      "round": 1,
+      "tolerance": 0.4,
+      "solution": "1) r=d/2. 2) V=π·r²·h (mm³). 3) cm³: /1000."
+    },
+    "input": { "mode": "decimal", "maxDecimals": 1 }
+  },
+
+  {
+    "id": "tb-gen-10-cylvol-2",
+    "template": {
+      "kind": "cylinder_volume_cm3",
+      "prompt": "Bolzen (Zylinder): d={{d_mm}} mm, h={{h_mm}} mm. Bestimme V in cm³.",
+      "vars": {
+        "d_mm": { "min": 30, "max": 90, "step": 5 },
+        "h_mm": { "min": 40, "max": 160, "step": 10 }
+      },
+      "round": 1,
+      "tolerance": 0.5,
+      "solution": "V = π·(d/2)²·h (mm³), danach /1000 zu cm³."
+    },
+    "input": { "mode": "decimal", "maxDecimals": 1 }
+  },
+
+  {
+    "id": "tb-gen-11-cylmass-1",
+    "template": {
+      "kind": "cylinder_mass_g",
+      "prompt": "Stahlzylinder: d={{d_mm}} mm, h={{h_mm}} mm, Dichte ρ={{rho_g_cm3}} g/cm³. Berechne die Masse m in g.",
+      "vars": {
+        "d_mm": { "min": 20, "max": 60, "step": 5 },
+        "h_mm": { "min": 30, "max": 120, "step": 10 },
+        "rho_g_cm3": { "value": 7.85 }
+      },
+      "round": 0,
+      "tolerance": 4,
+      "solution": "1) V_cm3 wie Zylinder berechnen. 2) m=ρ·V. 3) Ergebnis in g."
+    },
+    "input": { "mode": "integer" }
+  },
+
+  {
+    "id": "tb-static-12-circle-trap",
+    "type": "single_choice",
+    "template": { "kind": "static", "prompt": "Beim Zylinder ist d gegeben. Was musst du für V=π·r²·h zuerst bestimmen?" },
+    "answer": {
+      "choices": ["Umfang u", "Radius r=d/2", "Fläche A=d²", "Höhe h/2"],
+      "correctIndex": 1
+    }
+  },
+
+  {
+    "id": "tb-gen-13-pressure-hard",
+    "template": {
+      "kind": "pressure_bar_from_kn_cm2",
+      "prompt": "Presse: F={{F_kN}} kN wirkt auf A={{A_cm2}} cm². Berechne p in bar.",
+      "vars": {
+        "F_kN": { "min": 8, "max": 24, "step": 2 },
+        "A_cm2": { "min": 12, "max": 60, "step": 6 }
+      },
+      "round": 2,
+      "tolerance": 0.3,
+      "solution": "F={{F_kN}}·1000 N, A={{A_cm2}}·1e-4 m², p=F/A, Pa→bar (/100000)."
+    },
+    "input": { "mode": "decimal", "maxDecimals": 2 }
+  },
+
+  {
+    "id": "tb-gen-14-torque-hard",
+    "template": {
+      "kind": "torque_nm",
+      "prompt": "Montage: Hebelarm r={{r_mm}} mm, Kraft F={{F_N}} N. Bestimme M in N·m.",
+      "vars": {
+        "r_mm": { "min": 150, "max": 450, "step": 30 },
+        "F_N": { "min": 90, "max": 260, "step": 10 }
+      },
+      "round": 2,
+      "tolerance": 0.3,
+      "solution": "M=F·r, r={{r_mm}}/1000 m."
+    },
+    "input": { "mode": "decimal", "maxDecimals": 2 }
+  },
+
+  {
+    "id": "tb-gen-15-power-medium2",
+    "template": {
+      "kind": "power_w_from_f_v",
+      "prompt": "Hubvorgang: F={{F_N}} N, v={{v_ms}} m/s. Bestimme die Leistung P in W.",
+      "vars": {
+        "F_N": { "min": 120, "max": 500, "step": 25 },
+        "v_ms": { "min": 0.2, "max": 1.6, "step": 0.2 }
+      },
+      "round": 1,
+      "tolerance": 2,
+      "solution": "P=F·v={{F_N}}·{{v_ms}}."
+    },
+    "input": { "mode": "decimal", "maxDecimals": 1 }
+  },
+
+  {
+    "id": "tb-gen-16-work-medium2",
+    "template": {
+      "kind": "work_j_from_f_s",
+      "prompt": "Schieben: F={{F_N}} N, Weg s={{s_m}} m. Bestimme die Arbeit W (J).",
+      "vars": {
+        "F_N": { "min": 120, "max": 500, "step": 20 },
+        "s_m": { "min": 2, "max": 15, "step": 1 }
+      },
+      "round": 0,
+      "tolerance": 3,
+      "solution": "W=F·s={{F_N}}·{{s_m}}."
+    },
+    "input": { "mode": "integer" }
+  },
+
+  {
+    "id": "tb-static-17-order-algo",
+    "type": "order",
+    "template": { "kind": "static", "prompt": "Bringe den Rechenweg in die richtige Reihenfolge (Prüfungs-Algorithmus)." },
+    "items": [
+      "Gegeben/Gesucht notieren (mit Einheit)",
+      "Einheiten umrechnen",
+      "Formel wählen",
+      "Formel nach Gesucht umstellen",
+      "Werte einsetzen und rechnen",
+      "Plausibilität + Einheit prüfen"
+    ],
+    "answer": { "correctOrder": [0, 1, 2, 3, 4, 5] }
+  },
+
+
+  {
+    "id": "tb-gen-18-mix-speed",
+    "template": {
+      "kind": "speed_m_s",
+      "prompt": "Ein Werkstück legt s={{s_m}} m in t={{t_s}} s zurück. Berechne v in m/s (auf 2 Nachkommastellen).",
+      "vars": {
+        "s_m": { "min": 12, "max": 72, "step": 6 },
+        "t_s": { "min": 2, "max": 16, "step": 1 }
+      },
+      "round": 2,
+      "tolerance": 0.05,
+      "solution": "v=s/t={{s_m}}/{{t_s}}."
+    },
+    "input": { "mode": "decimal", "maxDecimals": 2 }
+  },
+
+  {
+    "id": "tb-gen-19-mix-power",
+    "template": {
+      "kind": "power_w_from_f_v",
+      "prompt": "Berechne die Leistung: F={{F_N}} N, v={{v_ms}} m/s. Ergebnis in W.",
+      "vars": {
+        "F_N": { "min": 90, "max": 450, "step": 30 },
+        "v_ms": { "min": 0.4, "max": 2.0, "step": 0.2 }
+      },
+      "round": 1,
+      "tolerance": 2,
+      "solution": "P=F·v={{F_N}}·{{v_ms}}."
+    },
+    "input": { "mode": "decimal", "maxDecimals": 1 }
+  },
+
+  {
+    "id": "tb-gen-20-mix-work",
+    "template": {
+      "kind": "work_j_from_f_s",
+      "prompt": "Eine Kraft F={{F_N}} N wirkt über s={{s_m}} m. Berechne die Arbeit W in J (ganzzahlig).",
+      "vars": {
+        "F_N": { "min": 30, "max": 240, "step": 10 },
+        "s_m": { "min": 1, "max": 18, "step": 1 }
+      },
+      "round": 0,
+      "tolerance": 3,
+      "solution": "W=F·s={{F_N}}·{{s_m}}."
+    },
+    "input": { "mode": "integer" }
+  },
+
+  {
+    "id": "tb-gen-21-mix-pressure",
+    "template": {
+      "kind": "pressure_bar_from_kn_cm2",
+      "prompt": "Berechne den Druck p in bar: F={{F_kN}} kN, A={{A_cm2}} cm².",
+      "vars": {
+        "F_kN": { "min": 7, "max": 21, "step": 1 },
+        "A_cm2": { "min": 14, "max": 56, "step": 7 }
+      },
+      "round": 2,
+      "tolerance": 0.3,
+      "solution": "F→N, A→m², p=F/A, Pa→bar (/100000)."
+    },
+    "input": { "mode": "decimal", "maxDecimals": 2 }
+  },
+
+  {
+    "id": "tb-gen-22-mix-torque",
+    "template": {
+      "kind": "torque_nm",
+      "prompt": "Hebelgesetz: F={{F_N}} N, r={{r_mm}} mm (senkrecht). Berechne das Drehmoment M in N·m.",
+      "vars": {
+        "F_N": { "min": 40, "max": 320, "step": 20 },
+        "r_mm": { "min": 90, "max": 360, "step": 30 }
+      },
+      "round": 2,
+      "tolerance": 0.3,
+      "solution": "M=F·r, r={{r_mm}}/1000 m."
+    },
+    "input": { "mode": "decimal", "maxDecimals": 2 }
+  },
+
+  {
+    "id": "tb-static-23-choice-bar-pa",
+    "type": "single_choice",
+    "template": { "kind": "static", "prompt": "Welche Aussage ist korrekt?" },
+    "answer": {
+      "choices": [
+        "1 bar = 1000 Pa",
+        "1 bar = 10 000 Pa",
+        "1 bar = 100 000 Pa",
+        "1 bar = 1 000 000 Pa"
+      ],
+      "correctIndex": 2
+    }
+  },
+
+  {
+    "id": "tb-static-24-multi-traps",
+    "type": "multi_select",
+    "template": { "kind": "static", "prompt": "Welche Punkte sind typische Prüfungsfallen? (Mehrfachauswahl)" },
+    "answer": {
+      "choices": [
+        "cm² nicht in m² umrechnen",
+        "mm direkt als m einsetzen",
+        "zu früh runden (vor dem Ende)",
+        "Ergebnis ohne Einheit",
+        "π immer mit 3 einsetzen"
+      ],
+      "correctIndices": [0, 1, 2, 3]
+    }
+  },
+
+  {
+    "id": "tb-static-25-structured-check",
+    "type": "structured_text",
+    "template": {
+      "kind": "static",
+      "prompt": "Kurzer Prüfungs-Check: Beschreibe in 3–5 Sätzen, wie du bei einer Rechenaufgabe vorgehst (Einheiten + Formel + Plausibilität)."
+    },
+    "answer": {
+      "fields": [
+        {
+          "key": "method",
+          "label": "Vorgehen",
+          "minWords": 25,
+          "placeholder": "Gegeben/Gesucht, Einheiten umrechnen, Formel wählen/umstellen, einsetzen, rechnen, Plausibilität + Einheit prüfen…"
+        }
+      ],
+      "keywords": {
+        "method": ["gegeben", "gesucht", "einheiten", "umrechnen", "formel", "einsetzen", "plausibilität"]
+      }
+    }
+  }
+]

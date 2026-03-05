@@ -1,0 +1,167 @@
+[
+  {
+    "id": "fv-e-01-core-hole-m5",
+    "prompt": "Welcher Kernlochdurchmesser wird typischerweise für ein M5-Innengewinde verwendet?",
+    "answer": {
+      "value": 4.2,
+      "unit": "mm"
+    },
+    "tolerance": 0.1,
+    "solution": "Richtwert für M5: Kernloch d = 4,2 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    }
+  },
+  {
+    "id": "fv-e-02-core-hole-m8",
+    "prompt": "Welcher Kernlochdurchmesser wird typischerweise für ein M8-Innengewinde verwendet?",
+    "answer": {
+      "value": 6.8,
+      "unit": "mm"
+    },
+    "tolerance": 0.1,
+    "solution": "Richtwert für M8: Kernloch d = 6,8 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    }
+  },
+  {
+    "id": "fv-e-03-reaming-allowance",
+    "prompt": "Vorbohrung 7,8 mm, Endmaß 8,0 mm. Wie groß ist das Reibaufmaß in mm?",
+    "answer": {
+      "value": 0.2,
+      "unit": "mm"
+    },
+    "tolerance": 0.02,
+    "solution": "Reibaufmaß = 8,0 - 7,8 = 0,2 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "fv-e-04-upper-limit",
+    "prompt": "Maß 25,00 +/-0,05 mm. Bestimme das obere Grenzmaß.",
+    "answer": {
+      "value": 25.05,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Oberes Grenzmaß = 25,00 + 0,05 = 25,05 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "fv-e-05-lower-limit",
+    "prompt": "Maß 25,00 +/-0,05 mm. Bestimme das untere Grenzmaß.",
+    "answer": {
+      "value": 24.95,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Unteres Grenzmaß = 25,00 - 0,05 = 24,95 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "fv-e-06-speed-d5",
+    "prompt": "Berechne die Bohrdrehzahl n bei vc = 30 m/min und d = 5 mm (n = (1000*vc)/(pi*d)).",
+    "answer": {
+      "value": 1910,
+      "unit": "1/min"
+    },
+    "tolerance": 40,
+    "solution": "n = (1000*30)/(pi*5) = 1909,9 1/min, gerundet 1910 1/min.",
+    "input": {
+      "mode": "integer"
+    }
+  },
+  {
+    "id": "fv-e-07-speed-d8",
+    "prompt": "Berechne die Bohrdrehzahl n bei vc = 25 m/min und d = 8 mm.",
+    "answer": {
+      "value": 995,
+      "unit": "1/min"
+    },
+    "tolerance": 30,
+    "solution": "n = (1000*25)/(pi*8) = 994,7 1/min, gerundet 995 1/min.",
+    "input": {
+      "mode": "integer"
+    }
+  },
+  {
+    "id": "fv-e-08-feed-speed",
+    "prompt": "n = 1200 1/min und f = 0,12 mm/U. Berechne vf in mm/min.",
+    "answer": {
+      "value": 144,
+      "unit": "mm/min"
+    },
+    "tolerance": 1,
+    "solution": "vf = n * f = 1200 * 0,12 = 144 mm/min.",
+    "input": {
+      "mode": "integer"
+    }
+  },
+  {
+    "id": "fv-e-09-drilling-time",
+    "prompt": "Bohrlänge L = 30 mm, Vorschubgeschwindigkeit vf = 120 mm/min. Wie lange dauert die Bearbeitung t in min?",
+    "answer": {
+      "value": 0.25,
+      "unit": "min"
+    },
+    "tolerance": 0.02,
+    "solution": "t = L/vf = 30/120 = 0,25 min.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "fv-e-10-zerspanvolumen-hole",
+    "prompt": "Bohrung d = 40 mm bei Länge 40 mm. Berechne das Zerspanungsvolumen in cm3.",
+    "answer": {
+      "value": 50.27,
+      "unit": "cm3"
+    },
+    "tolerance": 0.1,
+    "solution": "V = pi*(20 mm)^2*40 mm = 50265 mm3 = 50,27 cm3.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "fv-e-11-percent-removed",
+    "prompt": "Rohling: Zylinder D = 200 mm, B = 40 mm. Bohrung: d = 40 mm, B = 40 mm. Wie groß ist das prozentuale Zerspanungsvolumen der Bohrung bezogen auf den Rohling?",
+    "answer": {
+      "value": 4,
+      "unit": "%"
+    },
+    "tolerance": 0.1,
+    "solution": "Volumenverhältnis = (40^2)/(200^2) = 0,04 = 4 %.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "fv-e-12-removed-mass-cusn",
+    "prompt": "Die Bohrung aus Aufgabe 10 wird in CuSn12-C mit rho = 8,7 kg/dm3 gefertigt. Welche Masse (in kg) wird durch die Bohrung entfernt?",
+    "answer": {
+      "value": 0.44,
+      "unit": "kg"
+    },
+    "tolerance": 0.02,
+    "solution": "V = 50,27 cm3 = 0,05027 dm3. m = rho*V = 8,7*0,05027 = 0,437 kg, gerundet 0,44 kg.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  }
+]

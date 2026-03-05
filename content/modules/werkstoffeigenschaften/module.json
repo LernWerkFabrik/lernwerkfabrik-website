@@ -1,0 +1,34 @@
+{
+  "id": "werkstoffeigenschaften",
+  "title": "Werkstoffeigenschaften vergleichen",
+  "description": "Härte, Festigkeit, Zähigkeit: Eigenschaften vergleichen und Einsatz ableiten.",
+  "difficulty": "medium",
+  "tags": [
+    "Werkstoffe",
+    "Eigenschaften",
+    "Härte"
+  ],
+  "estimatedMinutes": 35,
+  "intro": {
+    "why": "In der Prüfung werden Werkstoffeigenschaften nicht isoliert abgefragt, sondern im Zusammenhang mit einer technischen Entscheidung. Die IHK bewertet, ob du aus Eigenschaften wie Härte, Festigkeit und Zähigkeit korrekt ableiten kannst, wie sich ein Werkstoff unter Belastung verhält und wofür er geeignet ist. Punktverluste entstehen häufig, wenn Begriffe zwar richtig genannt, aber falsch interpretiert oder nicht auf den konkreten Einsatzfall übertragen werden.",
+    "trains": [
+      "Härte, Festigkeit und Zähigkeit fachlich korrekt unterscheiden und einordnen",
+      "Zusammenhänge zwischen Werkstoffeigenschaften und mechanischer Belastung verstehen",
+      "Werkstoffeigenschaften auf konkrete Bauteil- und Einsatzfälle übertragen",
+      "Materialentscheidungen prüfungsnah und fachlich begründet ableiten"
+    ],
+    "traps": [
+      "Begriffe verwechseln oder unscharf verwenden (z. B. Härte mit Festigkeit gleichsetzen)",
+      "Eigenschaften isoliert nennen, ohne den technischen Nutzen zu erklären",
+      "Falsche Schlussfolgerungen für den Einsatz ziehen (z. B. sehr hart = immer besser)",
+      "Begründungen liefern, die nicht zur Aufgabenstellung oder Belastung passen"
+    ]
+  },
+  "files": {
+    "explanation": "explanation.md",
+    "example": "example.md",
+    "practiceQuestions": "questions.practice.json",
+    "examQuestions": "questions.exam.json"
+  },
+  "kind": "learn"
+}

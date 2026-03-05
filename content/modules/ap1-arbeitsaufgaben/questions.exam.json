@@ -1,0 +1,326 @@
+{
+  "meta": {
+    "moduleId": "ap1-arbeitsaufgaben",
+    "kind": "competency_check",
+    "title": "AP1 Arbeitsaufgaben Kompetenz-Check",
+    "durationMinutes": 15,
+    "questionCount": 12
+  },
+  "tasks": [
+    {
+      "id": "ap1aw-cc-01-zeichnung-deutung",
+      "practiceId": "ap1aw-a02-zeichnung-o20h7",
+      "prompt": "Zeichnungsauswertung: Welche Deutung ist fachlich korrekt? 1=Ø16 H7 ist Bohrung mit Toleranzfeld H7, 2=Ø16 h7 ist Bohrung mit H7-Feld, 3=Ra 3,2 ist eine Maßtoleranz, 4=ISO 2768-m überschreibt einzeln angegebene Toleranzen.",
+      "answer": {
+        "value": 1,
+        "unit": ""
+      },
+      "tolerance": 0,
+      "input": {
+        "mode": "integer"
+      },
+      "meta": {
+        "mode": "competency_check",
+        "examRelevant": true,
+        "points": 3,
+        "noHints": true,
+        "deferSolutions": true,
+        "competency": "auftrag_zeichnen",
+        "subskills": [
+          "zeichnung_lesen",
+          "toleranzen",
+          "anforderungen"
+        ]
+      }
+    },
+    {
+      "id": "ap1aw-cc-02-iso2768",
+      "practiceId": "ap1aw-a05-iso2768-toleranz",
+      "prompt": "Zeichnungsauswertung: Für ein nicht einzeln toleriertes Maß von 25 mm nach ISO 2768-m gilt welche symmetrische Toleranz? 1=±0,1 mm, 2=±0,2 mm, 3=±0,3 mm, 4=±0,5 mm.",
+      "answer": {
+        "value": 2,
+        "unit": ""
+      },
+      "tolerance": 0,
+      "input": {
+        "mode": "integer"
+      },
+      "meta": {
+        "mode": "competency_check",
+        "examRelevant": true,
+        "points": 3,
+        "noHints": true,
+        "deferSolutions": true,
+        "competency": "auftrag_zeichnen",
+        "subskills": [
+          "zeichnung_lesen",
+          "toleranzen"
+        ]
+      }
+    },
+    {
+      "id": "ap1aw-cc-03-ra-bedeutung",
+      "practiceId": "ap1aw-a03-zeichnungsangaben-pruefrelevant",
+      "prompt": "Zeichnungsauswertung: Was bedeutet die Angabe \"Ra 1,6\"? 1=mittlere Rauheit der Oberfläche, 2=Bohrungstoleranz, 3=Härteklasse, 4=Fasenmaß.",
+      "answer": {
+        "value": 1,
+        "unit": ""
+      },
+      "tolerance": 0,
+      "input": {
+        "mode": "integer"
+      },
+      "meta": {
+        "mode": "competency_check",
+        "examRelevant": true,
+        "points": 3,
+        "noHints": true,
+        "deferSolutions": true,
+        "competency": "auftrag_zeichnen",
+        "subskills": [
+          "zeichnung_lesen",
+          "oberflaeche"
+        ]
+      }
+    },
+    {
+      "id": "ap1aw-cc-04-ablauf-reihenfolge",
+      "practiceId": "ap1aw-b06-grundablauf-order",
+      "prompt": "Arbeitsplanung: Welche Reihenfolge ist fachlich korrekt? 1=Auftrag/Zeichnung prüfen -> Rüsten -> Bearbeiten -> Zwischenprüfung -> Endprüfung/Dokumentation, 2=Bearbeiten -> Rüsten -> Auftrag prüfen -> Dokumentation, 3=Rüsten -> Endprüfung -> Bearbeiten -> Dokumentation, 4=Auftrag prüfen -> Bearbeiten -> Rüsten -> Endprüfung.",
+      "answer": {
+        "value": 1,
+        "unit": ""
+      },
+      "tolerance": 0,
+      "input": {
+        "mode": "integer"
+      },
+      "meta": {
+        "mode": "competency_check",
+        "examRelevant": true,
+        "points": 3,
+        "noHints": true,
+        "deferSolutions": true,
+        "competency": "arbeitsplanung",
+        "subskills": [
+          "reihenfolge",
+          "pruefpunkte_planen"
+        ]
+      }
+    },
+    {
+      "id": "ap1aw-cc-05-zeitsumme",
+      "practiceId": "ap1aw-b09-gesamtzeit",
+      "prompt": "Arbeitsplanung: Rüsten 14 min, Bearbeitung 41 min, Zwischenprüfung 9 min, Dokumentation 8 min. Wie groß ist die Gesamtzeit in min?",
+      "answer": {
+        "value": 72,
+        "unit": "min"
+      },
+      "tolerance": 0,
+      "input": {
+        "mode": "integer"
+      },
+      "meta": {
+        "mode": "competency_check",
+        "examRelevant": true,
+        "points": 3,
+        "noHints": true,
+        "deferSolutions": true,
+        "competency": "arbeitsplanung",
+        "subskills": [
+          "zeitplanung",
+          "reihenfolge"
+        ]
+      }
+    },
+    {
+      "id": "ap1aw-cc-06-pruefmittelwahl",
+      "practiceId": "ap1aw-d16-pruefmittel-zeichnung",
+      "prompt": "Messen/Prüfen: A=Grenzlehrdorn für Ø12 H7, B=Messuhr auf Platte für Parallelität, C=Messschieber für 50 ±0,1, D=nur Sichtprüfung. Welcher Code ist fachlich korrekt? 1=ABC, 2=ABD, 3=ACD, 4=BCD.",
+      "answer": {
+        "value": 1,
+        "unit": ""
+      },
+      "tolerance": 0,
+      "input": {
+        "mode": "integer"
+      },
+      "meta": {
+        "mode": "competency_check",
+        "examRelevant": true,
+        "points": 3,
+        "noHints": true,
+        "deferSolutions": true,
+        "competency": "messen_pruefen",
+        "subskills": [
+          "pruefmittelwahl",
+          "messstrategie",
+          "soll_ist"
+        ]
+      }
+    },
+    {
+      "id": "ap1aw-cc-07-toleranz-bewertung",
+      "practiceId": "ap1aw-d17-toleranzentscheidung",
+      "prompt": "Messen/Prüfen: Sollmaß 30 ±0,1 mm. Messwert 30,14 mm. Wie ist zu bewerten? 1=i. O., 2=n. i. O.",
+      "answer": {
+        "value": 2,
+        "unit": ""
+      },
+      "tolerance": 0,
+      "input": {
+        "mode": "integer"
+      },
+      "meta": {
+        "mode": "competency_check",
+        "examRelevant": true,
+        "points": 3,
+        "noHints": true,
+        "deferSolutions": true,
+        "competency": "messen_pruefen",
+        "subskills": [
+          "soll_ist",
+          "bewertung_io",
+          "toleranzen"
+        ]
+      }
+    },
+    {
+      "id": "ap1aw-cc-08-drehzahl",
+      "practiceId": "ap1aw-c11-drehzahl-bohren",
+      "prompt": "Fertigungstechnologie: Für d = 10 mm und vc = 20 m/min berechne n in 1/min. (n = (1000 x vc) / (pi x d))",
+      "answer": {
+        "value": 637,
+        "unit": "1/min"
+      },
+      "tolerance": 15,
+      "input": {
+        "mode": "integer"
+      },
+      "meta": {
+        "mode": "competency_check",
+        "examRelevant": true,
+        "points": 3,
+        "noHints": true,
+        "deferSolutions": true,
+        "competency": "fertigung_technologie",
+        "subskills": [
+          "verfahren",
+          "schnittdaten"
+        ]
+      }
+    },
+    {
+      "id": "ap1aw-cc-09-vorschub",
+      "practiceId": "ap1aw-c12-vorschub",
+      "prompt": "Fertigungstechnologie: n = 850 1/min und Vorschub je Umdrehung f = 0,14 mm/U. Berechne vf in mm/min.",
+      "answer": {
+        "value": 119,
+        "unit": "mm/min"
+      },
+      "tolerance": 2,
+      "input": {
+        "mode": "integer"
+      },
+      "meta": {
+        "mode": "competency_check",
+        "examRelevant": true,
+        "points": 3,
+        "noHints": true,
+        "deferSolutions": true,
+        "competency": "fertigung_technologie",
+        "subskills": [
+          "schnittdaten",
+          "verfahren"
+        ]
+      }
+    },
+    {
+      "id": "ap1aw-cc-10-abweichungsprozess",
+      "practiceId": "ap1aw-d18-abweichung-order",
+      "prompt": "Dokumentation/Bewertung: Welche Reihenfolge ist fachlich korrekt? 1=Stop -> Soll/Ist dokumentieren -> Ursache eingrenzen -> Maßnahme -> Wiederholprüfung -> Freigabe, 2=Ursache -> Maßnahme -> Stop -> Freigabe -> Dokumentation, 3=Stop -> Maßnahme -> Ursache -> Dokumentation -> Freigabe, 4=Wiederholprüfung -> Stop -> Dokumentation -> Maßnahme.",
+      "answer": {
+        "value": 1,
+        "unit": ""
+      },
+      "tolerance": 0,
+      "input": {
+        "mode": "integer"
+      },
+      "meta": {
+        "mode": "competency_check",
+        "examRelevant": true,
+        "points": 3,
+        "noHints": true,
+        "deferSolutions": true,
+        "competency": "doku_bewertung",
+        "subskills": [
+          "abweichung_massnahme",
+          "wirksamkeitspruefung",
+          "abschlussvermerk"
+        ]
+      }
+    },
+    {
+      "id": "ap1aw-cc-11-protokoll-inhalt",
+      "practiceId": "ap1aw-d20-protokollpflichten",
+      "prompt": "Dokumentation/Bewertung: Welche Kombination macht ein Prüfprotokoll fachlich vollständig? 1=Soll/Ist + Prüfmittel + i.O./n.i.O. + Abweichung + Maßnahme + Wiederholprüfung/Freigabe, 2=Ist-Wert + Freigabe, 3=Sollwert + Werkstoff, 4=Prüfmittel + Datum.",
+      "answer": {
+        "value": 1,
+        "unit": ""
+      },
+      "tolerance": 0,
+      "input": {
+        "mode": "integer"
+      },
+      "meta": {
+        "mode": "competency_check",
+        "examRelevant": true,
+        "points": 3,
+        "noHints": true,
+        "deferSolutions": true,
+        "competency": "doku_bewertung",
+        "subskills": [
+          "protokoll",
+          "soll_ist",
+          "bewertung_io"
+        ]
+      }
+    },
+    {
+      "id": "ap1aw-cc-12-sicherheit-kss",
+      "practiceId": "ap1aw-a01-unterlagen-check",
+      "prompt": "Sicherheit/Umwelt: KSS tritt am Arbeitsplatz aus. Was ist die fachlich korrekte Sofortmaßnahme? 1=Arbeit stoppen, Bereich sichern, Leck melden, aufnehmen und nach Vorgabe entsorgen, 2=Weiterarbeiten und am Ende reinigen, 3=Mit Druckluft verteilen, 4=Mit Lappen aufnehmen und in Restmüll geben.",
+      "answer": {
+        "value": 1,
+        "unit": ""
+      },
+      "tolerance": 0,
+      "input": {
+        "mode": "integer"
+      },
+      "meta": {
+        "mode": "competency_check",
+        "examRelevant": true,
+        "points": 3,
+        "noHints": true,
+        "deferSolutions": true,
+        "competency": "sicherheit_umwelt",
+        "subskills": [
+          "kss",
+          "gefaehrdung",
+          "ordnung"
+        ]
+      }
+    }
+  ],
+  "examMeta": {
+    "mode": "competency_check",
+    "durationMinutes": 15,
+    "passPercent": 60,
+    "mustHaveCompetencies": {
+      "messen_pruefen": 0.5,
+      "doku_bewertung": 0.5
+    }
+  }
+}

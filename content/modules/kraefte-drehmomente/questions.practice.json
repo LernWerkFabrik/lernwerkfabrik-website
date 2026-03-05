@@ -1,0 +1,1170 @@
+[
+  {
+    "id": "kdb-01-begriff-moment",
+    "type": "single_choice",
+    "template": {
+      "kind": "static",
+      "prompt": "Was beschreibt das Drehmoment M technisch korrekt?"
+    },
+    "answer": {
+      "choices": [
+        "Die Kraft, die auf ein Bauteil wirkt (ohne Abstand)",
+        "Die Drehwirkung einer Kraft um einen Punkt/ eine Achse",
+        "Die Masse eines Bauteils pro Volumen",
+        "Die Geschwindigkeit eines Werkstücks"
+      ],
+      "correctIndex": 1
+    },
+    "help": {
+      "tips": [
+        "Lies genau: gesucht ist oft Hebelarm (senkrechter Abstand) oder Richtung (im/gegen Uhrzeigersinn)."
+      ],
+      "explanation": "Diese Frage prüft Grundbegriffe, die du für jede Rechenaufgabe brauchst.",
+      "solutionSteps": [
+        "Richtig ist: Die Drehwirkung einer Kraft um einen Punkt/ eine Achse"
+      ],
+      "examinerHint": "Begriffe sicher können → weniger Flüchtigkeitsfehler."
+    },
+    "meta": {
+      "ap": "AP1",
+      "topic": "grundlagen",
+      "competence": "verstehen",
+      "difficulty": 1,
+      "errorTags": [
+        "concept"
+      ]
+    }
+  },
+  {
+    "id": "kdb-02-einheit",
+    "type": "single_choice",
+    "template": {
+      "kind": "static",
+      "prompt": "Welche Einheit hat das Drehmoment?",
+      "variants": [
+        {
+          "prompt": "Welche Einheit hat das Drehmoment?",
+          "answer": {
+            "choices": [
+              "N",
+              "N/mm^2",
+              "N*m",
+              "J"
+            ],
+            "correctIndex": 2
+          }
+        },
+        {
+          "prompt": "In welcher Einheit gibst du ein Moment M an?",
+          "answer": {
+            "choices": [
+              "Pa",
+              "N*m",
+              "N/s",
+              "kN/m"
+            ],
+            "correctIndex": 1
+          }
+        },
+        {
+          "prompt": "Welche SI-abgeleitete Einheit passt zum Drehmoment?",
+          "answer": {
+            "choices": [
+              "N*m",
+              "N",
+              "m/s",
+              "kg/m^3"
+            ],
+            "correctIndex": 0
+          }
+        },
+        {
+          "prompt": "Welche Einheit ist fuer Anzugsdrehmoment an Schrauben korrekt?",
+          "answer": {
+            "choices": [
+              "N/m",
+              "N*m",
+              "J/s",
+              "Pa"
+            ],
+            "correctIndex": 1
+          }
+        }
+      ]
+    },
+    "answer": {
+      "choices": [
+        "N",
+        "N/mm²",
+        "N·m",
+        "J"
+      ],
+      "correctIndex": 2
+    },
+    "help": {
+      "tips": [
+        "Lies genau: gesucht ist oft Hebelarm (senkrechter Abstand) oder Richtung (im/gegen Uhrzeigersinn)."
+      ],
+      "explanation": "Diese Frage prüft Grundbegriffe, die du für jede Rechenaufgabe brauchst.",
+      "solutionSteps": [
+        "Richtig ist: N·m"
+      ],
+      "examinerHint": "Begriffe sicher können → weniger Flüchtigkeitsfehler."
+    },
+    "meta": {
+      "ap": "AP1",
+      "topic": "grundlagen",
+      "competence": "verstehen",
+      "difficulty": 1,
+      "errorTags": [
+        "concept"
+      ]
+    }
+  },
+  {
+    "id": "kdb-06-torque-basic-1",
+    "template": {
+      "kind": "torque_nm",
+      "prompt": "Schraubenschlüssel: Hebelarm r={{r_mm}} mm, Kraft F={{F_N}} N (senkrecht). Berechne M in N·m.",
+      "vars": {
+        "r_mm": {
+          "min": 120,
+          "max": 260,
+          "step": 20
+        },
+        "F_N": {
+          "min": 50,
+          "max": 120,
+          "step": 10
+        }
+      },
+      "round": 2,
+      "tolerance": 0.3
+    },
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "help": {
+      "tips": [
+        "Drehmoment (Hebelgesetz): M = F · r",
+        "Hebelarm immer als senkrechter Abstand angeben (perpendicular).",
+        "mm → m: durch 1000 teilen."
+      ],
+      "explanation": "Bei Drehmoment-Aufgaben zählt in der Prüfung: richtige Einheit (N·m), Umrechnung des Hebelarms und ein sauberer Plausibilitätscheck.",
+      "solutionSteps": [
+        "Gegeben: F und r (Hebelarm).",
+        "Umrechnen: r_mm → r_m = r_mm/1000.",
+        "Formel: M = F · r_m.",
+        "Einheit: N·m."
+      ],
+      "examinerHint": "Viele Punktabzüge entstehen nur durch mm nicht in m umgerechnet."
+    },
+    "meta": {
+      "ap": "AP1",
+      "topic": "drehmoment_hebel",
+      "competence": "berechnen",
+      "difficulty": 1,
+      "errorTags": [
+        "calculation",
+        "units",
+        "torque"
+      ]
+    }
+  },
+  {
+    "id": "kdb-07-torque-basic-2",
+    "template": {
+      "kind": "torque_nm",
+      "prompt": "Hebel: r={{r_mm}} mm, F={{F_N}} N (senkrecht). Bestimme M (N·m).",
+      "vars": {
+        "r_mm": {
+          "min": 80,
+          "max": 200,
+          "step": 10
+        },
+        "F_N": {
+          "min": 60,
+          "max": 180,
+          "step": 15
+        }
+      },
+      "round": 2,
+      "tolerance": 0.3
+    },
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "help": {
+      "tips": [
+        "Drehmoment (Hebelgesetz): M = F · r",
+        "Hebelarm immer als senkrechter Abstand angeben (perpendicular).",
+        "mm → m: durch 1000 teilen."
+      ],
+      "explanation": "Bei Drehmoment-Aufgaben zählt in der Prüfung: richtige Einheit (N·m), Umrechnung des Hebelarms und ein sauberer Plausibilitätscheck.",
+      "solutionSteps": [
+        "Gegeben: F und r (Hebelarm).",
+        "Umrechnen: r_mm → r_m = r_mm/1000.",
+        "Formel: M = F · r_m.",
+        "Einheit: N·m."
+      ],
+      "examinerHint": "Viele Punktabzüge entstehen nur durch mm nicht in m umgerechnet."
+    },
+    "meta": {
+      "ap": "AP1",
+      "topic": "drehmoment_hebel",
+      "competence": "berechnen",
+      "difficulty": 1,
+      "errorTags": [
+        "calculation",
+        "units",
+        "torque"
+      ]
+    }
+  },
+  {
+    "id": "kdb-08-torque-basic-3",
+    "template": {
+      "kind": "torque_nm",
+      "prompt": "Montage: Du ziehst mit F={{F_N}} N an einem Hebelarm r={{r_mm}} mm. Wie groß ist M in N·m?",
+      "vars": {
+        "r_mm": {
+          "min": 150,
+          "max": 300,
+          "step": 25
+        },
+        "F_N": {
+          "min": 70,
+          "max": 210,
+          "step": 10
+        }
+      },
+      "round": 2,
+      "tolerance": 0.3
+    },
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "help": {
+      "tips": [
+        "Drehmoment (Hebelgesetz): M = F · r",
+        "Hebelarm immer als senkrechter Abstand angeben (perpendicular).",
+        "mm → m: durch 1000 teilen."
+      ],
+      "explanation": "Bei Drehmoment-Aufgaben zählt in der Prüfung: richtige Einheit (N·m), Umrechnung des Hebelarms und ein sauberer Plausibilitätscheck.",
+      "solutionSteps": [
+        "Gegeben: F und r (Hebelarm).",
+        "Umrechnen: r_mm → r_m = r_mm/1000.",
+        "Formel: M = F · r_m.",
+        "Einheit: N·m."
+      ],
+      "examinerHint": "Viele Punktabzüge entstehen nur durch mm nicht in m umgerechnet."
+    },
+    "meta": {
+      "ap": "AP1",
+      "topic": "drehmoment_hebel",
+      "competence": "berechnen",
+      "difficulty": 1,
+      "errorTags": [
+        "calculation",
+        "units",
+        "torque"
+      ]
+    }
+  },
+  {
+    "id": "kdb-09-umrechnung",
+    "type": "single_choice",
+    "template": {
+      "kind": "static",
+      "prompt": "Ein Hebelarm wird mit r=250 mm angegeben. Welcher Wert ist richtig in Metern?"
+    },
+    "answer": {
+      "choices": [
+        "0,025 m",
+        "0,25 m",
+        "2,5 m",
+        "250 m"
+      ],
+      "correctIndex": 1
+    },
+    "help": {
+      "tips": [
+        "Lies genau: gesucht ist oft Hebelarm (senkrechter Abstand) oder Richtung (im/gegen Uhrzeigersinn)."
+      ],
+      "explanation": "Diese Frage prüft Grundbegriffe, die du für jede Rechenaufgabe brauchst.",
+      "solutionSteps": [
+        "Richtig ist: 0,25 m"
+      ],
+      "examinerHint": "Begriffe sicher können → weniger Flüchtigkeitsfehler."
+    },
+    "meta": {
+      "ap": "AP1",
+      "topic": "einheiten",
+      "competence": "umrechnen",
+      "difficulty": 1,
+      "errorTags": [
+        "units"
+      ]
+    }
+  },
+  {
+    "id": "kdb-03-hebelarm",
+    "type": "multi_select",
+    "template": {
+      "kind": "static",
+      "prompt": "Welche Aussagen zum Hebelarm r sind richtig? (Mehrfachauswahl)"
+    },
+    "answer": {
+      "choices": [
+        "r ist immer der senkrechte Abstand von Drehpunkt/Achse zur Wirkungslinie der Kraft.",
+        "r darf in mm eingesetzt werden, das Ergebnis ist dann automatisch in N·m.",
+        "Wenn die Kraft nicht senkrecht wirkt, zählt nur die senkrechte Komponente bzw. der senkrechte Abstand.",
+        "Ein größerer Hebelarm erzeugt bei gleicher Kraft ein kleineres Drehmoment."
+      ],
+      "correctIndices": [
+        0,
+        2
+      ]
+    },
+    "help": {
+      "tips": [
+        "Mehrfachauswahl: jede falsche Option kostet meist Punkte – nur ankreuzen, was wirklich stimmt."
+      ],
+      "explanation": "Hier geht es um typische Prüfungsfallen und sichere Regeln bei Kräften/Drehmomenten.",
+      "solutionSteps": [
+        "Richtig sind: r ist immer der senkrechte Abstand von Drehpunkt/Achse zur Wirkungslinie der Kraft., Wenn die Kraft nicht senkrecht wirkt, zählt nur die senkrechte Komponente bzw. der senkrechte Abstand."
+      ],
+      "examinerHint": "Merke dir Prüfregeln (Einheiten, senkrechter Hebelarm, Vorzeichen)."
+    },
+    "meta": {
+      "ap": "AP1",
+      "topic": "hebelarm",
+      "competence": "verstehen",
+      "difficulty": 2,
+      "errorTags": [
+        "concept",
+        "units",
+        "torque"
+      ]
+    }
+  },
+  {
+    "id": "kdb-04-ablauf",
+    "type": "order",
+    "template": {
+      "kind": "static",
+      "prompt": "Bringe den prüfungstauglichen Ablauf für eine Drehmoment-Aufgabe in die richtige Reihenfolge:"
+    },
+    "items": [
+      "Gegeben/Gesucht notieren (mit Einheiten)",
+      "Hebelarm/Abstand prüfen: ist er senkrecht? ggf. senkrechten Abstand verwenden",
+      "Einheiten umrechnen (mm→m, kN→N)",
+      "Formel auswählen: M = F · r",
+      "Werte einsetzen und rechnen",
+      "Ergebnis mit Einheit N·m angeben + Plausibilitätscheck"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "help": {
+      "tips": [
+        "Schreibe in der Prüfung wie in einer Checkliste – das wirkt professionell und bringt Teilpunkte."
+      ],
+      "explanation": "Ein strukturierter Rechenweg ist oft so wichtig wie das Ergebnis.",
+      "solutionSteps": [
+        "1) Gegeben/Gesucht notieren (mit Einheiten)",
+        "2) Hebelarm/Abstand prüfen: ist er senkrecht? ggf. senkrechten Abstand verwenden",
+        "3) Einheiten umrechnen (mm→m, kN→N)",
+        "4) Formel auswählen: M = F · r",
+        "5) Werte einsetzen und rechnen",
+        "6) Ergebnis mit Einheit N·m angeben + Plausibilitätscheck"
+      ],
+      "examinerHint": "Wenn du dich verrechnest, rettet ein sauberer Ablauf trotzdem Punkte."
+    },
+    "meta": {
+      "ap": "AP1",
+      "topic": "rechenweg",
+      "competence": "struktur",
+      "difficulty": 2,
+      "errorTags": [
+        "process"
+      ]
+    }
+  },
+  {
+    "id": "kdb-05-richtung",
+    "type": "single_choice",
+    "template": {
+      "kind": "static",
+      "prompt": "Wenn eine Kraft rechts am Hebel nach unten wirkt, dreht sie den Hebel (von vorne betrachtet) meist…"
+    },
+    "answer": {
+      "choices": [
+        "im Uhrzeigersinn",
+        "gegen den Uhrzeigersinn",
+        "gar nicht",
+        "nur bei großen Kräften"
+      ],
+      "correctIndex": 0
+    },
+    "help": {
+      "tips": [
+        "Lies genau: gesucht ist oft Hebelarm (senkrechter Abstand) oder Richtung (im/gegen Uhrzeigersinn)."
+      ],
+      "explanation": "Diese Frage prüft Grundbegriffe, die du für jede Rechenaufgabe brauchst.",
+      "solutionSteps": [
+        "Richtig ist: im Uhrzeigersinn"
+      ],
+      "examinerHint": "Begriffe sicher können → weniger Flüchtigkeitsfehler."
+    },
+    "meta": {
+      "ap": "AP1",
+      "topic": "vorzeichen",
+      "competence": "verstehen",
+      "difficulty": 2,
+      "errorTags": [
+        "concept",
+        "torque"
+      ]
+    }
+  },
+  {
+    "id": "kdb-10-bolzenreihe",
+    "template": {
+      "kind": "torque_nm",
+      "prompt": "Konsole: Last F={{F_N}} N greift mit senkrechtem Abstand r={{r_mm}} mm zur Schraubenachse an. Berechne das Biegemoment (Drehmoment) M an der Schraubenachse in N·m.",
+      "vars": {
+        "F_N": {
+          "min": 200,
+          "max": 800,
+          "step": 50
+        },
+        "r_mm": {
+          "min": 60,
+          "max": 240,
+          "step": 20
+        }
+      },
+      "round": 2,
+      "tolerance": 0.3
+    },
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "help": {
+      "tips": [
+        "Drehmoment (Hebelgesetz): M = F · r",
+        "Hebelarm immer als senkrechter Abstand angeben (perpendicular).",
+        "mm → m: durch 1000 teilen."
+      ],
+      "explanation": "Bei Drehmoment-Aufgaben zählt in der Prüfung: richtige Einheit (N·m), Umrechnung des Hebelarms und ein sauberer Plausibilitätscheck.",
+      "solutionSteps": [
+        "Gegeben: F und r (Hebelarm).",
+        "Umrechnen: r_mm → r_m = r_mm/1000.",
+        "Formel: M = F · r_m.",
+        "Einheit: N·m."
+      ],
+      "examinerHint": "Viele Punktabzüge entstehen nur durch mm nicht in m umgerechnet."
+    },
+    "meta": {
+      "ap": "AP1",
+      "topic": "bauteil_konsole",
+      "competence": "beurteilen",
+      "difficulty": 2,
+      "errorTags": [
+        "torque",
+        "components",
+        "units"
+      ]
+    }
+  },
+  {
+    "id": "kdb-11-klapphebel",
+    "template": {
+      "kind": "torque_nm",
+      "prompt": "Klapphebel: Ein Bediener drückt mit F={{F_N}} N. Der senkrechte Abstand zur Drehachse beträgt r={{r_mm}} mm. Berechne das Drehmoment M (N·m).",
+      "vars": {
+        "F_N": {
+          "min": 120,
+          "max": 400,
+          "step": 20
+        },
+        "r_mm": {
+          "min": 40,
+          "max": 180,
+          "step": 10
+        }
+      },
+      "round": 2,
+      "tolerance": 0.3
+    },
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "help": {
+      "tips": [
+        "Drehmoment (Hebelgesetz): M = F · r",
+        "Hebelarm immer als senkrechter Abstand angeben (perpendicular).",
+        "mm → m: durch 1000 teilen."
+      ],
+      "explanation": "Bei Drehmoment-Aufgaben zählt in der Prüfung: richtige Einheit (N·m), Umrechnung des Hebelarms und ein sauberer Plausibilitätscheck.",
+      "solutionSteps": [
+        "Gegeben: F und r (Hebelarm).",
+        "Umrechnen: r_mm → r_m = r_mm/1000.",
+        "Formel: M = F · r_m.",
+        "Einheit: N·m."
+      ],
+      "examinerHint": "Viele Punktabzüge entstehen nur durch mm nicht in m umgerechnet."
+    },
+    "meta": {
+      "ap": "AP1",
+      "topic": "bedienkraefte",
+      "competence": "berechnen",
+      "difficulty": 2,
+      "errorTags": [
+        "torque",
+        "ergonomics",
+        "units"
+      ]
+    }
+  },
+  {
+    "id": "kdb-12-zange",
+    "template": {
+      "kind": "torque_nm",
+      "prompt": "Zange als Hebel: Am Griff wirkt F={{F_N}} N, senkrechter Abstand r={{r_mm}} mm. Wie groß ist M am Gelenk? (N·m)",
+      "vars": {
+        "F_N": {
+          "min": 80,
+          "max": 250,
+          "step": 10
+        },
+        "r_mm": {
+          "min": 90,
+          "max": 260,
+          "step": 10
+        }
+      },
+      "round": 2,
+      "tolerance": 0.3
+    },
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "help": {
+      "tips": [
+        "Drehmoment (Hebelgesetz): M = F · r",
+        "Hebelarm immer als senkrechter Abstand angeben (perpendicular).",
+        "mm → m: durch 1000 teilen."
+      ],
+      "explanation": "Bei Drehmoment-Aufgaben zählt in der Prüfung: richtige Einheit (N·m), Umrechnung des Hebelarms und ein sauberer Plausibilitätscheck.",
+      "solutionSteps": [
+        "Gegeben: F und r (Hebelarm).",
+        "Umrechnen: r_mm → r_m = r_mm/1000.",
+        "Formel: M = F · r_m.",
+        "Einheit: N·m."
+      ],
+      "examinerHint": "Viele Punktabzüge entstehen nur durch mm nicht in m umgerechnet."
+    },
+    "meta": {
+      "ap": "AP1",
+      "topic": "werkzeug",
+      "competence": "berechnen",
+      "difficulty": 2,
+      "errorTags": [
+        "torque",
+        "tools",
+        "units"
+      ]
+    }
+  },
+  {
+    "id": "kdb-13-praxisfehler",
+    "type": "multi_select",
+    "template": {
+      "kind": "static",
+      "prompt": "Welche Fehler führen bei Drehmoment-Aufgaben typischerweise zu falschen Ergebnissen? (Mehrfachauswahl)"
+    },
+    "answer": {
+      "choices": [
+        "mm nicht in m umgerechnet",
+        "Einheit N·m vergessen",
+        "Hebelarm als schräger Abstand statt senkrechter Abstand genommen",
+        "Mit mehr Nachkommastellen gerechnet"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2
+      ]
+    },
+    "help": {
+      "tips": [
+        "Mehrfachauswahl: jede falsche Option kostet meist Punkte – nur ankreuzen, was wirklich stimmt."
+      ],
+      "explanation": "Hier geht es um typische Prüfungsfallen und sichere Regeln bei Kräften/Drehmomenten.",
+      "solutionSteps": [
+        "Richtig sind: mm nicht in m umgerechnet, Einheit N·m vergessen, Hebelarm als schräger Abstand statt senkrechter Abstand genommen"
+      ],
+      "examinerHint": "Merke dir Prüfregeln (Einheiten, senkrechter Hebelarm, Vorzeichen)."
+    },
+    "meta": {
+      "ap": "AP1",
+      "topic": "fehlerquellen",
+      "competence": "vermeiden",
+      "difficulty": 2,
+      "errorTags": [
+        "traps",
+        "units",
+        "torque"
+      ]
+    }
+  },
+  {
+    "id": "kdb-14-hebelarm-senkrecht",
+    "type": "single_choice",
+    "template": {
+      "kind": "static",
+      "prompt": "Was ist beim Hebelarm r für das Drehmoment entscheidend?"
+    },
+    "answer": {
+      "choices": [
+        "Der längste Abstand zwischen Kraft und Drehpunkt",
+        "Der senkrechte Abstand von Drehpunkt/Achse zur Wirkungslinie der Kraft",
+        "Der Abstand entlang des Bauteils (schräg gemessen)",
+        "Nur die Größe der Kraft, der Abstand ist egal"
+      ],
+      "correctIndex": 1
+    },
+    "help": {
+      "tips": [
+        "Hebelarm = senkrechter Abstand zur Wirkungslinie der Kraft."
+      ],
+      "explanation": "Der häufigste Fehler bei Drehmoment-Aufgaben ist ein falsch bestimmter Hebelarm. Für das Moment zählt immer der senkrechte Abstand zur Wirkungslinie.",
+      "solutionSteps": [
+        "Wirkungslinie der Kraft denken/zeichnen.",
+        "Senkrechten Abstand zur Achse bestimmen → das ist r."
+      ],
+      "examinerHint": "Wenn r falsch ist, ist jedes Drehmoment falsch – selbst mit korrekter Formel."
+    },
+    "meta": {
+      "ap": "AP1",
+      "topic": "hebelarm",
+      "competence": "verstehen",
+      "difficulty": 2,
+      "errorTags": [
+        "concept",
+        "torque"
+      ]
+    }
+  },
+  {
+    "id": "kdb-21-hebel-verlaengern",
+    "type": "single_choice",
+    "template": {
+      "kind": "static",
+      "prompt": "Du willst bei gleicher Kraft ein größeres Drehmoment erzeugen. Welche Maßnahme wirkt direkt?"
+    },
+    "answer": {
+      "choices": [
+        "Kraft verringern",
+        "Hebelarm vergrößern",
+        "Hebelarm verkleinern",
+        "Einheit wechseln"
+      ],
+      "correctIndex": 1
+    },
+    "help": {
+      "tips": [
+        "Lies genau: gesucht ist oft Hebelarm (senkrechter Abstand) oder Richtung (im/gegen Uhrzeigersinn)."
+      ],
+      "explanation": "Diese Frage prüft Grundbegriffe, die du für jede Rechenaufgabe brauchst.",
+      "solutionSteps": [
+        "Richtig ist: Hebelarm vergrößern"
+      ],
+      "examinerHint": "Begriffe sicher können → weniger Flüchtigkeitsfehler."
+    },
+    "meta": {
+      "ap": "AP1",
+      "topic": "hebelgesetz",
+      "competence": "anwenden",
+      "difficulty": 2,
+      "errorTags": [
+        "concept",
+        "torque"
+      ]
+    }
+  },
+  {
+    "id": "kdb-25-plausibilitaet",
+    "type": "single_choice",
+    "template": {
+      "kind": "static",
+      "prompt": "Du verdoppelst bei gleicher Kraft den Hebelarm. Was passiert mit dem Drehmoment?"
+    },
+    "answer": {
+      "choices": [
+        "Es halbiert sich",
+        "Es bleibt gleich",
+        "Es verdoppelt sich",
+        "Es wird um 1 N·m größer"
+      ],
+      "correctIndex": 2
+    },
+    "help": {
+      "tips": [
+        "Lies genau: gesucht ist oft Hebelarm (senkrechter Abstand) oder Richtung (im/gegen Uhrzeigersinn)."
+      ],
+      "explanation": "Diese Frage prüft Grundbegriffe, die du für jede Rechenaufgabe brauchst.",
+      "solutionSteps": [
+        "Richtig ist: Es verdoppelt sich"
+      ],
+      "examinerHint": "Begriffe sicher können → weniger Flüchtigkeitsfehler."
+    },
+    "meta": {
+      "ap": "AP1",
+      "topic": "plausibilitaet",
+      "competence": "verstehen",
+      "difficulty": 2,
+      "errorTags": [
+        "concept",
+        "torque"
+      ]
+    }
+  },
+  {
+    "id": "kdb-15-gewicht-am-hebel",
+    "template": {
+      "kind": "torque_nm",
+      "prompt": "Ein Bauteil mit Gewichtskraft F={{F_N}} N hängt an einem Hebel. Der senkrechte Abstand zur Achse beträgt r={{r_mm}} mm. Berechne M in N·m.",
+      "vars": {
+        "F_N": {
+          "min": 80,
+          "max": 600,
+          "step": 20
+        },
+        "r_mm": {
+          "min": 100,
+          "max": 400,
+          "step": 25
+        }
+      },
+      "round": 2,
+      "tolerance": 0.3
+    },
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "help": {
+      "tips": [
+        "Drehmoment (Hebelgesetz): M = F · r",
+        "Hebelarm immer als senkrechter Abstand angeben (perpendicular).",
+        "mm → m: durch 1000 teilen."
+      ],
+      "explanation": "Bei Drehmoment-Aufgaben zählt in der Prüfung: richtige Einheit (N·m), Umrechnung des Hebelarms und ein sauberer Plausibilitätscheck.",
+      "solutionSteps": [
+        "Gegeben: F und r (Hebelarm).",
+        "Umrechnen: r_mm → r_m = r_mm/1000.",
+        "Formel: M = F · r_m.",
+        "Einheit: N·m."
+      ],
+      "examinerHint": "Viele Punktabzüge entstehen nur durch mm nicht in m umgerechnet."
+    },
+    "meta": {
+      "ap": "AP1",
+      "topic": "gewicht_moment",
+      "competence": "berechnen",
+      "difficulty": 3,
+      "errorTags": [
+        "torque",
+        "components",
+        "units"
+      ]
+    }
+  },
+  {
+    "id": "kdb-16-momente-addieren",
+    "type": "single_choice",
+    "template": {
+      "kind": "static",
+      "prompt": "Zwei Kräfte erzeugen Momente um dieselbe Achse in gleicher Drehrichtung. Was gilt für das Gesamtmoment?"
+    },
+    "answer": {
+      "choices": [
+        "Nur das größere Moment zählt",
+        "Die Momente werden addiert",
+        "Die Momente werden subtrahiert",
+        "Das Ergebnis ist immer 0"
+      ],
+      "correctIndex": 1
+    },
+    "help": {
+      "tips": [
+        "Lies genau: gesucht ist oft Hebelarm (senkrechter Abstand) oder Richtung (im/gegen Uhrzeigersinn)."
+      ],
+      "explanation": "Diese Frage prüft Grundbegriffe, die du für jede Rechenaufgabe brauchst.",
+      "solutionSteps": [
+        "Richtig ist: Die Momente werden addiert"
+      ],
+      "examinerHint": "Begriffe sicher können → weniger Flüchtigkeitsfehler."
+    },
+    "meta": {
+      "ap": "AP1",
+      "topic": "superposition",
+      "competence": "verstehen",
+      "difficulty": 3,
+      "errorTags": [
+        "concept",
+        "torque"
+      ]
+    }
+  },
+  {
+    "id": "kdb-17-gegenmomente",
+    "type": "single_choice",
+    "template": {
+      "kind": "static",
+      "prompt": "Eine Kraft erzeugt ein Moment im Uhrzeigersinn, eine zweite ein Moment gegen den Uhrzeigersinn. Wie bestimmst du das Resultierende Moment?"
+    },
+    "answer": {
+      "choices": [
+        "Momente addieren (immer plus)",
+        "Momente subtrahieren nach Vorzeichen/Richtung",
+        "Nur die Kräfte addieren",
+        "Man kann das nicht berechnen"
+      ],
+      "correctIndex": 1
+    },
+    "help": {
+      "tips": [
+        "Lies genau: gesucht ist oft Hebelarm (senkrechter Abstand) oder Richtung (im/gegen Uhrzeigersinn)."
+      ],
+      "explanation": "Diese Frage prüft Grundbegriffe, die du für jede Rechenaufgabe brauchst.",
+      "solutionSteps": [
+        "Richtig ist: Momente subtrahieren nach Vorzeichen/Richtung"
+      ],
+      "examinerHint": "Begriffe sicher können → weniger Flüchtigkeitsfehler."
+    },
+    "meta": {
+      "ap": "AP1",
+      "topic": "vorzeichen",
+      "competence": "anwenden",
+      "difficulty": 3,
+      "errorTags": [
+        "concept",
+        "torque"
+      ]
+    }
+  },
+  {
+    "id": "kdb-18-montage-pruefungsnah",
+    "template": {
+      "kind": "torque_nm",
+      "prompt": "Montage: Ziel ist ein Drehmoment M. Du setzt F={{F_N}} N an einem Hebelarm r={{r_mm}} mm senkrecht an. Berechne das erzeugte Moment M (N·m).",
+      "vars": {
+        "F_N": {
+          "min": 100,
+          "max": 350,
+          "step": 10
+        },
+        "r_mm": {
+          "min": 200,
+          "max": 500,
+          "step": 25
+        }
+      },
+      "round": 2,
+      "tolerance": 0.3
+    },
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "help": {
+      "tips": [
+        "Drehmoment (Hebelgesetz): M = F · r",
+        "Hebelarm immer als senkrechter Abstand angeben (perpendicular).",
+        "mm → m: durch 1000 teilen."
+      ],
+      "explanation": "Bei Drehmoment-Aufgaben zählt in der Prüfung: richtige Einheit (N·m), Umrechnung des Hebelarms und ein sauberer Plausibilitätscheck.",
+      "solutionSteps": [
+        "Gegeben: F und r (Hebelarm).",
+        "Umrechnen: r_mm → r_m = r_mm/1000.",
+        "Formel: M = F · r_m.",
+        "Einheit: N·m."
+      ],
+      "examinerHint": "Viele Punktabzüge entstehen nur durch mm nicht in m umgerechnet."
+    },
+    "meta": {
+      "ap": "AP1",
+      "topic": "montage",
+      "competence": "beurteilen",
+      "difficulty": 3,
+      "errorTags": [
+        "torque",
+        "assembly",
+        "units"
+      ]
+    }
+  },
+  {
+    "id": "kdb-19-kurzhebel",
+    "template": {
+      "kind": "torque_nm",
+      "prompt": "Engstelle: Hebelarm nur r={{r_mm}} mm möglich, Kraft F={{F_N}} N. Berechne M (N·m).",
+      "vars": {
+        "r_mm": {
+          "min": 60,
+          "max": 140,
+          "step": 10
+        },
+        "F_N": {
+          "min": 120,
+          "max": 500,
+          "step": 20
+        }
+      },
+      "round": 2,
+      "tolerance": 0.3
+    },
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "help": {
+      "tips": [
+        "Drehmoment (Hebelgesetz): M = F · r",
+        "Hebelarm immer als senkrechter Abstand angeben (perpendicular).",
+        "mm → m: durch 1000 teilen."
+      ],
+      "explanation": "Bei Drehmoment-Aufgaben zählt in der Prüfung: richtige Einheit (N·m), Umrechnung des Hebelarms und ein sauberer Plausibilitätscheck.",
+      "solutionSteps": [
+        "Gegeben: F und r (Hebelarm).",
+        "Umrechnen: r_mm → r_m = r_mm/1000.",
+        "Formel: M = F · r_m.",
+        "Einheit: N·m."
+      ],
+      "examinerHint": "Viele Punktabzüge entstehen nur durch mm nicht in m umgerechnet."
+    },
+    "meta": {
+      "ap": "AP1",
+      "topic": "montage",
+      "competence": "beurteilen",
+      "difficulty": 3,
+      "errorTags": [
+        "torque",
+        "constraints",
+        "units"
+      ]
+    }
+  },
+  {
+    "id": "kdb-20-sicherheitsaspekt",
+    "type": "multi_select",
+    "template": {
+      "kind": "static",
+      "prompt": "Welche Aussagen zur Montage mit Drehmoment sind prüfungsnah richtig? (Mehrfachauswahl)"
+    },
+    "answer": {
+      "choices": [
+        "Zu geringes Drehmoment kann zu Losdrehen/Undichtigkeit führen.",
+        "Zu hohes Drehmoment kann Schraube/Gewinde überlasten oder Bauteil beschädigen.",
+        "Drehmoment ist unabhängig vom Werkzeughebelarm.",
+        "Ein Drehmomentschlüssel dient dazu, ein vorgegebenes Drehmoment reproduzierbar aufzubringen."
+      ],
+      "correctIndices": [
+        0,
+        1,
+        3
+      ]
+    },
+    "help": {
+      "tips": [
+        "Mehrfachauswahl: jede falsche Option kostet meist Punkte – nur ankreuzen, was wirklich stimmt."
+      ],
+      "explanation": "Hier geht es um typische Prüfungsfallen und sichere Regeln bei Kräften/Drehmomenten.",
+      "solutionSteps": [
+        "Richtig sind: Zu geringes Drehmoment kann zu Losdrehen/Undichtigkeit führen., Zu hohes Drehmoment kann Schraube/Gewinde überlasten oder Bauteil beschädigen., Ein Drehmomentschlüssel dient dazu, ein vorgegebenes Drehmoment reproduzierbar aufzubringen."
+      ],
+      "examinerHint": "Merke dir Prüfregeln (Einheiten, senkrechter Hebelarm, Vorzeichen)."
+    },
+    "meta": {
+      "ap": "AP1",
+      "topic": "montage_sicherheit",
+      "competence": "beurteilen",
+      "difficulty": 3,
+      "errorTags": [
+        "safety",
+        "assembly",
+        "torque"
+      ]
+    }
+  },
+  {
+    "id": "kdb-22-bauteil-anschlag",
+    "template": {
+      "kind": "torque_nm",
+      "prompt": "Bauteilanschlag: Kraft F={{F_N}} N wirkt am Abstand r={{r_mm}} mm zur Drehachse. Berechne das Moment M (N·m).",
+      "vars": {
+        "F_N": {
+          "min": 150,
+          "max": 900,
+          "step": 25
+        },
+        "r_mm": {
+          "min": 30,
+          "max": 160,
+          "step": 10
+        }
+      },
+      "round": 2,
+      "tolerance": 0.3
+    },
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "help": {
+      "tips": [
+        "Drehmoment (Hebelgesetz): M = F · r",
+        "Hebelarm immer als senkrechter Abstand angeben (perpendicular).",
+        "mm → m: durch 1000 teilen."
+      ],
+      "explanation": "Bei Drehmoment-Aufgaben zählt in der Prüfung: richtige Einheit (N·m), Umrechnung des Hebelarms und ein sauberer Plausibilitätscheck.",
+      "solutionSteps": [
+        "Gegeben: F und r (Hebelarm).",
+        "Umrechnen: r_mm → r_m = r_mm/1000.",
+        "Formel: M = F · r_m.",
+        "Einheit: N·m."
+      ],
+      "examinerHint": "Viele Punktabzüge entstehen nur durch mm nicht in m umgerechnet."
+    },
+    "meta": {
+      "ap": "AP1",
+      "topic": "bauteil_anschuetze",
+      "competence": "beurteilen",
+      "difficulty": 4,
+      "errorTags": [
+        "torque",
+        "components",
+        "units"
+      ]
+    }
+  },
+  {
+    "id": "kdb-23-pruefungsnah-gemischt",
+    "template": {
+      "kind": "torque_nm",
+      "prompt": "Prüfungsnah: Hebelarm r={{r_mm}} mm, Kraft F={{F_N}} N (senkrecht). Berechne M in N·m und runde auf 2 Nachkommastellen.",
+      "vars": {
+        "r_mm": {
+          "min": 95,
+          "max": 385,
+          "step": 15
+        },
+        "F_N": {
+          "min": 55,
+          "max": 365,
+          "step": 5
+        }
+      },
+      "round": 2,
+      "tolerance": 0.3
+    },
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "help": {
+      "tips": [
+        "Drehmoment (Hebelgesetz): M = F · r",
+        "Hebelarm immer als senkrechter Abstand angeben (perpendicular).",
+        "mm → m: durch 1000 teilen."
+      ],
+      "explanation": "Bei Drehmoment-Aufgaben zählt in der Prüfung: richtige Einheit (N·m), Umrechnung des Hebelarms und ein sauberer Plausibilitätscheck.",
+      "solutionSteps": [
+        "Gegeben: F und r (Hebelarm).",
+        "Umrechnen: r_mm → r_m = r_mm/1000.",
+        "Formel: M = F · r_m.",
+        "Einheit: N·m."
+      ],
+      "examinerHint": "Viele Punktabzüge entstehen nur durch mm nicht in m umgerechnet."
+    },
+    "meta": {
+      "ap": "AP1",
+      "topic": "pruefung_mix",
+      "competence": "sicher_rechnen",
+      "difficulty": 4,
+      "errorTags": [
+        "torque",
+        "units",
+        "exam"
+      ]
+    }
+  },
+  {
+    "id": "kdb-24-bauteilbeurteilung",
+    "type": "order",
+    "template": {
+      "kind": "static",
+      "prompt": "Bringe die Schritte zur Beurteilung einer belasteten Schraubverbindung (vereinfacht) in die richtige Reihenfolge:"
+    },
+    "items": [
+      "Lasten erfassen (Gewicht, Betriebskräfte, Stoß) und Angriffspunkt bestimmen",
+      "Drehpunkt/Achse und relevante Abstände (Hebelarme) festlegen",
+      "Momente/ Kräfte auf die Verbindung übertragen (vereinfachtes Modell)",
+      "Kritische Stelle identifizieren (z. B. Schraube, Lasche, Konsole)",
+      "Ergebnis auf Plausibilität prüfen (Größenordnung, Einheit, Richtung)",
+      "Sicherheitsmaßnahme ableiten (z. B. Schraubengröße/Anzahl erhöhen, Hebelarm verkürzen, Stütze vorsehen)"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "help": {
+      "tips": [
+        "Schreibe in der Prüfung wie in einer Checkliste – das wirkt professionell und bringt Teilpunkte."
+      ],
+      "explanation": "Ein strukturierter Rechenweg ist oft so wichtig wie das Ergebnis.",
+      "solutionSteps": [
+        "1) Lasten erfassen (Gewicht, Betriebskräfte, Stoß) und Angriffspunkt bestimmen",
+        "2) Drehpunkt/Achse und relevante Abstände (Hebelarme) festlegen",
+        "3) Momente/ Kräfte auf die Verbindung übertragen (vereinfachtes Modell)",
+        "4) Kritische Stelle identifizieren (z. B. Schraube, Lasche, Konsole)",
+        "5) Ergebnis auf Plausibilität prüfen (Größenordnung, Einheit, Richtung)",
+        "6) Sicherheitsmaßnahme ableiten (z. B. Schraubengröße/Anzahl erhöhen, Hebelarm verkürzen, Stütze vorsehen)"
+      ],
+      "examinerHint": "Wenn du dich verrechnest, rettet ein sauberer Ablauf trotzdem Punkte."
+    },
+    "meta": {
+      "ap": "AP1",
+      "topic": "bauteilbeurteilung",
+      "competence": "struktur",
+      "difficulty": 4,
+      "errorTags": [
+        "process",
+        "assessment"
+      ]
+    }
+  }
+]

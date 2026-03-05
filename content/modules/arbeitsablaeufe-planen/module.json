@@ -1,0 +1,35 @@
+{
+  "id": "arbeitsablaeufe-planen",
+  "title": "Arbeitsabläufe planen und dokumentieren",
+  "description": "Aufträge strukturieren, Abläufe steuern und Ergebnisse prüfungstauglich dokumentieren.",
+  "difficulty": "medium",
+  "tags": [
+    "Planung",
+    "Dokumentation",
+    "Arbeitsorganisation"
+  ],
+  "estimatedMinutes": 45,
+  "intro": {
+    "why": "In der Prüfung wird nicht nur bewertet, ob ein Ergebnis technisch stimmt, sondern ob der gesamte Arbeitsablauf sinnvoll geplant, sicher durchgeführt und nachvollziehbar dokumentiert wurde. Entscheidend sind klare Reihenfolgen, saubere Schnittstellen zwischen Arbeitsschritten sowie eine belastbare Abschlussdokumentation. Punktverluste entstehen häufig, wenn Prüfschritte, Zeitbezug oder Begründungen fehlen.",
+    "trains": [
+      "Arbeitsaufträge in klare Arbeitsschritte mit Abhängigkeiten zerlegen",
+      "Reihenfolgen mit Blick auf Sicherheit, Qualität und Termin logisch planen",
+      "Prüf- und Kontrollpunkte im Ablauf fachlich korrekt integrieren",
+      "Durchführung, Abweichung und Abschluss nachvollziehbar dokumentieren"
+    ],
+    "traps": [
+      "Arbeitsschritte ohne Begründung oder Abhängigkeit anordnen",
+      "Rüst-, Prüf- und Nebenzeiten nicht einplanen",
+      "Abweichungen beschreiben, aber nicht bewerten",
+      "Übergabe ohne vollständigen Wirksamkeitsnachweis dokumentieren"
+    ]
+  },
+  "files": {
+    "explanation": "explanation.md",
+    "workflow": "workflow.md",
+    "example": "example.md",
+    "practiceQuestions": "questions.practice.json",
+    "examQuestions": "questions.exam.json"
+  },
+  "kind": "learn"
+}

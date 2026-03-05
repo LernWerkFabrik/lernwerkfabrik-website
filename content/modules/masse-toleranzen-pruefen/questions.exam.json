@@ -1,0 +1,170 @@
+[
+  {
+    "id": "mtp-e-01-oberes-grenzmass",
+    "prompt": "Nennmaß 48,00 mm mit Toleranz ±0,04 mm. Bestimme das obere Grenzmaß.",
+    "answer": {
+      "value": 48.04,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Oberes Grenzmaß = 48,00 + 0,04 = 48,04 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "mtp-e-02-unteres-grenzmass",
+    "prompt": "Nennmaß 48,00 mm mit Toleranz ±0,04 mm. Bestimme das untere Grenzmaß.",
+    "answer": {
+      "value": 47.96,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Unteres Grenzmaß = 48,00 - 0,04 = 47,96 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "mtp-e-03-toleranzbreite",
+    "prompt": "Wie groß ist die Toleranzbreite bei ±0,04 mm?",
+    "answer": {
+      "value": 0.08,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Toleranzbreite = 2 · 0,04 = 0,08 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "mtp-e-04-ueberschreitung-oben",
+    "prompt": "Sollmaß 48,00 ±0,04 mm, Messwert 48,07 mm. Um wie viel mm liegt der Messwert über dem oberen Grenzmaß?",
+    "answer": {
+      "value": 0.03,
+      "unit": "mm"
+    },
+    "tolerance": 0.005,
+    "solution": "Oberes Grenzmaß 48,04 mm. Überschreitung = 48,07 - 48,04 = 0,03 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 3
+    }
+  },
+  {
+    "id": "mtp-e-05-abstand-unten",
+    "prompt": "Sollmaß 32,00 ±0,06 mm, Messwert 31,98 mm. Wie groß ist der Abstand zum unteren Grenzmaß?",
+    "answer": {
+      "value": 0.04,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Unteres Grenzmaß = 31,94 mm. Abstand = 31,98 - 31,94 = 0,04 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "mtp-e-06-reibaufmass",
+    "prompt": "Vorbohrung 11,85 mm, Endmaß 12,00 mm (Reiben). Berechne das Reibaufmaß.",
+    "answer": {
+      "value": 0.15,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Reibaufmaß = 12,00 - 11,85 = 0,15 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "mtp-e-07-minimales-spiel",
+    "prompt": "Bohrung 20,000 bis 20,021 mm, Welle 19,992 bis 20,000 mm. Wie groß ist das minimale Spiel?",
+    "answer": {
+      "value": 0,
+      "unit": "mm"
+    },
+    "tolerance": 0.005,
+    "solution": "Minimales Spiel = 20,000 - 20,000 = 0,000 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 3
+    }
+  },
+  {
+    "id": "mtp-e-08-maximales-spiel",
+    "prompt": "Bohrung 20,000 bis 20,021 mm, Welle 19,992 bis 20,000 mm. Wie groß ist das maximale Spiel?",
+    "answer": {
+      "value": 0.029,
+      "unit": "mm"
+    },
+    "tolerance": 0.005,
+    "solution": "Maximales Spiel = 20,021 - 19,992 = 0,029 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 3
+    }
+  },
+  {
+    "id": "mtp-e-09-maximales-uebermass",
+    "prompt": "Bohrung 35,980 bis 36,000 mm, Welle 35,995 bis 36,018 mm. Wie groß ist das maximale Übermaß?",
+    "answer": {
+      "value": 0.038,
+      "unit": "mm"
+    },
+    "tolerance": 0.005,
+    "solution": "Maximales Übermaß = 36,018 - 35,980 = 0,038 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 3
+    }
+  },
+  {
+    "id": "mtp-e-10-ausschussquote",
+    "prompt": "In einer Serie von 140 Teilen sind 7 Teile n. i. O. Wie groß ist die Ausschussquote in Prozent?",
+    "answer": {
+      "value": 5,
+      "unit": "%"
+    },
+    "tolerance": 0.1,
+    "solution": "Ausschussquote = (7/140) · 100 = 5,0 %.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    }
+  },
+  {
+    "id": "mtp-e-11-mittelwert",
+    "prompt": "Messwerte: 25,01 mm; 25,03 mm; 24,98 mm. Berechne den arithmetischen Mittelwert (auf 0,01 mm gerundet).",
+    "answer": {
+      "value": 25.01,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Mittelwert = (25,01 + 25,03 + 24,98) / 3 = 25,0067 mm, gerundet 25,01 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  },
+  {
+    "id": "mtp-e-12-spannweite",
+    "prompt": "Messwerte: 30,02 mm; 29,98 mm; 30,01 mm; 29,99 mm. Wie groß ist die Spannweite?",
+    "answer": {
+      "value": 0.04,
+      "unit": "mm"
+    },
+    "tolerance": 0.005,
+    "solution": "Spannweite = größter Wert - kleinster Wert = 30,02 - 29,98 = 0,04 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    }
+  }
+]

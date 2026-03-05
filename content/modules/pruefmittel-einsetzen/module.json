@@ -1,0 +1,34 @@
+{
+  "id": "pruefmittel-einsetzen",
+  "title": "Prüfmittel auswählen und einsetzen",
+  "description": "Prüfmittel passend auswählen, richtig anwenden und dokumentieren.",
+  "difficulty": "medium",
+  "tags": [
+    "Prüfmittel",
+    "Messmittel",
+    "Qualität"
+  ],
+  "estimatedMinutes": 40,
+  "intro": {
+    "why": "In der Prüfung wird nicht nur geprüft, ob du ein Prüfmittel bedienen kannst, sondern ob du für eine konkrete Prüfaufgabe das richtige Prüfmittel auswählst und fachlich korrekt einsetzt. Bewertet wird, ob du Mess- und Prüfmittel zweckmäßig verwendest, Prüfergebnisse sicher beurteilst und nachvollziehbar dokumentierst. Punktverluste entstehen häufig, wenn Prüfmittel falsch gewählt, unsachgemäß angewendet oder Ergebnisse nicht eindeutig bewertet werden.",
+    "trains": [
+      "Geeignete Prüf- und Messmittel für Maß, Genauigkeit und Prüfaufgabe auswählen",
+      "Prüfmittel fachgerecht einsetzen und typische Anwendungsfehler vermeiden",
+      "Prüfergebnisse korrekt erfassen, bewerten und dokumentieren",
+      "Zusammenhang zwischen Prüfmittel, Messgenauigkeit und Prüfergebnis verstehen"
+    ],
+    "traps": [
+      "Ungeeignetes Prüfmittel wählen (z. B. zu geringe Genauigkeit)",
+      "Prüfmittel falsch ansetzen oder unsachgemäß bedienen",
+      "Mess- und Prüfergebnisse ohne klare Bewertung dokumentieren",
+      "Einfluss von Messunsicherheit und Handhabung nicht berücksichtigen"
+    ]
+  },
+  "files": {
+    "explanation": "explanation.md",
+    "example": "example.md",
+    "practiceQuestions": "questions.practice.json",
+    "examQuestions": "questions.exam.json"
+  },
+  "kind": "learn"
+}

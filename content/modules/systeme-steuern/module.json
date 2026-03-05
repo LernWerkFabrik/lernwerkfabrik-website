@@ -1,0 +1,35 @@
+{
+  "id": "systeme-steuern",
+  "title": "Technische Systeme steuern und überwachen",
+  "description": "Steuerungstechnik anwenden, Zustände bewerten und Störungen systematisch eingrenzen.",
+  "difficulty": "medium",
+  "tags": [
+    "Steuerungstechnik",
+    "Überwachung",
+    "Diagnose"
+  ],
+  "estimatedMinutes": 45,
+  "intro": {
+    "why": "In Prüfungsaufgaben wird bewertet, ob du technische Systeme nicht nur bedienst, sondern den Ablauf fachlich steuern, überwachen und bei Abweichungen korrekt bewerten kannst. Typisch sind Aufgaben zu Grundstellung, Startbedingungen, Signalverknüpfungen und reproduzierbarer Störungseingrenzung. Punktverluste entstehen häufig, wenn Soll-/Ist-Vergleiche fehlen oder Ursachen nicht über die Signalkette abgesichert werden.",
+    "trains": [
+      "Steuern, Regeln und Überwachen fachlich sauber unterscheiden",
+      "Grundstellung, Startbedingungen und Prozessfolge sicher bewerten",
+      "Signal- und Funktionskette von Sensorik über Logik bis Aktorik nachvollziehen",
+      "Abweichungen mit Nachweis eingrenzen, Maßnahme durchführen und dokumentiert freigeben"
+    ],
+    "traps": [
+      "Steuern und Regeln ungenau oder gleichbedeutend verwenden",
+      "Grundstellung nur teilweise prüfen",
+      "Abweichungen ohne Sollwert, Einheit oder Grenzwert bewerten",
+      "Maßnahme ohne Wirksamkeitsnachweis abschließen"
+    ]
+  },
+  "files": {
+    "explanation": "explanation.md",
+    "symbols": "symbols.md",
+    "example": "example.md",
+    "practiceQuestions": "questions.practice.json",
+    "examQuestions": "questions.exam.json"
+  },
+  "kind": "learn"
+}

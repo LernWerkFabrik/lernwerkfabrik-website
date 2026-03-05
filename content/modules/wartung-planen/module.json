@@ -1,0 +1,35 @@
+{
+  "id": "wartung-planen",
+  "title": "Wartungsarbeiten planen und durchführen",
+  "description": "Wartung systematisch planen, durchführen, prüfen und dokumentieren.",
+  "difficulty": "medium",
+  "tags": [
+    "Wartung",
+    "Instandhaltung",
+    "Betriebsbereitschaft"
+  ],
+  "estimatedMinutes": 45,
+  "intro": {
+    "why": "In der Prüfung wird bei Wartungsarbeiten nicht nur abgefragt, ob einzelne Handgriffe bekannt sind. Entscheidend ist, ob du Wartung strukturiert vorbereitest, sicher durchführst, das Ergebnis fachlich bewertest und nachvollziehbar dokumentierst. Punktverluste entstehen oft durch fehlende Reihenfolge, unklare Abgrenzung zur Instandsetzung oder unvollständige Funktionsprüfung.",
+    "trains": [
+      "Wartungsbedarf und Wartungsumfang aus Unterlagen und Betriebszustand ableiten",
+      "Wartungsarbeiten sicher und in sinnvoller Reihenfolge planen und durchführen",
+      "Schmier- und Betriebsstoffe fachgerecht auswählen, anwenden und entsorgen",
+      "Probelauf, Ergebnisbewertung und Dokumentation prüfungstauglich abschließen"
+    ],
+    "traps": [
+      "Wartung, Inspektion und Instandsetzung nicht klar unterscheiden",
+      "Sicherheits- und Umweltschutzmaßnahmen zu spät oder unvollständig einplanen",
+      "Wartung ohne eindeutigen Soll/Ist-Nachweis als abgeschlossen bewerten",
+      "Dokumentation nur stichwortartig statt nachvollziehbar und prüfbar erstellen"
+    ]
+  },
+  "files": {
+    "explanation": "explanation.md",
+    "workflow": "workflow.md",
+    "example": "example.md",
+    "practiceQuestions": "questions.practice.json",
+    "examQuestions": "questions.exam.json"
+  },
+  "kind": "learn"
+}

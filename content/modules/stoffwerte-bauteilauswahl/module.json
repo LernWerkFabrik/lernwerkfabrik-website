@@ -1,0 +1,34 @@
+{
+  "id": "stoffwerte-bauteilauswahl",
+  "title": "Stoffwerte zur Bauteilauswahl nutzen",
+  "description": "Dichte, Masse, Volumen und Stoffwerte zur Bauteil- und Materialentscheidung nutzen.",
+  "difficulty": "easy",
+  "tags": [
+    "Werkstoffe",
+    "Stoffwerte",
+    "Dichte"
+  ],
+  "estimatedMinutes": 35,
+  "intro": {
+    "why": "In der Prüfung werden Stoffwerte nicht isoliert abgefragt, sondern als Entscheidungsgrundlage für Bauteile und Werkstoffe. Die IHK bewertet, ob du aus gegebenen Stoffwerten wie Dichte, Masse und Volumen fachlich richtige Schlüsse ziehst und diese begründen kannst. Punktverluste entstehen häufig, wenn Formeln zwar bekannt sind, Ergebnisse aber nicht richtig interpretiert oder nicht mit der technischen Aufgabenstellung verknüpft werden.",
+    "trains": [
+      "Zusammenhang zwischen Dichte, Masse und Volumen sicher anwenden",
+      "Stoffwerte aus Tabellen korrekt entnehmen und vergleichen",
+      "Materialentscheidungen fachlich begründen (z. B. Gewicht, Belastung, Einsatzbereich)",
+      "Rechenergebnisse technisch einordnen und bewerten"
+    ],
+    "traps": [
+      "Formeln anwenden, ohne die Bedeutung der Größen zu verstehen",
+      "Einheiten verwechseln oder falsch umrechnen",
+      "Stoffwerte vergleichen, ohne Bezug zur Aufgabenstellung herzustellen",
+      "Ergebnisse rechnerisch korrekt, aber technisch unplausibel übernehmen"
+    ]
+  },
+  "files": {
+    "explanation": "explanation.md",
+    "example": "example.md",
+    "practiceQuestions": "questions.practice.json",
+    "examQuestions": "questions.exam.json"
+  },
+  "kind": "learn"
+}

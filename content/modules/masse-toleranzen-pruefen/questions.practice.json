@@ -1,0 +1,614 @@
+[
+  {
+    "id": "mtp-01-toleranzbegriff",
+    "type": "single_choice",
+    "prompt": "Was beschreibt eine Maßtoleranz?",
+    "answer": {
+      "choices": [
+        "Die Reihenfolge der Fertigungsschritte",
+        "Den zulässigen Maßbereich um ein Nennmaß",
+        "Nur das größte zulässige Maß",
+        "Die Oberflächenfarbe des Bauteils"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "mtp-02-vorbereitung-messung",
+    "type": "multi_select",
+    "prompt": "Welche Punkte gehören zur Vorbereitung einer Messaufgabe? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Zeichnungsmaß und Toleranz prüfen",
+        "Prüfmittel auf Einsatzfähigkeit prüfen",
+        "Messflächen reinigen",
+        "Werkstückfarbe dokumentieren",
+        "Prüfstrategie festlegen"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "mtp-03-grundablauf-pruefung",
+    "type": "order",
+    "prompt": "Ordne den Grundablauf einer Maßprüfung.",
+    "items": [
+      "Sollmaß und Toleranz aus der Zeichnung lesen",
+      "Passendes Prüfmittel auswählen",
+      "Messung durchführen",
+      "Messwert mit Grenzmaßen vergleichen",
+      "i. O./n. i. O. dokumentieren"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "mtp-04-pruefmittel-enge-aussenmasse",
+    "type": "single_choice",
+    "prompt": "Welches Prüfmittel ist für enge Außenmaße am besten geeignet?",
+    "answer": {
+      "choices": [
+        "Meterstab",
+        "Bügelmessschraube",
+        "Stahllineal",
+        "Anschlagwinkel"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "mtp-05-io-bedeutung",
+    "type": "single_choice",
+    "prompt": "Wann ist ein Maß als i. O. zu bewerten?",
+    "answer": {
+      "choices": [
+        "Wenn der Messwert exakt dem Nennmaß entspricht",
+        "Wenn der Messwert innerhalb der Grenzmaße liegt",
+        "Wenn der Messwert größer als das obere Grenzmaß ist",
+        "Wenn kein Prüfmittel angegeben wurde"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "mtp-06-messfehler-klassisch",
+    "type": "multi_select",
+    "prompt": "Welche Punkte sind typische Ursachen für Messfehler? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Grat oder Schmutz an der Messstelle",
+        "Verkantetes Ansetzen",
+        "Falscher Messdruck",
+        "Sauber kalibriertes Prüfmittel",
+        "Großer Temperaturunterschied"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "mtp-07-iso-2768",
+    "type": "single_choice",
+    "prompt": "Wofür steht eine allgemeine Toleranzangabe wie ISO 2768-m?",
+    "answer": {
+      "choices": [
+        "Für Gewindegrößen",
+        "Für allgemeine Maße ohne Einzeltoleranz",
+        "Nur für Schweißnähte",
+        "Nur für Oberflächenangaben"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "mtp-08-h7-prozess",
+    "type": "single_choice",
+    "prompt": "Warum wird eine H7-Bohrung häufig mit Vorbohren und Reiben hergestellt?",
+    "answer": {
+      "choices": [
+        "Um Gewinde direkt mitzubohren",
+        "Um enge Maß- und Formanforderungen sicher zu erreichen",
+        "Um den Arbeitsablauf zufällig zu variieren",
+        "Weil Reiben nur die Oberfläche färbt"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "mtp-09-oberes-grenzmass",
+    "prompt": "Nennmaß 40,00 mm mit Toleranz ±0,05 mm. Wie groß ist das obere Grenzmaß?",
+    "answer": {
+      "value": 40.05,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Oberes Grenzmaß = 40,00 + 0,05 = 40,05 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "mtp-10-unteres-grenzmass",
+    "prompt": "Nennmaß 40,00 mm mit Toleranz ±0,05 mm. Wie groß ist das untere Grenzmaß?",
+    "answer": {
+      "value": 39.95,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Unteres Grenzmaß = 40,00 - 0,05 = 39,95 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "mtp-11-toleranzbreite",
+    "prompt": "Wie groß ist die gesamte Toleranzbreite bei ±0,05 mm?",
+    "answer": {
+      "value": 0.1,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Toleranzbreite = 2 · 0,05 mm = 0,10 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "mtp-12-pruefurteil-einfach",
+    "type": "single_choice",
+    "prompt": "Sollmaß 40,00 ±0,05 mm, Messwert 39,94 mm. Wie lautet das Prüfurteil?",
+    "answer": {
+      "choices": [
+        "i. O.",
+        "n. i. O., zu klein",
+        "n. i. O., zu groß",
+        "Nicht bewertbar"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "mtp-13-pruefmittel-h7",
+    "type": "single_choice",
+    "prompt": "Welches Prüfmittel ist für die Beurteilung einer 12H7-Bohrung besonders geeignet?",
+    "answer": {
+      "choices": [
+        "Stahllineal",
+        "Grenzlehrdorn",
+        "Winkelmesser",
+        "Federwaage"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "mtp-14-ueber-oberes-grenzmass",
+    "prompt": "Sollmaß 40,00 ±0,03 mm, Messwert 40,06 mm. Um wie viel mm liegt der Messwert über dem oberen Grenzmaß?",
+    "answer": {
+      "value": 0.03,
+      "unit": "mm"
+    },
+    "tolerance": 0.005,
+    "solution": "Oberes Grenzmaß = 40,03 mm. Abweichung = 40,06 - 40,03 = 0,03 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 3
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "mtp-15-reibaufmass",
+    "prompt": "Vorbohrung 11,82 mm, Endmaß 12,00 mm (Reiben). Wie groß ist das Reibaufmaß?",
+    "answer": {
+      "value": 0.18,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Reibaufmaß = 12,00 - 11,82 = 0,18 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "mtp-16-pruefprotokoll-inhalt",
+    "type": "multi_select",
+    "prompt": "Welche Angaben gehören in ein vollständiges Prüfprotokoll? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Sollmaß und Toleranz",
+        "Istwert",
+        "Verwendetes Prüfmittel",
+        "i. O./n. i. O.-Bewertung",
+        "Beliebige Notizen ohne Prüfbezug"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "mtp-17-messschraube-ablauf",
+    "type": "order",
+    "prompt": "Ordne die Schritte für eine saubere Messung mit der Bügelmessschraube.",
+    "items": [
+      "Messflächen reinigen",
+      "Bügelmessschraube auf Null prüfen",
+      "Werkstück mit kontrolliertem Messdruck messen",
+      "Messwert ablesen und notieren",
+      "Mit Grenzmaßen vergleichen und beurteilen"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "mtp-18-passungsart-einordnen",
+    "type": "single_choice",
+    "prompt": "Bohrung 20,000 bis 20,018 mm und Welle 19,990 bis 19,998 mm. Welche Passungsart liegt vor?",
+    "answer": {
+      "choices": [
+        "Spielpassung",
+        "Übergangspassung",
+        "Übermaßpassung",
+        "Nicht bestimmbar"
+      ],
+      "correctIndex": 0
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "mtp-19-minimales-spiel",
+    "prompt": "Bohrung 30,000 bis 30,021 mm, Welle 29,992 bis 30,000 mm. Wie groß ist das minimale Spiel?",
+    "answer": {
+      "value": 0,
+      "unit": "mm"
+    },
+    "tolerance": 0.005,
+    "solution": "Minimales Spiel = Bohrung min - Welle max = 30,000 - 30,000 = 0,000 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 3
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "mtp-20-maximales-uebermass",
+    "prompt": "Bohrung 25,980 bis 26,000 mm, Welle 25,995 bis 26,012 mm. Wie groß ist das maximale Übermaß?",
+    "answer": {
+      "value": 0.032,
+      "unit": "mm"
+    },
+    "tolerance": 0.005,
+    "solution": "Maximales Übermaß = Welle max - Bohrung min = 26,012 - 25,980 = 0,032 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 3
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "mtp-21-systematische-einfluesse",
+    "type": "multi_select",
+    "prompt": "Welche Einflüsse können eine Messreihe systematisch verfälschen? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Nullpunktfehler am Prüfmittel",
+        "Dauerhaft falscher Messdruck",
+        "Konstante Temperaturabweichung",
+        "Ein einmaliger Ablesefehler",
+        "Wiederholte Messung mit ungeeignetem Prüfmittel"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "mtp-22-grenzfall-strategie",
+    "type": "single_choice",
+    "prompt": "Mehrere Messwerte liegen sehr nah am oberen Grenzmaß. Wie gehst du fachlich richtig vor?",
+    "answer": {
+      "choices": [
+        "Messung ignorieren, solange das Teil montierbar ist",
+        "Mit geeignetem Prüfmittel gegenmessen und Ergebnis dokumentieren",
+        "Sofort alle Teile als Ausschuss bewerten",
+        "Nur das Nennmaß ohne Toleranz vergleichen"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "mtp-23-structured-pruefplan",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (4-6 Sätze): Erstelle einen Prüfplan für ein Bauteil mit Außenmaß 40,00 ±0,03 mm, Bohrung 12H7 und Gewinde M8.",
+    "answer": {
+      "fields": [
+        {
+          "key": "ablauf",
+          "label": "Ablauf",
+          "minWords": 12
+        },
+        {
+          "key": "pruefmittel",
+          "label": "Prüfmittel",
+          "minWords": 12
+        },
+        {
+          "key": "dokumentation",
+          "label": "Dokumentation",
+          "minWords": 10
+        }
+      ],
+      "keywords": {
+        "ablauf": [
+          "zeichnung",
+          "sollmaß",
+          "grenzmaß",
+          "grenzmass",
+          "reihenfolge",
+          "prüfung",
+          "pruefung"
+        ],
+        "pruefmittel": [
+          "bügelmessschraube",
+          "buegelmessschraube",
+          "grenzlehrdorn",
+          "gewindelehre",
+          "prüfmittel",
+          "pruefmittel"
+        ],
+        "dokumentation": [
+          "istwert",
+          "i. o.",
+          "n. i. o.",
+          "protokoll",
+          "datum",
+          "prüfer",
+          "pruefer"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 38
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Prüfmerkmale aus der Zeichnung priorisieren",
+        "Zu jedem Merkmal ein geeignetes Prüfmittel zuordnen",
+        "Grenzmaßvergleich und i. O./n. i. O.-Regel festlegen",
+        "Dokumentation für Rückverfolgbarkeit vollständig beschreiben"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "mtp-24-structured-abweichung",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (4-6 Sätze): Bei einem Sollmaß 32,00 ±0,04 mm wurden 32,07 mm gemessen. Beschreibe Bewertung, Ursachenanalyse und Korrekturmaßnahmen.",
+    "answer": {
+      "fields": [
+        {
+          "key": "bewertung",
+          "label": "Bewertung",
+          "minWords": 12
+        },
+        {
+          "key": "ursachen",
+          "label": "Ursachen",
+          "minWords": 12
+        },
+        {
+          "key": "massnahmen",
+          "label": "Maßnahmen",
+          "minWords": 12
+        }
+      ],
+      "keywords": {
+        "bewertung": [
+          "oberes grenzmaß",
+          "oberes grenzmass",
+          "abweichung",
+          "n. i. o.",
+          "vergleich"
+        ],
+        "ursachen": [
+          "messfehler",
+          "werkzeugverschleiß",
+          "werkzeugverschleiss",
+          "spannung",
+          "temperatur",
+          "prozess"
+        ],
+        "massnahmen": [
+          "nachstellen",
+          "gegenmessen",
+          "prüfmittel",
+          "pruefmittel",
+          "zwischenprüfung",
+          "zwischenpruefung",
+          "dokumentieren"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 40
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Grenzmaßvergleich rechnerisch und verbal klar darstellen",
+        "Technische und messtechnische Ursachen trennen",
+        "Korrektur im Prozess und erneute Prüfung festlegen",
+        "Wirksamkeit über Dokumentation und Nachmessung absichern"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "mtp-25-structured-serie",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (5-7 Sätze): Für eine Serie mit 300 Teilen sollen ein Maß ±0,02 mm und eine Bohrung 10H7 sicher eingehalten werden. Beschreibe Fertigungs- und Prüfstrategie.",
+    "answer": {
+      "fields": [
+        {
+          "key": "strategie",
+          "label": "Strategie",
+          "minWords": 12
+        },
+        {
+          "key": "wirtschaftlichkeit",
+          "label": "Wirtschaftlichkeit",
+          "minWords": 12
+        },
+        {
+          "key": "qualitaet",
+          "label": "Qualitätssicherung",
+          "minWords": 12
+        }
+      ],
+      "keywords": {
+        "strategie": [
+          "prozessfolge",
+          "vorbohren",
+          "reiben",
+          "stabil",
+          "bezug"
+        ],
+        "wirtschaftlichkeit": [
+          "rüstzeit",
+          "ruestzeit",
+          "ausschuss",
+          "kosten",
+          "standzeit",
+          "serie"
+        ],
+        "qualitaet": [
+          "prüfplan",
+          "pruefplan",
+          "stichprobe",
+          "grenzlehrdorn",
+          "messmittelüberwachung",
+          "messmittelueberwachung",
+          "dokumentation"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 42
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Fertigungsablauf auf enge Toleranzen auslegen",
+        "Prüffrequenz und Prüfmittel für Serie festlegen",
+        "Wirtschaftlichkeit und Qualitätsziel gemeinsam betrachten",
+        "Abweichungen früh erkennen und systematisch gegensteuern"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  }
+]

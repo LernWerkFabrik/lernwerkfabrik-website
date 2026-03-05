@@ -1,0 +1,647 @@
+[
+  {
+    "id": "ms-01-schadensbegriff",
+    "type": "single_choice",
+    "prompt": "Was beschreibt einen mechanischen Schaden am treffendsten?",
+    "answer": {
+      "choices": [
+        "Jede farbliche Veränderung an einem Bauteil ohne Einfluss auf die Funktion",
+        "Eine durch Belastung oder Reibung verursachte Beeinträchtigung von Form, Oberfläche oder Funktion",
+        "Ausschließlich ein elektrischer Fehler in der Steuerung",
+        "Nur ein Schaden, der bereits zum Totalausfall geführt hat"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "ms-02-typische-merkmale",
+    "type": "multi_select",
+    "prompt": "Welche Beobachtungen sind typische mechanische Schadensmerkmale? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Riefen auf Lauf- oder Gleitflächen",
+        "Plastisch gestauchte Kanten",
+        "Risse an Kerb- oder Übergangsstellen",
+        "Gleichmäßig glatte, unveränderte Funktionsflächen",
+        "Ausbrüche an Zahnflanken"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "ms-03-riefen-ursache",
+    "type": "single_choice",
+    "prompt": "Welche Ursache führt auf Gleitflächen besonders häufig zu Riefenbildung?",
+    "answer": {
+      "choices": [
+        "Zu kurze Besprechung vor Schichtbeginn",
+        "Abrasive Partikel im Schmierstoff",
+        "Niedrige Hallenbeleuchtung",
+        "Fehlende Unterschrift im Prüfprotokoll"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "ms-04-ueberlast-hinweis",
+    "type": "single_choice",
+    "prompt": "Welcher Befund deutet bei einer Welle am ehesten auf mechanische Überlastung hin?",
+    "answer": {
+      "choices": [
+        "Bleibende Biegung außerhalb der Sollgeometrie",
+        "Gleichmäßiger Schmierfilm ohne Auffälligkeit",
+        "Unveränderte Maßhaltigkeit an allen Stellen",
+        "Ruhiger Lauf ohne zusätzliche Vibration"
+      ],
+      "correctIndex": 0
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "ms-05-grundablauf-beurteilung",
+    "type": "order",
+    "prompt": "Ordne den Grundablauf einer fachgerechten Schadensbeurteilung.",
+    "items": [
+      "Schadensstelle sichern und Betriebszustand festhalten",
+      "Schadensbild/Befund dokumentieren",
+      "Ursache eingrenzen",
+      "Auswirkung auf Funktion und Sicherheit bewerten",
+      "Maßnahme festlegen und umsetzen",
+      "Wirksamkeit prüfen und dokumentieren"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "ms-06-anlauffarben",
+    "type": "single_choice",
+    "prompt": "Was bedeuten Anlauffarben an einem Lagerbauteil meist?",
+    "answer": {
+      "choices": [
+        "Hinweis auf thermische Überlastung, oft mit Schmierproblem",
+        "Eindeutiger Nachweis für korrekte Montage",
+        "Nur optischer Effekt ohne technische Bedeutung",
+        "Beleg für einen vollständig behobenen Schaden"
+      ],
+      "correctIndex": 0
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "ms-07-riss-sofortmassnahmen",
+    "type": "multi_select",
+    "prompt": "Bei Verdacht auf einen sicherheitsrelevanten Riss: Welche Sofortmaßnahmen sind korrekt? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Anlage in sicheren Zustand bringen bzw. stillsetzen",
+        "Riss markieren, überlackieren und zunächst weiterfahren",
+        "Schadensbereich kennzeichnen und dokumentieren",
+        "Lastzustände und Prozessdaten zum Schadenszeitpunkt sichern",
+        "Bruchstück entsorgen, damit der Arbeitsplatz sauber bleibt"
+      ],
+      "correctIndices": [
+        0,
+        2,
+        3
+      ]
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "ms-08-risspruefung",
+    "type": "single_choice",
+    "prompt": "Welches Verfahren ist zum Sichtbarmachen feiner Oberflächenrisse am ausgebauten Metallteil am besten geeignet?",
+    "answer": {
+      "choices": [
+        "Messschieberprüfung",
+        "Farbeindringprüfung",
+        "Messung mit Stahlmaßstab",
+        "Prüfung mit Radiuslehre"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 1
+    }
+  },
+  {
+    "id": "ms-09-zahnflanke-pitting",
+    "type": "single_choice",
+    "prompt": "An Zahnflanken zeigen sich viele kleine punktförmige Ausbrüche. Welches Schadensbild liegt am ehesten vor?",
+    "answer": {
+      "choices": [
+        "Grübchenbildung (Pitting)",
+        "Nur plastische Stauchung ohne Materialausbruch",
+        "Reine Lackschädigung",
+        "Temperaturbedingte Anlassfarbe ohne Oberflächenschaden"
+      ],
+      "correctIndex": 0
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "ms-10-pitting-ursachen",
+    "type": "multi_select",
+    "prompt": "Welche Ursachen begünstigen Pitting an stark belasteten Kontaktflächen? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Zu hohe Flächenpressung",
+        "Unzureichende Schmierung",
+        "Fluchtungs- oder Lagerungsfehler",
+        "Dauerhaft reduzierte Lasten unter Sollbetrieb",
+        "Materialermüdung der Randzone"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "ms-11-ausbau-reihenfolge",
+    "type": "order",
+    "prompt": "Ordne den fachgerechten Ablauf für den Ausbau einer verdächtigen Antriebswelle.",
+    "items": [
+      "Arbeitsfreigabe prüfen und Energiequellen sichern",
+      "Medium kontrolliert ablassen",
+      "Einbaulage und Distanzteile markieren",
+      "Sicherungen und Verbindungselemente lösen",
+      "Welle spannungsarm ausbauen und kennzeichnen",
+      "Befund für die Schadensanalyse dokumentieren"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "ms-12-befund-vs-ursache",
+    "type": "single_choice",
+    "prompt": "Welche Aussage trennt Befund und Ursache fachlich korrekt?",
+    "answer": {
+      "choices": [
+        "Befund: Lager verschlissen. Ursache: Geräusch ist hörbar.",
+        "Befund: periodisches Geräusch und Laufspuren. Ursache: Mangelschmierung mit Partikeleintrag.",
+        "Befund und Ursache müssen in der Prüfung nicht getrennt werden.",
+        "Befund: Anlage steht. Ursache: damit automatisch i. O."
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "ms-13-grenzwert-ueberschreitung",
+    "prompt": "Zulässiger Rundlauf: max. 0,20 mm. Gemessen: 0,31 mm. Um wie viel ist der Grenzwert überschritten?",
+    "answer": {
+      "value": 0.11,
+      "unit": "mm"
+    },
+    "tolerance": 0.01,
+    "solution": "Überschreitung = 0,31 - 0,20 = 0,11 mm.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "ms-14-vorbeugender-austausch",
+    "type": "single_choice",
+    "prompt": "Ein Lager wird turnusmäßig ersetzt, obwohl es äußerlich noch unauffällig ist. Welche Maßnahmeart trifft am ehesten zu?",
+    "answer": {
+      "choices": [
+        "Vorbeugende Instandsetzung",
+        "Reine Inspektion",
+        "Ausfallbedingte Instandsetzung",
+        "Ungeplante Sofortreparatur"
+      ],
+      "correctIndex": 0
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "ms-15-probelauf-merkmale",
+    "type": "multi_select",
+    "prompt": "Welche Merkmale deuten beim Probelauf auf nicht ordnungsgemäße Montage oder verbleibenden Schaden hin? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Zunehmende Laufgeräusche",
+        "Lokaler Temperaturanstieg an Lagerstelle",
+        "Leckage an Dichtstelle",
+        "Ruhiger Lauf ohne Auffälligkeit",
+        "Ungewöhnliche Vibrationen"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "ms-16-ermuedungsbruch",
+    "type": "single_choice",
+    "prompt": "Welcher Bruchbefund spricht typischerweise für einen Ermüdungsbruch?",
+    "answer": {
+      "choices": [
+        "Nur plastische Dehnung ohne Bruchfläche",
+        "Anrisszone mit Rastlinien und anschließendem Restbruch",
+        "Durchgehend gleichmäßige Politur ohne Anriss",
+        "Ausschließlich farbliche Veränderung durch Öl"
+      ],
+      "correctIndex": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "ms-17-schwingungsanstieg",
+    "prompt": "Die Schwinggeschwindigkeit steigt von 1,2 mm/s auf 2,1 mm/s. Wie groß ist der Anstieg in Prozent?",
+    "answer": {
+      "value": 75,
+      "unit": "%"
+    },
+    "tolerance": 0.5,
+    "solution": "Anstieg = (2,1 - 1,2) / 1,2 * 100 = 75 %.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 1
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "ms-18-protokoll-inhalte",
+    "type": "multi_select",
+    "prompt": "Welche Angaben gehören in ein prüfungstaugliches Schadensprotokoll? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Anlage/Baugruppe und Position des betroffenen Bauteils",
+        "Konkretes Schadensbild mit Mess- oder Sichtbefund",
+        "Abgeleitete Ursache mit technischer Begründung",
+        "Durchgeführte Maßnahme und Prüfergebnis",
+        "Übergabezustand (i. O./n. i. O.)",
+        "Persönliche Meinung ohne technischen Bezug"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 2
+    }
+  },
+  {
+    "id": "ms-19-lagerbefund-hauptursache",
+    "type": "single_choice",
+    "prompt": "Befund: Riefen auf der Laufbahn, dunkle Laufspuren und Metallpartikel im Fett. Welche Hauptursache ist am wahrscheinlichsten?",
+    "answer": {
+      "choices": [
+        "Abrasive Verunreinigung kombiniert mit Schmierstoffversagen",
+        "Ausschließlich zu niedrige Hallentemperatur",
+        "Fehlende Zeiterfassung im Instandhaltungsauftrag",
+        "Fehlende Beschriftung am Ersatzteillager"
+      ],
+      "correctIndex": 0
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "ms-20-ausfallkosten",
+    "prompt": "Eine Anlage steht wegen Lagerschaden 2 h 45 min. Die Ausfallkosten betragen 95 EUR pro Stunde. Wie hoch sind die Ausfallkosten?",
+    "answer": {
+      "value": 261.25,
+      "unit": "EUR"
+    },
+    "tolerance": 1,
+    "solution": "2 h 45 min = 2,75 h. Kosten = 2,75 * 95 = 261,25 EUR.",
+    "input": {
+      "mode": "decimal",
+      "maxDecimals": 2
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "ms-21-ursachenkette-order",
+    "type": "order",
+    "prompt": "Ordne die Schritte einer systematischen Schadensanalyse.",
+    "items": [
+      "Symptom im Betrieb erfassen",
+      "Mess- und Sichtbefund aufnehmen",
+      "Mögliche Ursachen eingrenzen und verifizieren",
+      "Korrekturmaßnahme auswählen und umsetzen",
+      "Wirksamkeit im Probelauf nachweisen",
+      "Ergebnis dokumentieren und übergeben"
+    ],
+    "answer": {
+      "correctOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "ms-22-wiederholung-vermeiden",
+    "type": "multi_select",
+    "prompt": "Welche Maßnahmen reduzieren die Wiederholung von Wälzlagerschäden nachhaltig? (Mehrfachauswahl)",
+    "answer": {
+      "choices": [
+        "Schmierstoff und Wechselintervall an Lastfall anpassen",
+        "Dichtkonzept gegen Partikeleintrag verbessern",
+        "Passungen, Vorspannung und Fluchtung prüfen/korrigieren",
+        "Nur Endkontrolle dokumentieren, Ursache offen lassen",
+        "Montagepersonal mit klaren Prüfschritten anweisen"
+      ],
+      "correctIndices": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "meta": {
+      "difficulty": 3
+    }
+  },
+  {
+    "id": "ms-23-structured-erstbeurteilung",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (6-8 Sätze): Beim Probelauf eines Schneckenradgetriebes treten periodische Geräusche, Temperaturanstieg am Lagerdeckel und leichte Leckage auf. Beschreibe deine fachliche Erstbeurteilung.",
+    "answer": {
+      "fields": [
+        {
+          "key": "befund",
+          "label": "Befund und Bewertung",
+          "minWords": 22,
+          "placeholder": "Welche Merkmale treten auf und warum sind sie kritisch?"
+        },
+        {
+          "key": "ursache",
+          "label": "Wahrscheinliche Ursache",
+          "minWords": 20,
+          "placeholder": "Leite technisch plausible Ursachen aus dem Befund ab."
+        },
+        {
+          "key": "sofort",
+          "label": "Sofortmaßnahmen",
+          "minWords": 20,
+          "placeholder": "Welche Schritte leitest du unmittelbar ein?"
+        }
+      ],
+      "keywords": {
+        "befund": [
+          "geraeusch",
+          "temperatur",
+          "leckage",
+          "sicherheit",
+          "n.i.o.",
+          "risiko"
+        ],
+        "ursache": [
+          "mangelschmierung",
+          "passung",
+          "fluchtung",
+          "montage",
+          "verschleiss",
+          "partikel"
+        ],
+        "sofort": [
+          "stillsetzen",
+          "sichern",
+          "dokumentieren",
+          "eingrenzen",
+          "pruefen",
+          "freigabe"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 72
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Befund mit konkreten Merkmalen benennen",
+        "Technisch plausible Hauptursache ableiten",
+        "Sicherheitsbewertung und Sofortmaßnahme festlegen",
+        "Weiteres Vorgehen zur Verifikation kurz nennen"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "ms-24-structured-ausbauplan",
+    "type": "structured_text",
+    "prompt": "Kurzantwort (6-8 Sätze): Erstelle einen Arbeitsplan für den Ausbau einer verdächtigen Antriebswelle und die anschließende Schadensanalyse.",
+    "answer": {
+      "fields": [
+        {
+          "key": "sicherung",
+          "label": "Arbeitssicherheit und Vorbereitung",
+          "minWords": 20,
+          "placeholder": "Freigabe, Energiequellen, Sicherung, Kennzeichnung"
+        },
+        {
+          "key": "demontage",
+          "label": "Ausbau und Kennzeichnung",
+          "minWords": 22,
+          "placeholder": "Reihenfolge der Demontage und Umgang mit Bauteilen"
+        },
+        {
+          "key": "pruefung",
+          "label": "Schadensanalyse und Dokumentation",
+          "minWords": 20,
+          "placeholder": "Befundaufnahme, Prüfschritte, Protokoll"
+        }
+      ],
+      "keywords": {
+        "sicherung": [
+          "freigabe",
+          "abschalten",
+          "sichern",
+          "kennzeichnen",
+          "schutz",
+          "arbeitsplatz"
+        ],
+        "demontage": [
+          "markieren",
+          "loesen",
+          "spannungsarm",
+          "ausbauen",
+          "distanzteile",
+          "lagerung"
+        ],
+        "pruefung": [
+          "sichtpruefung",
+          "messung",
+          "befund",
+          "ursache",
+          "protokoll",
+          "bewertung"
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 72
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Sicherheits- und Freigabeschritte zuerst nennen",
+        "Demontagefolge logisch und bauteilschonend beschreiben",
+        "Prüf- und Dokumentationsschritte ergänzen",
+        "Übergang zur Maßnahmenentscheidung darstellen"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  },
+  {
+    "id": "ms-25-structured-abschluss",
+    "type": "structured_text",
+    "prompt": "Abschlussaufgabe (7-9 Sätze): Nach Lager- und Wellentausch läuft die Anlage zunächst 15 Minuten ruhig, danach treten erneut Vibrationen auf. Beschreibe dein weiteres Vorgehen bis zur Übergabe.",
+    "answer": {
+      "fields": [
+        {
+          "key": "analyse",
+          "label": "Erneute Analyse",
+          "minWords": 22,
+          "placeholder": "Welche Daten/Befunde prüfst du jetzt gezielt?"
+        },
+        {
+          "key": "entscheidung",
+          "label": "Entscheidung und Nacharbeit",
+          "minWords": 22,
+          "placeholder": "Welche fachliche Entscheidung triffst du und warum?"
+        },
+        {
+          "key": "abschluss",
+          "label": "Wirksamkeitsnachweis und Übergabe",
+          "minWords": 20,
+          "placeholder": "Wie sicherst du die Freigabe dokumentiert ab?"
+        }
+      ],
+      "keywords": {
+        "analyse": [
+          "schwingung",
+          "messung",
+          "vergleich",
+          "ursache",
+          "fluchtung",
+          "befund"
+        ],
+        "entscheidung": [
+          "nacharbeit",
+          "korrigieren",
+          "freigabe",
+          "risiko",
+          "begruenden",
+          "massnahme"
+        ],
+        "abschluss": [
+          "probelauf",
+          "soll",
+          "ist",
+          "dokumentation",
+          "uebergabe",
+          "i.o."
+        ]
+      }
+    },
+    "grading": {
+      "auto": {
+        "minWordsTotal": 75
+      }
+    },
+    "help": {
+      "solutionSteps": [
+        "Wiederkehrende Abweichung strukturiert neu erfassen",
+        "Gezielte Ursacheingrenzung statt Wiederholung derselben Maßnahme",
+        "Nacharbeit und Wirksamkeitsprüfung begründet darstellen",
+        "Übergabe nur nach dokumentiertem Nachweis"
+      ]
+    },
+    "meta": {
+      "difficulty": 4
+    }
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "id": "sicherheit-umwelt",
+  "title": "Sicherheits- und Umweltvorgaben einhalten",
+  "description": "Arbeits- und Umweltschutz im metalltechnischen Alltag sicher umsetzen.",
+  "difficulty": "easy",
+  "tags": [
+    "Sicherheit",
+    "Umwelt",
+    "PSA"
+  ],
+  "estimatedMinutes": 30,
+  "intro": {
+    "why": "In der Prüfung werden Sicherheits- und Umweltvorgaben nicht als Theorie abgefragt, sondern als selbstverständlicher Teil jeder Arbeitsaufgabe bewertet. Die IHK prüft, ob du Gefährdungen erkennst, geeignete Schutzmaßnahmen auswählst und Umweltvorgaben konsequent einhältst. Punktverluste entstehen häufig, wenn Sicherheit nur allgemein erwähnt wird, konkrete Maßnahmen fehlen oder Umweltaspekte nicht in den Arbeitsablauf integriert sind.",
+    "trains": [
+      "Typische Gefährdungen im metalltechnischen Arbeitsumfeld erkennen",
+      "Persönliche Schutzausrüstung situationsgerecht auswählen und begründen",
+      "Sicherheitsmaßnahmen fest in Arbeitsabläufe integrieren",
+      "Umweltvorgaben fachlich korrekt berücksichtigen (z. B. Entsorgung, Umgang mit Gefahrstoffen)"
+    ],
+    "traps": [
+      "Sicherheits- und Umweltaspekte nur pauschal nennen, ohne Bezug zur Aufgabe",
+      "Ungeeignete oder unvollständige PSA auswählen",
+      "Gefährdungen unterschätzen oder nicht klar benennen",
+      "Umweltvorgaben ignorieren oder falsch anwenden (z. B. falsche Entsorgung)"
+    ]
+  },
+  "files": {
+    "explanation": "explanation.md",
+    "example": "example.md",
+    "practiceQuestions": "questions.practice.json",
+    "examQuestions": "questions.exam.json"
+  },
+  "kind": "learn"
+}
