@@ -34,10 +34,12 @@ export default function WaitlistForm({
   source = "landing",
   className,
   buttonLabel = "Warteliste beitreten",
+  inputClassName,
 }: {
   source?: string;
   className?: string;
   buttonLabel?: string;
+  inputClassName?: string;
 }) {
   const [email, setEmail] = React.useState("");
   const [isSubmitting, setIsSubmitting] = React.useState(false);
@@ -109,7 +111,7 @@ export default function WaitlistForm({
           value={email}
           onChange={(event) => setEmail(event.target.value)}
           placeholder="name@beispiel.de"
-          className="h-11 rounded-full md:w-[20rem] md:min-w-0 md:flex-none"
+          className={cn("h-11 rounded-full md:w-[20rem] md:min-w-0 md:flex-none", inputClassName)}
           aria-label="E-Mail für Warteliste"
           pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
         />
