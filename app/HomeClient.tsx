@@ -1,6 +1,5 @@
 ﻿"use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import * as React from "react";
 import { Button } from "@/components/ui/button";
@@ -281,13 +280,6 @@ export default function HomeClient() {
                 <div className="md:hidden">
                   <div className="flex flex-col gap-2">
                     <WaitlistForm source="hero-mobile" />
-                    <Button
-                      variant="outline"
-                      asChild
-                      className="h-10 w-full rounded-full border-black/10 text-foreground/85 hover:text-foreground/90 dark:border-white/10 dark:text-foreground/72 dark:hover:border-white/14 dark:hover:text-foreground/80"
-                    >
-                      <Link href="/inhalte">Module ansehen</Link>
-                    </Button>
                   </div>
                   <div className="ml-1 mt-2.5 border-l border-border/80 pl-3 text-[0.82rem] text-foreground/80 dark:text-white/85">
                     <ul className="space-y-2.5">
@@ -447,14 +439,6 @@ export default function HomeClient() {
                     buttonLabel="Early Access sichern"
                     className="min-w-[24rem]"
                   />
-
-                  <Button
-                    variant="outline"
-                    asChild
-                    className="rounded-full border-black/12 text-foreground dark:border-white/14 dark:text-foreground/80 dark:hover:border-white/20 dark:hover:text-foreground/90"
-                  >
-                    <Link href="/inhalte">Inhalte ansehen</Link>
-                  </Button>
                 </div>
                 <p className="hidden text-center text-xs leading-tight text-muted-foreground/90 md:-mt-1.5 md:block">
                   Die Plattform startet bald. Die Warteliste ist ab sofort geöffnet.
@@ -510,16 +494,8 @@ export default function HomeClient() {
                       </div>
                     </div>
 
-                    <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
-                      <span>
-                        Problem erkannt → <span className="text-foreground">gezielt gelöst</span>.
-                      </span>
-                      <Link
-                        href="/inhalte"
-                        className="text-foreground/90 underline decoration-amber-400/40 underline-offset-4 hover:text-foreground"
-                      >
-                        Beispiele ansehen →
-                      </Link>
+                    <div className="mt-3 text-xs text-muted-foreground">
+                      Problem erkannt → <span className="text-foreground">gezielt gelöst</span>.
                     </div>
                   </div>
                 </div>
@@ -533,7 +509,7 @@ export default function HomeClient() {
                   </div>
 
                   <p className="self-center text-xs text-muted-foreground md:mt-2 md:text-center">
-                    Ohne Konto kannst du Inhalte ansehen. Zum Trainieren brauchst du ein kostenloses Konto.
+                    Du erhältst Zugriff direkt zum Launch nach Wartelisten-Freigabe.
                   </p>
                 </div>
               </div>
@@ -747,23 +723,6 @@ export default function HomeClient() {
             <SectionHeader
               title="Warum Nutzer dranbleiben"
               desc="Kurze Aussagen: Struktur, Ruhe und Auswertung - kommt das wirklich an?"
-              right={
-                <div className="max-md:self-start max-md:-translate-y-4">
-                  <Button
-                    variant="outline"
-                    asChild
-                    className="rounded-full max-md:mr-4 max-md:w-24 max-md:py-3 max-md:text-xs max-md:whitespace-normal max-md:text-center"
-                  >
-                    <Link
-                      href="/inhalte"
-                      className="max-md:flex max-md:flex-col max-md:leading-none max-md:-space-y-1"
-                    >
-                      <span>Inhalte</span>
-                      <span>ansehen</span>
-                    </Link>
-                  </Button>
-                </div>
-              }
             />
 
             <div className="grid gap-4 md:grid-cols-3">
@@ -798,9 +757,6 @@ export default function HomeClient() {
                 <p className="text-sm text-muted-foreground">
                   Wie ein Trainingssystem: erst Lernen, dann Prüfen, dann gezielt verbessern.
                 </p>
-                <Button variant="outline" asChild className="shrink-0 rounded-full max-md:h-8 max-md:px-3 max-md:text-xs">
-                  <Link href="/inhalte">Zum Katalog</Link>
-                </Button>
               </div>
             </div>
 
@@ -843,13 +799,6 @@ export default function HomeClient() {
               <div className="flex w-full flex-col gap-2 md:w-auto">
                 <div className="flex w-full flex-col gap-2 md:w-auto md:flex-row">
                   <WaitlistForm source="footer-cta" buttonLabel="Warteliste beitreten" />
-                  <Button
-                    variant="outline"
-                    asChild
-                    className="w-full rounded-full border-black/10 text-foreground/85 hover:text-foreground/90 dark:border-white/10 dark:text-foreground/72 dark:hover:border-white/14 dark:hover:text-foreground/80 md:w-auto"
-                  >
-                    <Link href="/inhalte">Zum Katalog</Link>
-                  </Button>
                 </div>
                 <div className="ml-1 border-l border-border/80 pl-3 text-[0.82rem] text-foreground/80 dark:text-white/85 md:hidden">
                   <ul className="space-y-2.5">

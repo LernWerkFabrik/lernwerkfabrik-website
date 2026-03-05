@@ -3,20 +3,12 @@
 import Link from "next/link";
 import { useMemo, useSyncExternalStore } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { ChevronLeft, Menu } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 
 import ThemeToggle from "./theme-toggle";
 import BrandLogo from "./BrandLogo";
 import { Button } from "@/components/ui/button";
 import { getPlanClient, type Plan } from "@/lib/entitlements";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
 
 function subscribeCanGoBack(onStoreChange: () => void) {
   if (typeof window === "undefined") return () => {};
@@ -60,7 +52,7 @@ export default function BrandHeader({ authed }: { authed: boolean }) {
     getCanGoBackSnapshot,
     () => false
   );
-  const plan = useSyncExternalStore<Plan>(
+  useSyncExternalStore<Plan>(
     subscribePlan,
     () => (authed ? getPlanClient() : "free"),
     () => "free"
@@ -68,7 +60,6 @@ export default function BrandHeader({ authed }: { authed: boolean }) {
 
   const homeHref = authed ? "/dashboard" : "/";
   const pageTitle = useMemo(() => getPageTitle(pathname), [pathname]);
-  const moduleId = useMemo(() => getModuleIdFromPath(pathname), [pathname]);
   const showBack = Boolean(
     pathname &&
       pathname !== "/" &&
@@ -120,83 +111,7 @@ export default function BrandHeader({ authed }: { authed: boolean }) {
             className="border-transparent bg-transparent shadow-none"
             buttonClassName="h-10 w-10"
           />
-
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button
-                type="button"
-                size="icon"
-                variant="outline"
-                aria-label="Menü öffnen"
-                className="h-10 w-10"
-              >
-                <Menu className="h-4 w-4" />
-              </Button>
-            </SheetTrigger>
-
-            <SheetContent side="right" className="flex h-full w-[280px] flex-col sm:w-[320px]">
-              <SheetHeader className="mb-4 shrink-0">
-                <SheetTitle>Menü</SheetTitle>
-              </SheetHeader>
-
-                <div className="flex-1 space-y-5 overflow-y-auto pr-1">
-                  <SheetSection title="Lernen">
-                    <SheetLink href="/module">Module</SheetLink>
-                    <SheetLink href="/pricing">Preise</SheetLink>
-                    {authed && moduleId ? (
-                      <>
-                        <SheetLink href={`/exam/${moduleId}`}>Prüfung</SheetLink>
-                        <SheetLink href={`/results/${moduleId}`}>
-                          Fortschritt/Auswertung
-                        </SheetLink>
-                      </>
-                    ) : null}
-                  </SheetSection>
-                  <SheetSection title="Account">
-                    {authed ? (
-                      <>
-                        <SheetLink href="/dashboard">Dashboard</SheetLink>
-                        <SheetLink href="/dashboard/profil">Profil</SheetLink>
-                        <SheetLink href="/logout">Abmelden</SheetLink>
-                      </>
-                    ) : (
-                      <>
-                        <SheetLink href="/login">Login</SheetLink>
-                        <SheetLink href="/dashboard">Dashboard</SheetLink>
-                      </>
-                    )}
-                  </SheetSection>
-
-                  <SheetSection title="Für Betriebe">
-                    <SheetLink href="/business">Lizenzen für Teams</SheetLink>
-                    <SheetLink href="/business/contact">Kontakt aufnehmen</SheetLink>
-                  </SheetSection>
-
-
-                  <SheetSection title="Rechtliches">
-                    <SheetLink href="/impressum">Impressum</SheetLink>
-                    <SheetLink href="/datenschutz">Datenschutz & Privatsphäre</SheetLink>
-                    <SheetLink href="/terms">Nutzungsbedingungen</SheetLink>
-                    <SheetLink href="/cookies">Cookies & Tracking</SheetLink>
-                    <SheetLink href="/transparency">Transparenz</SheetLink>
-                  </SheetSection>
-                </div>
-
-                {!authed || plan === "free" ? (
-                  <div className="mt-4 shrink-0 border-t border-border/70 pt-3">
-                    <SheetClose asChild>
-                      <Link
-                        href="/pricing"
-                        className="inline-flex h-10 w-full items-center justify-center rounded-full bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/95 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/35"
-                      >
-                        Pro starten – 9,90 €
-                      </Link>
-                    </SheetClose>
-                  </div>
-                ) : null}
-              </SheetContent>
-            </Sheet>
-          </div>
+        </div>
       </div>
     </header>
   );
@@ -223,51 +138,4 @@ function getPageTitle(pathname: string | null) {
   if (pathname.startsWith("/cookies")) return "Cookies";
   if (pathname.startsWith("/transparency")) return "Transparenz";
   return "LernWerkFabrik";
-}
-
-function getModuleIdFromPath(pathname: string | null) {
-  if (!pathname) return null;
-  const parts = pathname.split("/").filter(Boolean);
-  const idx = parts.findIndex((p) =>
-    ["module", "learn", "exam", "results"].includes(p)
-  );
-  if (idx === -1) return null;
-  const id = parts[idx + 1];
-  return id || null;
-}
-
-function SheetSection({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <section className="space-y-2">
-      <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-        {title}
-      </div>
-      <div className="flex flex-col gap-1">{children}</div>
-    </section>
-  );
-}
-
-function SheetLink({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <SheetClose asChild>
-      <Link
-        href={href}
-        className="rounded-xl px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
-      >
-        {children}
-      </Link>
-    </SheetClose>
-  );
 }
