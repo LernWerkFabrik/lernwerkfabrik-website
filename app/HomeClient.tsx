@@ -7,13 +7,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import WaitlistForm from "@/components/WaitlistForm";
 import {
-  BadgeCheck,
   BookOpen,
   Brain,
   Target,
   ShieldCheck,
   Gauge,
-  Quote,
   Sparkles,
   CheckCircle2,
   Timer,
@@ -150,47 +148,6 @@ function MiniLogo({ name }: { name: string }) {
       <Sparkles className="h-3.5 w-3.5 text-amber-300/80" />
       <span>{name}</span>
     </div>
-  );
-}
-
-function TestimonialCard({
-  quote,
-  name,
-  role,
-  org,
-}: {
-  quote: string;
-  name: string;
-  role: string;
-  org: string;
-}) {
-  return (
-    <Card className="relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-sm transition hover:-translate-y-0.5 hover:shadow-md max-md:py-2">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
-        <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
-        <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
-      </div>
-
-      <CardContent className="relative p-6 max-md:py-3 max-md:text-sm max-md:leading-snug">
-        <Quote className="h-5 w-5 text-amber-300/80" />
-
-        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">„{quote}“</p>
-
-        <div className="mt-5 flex items-center justify-between gap-3">
-          <div className="space-y-0.5">
-            <div className="text-sm font-medium">{name}</div>
-            <div className="text-xs text-muted-foreground">
-              {role} - {org}
-            </div>
-          </div>
-
-          <div className="grid h-10 w-10 place-items-center rounded-xl border bg-amber-500/10">
-            <BadgeCheck className="h-4 w-4 text-amber-300" />
-          </div>
-        </div>
-      </CardContent>
-    </Card>
   );
 }
 
@@ -715,35 +672,6 @@ export default function HomeClient() {
                   </CardContent>
                 </Card>
               ))}
-            </div>
-          </section>
-
-          {/* TESTIMONIALS */}
-          <section className="space-y-4">
-            <SectionHeader
-              title="Warum Nutzer dranbleiben"
-              desc="Kurze Aussagen: Struktur, Ruhe und Auswertung - kommt das wirklich an?"
-            />
-
-            <div className="grid gap-4 md:grid-cols-3">
-              <TestimonialCard
-                quote="Die Struktur ist genau richtig: erst verstehen, dann üben, dann Prüfung. Das Fehlertraining spart mir richtig Zeit."
-                name="Max M."
-                role="Azubi Industriemechaniker"
-                org="Ausbildungswerkstatt"
-              />
-              <TestimonialCard
-                quote="Das UI wirkt ruhig und professionell. Ich sehe sofort, wo ich stehe und was ich als Nächstes machen soll."
-                name="Sabrina K."
-                role="Ausbilderin"
-                org="Metalltechnik"
-              />
-              <TestimonialCard
-                quote="Endlich ein System, das schnell meine Schwächen findet. Die Auswertung ist nachvollziehbar."
-                name="Timo R."
-                role="Quereinsteiger"
-                org="Instandhaltung"
-              />
             </div>
           </section>
 
