@@ -400,10 +400,6 @@ export default function HomeClient() {
                     className="min-w-[24rem]"
                   />
                 </div>
-                <p className="hidden text-center text-xs leading-tight text-muted-foreground/90 md:-mt-1.5 md:block">
-                  Die Plattform startet bald. Sichere dir jetzt deinen Platz auf der Warteliste – wir informieren dich zum Launch. Kein Spam.
-                </p>
-
                 {/* Micro-Box (straffer) */}
                 <div className="relative mt-2 overflow-hidden rounded-2xl border bg-background/55 p-4 md:mt-3">
                   <div className="pointer-events-none absolute inset-0">
