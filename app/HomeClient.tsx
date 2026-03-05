@@ -729,7 +729,7 @@ export default function HomeClient() {
                 <WaitlistForm
                   source="footer-cta"
                   buttonLabel="Warteliste beitreten"
-                  className="md:w-auto md:self-end [&>p]:md:text-right"
+                  className="md:ml-auto md:w-[36rem] md:[&>div]:justify-end [&>p]:md:text-right"
                 />
                 <div className="ml-1 border-l border-border/80 pl-3 text-[0.82rem] text-foreground/80 dark:text-white/85 md:hidden">
                   <ul className="space-y-2.5">
