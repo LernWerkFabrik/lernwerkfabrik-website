@@ -23,11 +23,22 @@ type TurnstileRenderOptions = {
   "expired-callback"?: () => void;
   "error-callback"?: () => void;
   theme?: "auto" | "light" | "dark";
+  size?: "normal" | "compact" | "invisible";
 };
 
 type TurnstileGlobal = {
   render: (container: HTMLElement, options: TurnstileRenderOptions) => string;
   reset: (widgetId?: string) => void;
+  execute: (widgetId?: string) => void;
+};
+
+type PendingSubmission = {
+  email: string;
+  source: string;
+  campaign: string | null;
+  referrer: string;
+  device_type: "mobile" | "tablet" | "desktop";
+  country: string | null;
 };
 
 declare global {
@@ -172,7 +183,7 @@ function mapApiError(payload: WaitlistApiResponse, statusCode: number) {
 
 export default function WaitlistForm({
   className,
-  buttonLabel = "Warteliste beitreten",
+  buttonLabel = "🚀 Jetzt Platz sichern",
   inputClassName,
 }: {
   className?: string;
@@ -182,6 +193,7 @@ export default function WaitlistForm({
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "";
   const widgetContainerRef = React.useRef<HTMLDivElement | null>(null);
   const widgetIdRef = React.useRef<string | null>(null);
+  const pendingSubmissionRef = React.useRef<PendingSubmission | null>(null);
 
   const [email, setEmail] = React.useState("");
   const [turnstileToken, setTurnstileToken] = React.useState("");
@@ -197,6 +209,97 @@ export default function WaitlistForm({
     setTurnstileToken("");
   }, []);
 
+  const finalizeSubmission = React.useCallback(() => {
+    pendingSubmissionRef.current = null;
+    setIsSubmitting(false);
+    resetTurnstile();
+  }, [resetTurnstile]);
+
+  const failTurnstile = React.useCallback(
+    (errorMessage: string) => {
+      setState("error");
+      setMessage(errorMessage);
+      finalizeSubmission();
+    },
+    [finalizeSubmission]
+  );
+
+  const submitWaitlist = React.useCallback(
+    async (submission: PendingSubmission, token: string) => {
+      try {
+        const response = await fetch("/api/waitlist", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...submission,
+            turnstile_token: token,
+          }),
+        });
+
+        const rawBody = await response.text();
+        let payload: WaitlistApiResponse = {};
+
+        if (rawBody) {
+          try {
+            payload = JSON.parse(rawBody) as WaitlistApiResponse;
+          } catch {
+            setState("error");
+            setMessage(
+              "Server-Antwort ist ungültig (kein JSON). Prüfe bitte, ob /api/waitlist erreichbar ist."
+            );
+            return;
+          }
+        }
+
+        if (response.redirected && typeof window !== "undefined") {
+          const finalPath = new URL(response.url, window.location.origin).pathname;
+          if (!finalPath.startsWith("/api/waitlist")) {
+            setState("error");
+            setMessage(
+              `API-Aufruf wurde umgeleitet (${finalPath}). Bitte Deploy-Konfiguration prüfen.`
+            );
+            return;
+          }
+        }
+
+        if (!response.ok) {
+          setState("error");
+          setMessage(mapApiError(payload, response.status));
+          return;
+        }
+
+        if (payload.status === "already_registered") {
+          setState("already");
+          setMessage(buildAlreadyRegisteredMessage(payload.waitlist_position));
+          return;
+        }
+
+        if (payload.status === "ok") {
+          setState("success");
+          setMessage(buildSuccessMessage(payload.waitlist_position));
+          setEmail("");
+          return;
+        }
+
+        if (payload.status === "error") {
+          setState("error");
+          setMessage(mapApiError(payload, response.status));
+          return;
+        }
+
+        setState("error");
+        setMessage("Unerwartete Server-Antwort. Bitte /api/waitlist prüfen.");
+      } catch (error) {
+        const reason = error instanceof Error && error.message ? ` (${error.message})` : "";
+        setState("error");
+        setMessage(`Bitte später erneut versuchen${reason}.`);
+      } finally {
+        finalizeSubmission();
+      }
+    },
+    [finalizeSubmission]
+  );
+
   React.useEffect(() => {
     let cancelled = false;
 
@@ -208,10 +311,34 @@ export default function WaitlistForm({
 
         widgetIdRef.current = window.turnstile.render(widgetContainerRef.current, {
           sitekey: siteKey,
-          callback: (token: string) => setTurnstileToken(token || ""),
-          "expired-callback": () => setTurnstileToken(""),
-          "error-callback": () => setTurnstileToken(""),
+          callback: (token: string) => {
+            setTurnstileToken(token || "");
+
+            if (!token) {
+              if (pendingSubmissionRef.current) {
+                failTurnstile("Turnstile-Prüfung fehlgeschlagen. Bitte erneut versuchen.");
+              }
+              return;
+            }
+
+            const pendingSubmission = pendingSubmissionRef.current;
+            if (!pendingSubmission) return;
+            void submitWaitlist(pendingSubmission, token);
+          },
+          "expired-callback": () => {
+            setTurnstileToken("");
+            if (pendingSubmissionRef.current) {
+              failTurnstile("Turnstile ist abgelaufen. Bitte erneut bestätigen.");
+            }
+          },
+          "error-callback": () => {
+            setTurnstileToken("");
+            if (pendingSubmissionRef.current) {
+              failTurnstile("Turnstile konnte nicht geladen werden. Bitte später erneut versuchen.");
+            }
+          },
           theme: "auto",
+          size: "invisible",
         });
         setTurnstileReady(true);
       })
@@ -225,7 +352,7 @@ export default function WaitlistForm({
     return () => {
       cancelled = true;
     };
-  }, [siteKey]);
+  }, [failTurnstile, siteKey, submitWaitlist]);
 
   const messageClassName = React.useMemo(() => {
     if (state === "success") return "text-emerald-400";
@@ -252,9 +379,9 @@ export default function WaitlistForm({
       return;
     }
 
-    if (!turnstileToken) {
+    if (!turnstileReady || !widgetIdRef.current || !window.turnstile) {
       setState("error");
-      setMessage("Bitte bestätige kurz, dass du kein Bot bist.");
+      setMessage("Spam-Schutz wird noch geladen. Bitte in wenigen Sekunden erneut versuchen.");
       return;
     }
 
@@ -266,81 +393,26 @@ export default function WaitlistForm({
       typeof navigator !== "undefined" ? detectDeviceType(navigator.userAgent || "") : "desktop";
     const country = getCookie("lw_country");
 
+    const pendingSubmission: PendingSubmission = {
+      email: normalizedEmail,
+      source,
+      campaign,
+      referrer,
+      device_type: deviceType,
+      country,
+    };
+
     setIsSubmitting(true);
     setMessage(null);
     setState("idle");
+    pendingSubmissionRef.current = pendingSubmission;
 
-    let requestAttempted = false;
-
+    const turnstile = window.turnstile;
     try {
-      requestAttempted = true;
-      const response = await fetch("/api/waitlist", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: normalizedEmail,
-          source,
-          campaign,
-          referrer,
-          device_type: deviceType,
-          country,
-          turnstile_token: turnstileToken,
-        }),
-      });
-
-      const rawBody = await response.text();
-      let payload: WaitlistApiResponse = {};
-
-      if (rawBody) {
-        try {
-          payload = JSON.parse(rawBody) as WaitlistApiResponse;
-        } catch {
-          setState("error");
-          setMessage(
-            "Server-Antwort ist ungültig (kein JSON). Prüfe bitte, ob /api/waitlist erreichbar ist."
-          );
-          return;
-        }
-      }
-
-      if (response.redirected && typeof window !== "undefined") {
-        const finalPath = new URL(response.url, window.location.origin).pathname;
-        if (!finalPath.startsWith("/api/waitlist")) {
-          setState("error");
-          setMessage(
-            `API-Aufruf wurde umgeleitet (${finalPath}). Bitte Deploy-Konfiguration prüfen.`
-          );
-          return;
-        }
-      }
-
-      if (!response.ok) {
-        setState("error");
-        setMessage(mapApiError(payload, response.status));
-        return;
-      }
-
-      if (payload.status === "already_registered") {
-        setState("already");
-        setMessage(buildAlreadyRegisteredMessage(payload.waitlist_position));
-      } else if (payload.status === "ok") {
-        setState("success");
-        setMessage(buildSuccessMessage(payload.waitlist_position));
-        setEmail("");
-      } else if (payload.status === "error") {
-        setState("error");
-        setMessage(mapApiError(payload, response.status));
-      } else {
-        setState("error");
-        setMessage("Unerwartete Server-Antwort. Bitte /api/waitlist prüfen.");
-      }
-    } catch (error) {
-      setState("error");
-      const reason = error instanceof Error && error.message ? ` (${error.message})` : "";
-      setMessage(`Bitte später erneut versuchen${reason}.`);
-    } finally {
-      if (requestAttempted) resetTurnstile();
-      setIsSubmitting(false);
+      turnstile.execute(widgetIdRef.current);
+    } catch {
+      failTurnstile("Spam-Schutz konnte nicht gestartet werden. Bitte später erneut versuchen.");
+      return;
     }
   };
 
@@ -372,13 +444,15 @@ export default function WaitlistForm({
         Die Plattform startet bald. Sichere dir jetzt deinen Platz auf der Warteliste – wir informieren dich zum Launch. Kein Spam.
       </p>
 
-      <div className="flex justify-center">
-        {siteKey ? (
-          <div ref={widgetContainerRef} className="min-h-[65px] [filter:brightness(0.92)]" />
-        ) : (
-          <div className="text-xs text-amber-300/90">Turnstile Site Key fehlt.</div>
-        )}
-      </div>
+      {siteKey ? (
+        <div
+          ref={widgetContainerRef}
+          aria-hidden="true"
+          className="pointer-events-none absolute h-0 w-0 overflow-hidden opacity-0"
+        />
+      ) : (
+        <div className="text-xs text-amber-300/90">Turnstile Site Key fehlt.</div>
+      )}
 
       {siteKey && !turnstileReady ? (
         <p className="text-center text-[0.78rem] leading-tight text-muted-foreground/80">

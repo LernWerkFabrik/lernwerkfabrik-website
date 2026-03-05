@@ -233,7 +233,7 @@ export default function HomeClient() {
                   </span>
                 </p>
                 <p className="mx-auto max-w-2xl text-center text-sm font-medium text-foreground/90 md:text-base">
-                  🚀 Early Access sichern – und zum Launch direkt starten.
+                  🚀 Jetzt Platz sichern – und zum Launch direkt starten.
                 </p>
 
                 {/* Mobile CTA (früh sichtbar) */}
@@ -395,7 +395,7 @@ export default function HomeClient() {
                 {/* CTAs */}
                 <div className="hidden flex-wrap items-start gap-3 pt-2 md:flex md:justify-center">
                   <WaitlistForm
-                    buttonLabel="Early Access sichern"
+                    buttonLabel="🚀 Jetzt Platz sichern"
                     inputClassName="md:w-full md:flex-1"
                     className="min-w-[24rem]"
                   />
@@ -718,7 +718,7 @@ export default function HomeClient() {
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
               <div>
                 <div className="text-sm text-muted-foreground">Bald live</div>
-                <div className="mt-1 text-xl font-semibold md:whitespace-nowrap">Sichere dir Early Access zur LernWerkFabrik</div>
+                <div className="mt-1 text-xl font-semibold md:whitespace-nowrap">Sichere dir jetzt den Platz zur LernWerkFabrik</div>
                 <div className="mt-2 text-sm text-muted-foreground">
                   Die Plattform startet in Kürze. Trage dich ein und wir informieren
                   <br />
@@ -727,7 +727,7 @@ export default function HomeClient() {
               </div>
               <div className="flex w-full flex-col gap-2 md:flex-1 md:items-end">
                 <WaitlistForm
-                  buttonLabel="Warteliste beitreten"
+                  buttonLabel="🚀 Jetzt Platz sichern"
                   inputClassName="md:w-[24rem]"
                   className="md:ml-auto md:w-[36rem] md:[&>div]:justify-end [&>p]:md:text-right"
                 />
