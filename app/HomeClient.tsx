@@ -226,11 +226,14 @@ export default function HomeClient() {
                 {/* Subline */}
                 <p className="mx-auto max-w-2xl text-center text-base text-muted-foreground md:text-lg max-md:text-sm max-md:leading-snug">
                   <span className="hidden md:inline">
-                    LernWerkFabrik geht bald live. Sichere dir jetzt Early Access und starte zum Launch direkt mit den ersten Modulen.
+                    Für Industriemechaniker/-innen vor der IHK-Abschlussprüfung (AP1/AP2). Erkenne typische Prüfungsfehler, verstehe die Prüfungslogik und trainiere prüfungsnah statt nur auswendig zu lernen.
                   </span>
                   <span className="md:hidden">
-                    Bald live: Sichere dir jetzt Early Access.
+                    Für AP1/AP2: Prüfungslogik verstehen, Fehler erkennen und prüfungsnah trainieren.
                   </span>
+                </p>
+                <p className="mx-auto max-w-2xl text-center text-sm font-medium text-foreground/90 md:text-base">
+                  🚀 Early Access sichern – und zum Launch direkt starten.
                 </p>
 
                 {/* Mobile CTA (früh sichtbar) */}
@@ -409,7 +412,7 @@ export default function HomeClient() {
                   <div className="relative">
                     <div className="flex items-center gap-2 text-sm font-medium">
                       <AlertTriangle className="h-4 w-4 text-amber-400" />
-                      Typische Prüfungsfallen (Beispiele)
+                      Hier verlieren viele Punkte in der Prüfung
                     </div>
 
                     <div className="mt-3 grid gap-4 md:grid-cols-2">
@@ -683,7 +686,7 @@ export default function HomeClient() {
               </h2>
               <div className="flex items-start justify-between gap-2">
                 <p className="text-sm text-muted-foreground">
-                  Wie ein Trainingssystem: erst Lernen, dann Prüfen, dann gezielt verbessern.
+                  Wie ein Training: erst verstehen, dann prüfen, dann gezielt verbessern.
                 </p>
               </div>
             </div>

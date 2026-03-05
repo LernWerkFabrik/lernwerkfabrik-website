@@ -58,7 +58,7 @@ export default function BrandHeader({ authed }: { authed: boolean }) {
     () => "free"
   );
 
-  const homeHref = authed ? "/dashboard" : "/";
+  const homeHref = "/";
   const pageTitle = useMemo(() => getPageTitle(pathname), [pathname]);
   const showBack = Boolean(
     pathname &&
@@ -107,6 +107,14 @@ export default function BrandHeader({ authed }: { authed: boolean }) {
 
         {/* RIGHT - Tools */}
         <div className="flex items-center justify-end gap-2">
+          <nav className="hidden items-center gap-4 pr-1 text-sm text-foreground/85 md:flex">
+            <Link href="/impressum" className="transition-colors hover:text-foreground">
+              Impressum
+            </Link>
+            <Link href="/datenschutz" className="transition-colors hover:text-foreground">
+              Datenschutz
+            </Link>
+          </nav>
           <ThemeToggle
             className="border-transparent bg-transparent shadow-none"
             buttonClassName="h-10 w-10"
