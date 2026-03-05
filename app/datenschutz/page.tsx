@@ -1,24 +1,126 @@
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Card, CardContent } from "@/components/ui/card";
 
+export const metadata: Metadata = {
+  title: "Datenschutz | LernWerkFabrik",
+  description: "Datenschutzhinweise der LernWerkFabrik.",
+  robots: { index: true, follow: true },
+};
+
+function Section({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="space-y-2 rounded-2xl border bg-background/70 p-5 shadow-sm backdrop-blur">
+      <h2 className="text-base font-semibold tracking-tight">{title}</h2>
+      <div className="text-sm leading-relaxed text-muted-foreground">{children}</div>
+    </section>
+  );
+}
+
 export default function DatenschutzPage() {
   return (
-    <main className="mx-auto w-full max-w-3xl p-4 md:p-6">
-      <h1 className="text-2xl font-semibold tracking-tight">Datenschutz</h1>
+    <main className="mx-auto w-full max-w-4xl px-4 py-10 md:px-6">
+      <header className="space-y-2">
+        <div className="inline-flex items-center gap-2 text-xs font-medium text-foreground/80">
+          <span className="inline-block h-1.5 w-1.5 rounded-full bg-amber-400" />
+          Rechtliches
+        </div>
+        <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">Datenschutz</h1>
+        <p className="text-sm text-muted-foreground">
+          Diese Hinweise beschreiben die Verarbeitung personenbezogener Daten auf der Wartelisten-Landingpage.
+        </p>
+      </header>
 
-      <Card className="mt-5 rounded-2xl border bg-background/75 shadow-sm backdrop-blur-sm">
-        <CardContent className="space-y-4 p-6 text-sm text-muted-foreground">
-          <p>Wird ergänzt.</p>
+      <div className="mt-6 grid gap-4">
+        <Section title="Verantwortlicher">
           <p>
-            Bis zur finalen Version findest du rechtliche Basisinformationen im{" "}
-            <Link href="/impressum" className="underline underline-offset-4">
-              Impressum
-            </Link>
-            .
+            Verantwortlich fuer die Datenverarbeitung ist der Betreiber der Plattform LernWerkFabrik.
+            Die konkreten Kontaktdaten bitte im Impressum ergaenzen.
           </p>
-        </CardContent>
-      </Card>
+        </Section>
+
+        <Section title="Welche Daten wir verarbeiten">
+          <div className="space-y-1.5">
+            <p>Bei der Wartelisten-Anmeldung koennen folgende Daten verarbeitet werden:</p>
+            <ul className="list-disc space-y-1 pl-5">
+              <li>E-Mail-Adresse</li>
+              <li>created_at (Zeitpunkt der Eintragung)</li>
+              <li>source (z. B. utm_source oder direct)</li>
+              <li>referrer</li>
+              <li>device_type (mobile/tablet/desktop)</li>
+              <li>country (2-stelliger Laendercode, sofern verfuegbar)</li>
+              <li>waitlist_position</li>
+            </ul>
+          </div>
+        </Section>
+
+        <Section title="Zweck und Rechtsgrundlage">
+          <p>
+            Die Verarbeitung erfolgt zur Verwaltung der Warteliste, zur Information ueber den Plattform-Launch und
+            zur technischen Absicherung gegen Missbrauch. Rechtsgrundlage ist in der Regel Art. 6 Abs. 1 lit. b
+            DSGVO (vorvertragliche Massnahmen) und/oder Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an
+            sicherem Betrieb und Messung von Kampagnenkanaelen).
+          </p>
+        </Section>
+
+        <Section title="Empfaenger und Auftragsverarbeitung">
+          <div className="space-y-1.5">
+            <p>
+              Zur Bereitstellung der Website und Speicherung der Wartelisten-Daten werden technische Dienstleister
+              eingesetzt (z. B. Hosting/Edge, Datenbank, Bot-Schutz).
+            </p>
+            <p>
+              Falls Daten ausserhalb der EU verarbeitet werden, erfolgen geeignete Garantien nach DSGVO
+              (z. B. Standardvertragsklauseln), soweit erforderlich.
+            </p>
+          </div>
+        </Section>
+
+        <Section title="Speicherdauer">
+          <p>
+            Wartelisten-Daten werden nur so lange gespeichert, wie sie fuer den genannten Zweck erforderlich sind
+            oder gesetzliche Aufbewahrungspflichten bestehen. Eine fruehere Loeschung ist auf Anfrage moeglich,
+            soweit keine gesetzlichen Gruende entgegenstehen.
+          </p>
+        </Section>
+
+        <Section title="Deine Rechte">
+          <div className="space-y-1.5">
+            <p>
+              Du hast das Recht auf Auskunft, Berichtigung, Loeschung, Einschraenkung der Verarbeitung,
+              Datenuertragbarkeit sowie Widerspruch gegen bestimmte Verarbeitungen.
+            </p>
+            <p>
+              Zudem besteht ein Beschwerderecht bei einer Datenschutzaufsichtsbehoerde.
+            </p>
+          </div>
+        </Section>
+
+        <Card className="rounded-2xl border bg-background/75 shadow-sm backdrop-blur-sm">
+          <CardContent className="space-y-3 p-5 text-sm text-muted-foreground">
+            <p>
+              Fuer Anfragen zum Datenschutz nutze bitte die im Impressum genannten Kontaktdaten.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Link className="underline underline-offset-4 hover:text-foreground" href="/impressum">
+                Zum Impressum
+              </Link>
+              <Link className="underline underline-offset-4 hover:text-foreground" href="/">
+                Zur Startseite
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
+
+        <p className="text-xs text-muted-foreground">Stand: 05.03.2026</p>
+      </div>
     </main>
   );
 }

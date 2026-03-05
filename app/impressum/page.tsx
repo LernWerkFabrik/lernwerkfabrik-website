@@ -1,10 +1,9 @@
-// app/impressum/page.tsx
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Impressum | LernWerkFabrik",
-  description: "Impressum der LernWerkFabrik (LWF).",
+  description: "Impressum der LernWerkFabrik.",
   robots: { index: true, follow: true },
 };
 
@@ -18,7 +17,7 @@ function Section({
   return (
     <section className="space-y-2 rounded-2xl border bg-background/70 p-5 shadow-sm backdrop-blur">
       <h2 className="text-base font-semibold tracking-tight">{title}</h2>
-      <div className="text-sm text-muted-foreground leading-relaxed">{children}</div>
+      <div className="text-sm leading-relaxed text-muted-foreground">{children}</div>
     </section>
   );
 }
@@ -33,97 +32,79 @@ export default function ImpressumPage() {
         </div>
         <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">Impressum</h1>
         <p className="text-sm text-muted-foreground">
-          Angaben gemäß § 5 TMG / § 18 Abs. 2 MStV (je nach Anbieterform). Bitte trage hier deine
-          korrekten Betreiberangaben ein.
+          Pflichtangaben nach deutschem Recht (u. a. TMG/MStV). Bitte ersetze die Platzhalter vor Livegang mit
+          deinen echten Daten.
         </p>
       </header>
 
       <div className="mt-6 grid gap-4">
-        <Section title="Diensteanbieter / Verantwortlicher">
-          <div className="space-y-2">
+        <Section title="Diensteanbieter">
+          <div className="space-y-1.5">
+            <div className="font-medium text-foreground">LernWerkFabrik</div>
             <div>
-              <div className="font-medium text-foreground">LernWerkFabrik (LWF)</div>
-              <div>
-                {/* TODO: Betreibername (Person oder Firma) */}
-                Betreiber: <span className="text-foreground">[Name / Firma eintragen]</span>
-              </div>
-              <div>
-                {/* TODO: vollständige Anschrift */}
-                Anschrift: <span className="text-foreground">[Straße, PLZ Ort, Land]</span>
-              </div>
+              Betreiber: <span className="text-foreground">[Name/Firma eintragen]</span>
             </div>
-
-            <div className="pt-1">
-              {/* TODO: Kontaktwege */}
-              <div>
-                E-Mail: <span className="text-foreground">[E-Mail eintragen]</span>
-              </div>
-              <div>
-                Telefon: <span className="text-foreground">[optional]</span>
-              </div>
-            </div>
-
-            <div className="pt-1">
-              {/* TODO: Registerdaten nur falls vorhanden */}
-              <div className="text-xs text-muted-foreground">
-                Registerangaben (nur falls zutreffend): Handelsregister, Registernummer, Registergericht.
-              </div>
-              <div>
-                Register: <span className="text-foreground">[optional]</span>
-              </div>
-              <div>
-                USt-IdNr.: <span className="text-foreground">[optional]</span>
-              </div>
+            <div>
+              Anschrift: <span className="text-foreground">[Strasse, Hausnummer, PLZ, Ort, Land]</span>
             </div>
           </div>
         </Section>
 
-        <Section title="Inhaltlich Verantwortlicher">
+        <Section title="Kontakt">
+          <div className="space-y-1.5">
+            <div>
+              E-Mail: <span className="text-foreground">[E-Mail eintragen]</span>
+            </div>
+            <div>
+              Telefon: <span className="text-foreground">[optional]</span>
+            </div>
+          </div>
+        </Section>
+
+        <Section title="Vertretungsberechtigte Person">
           <div>
-            Verantwortlich i.S.d. § 18 Abs. 2 MStV:{" "}
-            <span className="text-foreground">[Name + Anschrift, falls abweichend]</span>
+            Vertreten durch: <span className="text-foreground">[Name eintragen]</span>
           </div>
         </Section>
 
-        <Section title="Haftung für Inhalte">
-          <p>
-            Wir bemühen uns um aktuelle und korrekte Inhalte. Als Diensteanbieter sind wir nach den allgemeinen
-            Gesetzen für eigene Inhalte verantwortlich. Eine Verpflichtung zur Überwachung übermittelter oder
-            gespeicherter fremder Informationen besteht nicht, sobald keine konkreten Anhaltspunkte für eine
-            Rechtsverletzung vorliegen.
-          </p>
+        <Section title="Registereintrag (falls vorhanden)">
+          <div className="space-y-1.5">
+            <div>
+              Registergericht: <span className="text-foreground">[optional]</span>
+            </div>
+            <div>
+              Registernummer: <span className="text-foreground">[optional]</span>
+            </div>
+            <div>
+              Umsatzsteuer-ID: <span className="text-foreground">[optional]</span>
+            </div>
+          </div>
         </Section>
 
-        <Section title="Haftung für Links">
-          <p>
-            Unser Angebot kann Links zu externen Webseiten Dritter enthalten. Auf deren Inhalte haben wir keinen
-            Einfluss; für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter verantwortlich.
-          </p>
+        <Section title="Inhaltlich verantwortlich">
+          <div>
+            Verantwortlich fuer redaktionelle Inhalte:{" "}
+            <span className="text-foreground">[Name und Anschrift eintragen]</span>
+          </div>
         </Section>
 
-        <Section title="Urheberrecht">
+        <Section title="Hinweise zur Haftung">
           <p>
-            Inhalte und Werke auf dieser Plattform unterliegen dem Urheberrecht. Eine Vervielfältigung oder Verwendung
-            außerhalb der Grenzen des Urheberrechts bedarf der vorherigen schriftlichen Zustimmung, soweit nicht
-            ausdrücklich anders angegeben.
+            Trotz sorgfaeltiger inhaltlicher Kontrolle uebernehmen wir keine Haftung fuer die Inhalte externer Links.
+            Fuer den Inhalt verlinkter Seiten sind ausschliesslich deren Betreiber verantwortlich.
           </p>
         </Section>
 
         <div className="mt-2 flex flex-wrap gap-3 text-sm">
-          <Link className="underline underline-offset-4 text-muted-foreground hover:text-foreground" href="/privacy/learn">
+          <Link className="underline underline-offset-4 text-muted-foreground hover:text-foreground" href="/">
+            Zur Startseite
+          </Link>
+          <Link className="underline underline-offset-4 text-muted-foreground hover:text-foreground" href="/datenschutz">
             Datenschutz
-          </Link>
-          <Link className="underline underline-offset-4 text-muted-foreground hover:text-foreground" href="/terms">
-            Nutzungsbedingungen
-          </Link>
-          <Link className="underline underline-offset-4 text-muted-foreground hover:text-foreground" href="/cookies">
-            Cookies
           </Link>
         </div>
 
-        <p className="text-xs text-muted-foreground">
-          Stand: {new Date().toLocaleDateString("de-DE")}
-        </p>
+        <p className="text-xs text-muted-foreground">Stand: 05.03.2026</p>
       </div>
     </main>
   );
