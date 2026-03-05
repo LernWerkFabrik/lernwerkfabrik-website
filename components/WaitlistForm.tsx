@@ -7,12 +7,64 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/i;
+const TURNSTILE_SCRIPT_SRC = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
 
 type WaitlistApiResponse = {
   status?: "ok" | "already_registered" | "error";
   waitlist_position?: number | null;
   message?: string;
 };
+
+type TurnstileRenderOptions = {
+  sitekey: string;
+  callback?: (token: string) => void;
+  "expired-callback"?: () => void;
+  "error-callback"?: () => void;
+  theme?: "auto" | "light" | "dark";
+};
+
+type TurnstileGlobal = {
+  render: (container: HTMLElement, options: TurnstileRenderOptions) => string;
+  reset: (widgetId?: string) => void;
+};
+
+declare global {
+  interface Window {
+    turnstile?: TurnstileGlobal;
+  }
+}
+
+let turnstileScriptPromise: Promise<void> | null = null;
+
+function ensureTurnstileScript() {
+  if (typeof window === "undefined") return Promise.resolve();
+  if (window.turnstile) return Promise.resolve();
+  if (turnstileScriptPromise) return turnstileScriptPromise;
+
+  turnstileScriptPromise = new Promise<void>((resolve, reject) => {
+    const existing = document.querySelector<HTMLScriptElement>(
+      `script[src="${TURNSTILE_SCRIPT_SRC}"]`
+    );
+
+    if (existing) {
+      existing.addEventListener("load", () => resolve(), { once: true });
+      existing.addEventListener("error", () => reject(new Error("turnstile_script_failed")), {
+        once: true,
+      });
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = TURNSTILE_SCRIPT_SRC;
+    script.async = true;
+    script.defer = true;
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error("turnstile_script_failed"));
+    document.head.appendChild(script);
+  });
+
+  return turnstileScriptPromise;
+}
 
 function getCookie(name: string): string | null {
   if (typeof document === "undefined") return null;
@@ -45,6 +97,14 @@ function readSourceFromUrl(): string {
   return utmSource || "direct";
 }
 
+function readCampaignFromUrl(): string | null {
+  if (typeof window === "undefined") return null;
+
+  const params = new URLSearchParams(window.location.search);
+  const campaign = (params.get("utm_campaign") ?? "").trim();
+  return campaign || null;
+}
+
 function buildSuccessMessage(position: number | null | undefined) {
   if (typeof position === "number" && Number.isFinite(position) && position > 0) {
     return `Du bist auf der Warteliste (Platz #${position}). Wir informieren dich zum Launch. Kein Spam.`;
@@ -68,10 +128,46 @@ export default function WaitlistForm({
   buttonLabel?: string;
   inputClassName?: string;
 }) {
+  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "";
+  const widgetContainerRef = React.useRef<HTMLDivElement | null>(null);
+  const widgetIdRef = React.useRef<string | null>(null);
+
   const [email, setEmail] = React.useState("");
+  const [turnstileToken, setTurnstileToken] = React.useState("");
+  const [turnstileReady, setTurnstileReady] = React.useState(false);
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [message, setMessage] = React.useState<string | null>(null);
   const [state, setState] = React.useState<"idle" | "success" | "error" | "already">("idle");
+
+  React.useEffect(() => {
+    let cancelled = false;
+
+    if (!siteKey || typeof window === "undefined" || !widgetContainerRef.current) return;
+
+    ensureTurnstileScript()
+      .then(() => {
+        if (cancelled || !window.turnstile || !widgetContainerRef.current || widgetIdRef.current) return;
+
+        widgetIdRef.current = window.turnstile.render(widgetContainerRef.current, {
+          sitekey: siteKey,
+          callback: (token: string) => setTurnstileToken(token || ""),
+          "expired-callback": () => setTurnstileToken(""),
+          "error-callback": () => setTurnstileToken(""),
+          theme: "auto",
+        });
+        setTurnstileReady(true);
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setTurnstileReady(false);
+          setTurnstileToken("");
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [siteKey]);
 
   const messageClassName = React.useMemo(() => {
     if (state === "success") return "text-emerald-400";
@@ -92,7 +188,20 @@ export default function WaitlistForm({
       return;
     }
 
+    if (!siteKey) {
+      setState("error");
+      setMessage("Spam-Schutz ist nicht konfiguriert. Bitte spaeter erneut versuchen.");
+      return;
+    }
+
+    if (!turnstileToken) {
+      setState("error");
+      setMessage("Bitte bestaetige kurz, dass du kein Bot bist.");
+      return;
+    }
+
     const source = readSourceFromUrl();
+    const campaign = readCampaignFromUrl();
     const referrer =
       typeof document !== "undefined" && document.referrer.trim() ? document.referrer.trim() : "direct";
     const deviceType =
@@ -110,9 +219,11 @@ export default function WaitlistForm({
         body: JSON.stringify({
           email: normalizedEmail,
           source,
+          campaign,
           referrer,
           device_type: deviceType,
           country,
+          turnstile_token: turnstileToken,
         }),
       });
 
@@ -124,17 +235,18 @@ export default function WaitlistForm({
       if (payload.status === "already_registered") {
         setState("already");
         setMessage(buildAlreadyRegisteredMessage(payload.waitlist_position));
-        return;
-      }
-
-      if (payload.status === "ok") {
+      } else if (payload.status === "ok") {
         setState("success");
         setMessage(buildSuccessMessage(payload.waitlist_position));
         setEmail("");
-        return;
+      } else {
+        throw new Error("unexpected_response");
       }
 
-      throw new Error("unexpected_response");
+      if (widgetIdRef.current && window.turnstile) {
+        window.turnstile.reset(widgetIdRef.current);
+        setTurnstileToken("");
+      }
     } catch {
       setState("error");
       setMessage("Bitte spaeter erneut versuchen.");
@@ -166,6 +278,20 @@ export default function WaitlistForm({
           {isSubmitting ? "Wird eingetragen..." : buttonLabel}
         </Button>
       </div>
+
+      <div className="flex justify-center md:justify-start">
+        {siteKey ? (
+          <div ref={widgetContainerRef} className="min-h-[65px]" />
+        ) : (
+          <div className="text-xs text-amber-300/90">Turnstile Site Key fehlt.</div>
+        )}
+      </div>
+
+      {siteKey && !turnstileReady ? (
+        <p className="text-center text-[0.78rem] leading-tight text-muted-foreground/80 md:text-left">
+          Spam-Schutz wird geladen...
+        </p>
+      ) : null}
 
       <p className="text-center text-[0.78rem] leading-tight text-muted-foreground/90 md:text-left">
         Die Plattform startet bald. Sichere dir jetzt deinen Platz auf der Warteliste - wir informieren dich zum Launch. Kein Spam.
