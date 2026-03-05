@@ -285,7 +285,7 @@ export default function WaitlistForm({
 
       <div className="flex justify-center">
         {siteKey ? (
-          <div ref={widgetContainerRef} className="min-h-[65px]" />
+          <div ref={widgetContainerRef} className="min-h-[65px] [filter:brightness(0.92)]" />
         ) : (
           <div className="text-xs text-amber-300/90">Turnstile Site Key fehlt.</div>
         )}
