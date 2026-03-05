@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-const ALLOWED_ROUTES = new Set(["/", "/impressum", "/datenschutz"]);
+const ALLOWED_ROUTES = new Set(["/", "/index", "/impressum", "/datenschutz"]);
 
 function withCountryCookie(request: NextRequest, response: NextResponse) {
   const countryHeader = request.headers.get("cf-ipcountry")?.trim() ?? "";
