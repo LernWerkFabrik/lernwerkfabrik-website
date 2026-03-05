@@ -397,6 +397,7 @@ export default function HomeClient() {
                   <WaitlistForm
                     source="hero-desktop"
                     buttonLabel="Early Access sichern"
+                    inputClassName="md:w-[24rem]"
                     className="min-w-[24rem]"
                   />
                 </div>
