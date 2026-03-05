@@ -64,10 +64,6 @@ export default function BrandFooter() {
             <div className="space-y-2.5">
               <FooterLink href="/impressum" label="Impressum" />
               <FooterLink href="/datenschutz" label="Datenschutz" />
-              <FooterLink href="/terms" label="Nutzungsbedingungen" />
-              <FooterLink href="/cookies" label="Cookies" />
-              <FooterLink href="/transparency" label="Transparenz" />
-              <FooterLink href="/faq" label="FAQ" />
             </div>
           </div>
 
