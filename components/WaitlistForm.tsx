@@ -279,7 +279,11 @@ export default function WaitlistForm({
         </Button>
       </div>
 
-      <div className="flex justify-center md:justify-start">
+      <p className="text-center text-[0.78rem] leading-tight text-muted-foreground/90 md:text-left">
+        Die Plattform startet bald. Sichere dir jetzt deinen Platz auf der Warteliste - wir informieren dich zum Launch. Kein Spam.
+      </p>
+
+      <div className="flex justify-center">
         {siteKey ? (
           <div ref={widgetContainerRef} className="min-h-[65px]" />
         ) : (
@@ -288,14 +292,10 @@ export default function WaitlistForm({
       </div>
 
       {siteKey && !turnstileReady ? (
-        <p className="text-center text-[0.78rem] leading-tight text-muted-foreground/80 md:text-left">
+        <p className="text-center text-[0.78rem] leading-tight text-muted-foreground/80">
           Spam-Schutz wird geladen...
         </p>
       ) : null}
-
-      <p className="text-center text-[0.78rem] leading-tight text-muted-foreground/90 md:text-left">
-        Die Plattform startet bald. Sichere dir jetzt deinen Platz auf der Warteliste - wir informieren dich zum Launch. Kein Spam.
-      </p>
       {message ? (
         <p role="status" className={cn("text-center text-xs md:text-left", messageClassName)}>
           {message}
