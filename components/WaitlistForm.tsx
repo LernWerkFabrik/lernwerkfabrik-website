@@ -119,7 +119,7 @@ export default function WaitlistForm({
       </div>
 
       <p className="text-center text-[0.78rem] leading-tight text-muted-foreground/90 md:text-left">
-        Wir informieren dich zum Start. Kein Spam.
+        Die Plattform startet bald. Sichere dir jetzt deinen Platz auf der Warteliste – wir informieren dich zum Launch. Kein Spam.
       </p>
       {message ? (
         <p role="status" className={cn("text-center text-xs md:text-left", messageClassName)}>

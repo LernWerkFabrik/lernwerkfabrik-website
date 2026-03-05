@@ -401,7 +401,7 @@ export default function HomeClient() {
                   />
                 </div>
                 <p className="hidden text-center text-xs leading-tight text-muted-foreground/90 md:-mt-1.5 md:block">
-                  Die Plattform startet bald. Die Warteliste ist ab sofort geöffnet.
+                  Die Plattform startet bald. Sichere dir jetzt deinen Platz auf der Warteliste – wir informieren dich zum Launch. Kein Spam.
                 </p>
 
                 {/* Micro-Box (straffer) */}
