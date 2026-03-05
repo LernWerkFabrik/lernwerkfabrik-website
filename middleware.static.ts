@@ -9,6 +9,8 @@ export function middleware(request: NextRequest) {
     allowedRoutes.includes(pathname) ||
     pathname.startsWith("/_next") ||
     pathname.startsWith("/assets") ||
+    pathname.startsWith("/brand") ||
+    pathname.startsWith("/social") ||
     pathname.startsWith("/images") ||
     pathname.startsWith("/public") ||
     pathname.startsWith("/favicon");
