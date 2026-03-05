@@ -1,7 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import Link from "next/link";
 
 import "./globals.css";
+import "katex/dist/katex.min.css";
+
+import BrandHeader from "./BrandHeader";
+import RouteAwareFooter from "./RouteAwareFooter";
+import { ThemeProvider } from "./theme-provider";
 
 const seoTitle = "LernWerkFabrik | Warteliste fuer AP1/AP2 Lernplattform";
 const seoDescription =
@@ -40,37 +44,33 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de">
-      <body className="min-h-screen bg-slate-950 text-slate-100 antialiased">
-        <div className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-4 py-5 md:px-6 md:py-8">
-          <header className="mb-8 flex items-center justify-between rounded-2xl border border-white/15 bg-slate-900/70 px-4 py-3 backdrop-blur">
-            <Link href="/" className="text-base font-semibold tracking-tight">
-              LernWerkFabrik
-            </Link>
-            <nav className="flex items-center gap-4 text-sm text-slate-300">
-              <Link href="/impressum" className="hover:text-white">
-                Impressum
-              </Link>
-              <Link href="/datenschutz" className="hover:text-white">
-                Datenschutz
-              </Link>
-            </nav>
-          </header>
+    <html lang="de" suppressHydrationWarning className="h-dvh overflow-hidden">
+      <body className="h-dvh overflow-hidden bg-background text-foreground antialiased lp-bg">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
+          <div aria-hidden="true" className="lp-bg-3d pointer-events-none fixed inset-0 -z-10" />
 
-          <main className="flex-1">{children}</main>
-
-          <footer className="mt-10 border-t border-white/15 pt-4 text-xs text-slate-400">
-            <div className="flex flex-wrap items-center gap-4">
-              <Link href="/impressum" className="hover:text-white">
-                Impressum
-              </Link>
-              <Link href="/datenschutz" className="hover:text-white">
-                Datenschutz
-              </Link>
-              <span>© {new Date().getFullYear()} LernWerkFabrik</span>
+          <div className="flex h-full flex-col">
+            <div className="shrink-0">
+              <BrandHeader authed={false} />
             </div>
-          </footer>
-        </div>
+
+            <main
+              data-scroll-root
+              className="relative isolate z-0 flex-1 min-h-0 overflow-y-auto overflow-x-hidden"
+            >
+              {children}
+
+              <div className="relative z-0">
+                <RouteAwareFooter />
+              </div>
+            </main>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
