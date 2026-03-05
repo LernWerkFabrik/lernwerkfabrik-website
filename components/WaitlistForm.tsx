@@ -109,16 +109,65 @@ function readCampaignFromUrl(): string | null {
 
 function buildSuccessMessage(position: number | null | undefined) {
   if (typeof position === "number" && Number.isFinite(position) && position > 0) {
-    return `Du bist auf der Warteliste (Platz #${position}). Wir informieren dich zum Launch. Kein Spam.`;
+    if (position <= 20) {
+      return `Du bist auf der Warteliste (Platz #${position}). Early Access startet bald.`;
+    }
+
+    if (position <= 100) {
+      return "Du bist unter den ersten 100 auf der Warteliste. Wir informieren dich zum Launch.";
+    }
+
+    return "Du bist auf der Warteliste! Wir informieren dich zum Launch.";
   }
-  return "Du bist auf der Warteliste! Wir informieren dich zum Launch. Kein Spam.";
+
+  return "Du bist auf der Warteliste! Wir informieren dich zum Launch.";
 }
 
 function buildAlreadyRegisteredMessage(position: number | null | undefined) {
   if (typeof position === "number" && Number.isFinite(position) && position > 0) {
-    return `Du bist schon eingetragen (Platz #${position}).`;
+    if (position <= 20) {
+      return `Du bist schon eingetragen (Platz #${position}).`;
+    }
+
+    if (position <= 100) {
+      return "Du bist bereits unter den ersten 100 auf der Warteliste.";
+    }
+
+    return "Du bist bereits auf der Warteliste.";
   }
-  return "Du bist schon eingetragen.";
+
+  return "Du bist bereits auf der Warteliste.";
+}
+
+function mapApiError(payload: WaitlistApiResponse, statusCode: number) {
+  const reason = payload.message || "request_failed";
+
+  if (reason === "turnstile_verification_failed") {
+    const codes = (payload.error_codes || []).join(", ");
+    return codes
+      ? `Turnstile-Prüfung fehlgeschlagen (${codes}). Bitte erneut bestätigen.`
+      : "Turnstile-Prüfung fehlgeschlagen. Bitte erneut bestätigen.";
+  }
+
+  if (reason === "missing_turnstile_token") {
+    return "Bitte bestätige kurz, dass du kein Bot bist.";
+  }
+
+  if (reason === "turnstile_request_failed") {
+    return "Turnstile ist gerade nicht erreichbar. Bitte in 1-2 Minuten erneut versuchen.";
+  }
+
+  if (reason === "missing_supabase_server_env") {
+    return "Server-Konfiguration unvollständig (Supabase ENV). Bitte Deployment prüfen.";
+  }
+
+  if (reason === "insert_failed") {
+    return payload.details
+      ? `Eintrag konnte nicht gespeichert werden: ${payload.details}`
+      : "Eintrag konnte nicht gespeichert werden.";
+  }
+
+  return `Anfrage fehlgeschlagen (${statusCode}). Bitte später erneut versuchen.`;
 }
 
 export default function WaitlistForm({
@@ -140,6 +189,13 @@ export default function WaitlistForm({
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [message, setMessage] = React.useState<string | null>(null);
   const [state, setState] = React.useState<"idle" | "success" | "error" | "already">("idle");
+
+  const resetTurnstile = React.useCallback(() => {
+    if (widgetIdRef.current && window.turnstile) {
+      window.turnstile.reset(widgetIdRef.current);
+    }
+    setTurnstileToken("");
+  }, []);
 
   React.useEffect(() => {
     let cancelled = false;
@@ -214,7 +270,10 @@ export default function WaitlistForm({
     setMessage(null);
     setState("idle");
 
+    let requestAttempted = false;
+
     try {
+      requestAttempted = true;
       const response = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -229,36 +288,35 @@ export default function WaitlistForm({
         }),
       });
 
-      const payload = (await response.json().catch(() => ({}))) as WaitlistApiResponse;
-      if (!response.ok) {
-        const reason = payload.message || "request_failed";
-        if (reason === "turnstile_verification_failed") {
-          const codes = (payload.error_codes || []).join(", ");
-          setState("error");
-          setMessage(
-            codes
-              ? `Turnstile-Prüfung fehlgeschlagen (${codes}). Bitte erneut bestätigen.`
-              : "Turnstile-Prüfung fehlgeschlagen. Bitte erneut bestätigen."
-          );
-          return;
-        }
-        if (reason === "missing_turnstile_token") {
-          setState("error");
-          setMessage("Bitte bestätige kurz, dass du kein Bot bist.");
-          return;
-        }
-        if (reason === "insert_failed") {
-          setState("error");
-          setMessage(
-            payload.details
-              ? `Eintrag konnte nicht gespeichert werden: ${payload.details}`
-              : "Eintrag konnte nicht gespeichert werden."
-          );
-          return;
-        }
+      const rawBody = await response.text();
+      let payload: WaitlistApiResponse = {};
 
+      if (rawBody) {
+        try {
+          payload = JSON.parse(rawBody) as WaitlistApiResponse;
+        } catch {
+          setState("error");
+          setMessage(
+            "Server-Antwort ist ungültig (kein JSON). Prüfe bitte, ob /api/waitlist erreichbar ist."
+          );
+          return;
+        }
+      }
+
+      if (response.redirected && typeof window !== "undefined") {
+        const finalPath = new URL(response.url, window.location.origin).pathname;
+        if (!finalPath.startsWith("/api/waitlist")) {
+          setState("error");
+          setMessage(
+            `API-Aufruf wurde umgeleitet (${finalPath}). Bitte Deploy-Konfiguration prüfen.`
+          );
+          return;
+        }
+      }
+
+      if (!response.ok) {
         setState("error");
-        setMessage(`Anfrage fehlgeschlagen (${response.status}). Bitte später erneut versuchen.`);
+        setMessage(mapApiError(payload, response.status));
         return;
       }
 
@@ -269,18 +327,19 @@ export default function WaitlistForm({
         setState("success");
         setMessage(buildSuccessMessage(payload.waitlist_position));
         setEmail("");
+      } else if (payload.status === "error") {
+        setState("error");
+        setMessage(mapApiError(payload, response.status));
       } else {
-        throw new Error("unexpected_response");
+        setState("error");
+        setMessage("Unerwartete Server-Antwort. Bitte /api/waitlist prüfen.");
       }
-
-      if (widgetIdRef.current && window.turnstile) {
-        window.turnstile.reset(widgetIdRef.current);
-        setTurnstileToken("");
-      }
-    } catch {
+    } catch (error) {
       setState("error");
-      setMessage("Bitte später erneut versuchen.");
+      const reason = error instanceof Error && error.message ? ` (${error.message})` : "";
+      setMessage(`Bitte später erneut versuchen${reason}.`);
     } finally {
+      if (requestAttempted) resetTurnstile();
       setIsSubmitting(false);
     }
   };
