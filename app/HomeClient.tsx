@@ -727,7 +727,11 @@ export default function HomeClient() {
               </div>
               <div className="flex w-full flex-col gap-2 md:w-auto">
                 <div className="flex w-full flex-col gap-2 md:w-auto md:flex-row">
-                  <WaitlistForm source="footer-cta" buttonLabel="Warteliste beitreten" />
+                  <WaitlistForm
+                    source="footer-cta"
+                    buttonLabel="Warteliste beitreten"
+                    className="md:ml-auto md:w-auto"
+                  />
                 </div>
                 <div className="ml-1 border-l border-border/80 pl-3 text-[0.82rem] text-foreground/80 dark:text-white/85 md:hidden">
                   <ul className="space-y-2.5">
