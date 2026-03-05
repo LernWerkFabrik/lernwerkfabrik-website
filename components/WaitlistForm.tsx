@@ -13,6 +13,8 @@ type WaitlistApiResponse = {
   status?: "ok" | "already_registered" | "error";
   waitlist_position?: number | null;
   message?: string;
+  details?: string;
+  error_codes?: string[];
 };
 
 type TurnstileRenderOptions = {
@@ -184,19 +186,19 @@ export default function WaitlistForm({
 
     if (!normalizedEmail || !EMAIL_REGEX.test(normalizedEmail)) {
       setState("error");
-      setMessage("Bitte eine gueltige E-Mail-Adresse eingeben.");
+      setMessage("Bitte eine gültige E-Mail-Adresse eingeben.");
       return;
     }
 
     if (!siteKey) {
       setState("error");
-      setMessage("Spam-Schutz ist nicht konfiguriert. Bitte spaeter erneut versuchen.");
+      setMessage("Spam-Schutz ist nicht konfiguriert. Bitte später erneut versuchen.");
       return;
     }
 
     if (!turnstileToken) {
       setState("error");
-      setMessage("Bitte bestaetige kurz, dass du kein Bot bist.");
+      setMessage("Bitte bestätige kurz, dass du kein Bot bist.");
       return;
     }
 
@@ -229,7 +231,35 @@ export default function WaitlistForm({
 
       const payload = (await response.json().catch(() => ({}))) as WaitlistApiResponse;
       if (!response.ok) {
-        throw new Error(payload.message || "request_failed");
+        const reason = payload.message || "request_failed";
+        if (reason === "turnstile_verification_failed") {
+          const codes = (payload.error_codes || []).join(", ");
+          setState("error");
+          setMessage(
+            codes
+              ? `Turnstile-Prüfung fehlgeschlagen (${codes}). Bitte erneut bestätigen.`
+              : "Turnstile-Prüfung fehlgeschlagen. Bitte erneut bestätigen."
+          );
+          return;
+        }
+        if (reason === "missing_turnstile_token") {
+          setState("error");
+          setMessage("Bitte bestätige kurz, dass du kein Bot bist.");
+          return;
+        }
+        if (reason === "insert_failed") {
+          setState("error");
+          setMessage(
+            payload.details
+              ? `Eintrag konnte nicht gespeichert werden: ${payload.details}`
+              : "Eintrag konnte nicht gespeichert werden."
+          );
+          return;
+        }
+
+        setState("error");
+        setMessage(`Anfrage fehlgeschlagen (${response.status}). Bitte später erneut versuchen.`);
+        return;
       }
 
       if (payload.status === "already_registered") {
@@ -249,7 +279,7 @@ export default function WaitlistForm({
       }
     } catch {
       setState("error");
-      setMessage("Bitte spaeter erneut versuchen.");
+      setMessage("Bitte später erneut versuchen.");
     } finally {
       setIsSubmitting(false);
     }
@@ -267,7 +297,7 @@ export default function WaitlistForm({
           onChange={(event) => setEmail(event.target.value)}
           placeholder="name@beispiel.de"
           className={cn("h-11 rounded-full md:w-[20rem] md:min-w-0", inputClassName)}
-          aria-label="E-Mail fuer Warteliste"
+          aria-label="E-Mail für Warteliste"
           pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
         />
         <Button
@@ -280,7 +310,7 @@ export default function WaitlistForm({
       </div>
 
       <p className="text-center text-[0.78rem] leading-tight text-muted-foreground/90 md:text-left">
-        Die Plattform startet bald. Sichere dir jetzt deinen Platz auf der Warteliste - wir informieren dich zum Launch. Kein Spam.
+        Die Plattform startet bald. Sichere dir jetzt deinen Platz auf der Warteliste – wir informieren dich zum Launch. Kein Spam.
       </p>
 
       <div className="flex justify-center">

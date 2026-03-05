@@ -102,6 +102,10 @@ export async function POST(request: NextRequest) {
 
   const verification = await verifyTurnstileToken(turnstileToken, readRemoteIp(request));
   if (!verification.ok) {
+    console.error("waitlist: turnstile verification failed", {
+      reason: verification.reason,
+      errors: "errors" in verification ? verification.errors : [],
+    });
     return NextResponse.json(
       {
         status: "error",
@@ -145,6 +149,10 @@ export async function POST(request: NextRequest) {
       });
     }
 
+    console.error("waitlist: insert failed", {
+      code: insertResult.error.code,
+      message: insertResult.error.message,
+    });
     return NextResponse.json(
       {
         status: "error",
