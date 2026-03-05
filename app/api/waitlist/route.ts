@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { supabaseServer } from "@/lib/supabaseServer";
+import { createSupabaseServerClient } from "@/lib/supabaseServer";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/i;
 
@@ -60,11 +60,20 @@ async function verifyTurnstileToken(token: string, remoteIp: string | null) {
   formData.set("response", token);
   if (remoteIp) formData.set("remoteip", remoteIp);
 
-  const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: formData,
-  });
+  let response: Response;
+  try {
+    response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: formData,
+    });
+  } catch (error) {
+    return {
+      ok: false,
+      reason: "turnstile_request_failed" as const,
+      errors: [error instanceof Error ? error.message : "unknown_error"],
+    };
+  }
 
   const payload = (await response.json().catch(() => null)) as TurnstileVerifyResponse | null;
   if (!response.ok || !payload?.success) {
@@ -80,6 +89,16 @@ async function verifyTurnstileToken(token: string, remoteIp: string | null) {
 
 export async function POST(request: NextRequest) {
   let body: WaitlistBody;
+  let supabaseServer: ReturnType<typeof createSupabaseServerClient>;
+
+  try {
+    supabaseServer = createSupabaseServerClient();
+  } catch {
+    return NextResponse.json(
+      { status: "error", message: "missing_supabase_server_env" },
+      { status: 500 }
+    );
+  }
 
   try {
     body = (await request.json()) as WaitlistBody;
