@@ -109,7 +109,7 @@ export default function WaitlistForm({
           value={email}
           onChange={(event) => setEmail(event.target.value)}
           placeholder="name@beispiel.de"
-          className="h-11 rounded-full md:min-w-[16rem]"
+          className="h-11 rounded-full md:w-[18rem] md:min-w-0 md:flex-none"
           aria-label="E-Mail für Warteliste"
           pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
         />
