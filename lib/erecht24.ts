@@ -1,8 +1,8 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 
 const ERECHT24_ENDPOINTS = {
-  imprint: "https://api.e-recht24.dev/v2/imprint",
-  privacyPolicy: "https://api.e-recht24.dev/v2/privacyPolicy",
+  imprint: "https://api.e-recht24.de/v2/imprint",
+  privacyPolicy: "https://api.e-recht24.de/v2/privacyPolicy",
 } as const;
 
 type ERecht24DocumentType = keyof typeof ERECHT24_ENDPOINTS;
@@ -84,12 +84,23 @@ export async function loadERecht24Document(document: ERecht24DocumentType): Prom
   }
 
   try {
-    const response = await fetch(ERECHT24_ENDPOINTS[document], {
+    const endpoint = ERECHT24_ENDPOINTS[document];
+    const headers = new Headers({
+      "eRecht24-api-key": keyResolution.apiKey,
+      Accept: "application/json",
+    });
+
+    console.info("[eRecht24] fetch diagnostics", {
+      document,
+      endpoint,
+      hasApiKeyHeader: headers.has("eRecht24-api-key"),
+      acceptHeader: headers.get("Accept"),
+      apiKeyLength: keyResolution.apiKey.length,
+    });
+
+    const response = await fetch(endpoint, {
       method: "GET",
-      headers: {
-        "eRecht24-api-key": keyResolution.apiKey,
-        Accept: "application/json",
-      },
+      headers,
       cache: "no-store",
     });
 
