@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { getCloudflareContext } from "@opennextjs/cloudflare";
 
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -25,8 +26,25 @@ type ERecht24LoadResult = {
   error: string;
 };
 
+async function resolveERecht24ApiKey(): Promise<string> {
+  const fromProcess = process.env.ERECHT24_API_KEY?.trim();
+  if (fromProcess) return fromProcess;
+
+  try {
+    const { env } = await getCloudflareContext({ async: true });
+    const fromBinding = (env as Record<string, unknown>).ERECHT24_API_KEY;
+    if (typeof fromBinding === "string") {
+      return fromBinding.trim();
+    }
+  } catch {
+    // Context is not always available outside Cloudflare runtime.
+  }
+
+  return "";
+}
+
 async function loadPrivacyFromERecht24(): Promise<ERecht24LoadResult> {
-  const apiKey = process.env.ERECHT24_API_KEY?.trim();
+  const apiKey = await resolveERecht24ApiKey();
 
   if (!apiKey) {
     return {
