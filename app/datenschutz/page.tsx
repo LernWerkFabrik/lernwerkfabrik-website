@@ -1,96 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getCloudflareContext } from "@opennextjs/cloudflare";
 
 import { Card, CardContent } from "@/components/ui/card";
+import { loadERecht24Document } from "@/lib/erecht24";
 
 export const metadata: Metadata = {
   title: "Datenschutz | LernWerkFabrik",
   description: "Datenschutzhinweise der LernWerkFabrik.",
   robots: { index: true, follow: true },
 };
-
-const ERECHT24_PRIVACY_ENDPOINT = "https://api.e-recht24.dev/v2/privacyPolicy";
-
-type ERecht24PrivacyResponse = {
-  html_de?: string;
-  html_en?: string;
-  modified?: string;
-  warnings?: string;
-};
-
-type ERecht24LoadResult = {
-  html: string;
-  modified: string;
-  warnings: string;
-  error: string;
-};
-
-async function resolveERecht24ApiKey(): Promise<string> {
-  const fromProcess = process.env.ERECHT24_API_KEY?.trim();
-  if (fromProcess) return fromProcess;
-
-  try {
-    const { env } = await getCloudflareContext({ async: true });
-    const fromBinding = (env as Record<string, unknown>).ERECHT24_API_KEY;
-    if (typeof fromBinding === "string") {
-      return fromBinding.trim();
-    }
-  } catch {
-    // Context is not always available outside Cloudflare runtime.
-  }
-
-  return "";
-}
-
-async function loadPrivacyFromERecht24(): Promise<ERecht24LoadResult> {
-  const apiKey = await resolveERecht24ApiKey();
-
-  if (!apiKey) {
-    return {
-      html: "",
-      modified: "",
-      warnings: "",
-      error: "missing_api_key",
-    };
-  }
-
-  try {
-    const response = await fetch(ERECHT24_PRIVACY_ENDPOINT, {
-      method: "GET",
-      headers: {
-        "eRecht24-api-key": apiKey,
-        Accept: "application/json",
-      },
-      cache: "no-store",
-    });
-
-    if (!response.ok) {
-      return {
-        html: "",
-        modified: "",
-        warnings: "",
-        error: `e_recht24_${response.status}`,
-      };
-    }
-
-    const data = (await response.json()) as ERecht24PrivacyResponse;
-
-    return {
-      html: (data.html_de ?? data.html_en ?? "").trim(),
-      modified: data.modified ?? "",
-      warnings: data.warnings ?? "",
-      error: "",
-    };
-  } catch {
-    return {
-      html: "",
-      modified: "",
-      warnings: "",
-      error: "e_recht24_unreachable",
-    };
-  }
-}
 
 function Section({
   title,
@@ -176,7 +94,7 @@ function PlaceholderPrivacy() {
 }
 
 export default async function DatenschutzPage() {
-  const privacy = await loadPrivacyFromERecht24();
+  const privacy = await loadERecht24Document("privacyPolicy");
   const hasApiPrivacy = privacy.html.length > 0;
 
   return (
