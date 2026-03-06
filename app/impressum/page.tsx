@@ -28,59 +28,30 @@ function Section({
 function PlaceholderImpressum() {
   return (
     <>
-      <Section title="Diensteanbieter">
+      <Section title="Impressum">
         <div className="space-y-1.5">
-          <div className="font-medium text-foreground">LernWerkFabrik</div>
-          <div>
-            Betreiber: <span className="text-foreground">[Name/Firma eintragen]</span>
-          </div>
-          <div>
-            Anschrift: <span className="text-foreground">[Strasse, Hausnummer, PLZ, Ort, Land]</span>
-          </div>
+          <div className="font-medium text-foreground">Aleksej Schulschenko</div>
+          <div className="text-foreground">LernWerkFabrik</div>
+          <div>Kolonnenstr. 8</div>
+          <div>10827 Berlin</div>
         </div>
       </Section>
 
       <Section title="Kontakt">
         <div className="space-y-1.5">
           <div>
-            E-Mail: <span className="text-foreground">[E-Mail eintragen]</span>
+            Telefon: <span className="text-foreground">[Telefonnummer]</span>
           </div>
           <div>
-            Telefon: <span className="text-foreground">[optional]</span>
+            E-Mail: <span className="text-foreground">info@lernwerkfabrik.de</span>
           </div>
         </div>
       </Section>
 
-      <Section title="Vertretungsberechtigte Person">
-        <div>
-          Vertreten durch: <span className="text-foreground">[Name eintragen]</span>
-        </div>
-      </Section>
-
-      <Section title="Registereintrag (falls vorhanden)">
-        <div className="space-y-1.5">
-          <div>
-            Registergericht: <span className="text-foreground">[optional]</span>
-          </div>
-          <div>
-            Registernummer: <span className="text-foreground">[optional]</span>
-          </div>
-          <div>
-            Umsatzsteuer-ID: <span className="text-foreground">[optional]</span>
-          </div>
-        </div>
-      </Section>
-
-      <Section title="Inhaltlich verantwortlich">
-        <div>
-          Verantwortlich fuer redaktionelle Inhalte: <span className="text-foreground">[Name und Anschrift eintragen]</span>
-        </div>
-      </Section>
-
-      <Section title="Hinweise zur Haftung">
+      <Section title="Verbraucherstreitbeilegung/Universalschlichtungsstelle">
         <p>
-          Trotz sorgfaeltiger inhaltlicher Kontrolle uebernehmen wir keine Haftung fuer die Inhalte externer Links.
-          Fuer den Inhalt verlinkter Seiten sind ausschliesslich deren Betreiber verantwortlich.
+          Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
+          Verbraucherschlichtungsstelle teilzunehmen.
         </p>
       </Section>
     </>
@@ -100,8 +71,7 @@ export default async function ImpressumPage() {
         </div>
         <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">Impressum</h1>
         <p className="text-sm text-muted-foreground">
-          Pflichtangaben nach deutschem Recht (u. a. TMG/MStV). Bitte ersetze die Platzhalter vor Livegang mit
-          deinen echten Daten.
+          Pflichtangaben nach deutschem Recht (u. a. TMG/MStV).
         </p>
       </header>
 
