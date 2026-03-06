@@ -60,7 +60,7 @@ async function loadImpressumFromERecht24(): Promise<ERecht24LoadResult> {
         "eRecht24-api-key": apiKey,
         Accept: "application/json",
       },
-      next: { revalidate: 3600 },
+      cache: "no-store",
     });
 
     if (!response.ok) {
