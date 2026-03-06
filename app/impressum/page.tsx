@@ -100,7 +100,7 @@ export default async function ImpressumPage() {
           <Section title="Hinweis">
             <div>
               Das automatische eRecht24-Impressum konnte nicht geladen werden ({impressum.error}).
-              Die statischen Platzhalter werden als Fallback angezeigt.
+              Das statische Impressum wird als Fallback angezeigt.
             </div>
           </Section>
         ) : null}
