@@ -16,7 +16,7 @@ type ERecht24ApiResponse = {
 
 type ERecht24ApiKeyResolution = {
   apiKey: string;
-  source: "cloudflare_binding" | "missing";
+  source: "cloudflare_binding" | "process_env_fallback" | "missing";
 };
 
 export type ERecht24LoadResult = {
@@ -42,6 +42,17 @@ async function resolveERecht24ApiKey(): Promise<ERecht24ApiKeyResolution> {
     }
   } catch {
     // Outside Workers runtime the Cloudflare context may be unavailable.
+  }
+
+  const processValue = process.env.ERECHT24_API_KEY;
+  if (typeof processValue === "string") {
+    const apiKey = processValue.trim();
+    if (apiKey) {
+      return {
+        apiKey,
+        source: "process_env_fallback",
+      };
+    }
   }
 
   return {

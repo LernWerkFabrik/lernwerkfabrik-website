@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   description: "Impressum der LernWerkFabrik.",
   robots: { index: true, follow: true },
 };
+export const dynamic = "force-dynamic";
 
 function Section({
   title,
