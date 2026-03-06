@@ -17,6 +17,9 @@ type ERecht24ApiResponse = {
 type ERecht24ApiKeyResolution = {
   apiKey: string;
   source: "cloudflare_binding" | "process_env_fallback" | "missing";
+  rawLength: number;
+  hadEdgeWhitespace: boolean;
+  hadOuterQuotes: boolean;
 };
 
 export type ERecht24LoadResult = {
@@ -26,17 +29,53 @@ export type ERecht24LoadResult = {
   error: string;
 };
 
+export type ERecht24ApiKeyDiagnostics = {
+  source: ERecht24ApiKeyResolution["source"];
+  present: boolean;
+  length: number;
+  rawLength: number;
+  hadEdgeWhitespace: boolean;
+  hadOuterQuotes: boolean;
+};
+
+function normalizeApiKey(value: string) {
+  const rawLength = value.length;
+  const hadEdgeWhitespace = value !== value.trim();
+
+  let normalized = value.trim();
+  let hadOuterQuotes = false;
+
+  if (
+    (normalized.startsWith('"') && normalized.endsWith('"')) ||
+    (normalized.startsWith("'") && normalized.endsWith("'"))
+  ) {
+    normalized = normalized.slice(1, -1).trim();
+    hadOuterQuotes = true;
+  }
+
+  return {
+    normalized,
+    rawLength,
+    hadEdgeWhitespace,
+    hadOuterQuotes,
+  };
+}
+
 async function resolveERecht24ApiKey(): Promise<ERecht24ApiKeyResolution> {
   try {
     const { env } = await getCloudflareContext({ async: true });
     const value = (env as Record<string, unknown>).ERECHT24_API_KEY;
 
     if (typeof value === "string") {
-      const apiKey = value.trim();
+      const normalized = normalizeApiKey(value);
+      const apiKey = normalized.normalized;
       if (apiKey) {
         return {
           apiKey,
           source: "cloudflare_binding",
+          rawLength: normalized.rawLength,
+          hadEdgeWhitespace: normalized.hadEdgeWhitespace,
+          hadOuterQuotes: normalized.hadOuterQuotes,
         };
       }
     }
@@ -46,11 +85,15 @@ async function resolveERecht24ApiKey(): Promise<ERecht24ApiKeyResolution> {
 
   const processValue = process.env.ERECHT24_API_KEY;
   if (typeof processValue === "string") {
-    const apiKey = processValue.trim();
+    const normalized = normalizeApiKey(processValue);
+    const apiKey = normalized.normalized;
     if (apiKey) {
       return {
         apiKey,
         source: "process_env_fallback",
+        rawLength: normalized.rawLength,
+        hadEdgeWhitespace: normalized.hadEdgeWhitespace,
+        hadOuterQuotes: normalized.hadOuterQuotes,
       };
     }
   }
@@ -58,6 +101,9 @@ async function resolveERecht24ApiKey(): Promise<ERecht24ApiKeyResolution> {
   return {
     apiKey: "",
     source: "missing",
+    rawLength: 0,
+    hadEdgeWhitespace: false,
+    hadOuterQuotes: false,
   };
 }
 
@@ -67,7 +113,23 @@ function logApiKeyDiagnostics(document: ERecht24DocumentType, keyResolution: ERe
     source: keyResolution.source,
     present: keyResolution.apiKey.length > 0,
     length: keyResolution.apiKey.length,
+    rawLength: keyResolution.rawLength,
+    hadEdgeWhitespace: keyResolution.hadEdgeWhitespace,
+    hadOuterQuotes: keyResolution.hadOuterQuotes,
   });
+}
+
+export async function getERecht24ApiKeyDiagnostics(): Promise<ERecht24ApiKeyDiagnostics> {
+  const keyResolution = await resolveERecht24ApiKey();
+
+  return {
+    source: keyResolution.source,
+    present: keyResolution.apiKey.length > 0,
+    length: keyResolution.apiKey.length,
+    rawLength: keyResolution.rawLength,
+    hadEdgeWhitespace: keyResolution.hadEdgeWhitespace,
+    hadOuterQuotes: keyResolution.hadOuterQuotes,
+  };
 }
 
 export async function loadERecht24Document(document: ERecht24DocumentType): Promise<ERecht24LoadResult> {
@@ -105,9 +167,17 @@ export async function loadERecht24Document(document: ERecht24DocumentType): Prom
     });
 
     if (!response.ok) {
+      let bodySnippet = "";
+      try {
+        bodySnippet = (await response.text()).slice(0, 240);
+      } catch {
+        bodySnippet = "";
+      }
+
       console.warn("[eRecht24] API request failed", {
         document,
         status: response.status,
+        bodySnippet,
       });
 
       return {
