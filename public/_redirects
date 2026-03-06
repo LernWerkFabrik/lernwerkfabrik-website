@@ -2,7 +2,3 @@
 /brand/* /brand/:splat 200
 /social/* /social/:splat 200
 /favicon.ico /favicon.ico 200
-/impressum /impressum 200
-/impressum/ /impressum 200
-/datenschutz /datenschutz 200
-/datenschutz/ /datenschutz 200
