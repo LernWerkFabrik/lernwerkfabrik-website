@@ -40,9 +40,6 @@ function PlaceholderImpressum() {
       <Section title="Kontakt">
         <div className="space-y-1.5">
           <div>
-            Telefon: <span className="text-foreground">[Telefonnummer]</span>
-          </div>
-          <div>
             E-Mail: <span className="text-foreground">info@lernwerkfabrik.de</span>
           </div>
         </div>
