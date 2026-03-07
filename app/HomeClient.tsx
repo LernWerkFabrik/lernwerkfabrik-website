@@ -36,7 +36,7 @@ function Panel({
   accent?: "amber" | "sky";
 }) {
   const shellClassName =
-    "lp-ios-surface relative overflow-hidden rounded-2xl border bg-background shadow-none md:bg-background/82 md:shadow-sm md:backdrop-blur-sm";
+    "relative overflow-hidden rounded-2xl border bg-background shadow-none md:bg-background/82 md:shadow-sm md:backdrop-blur-sm";
 
   const accentLine =
     accent === "sky"
@@ -65,7 +65,7 @@ function Panel({
       />
 
       {/* Gradient wash */}
-      <div className="lp-ios-surface-layer pointer-events-none absolute inset-0 z-0">
+      <div className="pointer-events-none absolute inset-0 z-0">
         {gradientWash.map((layerClassName) => (
           <div key={layerClassName} className={layerClassName} />
         ))}
@@ -113,7 +113,7 @@ function BrandMark() {
 
 function Pill({ icon, label }: { icon: React.ReactNode; label: string }) {
   return (
-    <div className="inline-flex items-center gap-2 rounded-full border bg-background/80 px-3 py-1 text-xs text-foreground/80 backdrop-blur-none md:backdrop-blur-sm">
+    <div className="inline-flex items-center gap-2 rounded-full border bg-background/80 px-3 py-1 text-xs text-foreground/80 backdrop-blur-sm">
       <span className="text-amber-400">{icon}</span>
       <span>{label}</span>
     </div>
@@ -166,7 +166,7 @@ function SectionHeader({
 
 function MiniLogo({ name }: { name: string }) {
   return (
-    <div className="inline-flex items-center gap-2 rounded-full border bg-background/55 px-3 py-1 text-xs text-muted-foreground backdrop-blur-none md:backdrop-blur-sm">
+    <div className="inline-flex items-center gap-2 rounded-full border bg-background/55 px-3 py-1 text-xs text-muted-foreground backdrop-blur-sm">
       <Sparkles className="h-3.5 w-3.5 text-amber-300/80" />
       <span>{name}</span>
     </div>
@@ -287,7 +287,7 @@ export default function HomeClient() {
                 </div>
 
                 {/* Mobile Outcomes */}
-                <div className="lp-ios-surface relative mt-1 overflow-hidden rounded-xl border bg-background/55 p-3 shadow-[0_12px_24px_-20px_rgba(15,23,42,0.3)] md:hidden">
+                <div className="relative mt-1 overflow-hidden rounded-xl border bg-background/55 p-3 shadow-[0_12px_24px_-20px_rgba(15,23,42,0.3)] md:hidden">
                   <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
                   <div className="relative">
                     <div className="text-sm font-medium">Zum Launch kannst du:</div>
@@ -307,7 +307,7 @@ export default function HomeClient() {
                     </ul>
 
                     <div className="mt-3 grid gap-2">
-                      <div className="lp-ios-surface relative overflow-hidden rounded-xl border border-black/16 bg-gradient-to-r from-sky-100/30 via-background/82 to-amber-100/40 p-3 text-center shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12 dark:shadow-[0_12px_24px_-18px_rgba(0,0,0,0.72)]">
+                      <div className="relative overflow-hidden rounded-xl border border-black/16 bg-gradient-to-r from-sky-100/30 via-background/82 to-amber-100/40 p-3 text-center shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12 dark:shadow-[0_12px_24px_-18px_rgba(0,0,0,0.72)]">
                         <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-xl bg-gradient-to-r from-transparent via-sky-400/65 to-transparent" />
                         <div className="text-xs font-semibold uppercase tracking-wide text-foreground/80">
                           Verstehen → Prüfen → Verbessern
@@ -328,7 +328,7 @@ export default function HomeClient() {
                         </ul>
                       </div>
 
-                      <div className="lp-ios-surface relative overflow-hidden rounded-xl border border-black/10 bg-gradient-to-r from-sky-100/24 via-background/76 to-amber-100/32 p-3 text-center shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12">
+                      <div className="relative overflow-hidden rounded-xl border border-black/10 bg-gradient-to-r from-sky-100/24 via-background/76 to-amber-100/32 p-3 text-center shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12">
                         <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-xl bg-gradient-to-r from-transparent via-sky-400/65 to-transparent" />
                         <div className="text-xs font-semibold uppercase tracking-wide text-foreground/80">Ergebnis</div>
                         <ul className="mt-2 space-y-1.5 text-left text-sm text-muted-foreground">
@@ -352,7 +352,7 @@ export default function HomeClient() {
 
 
                 {/* Outcomes */}
-                <div className="lp-ios-surface relative mt-1 hidden overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-20px_rgba(15,23,42,0.3)] md:mt-2 md:mx-auto md:grid md:w-full md:grid-cols-[minmax(0,1fr)_minmax(220px,0.9fr)_210px] md:items-start md:gap-5">
+                <div className="relative mt-1 hidden overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-20px_rgba(15,23,42,0.3)] md:mt-2 md:mx-auto md:grid md:w-full md:grid-cols-[minmax(0,1fr)_minmax(220px,0.9fr)_210px] md:items-start md:gap-5">
                   <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
                   <div>
                     <div className="text-sm font-medium">Zum Launch kannst du:</div>
@@ -372,7 +372,7 @@ export default function HomeClient() {
                     </ul>
                   </div>
 
-                  <div className="lp-ios-surface relative overflow-hidden rounded-xl border border-black/16 bg-gradient-to-r from-sky-100/30 via-background/82 to-amber-100/40 p-3 text-center shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12 dark:shadow-[0_12px_24px_-18px_rgba(0,0,0,0.72)]">
+                  <div className="relative overflow-hidden rounded-xl border border-black/16 bg-gradient-to-r from-sky-100/30 via-background/82 to-amber-100/40 p-3 text-center shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12 dark:shadow-[0_12px_24px_-18px_rgba(0,0,0,0.72)]">
                     <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-xl bg-gradient-to-r from-transparent via-sky-400/65 to-transparent" />
                     <div className="text-xs font-semibold uppercase tracking-wide text-foreground/80">
                       Verstehen → Prüfen → Verbessern
@@ -393,7 +393,7 @@ export default function HomeClient() {
                     </ul>
                   </div>
 
-                  <div className="lp-ios-surface relative overflow-hidden rounded-xl border border-black/10 bg-gradient-to-r from-sky-100/24 via-background/76 to-amber-100/32 p-3 text-center shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12">
+                  <div className="relative overflow-hidden rounded-xl border border-black/10 bg-gradient-to-r from-sky-100/24 via-background/76 to-amber-100/32 p-3 text-center shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12">
                     <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-xl bg-gradient-to-r from-transparent via-sky-400/65 to-transparent" />
                     <div className="text-xs font-semibold uppercase tracking-wide text-foreground/80">Ergebnis</div>
                     <ul className="mt-2 space-y-1.5 text-left text-sm text-muted-foreground">
@@ -422,8 +422,8 @@ export default function HomeClient() {
                   />
                 </div>
                 {/* Micro-Box (straffer) */}
-                <div className="lp-ios-surface relative mt-2 overflow-hidden rounded-2xl border bg-background/55 p-4 md:mt-3">
-                  <div className="lp-ios-surface-layer pointer-events-none absolute inset-0">
+                <div className="relative mt-2 overflow-hidden rounded-2xl border bg-background/55 p-4 md:mt-3">
+                  <div className="pointer-events-none absolute inset-0">
                     <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
                   </div>
                   <div className="relative pt-1">
@@ -449,7 +449,7 @@ export default function HomeClient() {
                         </ul>
                       </div>
 
-                      <div className="lp-ios-surface relative overflow-hidden rounded-xl border border-black/10 bg-gradient-to-r from-sky-100/24 via-background/76 to-amber-100/32 p-3 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12">
+                      <div className="relative overflow-hidden rounded-xl border border-black/10 bg-gradient-to-r from-sky-100/24 via-background/76 to-amber-100/32 p-3 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12">
                         <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-xl bg-gradient-to-r from-transparent via-sky-400/65 to-transparent" />
                         <div className="text-sm font-medium text-foreground/90">So hilft dir LernWerkFabrik:</div>
                         <ul className="mt-2 space-y-2 text-sm text-muted-foreground">
@@ -493,8 +493,8 @@ export default function HomeClient() {
               <div className="mx-auto w-full max-w-5xl">
                 <div className="grid gap-2.5 md:gap-3">
                   <div className="grid gap-2.5 md:grid-cols-3 md:gap-3">
-                    <Card className="lp-ios-surface relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
-                      <div className="lp-ios-surface-layer pointer-events-none absolute inset-0">
+                    <Card className="relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
+                      <div className="pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
                         <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
@@ -524,8 +524,8 @@ export default function HomeClient() {
                       </CardContent>
                     </Card>
 
-                    <Card className="lp-ios-surface relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
-                      <div className="lp-ios-surface-layer pointer-events-none absolute inset-0">
+                    <Card className="relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
+                      <div className="pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
                         <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
@@ -554,8 +554,8 @@ export default function HomeClient() {
                         </div>
                       </CardContent>
                     </Card>
-                    <Card className="lp-ios-surface relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
-                      <div className="lp-ios-surface-layer pointer-events-none absolute inset-0">
+                    <Card className="relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
+                      <div className="pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
                         <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
@@ -587,8 +587,8 @@ export default function HomeClient() {
                   </div>
 
                   <div className="grid gap-2.5 md:grid-cols-2 md:gap-3">
-                    <div className="lp-ios-surface relative overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.36)] backdrop-blur-none md:backdrop-blur-sm">
-                      <div className="lp-ios-surface-layer pointer-events-none absolute inset-0">
+                    <div className="relative overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.36)] backdrop-blur-none md:backdrop-blur-sm">
+                      <div className="pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/12 via-transparent to-sky-400/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
                         <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
@@ -618,8 +618,8 @@ export default function HomeClient() {
                       </div>
                     </div>
 
-                    <div className="lp-ios-surface relative overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.36)] backdrop-blur-none md:backdrop-blur-sm">
-                      <div className="lp-ios-surface-layer pointer-events-none absolute inset-0">
+                    <div className="relative overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.36)] backdrop-blur-none md:backdrop-blur-sm">
+                      <div className="pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/12 via-transparent to-sky-400/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
                         <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
@@ -676,9 +676,9 @@ export default function HomeClient() {
               ].map((it) => (
                 <Card
                   key={it.title}
-                  className="lp-ios-surface relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-none md:backdrop-blur-sm"
+                  className="relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-none md:backdrop-blur-sm"
                 >
-                  <div className="lp-ios-surface-layer pointer-events-none absolute inset-0">
+                  <div className="pointer-events-none absolute inset-0">
                     <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
                     <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
                     <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
@@ -717,9 +717,9 @@ export default function HomeClient() {
               ].map((x) => (
                 <Card
                   key={x.t}
-                  className="lp-ios-surface relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-none md:backdrop-blur-sm"
+                  className="relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-none md:backdrop-blur-sm"
                 >
-                  <div className="lp-ios-surface-layer pointer-events-none absolute inset-0">
+                  <div className="pointer-events-none absolute inset-0">
                     <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
                     <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
                     <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
