@@ -45,7 +45,7 @@ function PlaceholderImpressum() {
         </div>
       </Section>
 
-      <Section title="Verbraucherstreitbeilegung/Universalschlichtungsstelle">
+      <Section title="Verbraucherstreitbeilegung / Universalschlichtungsstelle">
         <p>
           Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
           Verbraucherschlichtungsstelle teilzunehmen.
@@ -57,7 +57,10 @@ function PlaceholderImpressum() {
 
 export default async function ImpressumPage() {
   const impressum = await loadERecht24Document("imprint");
-  const hasApiImpressum = impressum.html.length > 0;
+  console.info("[impressum] render mode", {
+    source: impressum.html ? "api" : "static",
+    error: impressum.error || null,
+  });
 
   return (
     <main className="mx-auto w-full max-w-4xl px-4 py-10 md:px-6">
@@ -68,39 +71,12 @@ export default async function ImpressumPage() {
         </div>
         <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">Impressum</h1>
         <p className="text-sm text-muted-foreground">
-          Pflichtangaben nach deutschem Recht (u. a. TMG/MStV).
+          Angaben gemäß § 5 DDG und § 18 MStV
         </p>
       </header>
 
       <div className="mt-6 grid gap-4">
-        {hasApiImpressum ? (
-          <Section title="Impressum (eRecht24)">
-            <div
-              className="[&_a]:underline [&_a]:underline-offset-4 [&_h1]:mt-0 [&_h1]:text-2xl [&_h1]:font-semibold [&_h2]:mt-4 [&_h2]:text-lg [&_h2]:font-medium [&_p]:my-2 [&_p]:text-sm [&_strong]:font-semibold"
-              dangerouslySetInnerHTML={{ __html: impressum.html }}
-            />
-            {impressum.warnings ? (
-              <div
-                className="mt-4 rounded-xl border border-amber-500/40 bg-amber-500/10 p-3 text-xs leading-relaxed text-amber-200"
-                dangerouslySetInnerHTML={{ __html: impressum.warnings }}
-              />
-            ) : null}
-            {impressum.modified ? (
-              <p className="mt-3 text-xs text-muted-foreground">Zuletzt aktualisiert (eRecht24): {impressum.modified}</p>
-            ) : null}
-          </Section>
-        ) : (
-          <PlaceholderImpressum />
-        )}
-
-        {!hasApiImpressum && impressum.error ? (
-          <Section title="Hinweis">
-            <div>
-              Das automatische eRecht24-Impressum konnte nicht geladen werden ({impressum.error}).
-              Das statische Impressum wird als Fallback angezeigt.
-            </div>
-          </Section>
-        ) : null}
+        <PlaceholderImpressum />
 
         <div className="mt-2 flex flex-wrap gap-3 text-sm">
           <Link className="underline underline-offset-4 text-muted-foreground hover:text-foreground" href="/">
