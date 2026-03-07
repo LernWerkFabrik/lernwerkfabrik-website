@@ -194,7 +194,7 @@
 
   @media (max-width: 767px) {
     html[data-mobile-compact="1"] {
-      font-size: 92%;
+      font-size: 90%;
     }
 
     body.lp-bg {
