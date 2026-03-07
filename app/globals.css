@@ -228,60 +228,33 @@
       }
 
       .lp-home .lp-surface-panel {
-        background-image:
-          linear-gradient(to right, rgba(14, 165, 233, 0.10), transparent, rgba(245, 158, 11, 0.06)),
-          radial-gradient(900px 420px at 15% 10%, rgba(255, 255, 255, 0.06), transparent 55%),
-          radial-gradient(900px 420px at 85% 20%, rgba(245, 158, 11, 0.035), transparent 60%);
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
+        background-image: url("/surfaces/ios-panel-amber.svg") !important;
+        background-repeat: no-repeat !important;
+        background-size: 100% 100% !important;
       }
 
       .lp-home .lp-surface-card-amber {
-        background-image:
-          linear-gradient(to right, rgba(14, 165, 233, 0.08), transparent, rgba(245, 158, 11, 0.045));
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
+        background-image: url("/surfaces/ios-card-amber.svg") !important;
+        background-repeat: no-repeat !important;
+        background-size: 100% 100% !important;
       }
 
       .lp-home .lp-surface-card-cool {
-        background-image:
-          linear-gradient(to right, rgba(14, 165, 233, 0.12), transparent, rgba(56, 189, 248, 0.08));
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
+        background-image: url("/surfaces/ios-card-cool.svg") !important;
+        background-repeat: no-repeat !important;
+        background-size: 100% 100% !important;
       }
 
-      .lp-home .lp-surface-card-plain::before,
-      .lp-home .lp-surface-card-sky::before,
-      .lp-home .lp-surface-card-amber::before,
-      .lp-home .lp-surface-card-cool::before {
-        content: "";
-        position: absolute;
-        inset-inline: 0;
-        top: 0;
-        z-index: 2;
-        height: 2px;
-        pointer-events: none;
+      .lp-home .lp-surface-card-sky {
+        background-image: url("/surfaces/ios-card-sky.svg") !important;
+        background-repeat: no-repeat !important;
+        background-size: 100% 100% !important;
       }
 
-      .lp-home .lp-surface-card-plain::before,
-      .lp-home .lp-surface-card-amber::before,
-      .lp-home .lp-surface-card-cool::before {
-        background: linear-gradient(to right, transparent, rgba(251, 191, 36, 0.65), transparent);
-      }
-
-      .lp-home .lp-surface-card-sky::before {
-        background: linear-gradient(to right, transparent, rgba(56, 189, 248, 0.65), transparent);
-      }
-
-      .lp-home .lp-surface-panel::after,
-      .lp-home .lp-surface-card-amber::after,
-      .lp-home .lp-surface-card-cool::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        border-radius: inherit;
-        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+      .lp-home .lp-surface-card-plain {
+        background-image: url("/surfaces/ios-card-plain.svg") !important;
+        background-repeat: no-repeat !important;
+        background-size: 100% 100% !important;
       }
 
       .lp-home .lp-surface-shell > .lp-surface-accent-top {
