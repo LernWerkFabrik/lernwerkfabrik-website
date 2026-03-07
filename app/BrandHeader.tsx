@@ -149,7 +149,7 @@ export default function BrandHeader({ authed }: { authed: boolean }) {
   return (
     <header
       data-scroll-header
-      className="fixed inset-x-0 top-0 z-50 w-full border-b border-border/60 bg-background/[0.985] shadow-[0_10px_28px_-24px_rgba(0,0,0,0.9)] backdrop-blur-none md:bg-background/60 md:shadow-none md:backdrop-blur"
+      className="fixed inset-x-0 top-0 z-50 w-full border-b border-border/60 bg-background shadow-[0_10px_28px_-24px_rgba(0,0,0,0.9)] backdrop-blur-none md:shadow-none"
     >
       <div className="mx-auto grid h-[calc(3.5rem+env(safe-area-inset-top))] max-w-6xl grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 px-4 pt-[env(safe-area-inset-top)] md:h-16 md:px-6 md:pt-0">
         {/* LEFT - Back (mobile) or Brand */}
