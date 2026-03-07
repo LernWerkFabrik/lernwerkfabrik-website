@@ -234,6 +234,68 @@
     }
   }
 
+  @media (max-width: 767px) {
+    html[data-mobile-os="android"] .lp-android-header-word {
+      font-size: 16px;
+    }
+
+    html[data-mobile-os="android"] .lp-home .lp-android-hero-panel {
+      padding: 0.875rem;
+      padding-top: 0.75rem;
+    }
+
+    html[data-mobile-os="android"] .lp-home .lp-android-brandmark {
+      min-height: 5rem;
+      gap: 1rem;
+    }
+
+    html[data-mobile-os="android"] .lp-home .lp-android-brandmark-logo {
+      width: 5rem;
+      height: 5rem;
+    }
+
+    html[data-mobile-os="android"] .lp-home .lp-android-brandmark-name {
+      font-size: 0.95rem;
+    }
+
+    html[data-mobile-os="android"] .lp-home .lp-android-brandmark-subline {
+      margin-top: 0.125rem;
+      font-size: 0.84rem;
+      line-height: 1.35;
+    }
+
+    html[data-mobile-os="android"] .lp-home .lp-android-hero-badge {
+      padding-inline: 0.625rem;
+      font-size: 0.72rem;
+    }
+
+    html[data-mobile-os="android"] .lp-home .lp-android-hero-title {
+      font-size: clamp(2.3rem, 10vw, 2.5rem);
+      line-height: 1.05;
+    }
+
+    html[data-mobile-os="android"] .lp-home .lp-android-hero-subline {
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    html[data-mobile-os="android"] .lp-home .lp-android-cta-lead {
+      font-size: 0.96rem;
+    }
+
+    html[data-mobile-os="android"] .lp-home form [data-slot="input"] {
+      height: 2.75rem;
+      padding-inline: 0.875rem;
+      font-size: 0.96rem;
+    }
+
+    html[data-mobile-os="android"] .lp-home form [data-slot="button"] {
+      min-height: 2.75rem;
+      padding-inline: 1rem;
+      font-size: 0.98rem;
+    }
+  }
+
   /* =========================================================
      Surface System
      ========================================================= */

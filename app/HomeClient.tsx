@@ -79,8 +79,8 @@ function Panel({
 
 function BrandMark() {
   return (
-    <div className="flex min-h-16 items-center gap-3.5 max-md:min-h-24 max-md:gap-5">
-      <div className="relative h-16 w-16 shrink-0 max-md:h-24 max-md:w-24">
+    <div className="lp-android-brandmark flex min-h-16 items-center gap-3.5 max-md:min-h-24 max-md:gap-5">
+      <div className="lp-android-brandmark-logo relative h-16 w-16 shrink-0 max-md:h-24 max-md:w-24">
         <Image
           src="/brand/logo-lwf-dark.png"
           alt="LernWerkFabrik"
@@ -100,10 +100,10 @@ function BrandMark() {
       </div>
 
       <div className="leading-tight">
-        <div className="text-base font-semibold tracking-tight md:text-lg">
+        <div className="lp-android-brandmark-name text-base font-semibold tracking-tight md:text-lg">
           Lern<span className="text-primary">Werk</span>Fabrik
         </div>
-        <div className="mt-0.5 text-xs text-muted-foreground md:text-sm max-md:mt-0">
+        <div className="lp-android-brandmark-subline mt-0.5 text-xs text-muted-foreground md:text-sm max-md:mt-0">
           Prüfungsnah trainieren für Industriemechaniker/in - mit Struktur
         </div>
       </div>
@@ -125,6 +125,7 @@ function LaunchCtaLead({ className = "" }: { className?: string }) {
     <p
       className={[
         "mx-auto max-w-2xl text-center text-sm font-medium text-primary md:text-base",
+        "lp-android-cta-lead",
         className,
       ].join(" ")}
     >
@@ -184,7 +185,7 @@ function MetaBadge({ icon, label }: { icon: React.ReactNode; label: string }) {
 
 export default function HomeClient() {
   const heroBadgeClass =
-    "rounded-full border-amber-300/60 bg-amber-50/80 text-amber-900 shadow-[0_6px_14px_-12px_rgba(180,83,9,0.36),inset_0_1px_0_rgba(255,255,255,0.72)] hover:-translate-y-0.5 hover:bg-amber-50/90 hover:shadow-[0_9px_16px_-12px_rgba(180,83,9,0.4),inset_0_1px_0_rgba(255,255,255,0.78)] dark:border-amber-200/14 dark:bg-amber-200/5 dark:text-amber-100/70 dark:shadow-[0_2px_6px_-10px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.02)] dark:hover:bg-amber-200/8 dark:hover:shadow-[0_3px_8px_-10px_rgba(0,0,0,0.48),inset_0_1px_0_rgba(255,255,255,0.03)] md:min-w-[13.5rem] md:justify-center md:px-5 md:py-1.5 md:text-sm max-md:shrink-0 max-md:whitespace-nowrap max-md:px-2 max-md:py-px max-md:text-xs";
+    "lp-android-hero-badge rounded-full border-amber-300/60 bg-amber-50/80 text-amber-900 shadow-[0_6px_14px_-12px_rgba(180,83,9,0.36),inset_0_1px_0_rgba(255,255,255,0.72)] hover:-translate-y-0.5 hover:bg-amber-50/90 hover:shadow-[0_9px_16px_-12px_rgba(180,83,9,0.4),inset_0_1px_0_rgba(255,255,255,0.78)] dark:border-amber-200/14 dark:bg-amber-200/5 dark:text-amber-100/70 dark:shadow-[0_2px_6px_-10px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.02)] dark:hover:bg-amber-200/8 dark:hover:shadow-[0_3px_8px_-10px_rgba(0,0,0,0.48),inset_0_1px_0_rgba(255,255,255,0.03)] md:min-w-[13.5rem] md:justify-center md:px-5 md:py-1.5 md:text-sm max-md:shrink-0 max-md:whitespace-nowrap max-md:px-2 max-md:py-px max-md:text-xs";
 
   return (
     <div className="lp-home relative overflow-visible md:overflow-hidden">
@@ -207,7 +208,7 @@ export default function HomeClient() {
       <div className="mx-auto w-full max-w-6xl px-4 py-6 max-md:pt-[13.5px]">
         <div className="space-y-10">
           {/* HERO */}
-          <Panel className="bg-background/90 p-6 md:p-8 max-md:p-4 max-md:pt-3" accent="amber">
+          <Panel className="lp-android-hero-panel bg-background/90 p-6 md:p-8 max-md:p-4 max-md:pt-3" accent="amber">
             <div className="pointer-events-none absolute inset-x-0 top-[2px] h-20 bg-background/94 max-md:h-28" />
             {/* top row */}
             <div className="mb-4 flex items-center justify-start gap-3 max-md:mb-1 md:mx-auto md:w-full md:max-w-[78%]">
@@ -239,7 +240,7 @@ export default function HomeClient() {
                     <span className="block">Von der Aufgabe zur</span>
                     <span className="block">sicheren Abschlussprüfung</span>
                   </span>
-                  <span className="text-[2.65rem] leading-[1.06] max-md:block md:hidden">
+                  <span className="lp-android-hero-title text-[2.65rem] leading-[1.06] max-md:block md:hidden">
                     Von der Aufgabe
                     <span className="block">zur sicheren</span>
                     <span className="block">Abschlussprüfung</span>
@@ -247,7 +248,7 @@ export default function HomeClient() {
                 </h1>
 
                 {/* Subline */}
-                <p className="mx-auto max-w-2xl text-center text-base text-muted-foreground md:text-lg max-md:text-sm max-md:leading-snug">
+                <p className="lp-android-hero-subline mx-auto max-w-2xl text-center text-base text-muted-foreground md:text-lg max-md:text-sm max-md:leading-snug">
                   <span className="hidden md:inline">
                     Für Industriemechaniker/-innen vor der IHK-Abschlussprüfung (AP1/AP2). Erkenne typische Prüfungsfehler, verstehe die Prüfungslogik und trainiere prüfungsnah statt nur auswendig zu lernen.
                   </span>
