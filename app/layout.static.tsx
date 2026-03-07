@@ -18,6 +18,14 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://lernwerkfabrik.de"),
   title: seoTitle,
   description: seoDescription,
+  icons: {
+    icon: [
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+    shortcut: ["/favicon.ico"],
+  },
   openGraph: {
     title: seoTitle,
     description: seoDescription,
