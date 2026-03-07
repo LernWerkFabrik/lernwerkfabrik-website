@@ -20,6 +20,12 @@ type TurnstileVerifyResponse = {
   "error-codes"?: string[];
 };
 
+type WaitlistPositionRow = {
+  id: string;
+  waitlist_position: number | null;
+  created_at: string;
+};
+
 function normalizeEmail(value: unknown): string {
   if (typeof value !== "string") return "";
   return value.trim().toLowerCase();
@@ -93,6 +99,54 @@ async function verifyTurnstileToken(token: string, remoteIp: string | null) {
   return { ok: true } as const;
 }
 
+async function compactWaitlistPositions(
+  supabaseServer: Awaited<ReturnType<typeof createSupabaseServiceRoleClientAsync>>
+) {
+  const rowsResult = await supabaseServer
+    .from("waitlist")
+    .select("id, waitlist_position, created_at")
+    .order("created_at", { ascending: true })
+    .order("id", { ascending: true });
+
+  if (rowsResult.error) {
+    console.error("waitlist: compact select failed", {
+      code: rowsResult.error.code,
+      message: rowsResult.error.message,
+    });
+    return null;
+  }
+
+  const rows = (rowsResult.data ?? []) as WaitlistPositionRow[];
+  const positionsById = new Map<string, number>();
+
+  for (let index = 0; index < rows.length; index += 1) {
+    const row = rows[index];
+    const expectedPosition = index + 1;
+    positionsById.set(row.id, expectedPosition);
+
+    if (row.waitlist_position === expectedPosition) {
+      continue;
+    }
+
+    const updateResult = await supabaseServer
+      .from("waitlist")
+      .update({ waitlist_position: expectedPosition })
+      .eq("id", row.id);
+
+    if (updateResult.error) {
+      console.error("waitlist: compact update failed", {
+        id: row.id,
+        target: expectedPosition,
+        code: updateResult.error.code,
+        message: updateResult.error.message,
+      });
+      return null;
+    }
+  }
+
+  return positionsById;
+}
+
 export async function POST(request: NextRequest) {
   let body: WaitlistBody;
   let supabaseServer: Awaited<ReturnType<typeof createSupabaseServiceRoleClientAsync>>;
@@ -157,6 +211,38 @@ export async function POST(request: NextRequest) {
   const deviceType = normalizeText(body.device_type, 32);
   const country = normalizeCountry(body.country);
 
+  const existingBeforeInsert = await supabaseServer
+    .from("waitlist")
+    .select("id, waitlist_position")
+    .eq("email", email)
+    .maybeSingle();
+
+  if (existingBeforeInsert.error) {
+    console.error("waitlist: existing lookup failed", {
+      code: existingBeforeInsert.error.code,
+      message: existingBeforeInsert.error.message,
+    });
+    return NextResponse.json(
+      {
+        status: "error",
+        message: "lookup_failed",
+        details: existingBeforeInsert.error.message,
+      },
+      { status: 500 }
+    );
+  }
+
+  if (existingBeforeInsert.data?.id) {
+    const compactedPositions = await compactWaitlistPositions(supabaseServer);
+    return NextResponse.json({
+      status: "already_registered",
+      waitlist_position:
+        compactedPositions?.get(existingBeforeInsert.data.id) ??
+        existingBeforeInsert.data.waitlist_position ??
+        null,
+    });
+  }
+
   const insertResult = await supabaseServer
     .from("waitlist")
     .insert({
@@ -167,7 +253,7 @@ export async function POST(request: NextRequest) {
       device_type: deviceType,
       country,
     })
-    .select("waitlist_position")
+    .select("id, waitlist_position")
     .single();
 
   if (insertResult.error) {
@@ -198,8 +284,15 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  const compactedPositions = insertResult.data?.id
+    ? await compactWaitlistPositions(supabaseServer)
+    : null;
+
   return NextResponse.json({
     status: "ok",
-    waitlist_position: insertResult.data?.waitlist_position ?? null,
+    waitlist_position:
+      (insertResult.data?.id ? compactedPositions?.get(insertResult.data.id) : null) ??
+      insertResult.data?.waitlist_position ??
+      null,
   });
 }
