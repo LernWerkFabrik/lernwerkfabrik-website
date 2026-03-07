@@ -1,7 +1,10 @@
+import "server-only";
+
 import { createClient } from "@supabase/supabase-js";
+import { SERVER_RUNTIME_ENV } from "@/lib/generated/server-runtime-env";
 
 type RuntimeEnvSource = Record<string, unknown> | null;
-type EnvSource = "process_env" | "cloudflare_binding" | "missing";
+type EnvSource = "build_embedded" | "process_env" | "cloudflare_binding" | "missing";
 
 type EnvResolution = {
   value: string;
@@ -119,6 +122,31 @@ function resolveEnvValue(
   let emptyCandidate: EnvResolution | null = null;
 
   for (const candidate of candidates) {
+    const buildValue = SERVER_RUNTIME_ENV.values[candidate as keyof typeof SERVER_RUNTIME_ENV.values];
+    if (typeof buildValue === "string") {
+      const normalized = normalizeEnvValue(buildValue);
+      if (normalized.normalized) {
+        return {
+          value: normalized.normalized,
+          source: "build_embedded",
+          matchedName: candidate,
+          rawLength: normalized.rawLength,
+          hadEdgeWhitespace: normalized.hadEdgeWhitespace,
+          hadOuterQuotes: normalized.hadOuterQuotes,
+        };
+      }
+      if (SERVER_RUNTIME_ENV.mode === "generated") {
+        emptyCandidate ??= {
+          value: "",
+          source: "build_embedded",
+          matchedName: candidate,
+          rawLength: normalized.rawLength,
+          hadEdgeWhitespace: normalized.hadEdgeWhitespace,
+          hadOuterQuotes: normalized.hadOuterQuotes,
+        };
+      }
+    }
+
     const processValue = process.env[candidate];
     if (typeof processValue === "string") {
       const normalized = normalizeEnvValue(processValue);
