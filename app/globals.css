@@ -217,6 +217,23 @@
     }
   }
 
+  @supports (-webkit-touch-callout: none) {
+    @media (max-width: 767px) {
+      .lp-mobile-panel {
+        contain: paint;
+        isolation: isolate;
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+        backface-visibility: hidden;
+      }
+
+      .lp-mobile-card {
+        contain: paint;
+        isolation: isolate;
+      }
+    }
+  }
+
   /* =========================================================
      Surface System
      ========================================================= */

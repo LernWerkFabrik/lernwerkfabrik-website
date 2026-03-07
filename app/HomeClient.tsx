@@ -36,7 +36,7 @@ function Panel({
   accent?: "amber" | "sky";
 }) {
   const shellClassName =
-    "relative overflow-hidden rounded-2xl border bg-background shadow-none md:bg-background/82 md:shadow-sm md:backdrop-blur-sm";
+    "lp-mobile-panel relative overflow-hidden rounded-2xl border bg-background shadow-none md:bg-background/82 md:shadow-sm md:backdrop-blur-sm";
 
   const accentLine =
     accent === "sky"
@@ -187,7 +187,7 @@ export default function HomeClient() {
     "rounded-full border-amber-300/60 bg-amber-50/80 text-amber-900 shadow-[0_6px_14px_-12px_rgba(180,83,9,0.36),inset_0_1px_0_rgba(255,255,255,0.72)] hover:-translate-y-0.5 hover:bg-amber-50/90 hover:shadow-[0_9px_16px_-12px_rgba(180,83,9,0.4),inset_0_1px_0_rgba(255,255,255,0.78)] dark:border-amber-200/14 dark:bg-amber-200/5 dark:text-amber-100/70 dark:shadow-[0_2px_6px_-10px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.02)] dark:hover:bg-amber-200/8 dark:hover:shadow-[0_3px_8px_-10px_rgba(0,0,0,0.48),inset_0_1px_0_rgba(255,255,255,0.03)] md:min-w-[13.5rem] md:justify-center md:px-5 md:py-1.5 md:text-sm max-md:shrink-0 max-md:whitespace-nowrap max-md:px-2 max-md:py-px max-md:text-xs";
 
   return (
-    <div className="relative overflow-visible md:overflow-hidden">
+    <div className="lp-home relative overflow-visible md:overflow-hidden">
       {/* Background grid + glows */}
       <div className="pointer-events-none absolute inset-0 -z-10 hidden md:block">
         <div
@@ -287,7 +287,7 @@ export default function HomeClient() {
                 </div>
 
                 {/* Mobile Outcomes */}
-                <div className="relative mt-1 overflow-hidden rounded-xl border bg-background/55 p-3 shadow-[0_12px_24px_-20px_rgba(15,23,42,0.3)] md:hidden">
+                <div className="lp-mobile-card relative mt-1 overflow-hidden rounded-xl border bg-background/55 p-3 shadow-[0_12px_24px_-20px_rgba(15,23,42,0.3)] md:hidden">
                   <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
                   <div className="relative">
                     <div className="text-sm font-medium">Zum Launch kannst du:</div>
@@ -352,7 +352,7 @@ export default function HomeClient() {
 
 
                 {/* Outcomes */}
-                <div className="relative mt-1 hidden overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-20px_rgba(15,23,42,0.3)] md:mt-2 md:mx-auto md:grid md:w-full md:grid-cols-[minmax(0,1fr)_minmax(220px,0.9fr)_210px] md:items-start md:gap-5">
+                <div className="lp-mobile-card relative mt-1 hidden overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-20px_rgba(15,23,42,0.3)] md:mt-2 md:mx-auto md:grid md:w-full md:grid-cols-[minmax(0,1fr)_minmax(220px,0.9fr)_210px] md:items-start md:gap-5">
                   <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
                   <div>
                     <div className="text-sm font-medium">Zum Launch kannst du:</div>
@@ -422,7 +422,7 @@ export default function HomeClient() {
                   />
                 </div>
                 {/* Micro-Box (straffer) */}
-                <div className="relative mt-2 overflow-hidden rounded-2xl border bg-background/55 p-4 md:mt-3">
+                <div className="lp-mobile-card relative mt-2 overflow-hidden rounded-2xl border bg-background/55 p-4 md:mt-3">
                   <div className="pointer-events-none absolute inset-0">
                     <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
                   </div>
@@ -493,7 +493,7 @@ export default function HomeClient() {
               <div className="mx-auto w-full max-w-5xl">
                 <div className="grid gap-2.5 md:gap-3">
                   <div className="grid gap-2.5 md:grid-cols-3 md:gap-3">
-                    <Card className="relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
+                    <Card className="lp-mobile-card relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
                       <div className="pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
@@ -524,7 +524,7 @@ export default function HomeClient() {
                       </CardContent>
                     </Card>
 
-                    <Card className="relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
+                    <Card className="lp-mobile-card relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
                       <div className="pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
@@ -554,7 +554,7 @@ export default function HomeClient() {
                         </div>
                       </CardContent>
                     </Card>
-                    <Card className="relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
+                    <Card className="lp-mobile-card relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
                       <div className="pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
@@ -587,7 +587,7 @@ export default function HomeClient() {
                   </div>
 
                   <div className="grid gap-2.5 md:grid-cols-2 md:gap-3">
-                    <div className="relative overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.36)] backdrop-blur-none md:backdrop-blur-sm">
+                    <div className="lp-mobile-card relative overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.36)] backdrop-blur-none md:backdrop-blur-sm">
                       <div className="pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/12 via-transparent to-sky-400/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
@@ -618,7 +618,7 @@ export default function HomeClient() {
                       </div>
                     </div>
 
-                    <div className="relative overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.36)] backdrop-blur-none md:backdrop-blur-sm">
+                    <div className="lp-mobile-card relative overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.36)] backdrop-blur-none md:backdrop-blur-sm">
                       <div className="pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/12 via-transparent to-sky-400/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
@@ -644,7 +644,7 @@ export default function HomeClient() {
           </Panel>
 
           {/* VALUE GRID */}
-          <section className="space-y-4">
+          <section className="lp-mobile-panel space-y-4">
             <div className="md:hidden">
               <div className="space-y-2">
                 <LaunchCtaLead />
@@ -676,7 +676,7 @@ export default function HomeClient() {
               ].map((it) => (
                 <Card
                   key={it.title}
-                  className="relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-none md:backdrop-blur-sm"
+                  className="lp-mobile-card relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-none md:backdrop-blur-sm"
                 >
                   <div className="pointer-events-none absolute inset-0">
                     <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
@@ -697,7 +697,7 @@ export default function HomeClient() {
           </section>
 
           {/* WORKFLOW */}
-          <section className="space-y-4">
+          <section className="lp-mobile-panel space-y-4">
             <div className="space-y-2">
               <h2 className="text-xl font-semibold tracking-tight md:text-2xl">
                 <span className="whitespace-nowrap">Drei Schritte - ein sauberer Lernflow</span>
@@ -717,7 +717,7 @@ export default function HomeClient() {
               ].map((x) => (
                 <Card
                   key={x.t}
-                  className="relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-none md:backdrop-blur-sm"
+                  className="lp-mobile-card relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-none md:backdrop-blur-sm"
                 >
                   <div className="pointer-events-none absolute inset-0">
                     <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
