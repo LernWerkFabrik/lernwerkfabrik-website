@@ -37,7 +37,7 @@ function Panel({
   accent?: "amber" | "sky";
 } & React.ComponentPropsWithoutRef<"section">) {
   const shellClassName =
-    "lp-mobile-panel lp-surface-shell lp-surface-panel relative overflow-hidden rounded-2xl border bg-background shadow-none md:bg-background/82 md:shadow-sm md:backdrop-blur-sm";
+    "lp-mobile-panel relative overflow-hidden rounded-2xl border bg-background shadow-none md:bg-background/82 md:shadow-sm md:backdrop-blur-sm";
 
   const accentLine =
     accent === "sky"
@@ -135,6 +135,31 @@ function LaunchCtaLead({ className = "" }: { className?: string }) {
   );
 }
 
+type LayoutMode = "unknown" | "mobile" | "desktop";
+
+function useLayoutMode(): LayoutMode {
+  const [layoutMode, setLayoutMode] = React.useState<LayoutMode>("unknown");
+
+  React.useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
+    const updateLayoutMode = () => {
+      setLayoutMode(mediaQuery.matches ? "desktop" : "mobile");
+    };
+
+    updateLayoutMode();
+
+    if (typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener("change", updateLayoutMode);
+      return () => mediaQuery.removeEventListener("change", updateLayoutMode);
+    }
+
+    mediaQuery.addListener(updateLayoutMode);
+    return () => mediaQuery.removeListener(updateLayoutMode);
+  }, []);
+
+  return layoutMode;
+}
+
 function SectionHeader({
   eyebrow,
   title,
@@ -185,13 +210,18 @@ function MetaBadge({ icon, label }: { icon: React.ReactNode; label: string }) {
 }
 
 export default function HomeClient() {
+  const layoutMode = useLayoutMode();
+  const showMobileOnly = layoutMode !== "desktop";
+  const showDesktopOnly = layoutMode !== "mobile";
+  const unresolvedLayout = layoutMode === "unknown";
   const heroBadgeClass =
     "rounded-full border-amber-300/60 bg-amber-50/80 text-amber-900 shadow-[0_6px_14px_-12px_rgba(180,83,9,0.36),inset_0_1px_0_rgba(255,255,255,0.72)] hover:-translate-y-0.5 hover:bg-amber-50/90 hover:shadow-[0_9px_16px_-12px_rgba(180,83,9,0.4),inset_0_1px_0_rgba(255,255,255,0.78)] dark:border-amber-200/14 dark:bg-amber-200/5 dark:text-amber-100/70 dark:shadow-[0_2px_6px_-10px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.02)] dark:hover:bg-amber-200/8 dark:hover:shadow-[0_3px_8px_-10px_rgba(0,0,0,0.48),inset_0_1px_0_rgba(255,255,255,0.03)] md:min-w-[13.5rem] md:justify-center md:px-5 md:py-1.5 md:text-sm max-md:shrink-0 max-md:whitespace-nowrap max-md:px-2 max-md:py-px max-md:text-xs";
 
   return (
     <div className="lp-home relative overflow-visible md:overflow-hidden">
       {/* Background grid + glows */}
-      <div className="pointer-events-none absolute inset-0 -z-10 hidden md:block">
+      {showDesktopOnly && (
+      <div className={unresolvedLayout ? "pointer-events-none absolute inset-0 -z-10 hidden md:block" : "pointer-events-none absolute inset-0 -z-10"}>
         <div
           className="absolute inset-0 opacity-[0.45]"
           style={{
@@ -204,6 +234,7 @@ export default function HomeClient() {
         <div className="absolute right-[-140px] top-[140px] hidden h-[360px] w-[360px] rounded-full bg-sky-500/10 blur-3xl md:block" />
         <div className="absolute -bottom-28 -left-28 hidden h-[420px] w-[420px] rounded-full bg-slate-500/12 blur-3xl md:block" />
       </div>
+      )}
 
       {/* Centered container */}
       <div className="mx-auto w-full max-w-6xl px-4 py-6 max-md:pt-[13.5px]">
@@ -220,10 +251,13 @@ export default function HomeClient() {
               {/* LEFT */}
               <div className="mx-auto w-full max-w-4xl space-y-4 max-md:space-y-3 md:max-w-[78%]">
                 {/* USP Badges */}
-                <div className="flex justify-center md:hidden">
+                {showMobileOnly && (
+                <div className={unresolvedLayout ? "flex justify-center md:hidden" : "flex justify-center"}>
                   <Badge className={heroBadgeClass}>Abschlussprüfung (AP1/AP2) – strukturiert bestehen</Badge>
                 </div>
-                <div className="hidden md:mx-auto md:flex md:w-full md:flex-nowrap md:items-center md:justify-between">
+                )}
+                {showDesktopOnly && (
+                <div className={unresolvedLayout ? "hidden md:mx-auto md:flex md:w-full md:flex-nowrap md:items-center md:justify-between" : "mx-auto flex w-full flex-nowrap items-center justify-between"}>
                   <Badge className={heroBadgeClass}>
                     Abschlussprüfung (AP1/AP2)
                   </Badge>
@@ -234,33 +268,43 @@ export default function HomeClient() {
                     Fehlertraining als Kernfunktion
                   </Badge>
                 </div>
+                )}
 
                 {/* Headline */}
                 <h1 className="font-semibold tracking-tight text-center">
-                  <span className="hidden md:block md:text-[clamp(2.4rem,4.8vw,4.2rem)] md:leading-[1.03]">
+                  {showDesktopOnly && (
+                  <span className={unresolvedLayout ? "hidden md:block md:text-[clamp(2.4rem,4.8vw,4.2rem)] md:leading-[1.03]" : "block text-[clamp(2.4rem,4.8vw,4.2rem)] leading-[1.03]"}>
                     <span className="block">Von der Aufgabe zur</span>
                     <span className="block">sicheren Abschlussprüfung</span>
                   </span>
-                  <span className="text-[2.65rem] leading-[1.06] max-md:block md:hidden">
+                  )}
+                  {showMobileOnly && (
+                  <span className={unresolvedLayout ? "text-[2.65rem] leading-[1.06] max-md:block md:hidden" : "block text-[2.65rem] leading-[1.06]"}>
                     Von der Aufgabe
                     <span className="block">zur sicheren</span>
                     <span className="block">Abschlussprüfung</span>
                   </span>
+                  )}
                 </h1>
 
                 {/* Subline */}
                 <p className="mx-auto max-w-2xl text-center text-base text-muted-foreground md:text-lg max-md:text-sm max-md:leading-snug">
-                  <span className="hidden md:inline">
+                  {showDesktopOnly && (
+                  <span className={unresolvedLayout ? "hidden md:inline" : "inline"}>
                     Für Industriemechaniker/-innen vor der IHK-Abschlussprüfung (AP1/AP2). Erkenne typische Prüfungsfehler, verstehe die Prüfungslogik und trainiere prüfungsnah statt nur auswendig zu lernen.
                   </span>
-                  <span className="md:hidden">
+                  )}
+                  {showMobileOnly && (
+                  <span className={unresolvedLayout ? "md:hidden" : "inline"}>
                     Für AP1/AP2: Prüfungslogik verstehen, Fehler erkennen und prüfungsnah trainieren.
                   </span>
+                  )}
                 </p>
                 <LaunchCtaLead />
 
                 {/* Mobile CTA (früh sichtbar) */}
-                <div className="md:hidden">
+                {showMobileOnly && (
+                <div className={unresolvedLayout ? "md:hidden" : ""}>
                   <div className="flex flex-col gap-2">
                     <WaitlistForm />
                   </div>
@@ -287,10 +331,12 @@ export default function HomeClient() {
                     </ul>
                   </div>
                 </div>
+                )}
 
                 {/* Mobile Outcomes */}
-                <div className="lp-mobile-card lp-surface-shell lp-surface-card-plain relative mt-1 overflow-hidden rounded-xl border bg-background/55 p-3 shadow-[0_12px_24px_-20px_rgba(15,23,42,0.3)] md:hidden">
-                  <div className="lp-surface-accent-top lp-surface-accent-top-amber pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
+                {showMobileOnly && (
+                <div className={unresolvedLayout ? "lp-mobile-card relative mt-1 overflow-hidden rounded-xl border bg-background/55 p-3 shadow-[0_12px_24px_-20px_rgba(15,23,42,0.3)] md:hidden" : "lp-mobile-card relative mt-1 overflow-hidden rounded-xl border bg-background/55 p-3 shadow-[0_12px_24px_-20px_rgba(15,23,42,0.3)]"}>
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
                   <div className="relative">
                     <div className="text-sm font-medium">Zum Launch kannst du:</div>
                     <ul className="mt-2 space-y-1.5 text-sm text-muted-foreground">
@@ -309,8 +355,8 @@ export default function HomeClient() {
                     </ul>
 
                     <div className="mt-3 grid gap-2">
-                      <div className="lp-surface-shell lp-surface-card-sky relative overflow-hidden rounded-xl border border-black/16 bg-gradient-to-r from-sky-100/30 via-background/82 to-amber-100/40 p-3 text-center shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12 dark:shadow-[0_12px_24px_-18px_rgba(0,0,0,0.72)]">
-                        <div className="lp-surface-accent-top lp-surface-accent-top-sky pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-xl bg-gradient-to-r from-transparent via-sky-400/65 to-transparent" />
+                      <div className="relative overflow-hidden rounded-xl border border-black/16 bg-gradient-to-r from-sky-100/30 via-background/82 to-amber-100/40 p-3 text-center shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12 dark:shadow-[0_12px_24px_-18px_rgba(0,0,0,0.72)]">
+                        <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-xl bg-gradient-to-r from-transparent via-sky-400/65 to-transparent" />
                         <div className="text-xs font-semibold uppercase tracking-wide text-foreground/80">
                           Verstehen → Prüfen → Verbessern
                         </div>
@@ -330,8 +376,8 @@ export default function HomeClient() {
                         </ul>
                       </div>
 
-                      <div className="lp-surface-shell lp-surface-card-sky relative overflow-hidden rounded-xl border border-black/10 bg-gradient-to-r from-sky-100/24 via-background/76 to-amber-100/32 p-3 text-center shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12">
-                        <div className="lp-surface-accent-top lp-surface-accent-top-sky pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-xl bg-gradient-to-r from-transparent via-sky-400/65 to-transparent" />
+                      <div className="relative overflow-hidden rounded-xl border border-black/10 bg-gradient-to-r from-sky-100/24 via-background/76 to-amber-100/32 p-3 text-center shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12">
+                        <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-xl bg-gradient-to-r from-transparent via-sky-400/65 to-transparent" />
                         <div className="text-xs font-semibold uppercase tracking-wide text-foreground/80">Ergebnis</div>
                         <ul className="mt-2 space-y-1.5 text-left text-sm text-muted-foreground">
                           <li className="flex items-center justify-start gap-2">
@@ -351,10 +397,12 @@ export default function HomeClient() {
                     </div>
                   </div>
                 </div>
+                )}
 
 
                 {/* Outcomes */}
-                <div className="lp-mobile-card relative mt-1 hidden overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-20px_rgba(15,23,42,0.3)] md:mt-2 md:mx-auto md:grid md:w-full md:grid-cols-[minmax(0,1fr)_minmax(220px,0.9fr)_210px] md:items-start md:gap-5">
+                {showDesktopOnly && (
+                <div className={unresolvedLayout ? "lp-mobile-card relative mt-1 hidden overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-20px_rgba(15,23,42,0.3)] md:mt-2 md:mx-auto md:grid md:w-full md:grid-cols-[minmax(0,1fr)_minmax(220px,0.9fr)_210px] md:items-start md:gap-5" : "lp-mobile-card relative mt-1 overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-20px_rgba(15,23,42,0.3)] md:mt-2 mx-auto grid w-full grid-cols-[minmax(0,1fr)_minmax(220px,0.9fr)_210px] items-start gap-5"}>
                   <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
                   <div>
                     <div className="text-sm font-medium">Zum Launch kannst du:</div>
@@ -414,17 +462,20 @@ export default function HomeClient() {
                     </ul>
                   </div>
                 </div>
+                )}
 
                 {/* CTAs */}
-                <div className="hidden flex-wrap items-start gap-3 pt-2 md:flex md:justify-center">
+                {showDesktopOnly && (
+                <div className={unresolvedLayout ? "hidden flex-wrap items-start gap-3 pt-2 md:flex md:justify-center" : "flex flex-wrap items-start justify-center gap-3 pt-2"}>
                   <WaitlistForm
                     buttonLabel="🚀 Jetzt auf die Warteliste"
                     inputClassName="md:w-full md:flex-1"
                     className="min-w-[24rem]"
                   />
                 </div>
+                )}
                 {/* Micro-Box (straffer) */}
-                <div className="lp-mobile-card lp-surface-shell lp-surface-card-amber relative mt-2 overflow-hidden rounded-2xl border bg-background/55 p-4 md:mt-3">
+                <div className="lp-mobile-card relative mt-2 overflow-hidden rounded-2xl border bg-background/55 p-4 md:mt-3">
                   <div className="lp-surface-overlay pointer-events-none absolute inset-0">
                     <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
                   </div>
@@ -451,8 +502,8 @@ export default function HomeClient() {
                         </ul>
                       </div>
 
-                      <div className="lp-surface-shell lp-surface-card-sky relative overflow-hidden rounded-xl border border-black/10 bg-gradient-to-r from-sky-100/24 via-background/76 to-amber-100/32 p-3 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12">
-                        <div className="lp-surface-accent-top lp-surface-accent-top-sky pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-xl bg-gradient-to-r from-transparent via-sky-400/65 to-transparent" />
+                      <div className="relative overflow-hidden rounded-xl border border-black/10 bg-gradient-to-r from-sky-100/24 via-background/76 to-amber-100/32 p-3 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12">
+                        <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-xl bg-gradient-to-r from-transparent via-sky-400/65 to-transparent" />
                         <div className="text-sm font-medium text-foreground/90">So hilft dir LernWerkFabrik:</div>
                         <ul className="mt-2 space-y-2 text-sm text-muted-foreground">
                           <li className="flex items-start gap-2">
@@ -495,7 +546,7 @@ export default function HomeClient() {
               <div className="mx-auto w-full max-w-5xl">
                 <div className="grid gap-2.5 md:gap-3">
                   <div className="grid gap-2.5 md:grid-cols-3 md:gap-3">
-                    <Card className="lp-mobile-card lp-surface-shell lp-surface-card-amber relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
+                    <Card className="lp-mobile-card relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
                       <div className="lp-surface-overlay pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
@@ -526,7 +577,7 @@ export default function HomeClient() {
                       </CardContent>
                     </Card>
 
-                    <Card className="lp-mobile-card lp-surface-shell lp-surface-card-amber relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
+                    <Card className="lp-mobile-card relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
                       <div className="lp-surface-overlay pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
@@ -556,7 +607,7 @@ export default function HomeClient() {
                         </div>
                       </CardContent>
                     </Card>
-                    <Card className="lp-mobile-card lp-surface-shell lp-surface-card-amber relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
+                    <Card className="lp-mobile-card relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
                       <div className="lp-surface-overlay pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
@@ -589,7 +640,7 @@ export default function HomeClient() {
                   </div>
 
                   <div className="grid gap-2.5 md:grid-cols-2 md:gap-3">
-                    <div className="lp-mobile-card lp-surface-shell lp-surface-card-cool relative overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.36)] backdrop-blur-none md:backdrop-blur-sm">
+                    <div className="lp-mobile-card relative overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.36)] backdrop-blur-none md:backdrop-blur-sm">
                       <div className="lp-surface-overlay pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/12 via-transparent to-sky-400/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
@@ -620,7 +671,7 @@ export default function HomeClient() {
                       </div>
                     </div>
 
-                    <div className="lp-mobile-card lp-surface-shell lp-surface-card-cool relative overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.36)] backdrop-blur-none md:backdrop-blur-sm">
+                    <div className="lp-mobile-card relative overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.36)] backdrop-blur-none md:backdrop-blur-sm">
                       <div className="lp-surface-overlay pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/12 via-transparent to-sky-400/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
@@ -647,12 +698,14 @@ export default function HomeClient() {
 
           {/* VALUE GRID */}
           <section className="lp-mobile-panel space-y-4">
-            <div className="md:hidden">
+            {showMobileOnly && (
+            <div className={unresolvedLayout ? "md:hidden" : ""}>
               <div className="space-y-2">
                 <LaunchCtaLead />
                 <WaitlistForm />
               </div>
             </div>
+            )}
             <SectionHeader
               title="Ein System, das sich wie Praxis anfühlt"
               desc="Ruhiges UI, klare Schritte, messbarer Fortschritt - und sauber erweiterbar."
@@ -678,7 +731,7 @@ export default function HomeClient() {
               ].map((it) => (
                 <Card
                   key={it.title}
-                  className="lp-mobile-card lp-surface-shell lp-surface-card-amber relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-none md:backdrop-blur-sm"
+                  className="lp-mobile-card relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-none md:backdrop-blur-sm"
                 >
                   <div className="lp-surface-overlay pointer-events-none absolute inset-0">
                     <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
@@ -719,7 +772,7 @@ export default function HomeClient() {
               ].map((x) => (
                 <Card
                   key={x.t}
-                  className="lp-mobile-card lp-surface-shell lp-surface-card-amber relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-none md:backdrop-blur-sm"
+                  className="lp-mobile-card relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-none md:backdrop-blur-sm"
                 >
                   <div className="lp-surface-overlay pointer-events-none absolute inset-0">
                     <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
@@ -739,7 +792,8 @@ export default function HomeClient() {
 
           {/* FOOTER CTA */}
           <Panel className="mt-3 bg-background/90 p-6 md:p-8" accent="amber">
-            <div className="md:hidden">
+            {showMobileOnly && (
+            <div className={unresolvedLayout ? "md:hidden" : ""}>
               <div className="flex flex-col gap-4">
                 <div>
                   <div className="text-sm text-muted-foreground">Bald live</div>
@@ -780,8 +834,10 @@ export default function HomeClient() {
                 </div>
               </div>
             </div>
+            )}
 
-            <div className="hidden md:flex md:flex-col md:gap-4">
+            {showDesktopOnly && (
+            <div className={unresolvedLayout ? "hidden md:flex md:flex-col md:gap-4" : "flex flex-col gap-4"}>
               <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                 <div>
                   <div className="text-sm text-muted-foreground">Bald live</div>
@@ -810,6 +866,7 @@ export default function HomeClient() {
                 </div>
               </div>
             </div>
+            )}
           </Panel>
         </div>
       </div>

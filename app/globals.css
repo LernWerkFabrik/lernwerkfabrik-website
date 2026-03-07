@@ -221,56 +221,6 @@
     }
   }
 
-  @supports (-webkit-touch-callout: none) {
-    @media (max-width: 767px) {
-      .lp-home .lp-surface-shell > .lp-surface-overlay {
-        display: none;
-      }
-
-      .lp-home .lp-surface-panel {
-        background-image: url("/surfaces/ios-panel-amber.svg") !important;
-        background-repeat: no-repeat !important;
-        background-size: 100% 100% !important;
-      }
-
-      .lp-home .lp-surface-card-amber {
-        background-image: url("/surfaces/ios-card-amber.svg") !important;
-        background-repeat: no-repeat !important;
-        background-size: 100% 100% !important;
-      }
-
-      .lp-home .lp-surface-card-cool {
-        background-image: url("/surfaces/ios-card-cool.svg") !important;
-        background-repeat: no-repeat !important;
-        background-size: 100% 100% !important;
-      }
-
-      .lp-home .lp-surface-card-sky {
-        background-image: url("/surfaces/ios-card-sky.svg") !important;
-        background-repeat: no-repeat !important;
-        background-size: 100% 100% !important;
-      }
-
-      .lp-home .lp-surface-card-plain {
-        background-image: url("/surfaces/ios-card-plain.svg") !important;
-        background-repeat: no-repeat !important;
-        background-size: 100% 100% !important;
-      }
-
-      .lp-home .lp-surface-shell > .lp-surface-accent-top {
-        display: none;
-      }
-
-      .lp-home .backdrop-blur,
-      .lp-home .backdrop-blur-sm,
-      .lp-home .backdrop-blur-md,
-      .lp-home .backdrop-blur-lg {
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-      }
-    }
-  }
-
   /* =========================================================
      Surface System
      ========================================================= */
