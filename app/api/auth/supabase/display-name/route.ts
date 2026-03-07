@@ -7,7 +7,7 @@ import {
   sanitizeDisplayNameSeed,
   validateDisplayName,
 } from "@/lib/displayName";
-import { createSupabaseServiceRoleClient, isSupabaseConfiguredServer } from "@/lib/supabase/server";
+import { createSupabaseServiceRoleClientAsync, isSupabaseConfiguredServerAsync } from "@/lib/supabase/server";
 
 function withSuffix(base: string, suffixNumber: number): string {
   const suffix = `_${suffixNumber}`;
@@ -23,7 +23,7 @@ function normalizeSeed(seed: string): string {
 }
 
 export async function GET(req: NextRequest) {
-  if (!isSupabaseConfiguredServer()) {
+  if (!(await isSupabaseConfiguredServerAsync())) {
     return NextResponse.json(
       {
         ok: false,
@@ -45,7 +45,7 @@ export async function GET(req: NextRequest) {
     );
   }
 
-  const client = createSupabaseServiceRoleClient();
+  const client = await createSupabaseServiceRoleClientAsync();
 
   if (rawName) {
     const normalized = normalizeDisplayNameInput(rawName);

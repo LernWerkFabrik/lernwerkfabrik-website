@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import {
-  createSupabaseAnonServerClient,
-  createSupabaseServiceRoleClient,
-  isSupabaseConfiguredServer,
+  createSupabaseAnonServerClientAsync,
+  createSupabaseServiceRoleClientAsync,
+  isSupabaseConfiguredServerAsync,
 } from "@/lib/supabase/server";
 import {
   encodeStoredSupabaseSession,
@@ -34,7 +34,7 @@ function withSessionCookie(payload: unknown, storedSession: ReturnType<typeof to
 }
 
 export async function POST(req: NextRequest) {
-  if (!isSupabaseConfiguredServer()) {
+  if (!(await isSupabaseConfiguredServerAsync())) {
     return NextResponse.json(
       {
         ok: false,
@@ -62,8 +62,8 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const anonClient = createSupabaseAnonServerClient();
-  const serviceClient = createSupabaseServiceRoleClient();
+  const anonClient = await createSupabaseAnonServerClientAsync();
+  const serviceClient = await createSupabaseServiceRoleClientAsync();
 
   const signIn = await anonClient.auth.signInWithPassword({
     email,

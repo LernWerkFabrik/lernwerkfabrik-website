@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { createSupabaseServerClient } from "@/lib/supabaseServer";
+import { createSupabaseServiceRoleClientAsync } from "@/lib/supabase/server";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/i;
 
@@ -89,15 +89,15 @@ async function verifyTurnstileToken(token: string, remoteIp: string | null) {
 
 export async function POST(request: NextRequest) {
   let body: WaitlistBody;
-  let supabaseServer: ReturnType<typeof createSupabaseServerClient>;
+  let supabaseServer: Awaited<ReturnType<typeof createSupabaseServiceRoleClientAsync>>;
 
   try {
-    supabaseServer = createSupabaseServerClient();
+    supabaseServer = await createSupabaseServiceRoleClientAsync();
   } catch (error) {
     const missing =
-      error instanceof Error && error.message.startsWith("missing_supabase_server_env:")
+      error instanceof Error && error.message.startsWith("missing_supabase_service_env:")
         ? error.message
-            .slice("missing_supabase_server_env:".length)
+            .slice("missing_supabase_service_env:".length)
             .split(",")
             .map((entry) => entry.trim())
             .filter(Boolean)

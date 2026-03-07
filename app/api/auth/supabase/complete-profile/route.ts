@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { normalizeDisplayNameInput, validateDisplayName } from "@/lib/displayName";
 import { decodeStoredSupabaseSession, SUPABASE_SESSION_COOKIE } from "@/lib/auth/providers/supabaseSession";
-import { createSupabaseServiceRoleClient, isSupabaseConfiguredServer } from "@/lib/supabase/server";
+import { createSupabaseServiceRoleClientAsync, isSupabaseConfiguredServerAsync } from "@/lib/supabase/server";
 
 type CompleteProfileBody = {
   displayName?: unknown;
@@ -14,7 +14,7 @@ function readString(value: unknown): string {
 }
 
 export async function POST(req: NextRequest) {
-  if (!isSupabaseConfiguredServer()) {
+  if (!(await isSupabaseConfiguredServerAsync())) {
     return NextResponse.json(
       {
         ok: false,
@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: displayNameValidationError }, { status: 400 });
   }
 
-  const serviceClient = createSupabaseServiceRoleClient();
+  const serviceClient = await createSupabaseServiceRoleClientAsync();
   const upsert = await serviceClient.from("profiles").upsert(
     {
       id: userId,

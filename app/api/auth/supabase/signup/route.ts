@@ -2,9 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { normalizeDisplayNameInput, validateDisplayName } from "@/lib/displayName";
 import {
-  createSupabaseAnonServerClient,
-  createSupabaseServiceRoleClient,
-  isSupabaseConfiguredServer,
+  createSupabaseAnonServerClientAsync,
+  createSupabaseServiceRoleClientAsync,
+  isSupabaseConfiguredServerAsync,
 } from "@/lib/supabase/server";
 import {
   encodeStoredSupabaseSession,
@@ -38,7 +38,7 @@ function responseWithSessionCookie(payload: unknown, status: number, storedSessi
 }
 
 export async function POST(req: NextRequest) {
-  if (!isSupabaseConfiguredServer()) {
+  if (!(await isSupabaseConfiguredServerAsync())) {
     return NextResponse.json(
       {
         ok: false,
@@ -80,8 +80,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: displayNameValidationError }, { status: 400 });
   }
 
-  const anonClient = createSupabaseAnonServerClient();
-  const serviceClient = createSupabaseServiceRoleClient();
+  const anonClient = await createSupabaseAnonServerClientAsync();
+  const serviceClient = await createSupabaseServiceRoleClientAsync();
 
   const availability = await serviceClient
     .from("profiles")

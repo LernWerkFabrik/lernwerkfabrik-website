@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { createSupabaseAnonServerClient, isSupabaseConfiguredServer } from "@/lib/supabase/server";
+import { createSupabaseAnonServerClientAsync, isSupabaseConfiguredServerAsync } from "@/lib/supabase/server";
 import {
   decodeStoredSupabaseSession,
   encodeStoredSupabaseSession,
@@ -21,7 +21,7 @@ function clearSessionCookie(response: NextResponse) {
 }
 
 export async function GET(req: NextRequest) {
-  if (!isSupabaseConfiguredServer()) {
+  if (!(await isSupabaseConfiguredServerAsync())) {
     return NextResponse.json(
       {
         ok: false,
@@ -52,7 +52,7 @@ export async function GET(req: NextRequest) {
     return response;
   }
 
-  const anonClient = createSupabaseAnonServerClient();
+  const anonClient = await createSupabaseAnonServerClientAsync();
   const refresh = await anonClient.auth.refreshSession({
     refresh_token: decoded.refreshToken,
   });

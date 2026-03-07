@@ -1,48 +1,83 @@
 import { createClient } from "@supabase/supabase-js";
 
-function requiredEnv(name: string, aliases: string[] = []): string {
+type RuntimeEnvSource = Record<string, unknown> | null;
+
+function readStringEnv(
+  name: string,
+  aliases: string[] = [],
+  runtimeEnv: RuntimeEnvSource = null
+): string {
   const candidates = [name, ...aliases];
 
   for (const candidate of candidates) {
-    const value = process.env[candidate];
-    if (value && value.trim()) {
-      return value;
+    const processValue = process.env[candidate];
+    if (typeof processValue === "string" && processValue.trim()) {
+      return processValue;
+    }
+
+    const runtimeValue = runtimeEnv?.[candidate];
+    if (typeof runtimeValue === "string" && runtimeValue.trim()) {
+      return runtimeValue;
     }
   }
 
-  throw new Error(`Missing required env: ${[name, ...aliases].join(" | ")}`);
+  return "";
 }
 
-function hasEnv(name: string, aliases: string[] = []): boolean {
-  const candidates = [name, ...aliases];
+async function readCloudflareRuntimeEnv(): Promise<RuntimeEnvSource> {
+  try {
+    const { getCloudflareContext } = await import("@opennextjs/cloudflare");
+    const context = await getCloudflareContext({ async: true });
+    return (context?.env ?? null) as RuntimeEnvSource;
+  } catch {
+    return null;
+  }
+}
 
-  for (const candidate of candidates) {
-    const value = process.env[candidate];
-    if (value && value.trim()) {
-      return true;
-    }
+type SupabaseServerEnv = {
+  url: string;
+  anonKey: string;
+  serviceRoleKey: string;
+  missing: string[];
+};
+
+async function readSupabaseServerEnvAsync(): Promise<SupabaseServerEnv> {
+  const runtimeEnv = await readCloudflareRuntimeEnv();
+  const url = readStringEnv("NEXT_PUBLIC_SUPABASE_URL", ["SUPABASE_URL"], runtimeEnv);
+  const anonKey = readStringEnv("NEXT_PUBLIC_SUPABASE_ANON_KEY", [], runtimeEnv);
+  const serviceRoleKey = readStringEnv("SUPABASE_SERVICE_ROLE_KEY", [], runtimeEnv);
+  const missing: string[] = [];
+
+  if (!url) {
+    missing.push("NEXT_PUBLIC_SUPABASE_URL|SUPABASE_URL");
+  }
+  if (!anonKey) {
+    missing.push("NEXT_PUBLIC_SUPABASE_ANON_KEY");
+  }
+  if (!serviceRoleKey) {
+    missing.push("SUPABASE_SERVICE_ROLE_KEY");
   }
 
-  return false;
+  return { url, anonKey, serviceRoleKey, missing };
 }
 
-function requiredSupabaseUrl(): string {
-  return requiredEnv("NEXT_PUBLIC_SUPABASE_URL", ["SUPABASE_URL"]);
+function throwMissingEnv(prefix: string, missing: string[]): never {
+  throw new Error(`${prefix}:${missing.join(",")}`);
 }
 
-export function isSupabaseConfiguredServer(): boolean {
-  return Boolean(
-    hasEnv("NEXT_PUBLIC_SUPABASE_URL", ["SUPABASE_URL"]) &&
-      hasEnv("NEXT_PUBLIC_SUPABASE_ANON_KEY") &&
-      hasEnv("SUPABASE_SERVICE_ROLE_KEY")
-  );
+export async function isSupabaseConfiguredServerAsync(): Promise<boolean> {
+  const env = await readSupabaseServerEnvAsync();
+  return env.missing.length === 0;
 }
 
-export function createSupabaseAnonServerClient() {
-  const url = requiredSupabaseUrl();
-  const anonKey = requiredEnv("NEXT_PUBLIC_SUPABASE_ANON_KEY");
+export async function createSupabaseAnonServerClientAsync() {
+  const env = await readSupabaseServerEnvAsync();
 
-  return createClient(url, anonKey, {
+  if (!env.url || !env.anonKey) {
+    throwMissingEnv("missing_supabase_anon_env", env.missing);
+  }
+
+  return createClient(env.url, env.anonKey, {
     auth: {
       persistSession: false,
       autoRefreshToken: false,
@@ -50,11 +85,14 @@ export function createSupabaseAnonServerClient() {
   });
 }
 
-export function createSupabaseServiceRoleClient() {
-  const url = requiredSupabaseUrl();
-  const serviceRoleKey = requiredEnv("SUPABASE_SERVICE_ROLE_KEY");
+export async function createSupabaseServiceRoleClientAsync() {
+  const env = await readSupabaseServerEnvAsync();
 
-  return createClient(url, serviceRoleKey, {
+  if (!env.url || !env.serviceRoleKey) {
+    throwMissingEnv("missing_supabase_service_env", env.missing);
+  }
+
+  return createClient(env.url, env.serviceRoleKey, {
     auth: {
       persistSession: false,
       autoRefreshToken: false,
