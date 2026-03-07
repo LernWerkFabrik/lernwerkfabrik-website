@@ -61,9 +61,11 @@ const scrollRestorationScript = String.raw`(() => {
   const MAX_ENTRIES = 50;
   const MAX_RESTORE_ATTEMPTS = 60;
   const RESTORING_ATTR = "data-scroll-restoring";
+  const SCROLLING_ATTR = "data-scroll-active";
   const REVEAL_TIMEOUT_MS = 4000;
   const REVEAL_SETTLE_MS = 180;
   const SAVE_SETTLE_MS = 180;
+  const SCROLL_ACTIVE_MS = 140;
   const isMobileViewport = () => window.matchMedia("(max-width: 767px)").matches;
 
   const getKey = () => window.location.pathname + window.location.search + window.location.hash;
@@ -175,6 +177,21 @@ const scrollRestorationScript = String.raw`(() => {
     document.documentElement.removeAttribute(RESTORING_ATTR);
   };
 
+  let scrollActiveTimer = 0;
+
+  const markScrollActive = () => {
+    document.documentElement.setAttribute(SCROLLING_ATTR, "1");
+
+    if (scrollActiveTimer) {
+      window.clearTimeout(scrollActiveTimer);
+    }
+
+    scrollActiveTimer = window.setTimeout(() => {
+      scrollActiveTimer = 0;
+      document.documentElement.removeAttribute(SCROLLING_ATTR);
+    }, SCROLL_ACTIVE_MS);
+  };
+
   const buildEntry = () => {
     const root = getScrollRoot();
     const useRoot = canUseScrollRoot(root);
@@ -200,6 +217,8 @@ const scrollRestorationScript = String.raw`(() => {
   if ("scrollRestoration" in window.history) {
     window.history.scrollRestoration = isMobileViewport() ? "auto" : "manual";
   }
+
+  window.addEventListener("scroll", markScrollActive, { passive: true });
 
   if (isMobileViewport()) {
     clearRestoring();
@@ -260,6 +279,7 @@ const scrollRestorationScript = String.raw`(() => {
   const attachRootListener = (attempt = 0) => {
     const root = getScrollRoot();
     if (root) {
+      root.addEventListener("scroll", markScrollActive, { passive: true });
       root.addEventListener("scroll", scheduleSave, { passive: true });
       return;
     }

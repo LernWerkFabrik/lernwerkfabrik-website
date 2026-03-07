@@ -30,11 +30,12 @@ function Panel({
   children,
   className = "",
   accent = "amber",
+  ...props
 }: {
   children: React.ReactNode;
   className?: string;
   accent?: "amber" | "sky";
-}) {
+} & React.ComponentPropsWithoutRef<"section">) {
   const shellClassName =
     "lp-mobile-panel relative overflow-hidden rounded-2xl border bg-background shadow-none md:bg-background/82 md:shadow-sm md:backdrop-blur-sm";
 
@@ -51,6 +52,7 @@ function Panel({
 
   return (
     <section
+      {...props}
       className={[
         shellClassName,
         className,
@@ -644,7 +646,7 @@ export default function HomeClient() {
           </Panel>
 
           {/* VALUE GRID */}
-          <section className="lp-mobile-panel space-y-4">
+          <section data-perf-section className="lp-mobile-panel space-y-4">
             <div className="md:hidden">
               <div className="space-y-2">
                 <LaunchCtaLead />
@@ -697,7 +699,7 @@ export default function HomeClient() {
           </section>
 
           {/* WORKFLOW */}
-          <section className="lp-mobile-panel space-y-4">
+          <section data-perf-section className="lp-mobile-panel space-y-4">
             <div className="space-y-2">
               <h2 className="text-xl font-semibold tracking-tight md:text-2xl">
                 <span className="whitespace-nowrap">Drei Schritte - ein sauberer Lernflow</span>
@@ -736,7 +738,7 @@ export default function HomeClient() {
           </section>
 
           {/* FOOTER CTA */}
-          <Panel className="mt-3 bg-background/90 p-6 md:p-8" accent="amber">
+          <Panel className="mt-3 bg-background/90 p-6 md:p-8" accent="amber" data-perf-section>
             <div className="md:hidden">
               <div className="flex flex-col gap-4">
                 <div>
