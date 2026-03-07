@@ -193,6 +193,10 @@
   }
 
   @media (max-width: 767px) {
+    html[data-mobile-compact="1"] {
+      font-size: 94%;
+    }
+
     body.lp-bg {
       background:
         radial-gradient(780px circle at 85% 28%, hsl(var(--accent-cool) / 0.08), transparent 56%),
