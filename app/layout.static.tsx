@@ -5,6 +5,7 @@ import "katex/dist/katex.min.css";
 
 import BrandHeader from "./BrandHeader";
 import RouteAwareFooter from "./RouteAwareFooter";
+import { THEME_STORAGE_KEY } from "./theme-config";
 import { ThemeProvider } from "./theme-provider";
 
 const seoTitle = "LernWerkFabrik | Warteliste fuer AP1/AP2 Lernplattform";
@@ -44,13 +45,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de" suppressHydrationWarning className="h-dvh overflow-hidden">
+    <html lang="de" suppressHydrationWarning className="dark h-dvh overflow-hidden">
       <body className="h-dvh overflow-hidden bg-background text-foreground antialiased lp-bg">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem={false}
           disableTransitionOnChange
+          storageKey={THEME_STORAGE_KEY}
         >
           <div aria-hidden="true" className="lp-bg-3d pointer-events-none fixed inset-0 -z-10" />
 

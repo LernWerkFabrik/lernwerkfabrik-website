@@ -3,6 +3,9 @@
 import * as React from "react";
 import { Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
+
+import { THEME_COOKIE_MAX_AGE, THEME_STORAGE_KEY, type AppTheme } from "./theme-config";
+
 import { cn } from "@/lib/utils";
 
 export default function ThemeToggle({
@@ -24,9 +27,17 @@ export default function ThemeToggle({
     : "dark";
 
   React.useEffect(() => {
-    if (typeof document === "undefined") return;
-    document.documentElement.classList.toggle("dark", currentTheme === "dark");
-  }, [currentTheme]);
+    if (!mounted) return;
+
+    document.cookie =
+      `${THEME_STORAGE_KEY}=${currentTheme}; Path=/; Max-Age=${THEME_COOKIE_MAX_AGE}; SameSite=Lax`;
+  }, [currentTheme, mounted]);
+
+  const handleThemeChange = React.useEffectEvent((nextTheme: AppTheme) => {
+    setTheme(nextTheme);
+    document.cookie =
+      `${THEME_STORAGE_KEY}=${nextTheme}; Path=/; Max-Age=${THEME_COOKIE_MAX_AGE}; SameSite=Lax`;
+  });
 
   return (
     <div
@@ -38,7 +49,7 @@ export default function ThemeToggle({
       {/* 🌙 DARK */}
       <button
         aria-label="Dunkelmodus"
-        onClick={() => setTheme("dark")}
+        onClick={() => handleThemeChange("dark")}
         className={cn(
           "flex h-8 w-8 items-center justify-center rounded-full transition",
           buttonClassName,
@@ -53,7 +64,7 @@ export default function ThemeToggle({
       {/* ☀️ LIGHT */}
       <button
         aria-label="Hellmodus"
-        onClick={() => setTheme("light")}
+        onClick={() => handleThemeChange("light")}
         className={cn(
           "flex h-8 w-8 items-center justify-center rounded-full transition",
           buttonClassName,

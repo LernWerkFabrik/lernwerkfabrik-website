@@ -7,6 +7,7 @@ import "katex/dist/katex.min.css";
 
 import BrandHeader from "./BrandHeader";
 import RouteAwareFooter from "./RouteAwareFooter";
+import { normalizeTheme, THEME_STORAGE_KEY } from "./theme-config";
 import { ThemeProvider } from "./theme-provider";
 
 import DevTierSwitcher from "@/components/DevTierSwitcher";
@@ -62,15 +63,21 @@ export default async function RootLayout({
   });
 
   const authed = !!(sessionRes.ok && sessionRes.data);
+  const initialTheme = normalizeTheme(cookieStore.get(THEME_STORAGE_KEY)?.value);
 
   return (
-    <html lang="de" suppressHydrationWarning className="h-dvh overflow-hidden">
+    <html
+      lang="de"
+      suppressHydrationWarning
+      className={`h-dvh overflow-hidden${initialTheme === "dark" ? " dark" : ""}`}
+    >
       <body className="h-dvh overflow-hidden bg-background text-foreground antialiased lp-bg">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem={false}
           disableTransitionOnChange
+          storageKey={THEME_STORAGE_KEY}
         >
           <div aria-hidden="true" className="lp-bg-3d pointer-events-none fixed inset-0 -z-10" />
 
