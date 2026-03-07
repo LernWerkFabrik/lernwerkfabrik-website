@@ -169,6 +169,10 @@ function mapApiError(payload: WaitlistApiResponse, statusCode: number) {
     return "Turnstile ist gerade nicht erreichbar. Bitte in 1-2 Minuten erneut versuchen.";
   }
 
+  if (reason === "missing_turnstile_secret") {
+    return "Spam-Schutz serverseitig nicht konfiguriert. Bitte Deployment prüfen.";
+  }
+
   if (reason === "missing_supabase_server_env") {
     const missing = (payload.missing || []).join(", ");
     return missing

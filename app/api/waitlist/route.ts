@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { createSupabaseServiceRoleClientAsync } from "@/lib/supabase/server";
+import { getTurnstileSecretKeyServerAsync } from "@/lib/turnstile/server";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/i;
 
@@ -50,9 +51,14 @@ function readRemoteIp(request: NextRequest): string | null {
 }
 
 async function verifyTurnstileToken(token: string, remoteIp: string | null) {
-  const secret = process.env.TURNSTILE_SECRET_KEY?.trim() || "";
+  const secretResolution = await getTurnstileSecretKeyServerAsync();
+  const secret = secretResolution.value;
   if (!secret) {
-    return { ok: false, reason: "missing_turnstile_secret" as const };
+    return {
+      ok: false,
+      reason: "missing_turnstile_secret" as const,
+      source: secretResolution.source,
+    };
   }
 
   const formData = new URLSearchParams();
@@ -132,6 +138,7 @@ export async function POST(request: NextRequest) {
   if (!verification.ok) {
     console.error("waitlist: turnstile verification failed", {
       reason: verification.reason,
+      source: "source" in verification ? verification.source : undefined,
       errors: "errors" in verification ? verification.errors : [],
     });
     return NextResponse.json(

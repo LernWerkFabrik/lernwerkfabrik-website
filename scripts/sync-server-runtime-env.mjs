@@ -21,6 +21,8 @@ export const SERVER_RUNTIME_ENV = {
     SUPABASE_URL: "",
     NEXT_PUBLIC_SUPABASE_ANON_KEY: "",
     SUPABASE_SERVICE_ROLE_KEY: "",
+    NEXT_PUBLIC_TURNSTILE_SITE_KEY: "",
+    TURNSTILE_SECRET_KEY: "",
   },
 } as const;
 `;
@@ -32,6 +34,8 @@ function createGeneratedContent() {
     SUPABASE_URL: process.env.SUPABASE_URL || "",
     NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "",
     SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY || "",
+    NEXT_PUBLIC_TURNSTILE_SITE_KEY: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "",
+    TURNSTILE_SECRET_KEY: process.env.TURNSTILE_SECRET_KEY || "",
   };
 
   return `import "server-only";
