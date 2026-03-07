@@ -834,9 +834,9 @@ export default function HomeClient() {
             {showMobileOnly ? (
               <MobileStackCard className={unresolvedLayout ? "md:hidden" : ""}>
                 {[
-                  { t: "1. Lernen", d: "Erklärung + Beispiel + Übung mit Lösung & Feedback." },
-                  { t: "2. Prüfung", d: "Ohne Hilfe. Bewertet. Teilpunkte wie in der Prüfung." },
-                  { t: "3. Fehlertraining", d: "Automatisch nur Schwächen üben - effizient & motivierend." },
+                  { t: "1. Lernen", d: "Erklärung + Beispiel + Übung mit Lösung & Feedback.", icon: BookOpen },
+                  { t: "2. Prüfung", d: "Ohne Hilfe. Bewertet. Teilpunkte wie in der Prüfung.", icon: Target },
+                  { t: "3. Fehlertraining", d: "Automatisch nur Schwächen üben - effizient & motivierend.", icon: Brain },
                 ].map((x, index, items) => (
                   <div
                     key={x.t}
@@ -846,10 +846,17 @@ export default function HomeClient() {
                       index === items.length - 1 ? "pb-5" : "",
                     ].join(" ")}
                   >
-                    <div className="text-sm font-medium">{x.t}</div>
-                    <p className="mt-2 text-sm text-muted-foreground max-md:text-sm max-md:leading-snug">
-                      {x.d}
-                    </p>
+                    <div className="flex items-start gap-3">
+                      <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border bg-amber-500/10">
+                        <x.icon className="h-4 w-4 text-amber-400" />
+                      </div>
+                      <div className="min-w-0">
+                        <div className="text-sm font-medium">{x.t}</div>
+                        <p className="mt-2 text-sm text-muted-foreground max-md:text-sm max-md:leading-snug">
+                          {x.d}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </MobileStackCard>
