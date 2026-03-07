@@ -60,6 +60,7 @@ const scrollRestorationScript = String.raw`(() => {
   const RESTORING_ATTR = "data-scroll-restoring";
   const REVEAL_TIMEOUT_MS = 4000;
   const REVEAL_SETTLE_MS = 180;
+  const SAVE_SETTLE_MS = 180;
 
   const getKey = () => window.location.pathname + window.location.search + window.location.hash;
 
@@ -170,17 +171,25 @@ const scrollRestorationScript = String.raw`(() => {
     document.documentElement.removeAttribute(RESTORING_ATTR);
   };
 
-  const save = () => {
+  const buildEntry = () => {
     const root = getScrollRoot();
     const useRoot = canUseScrollRoot(root);
-    const map = readMap();
-    const entry = {
+    return {
       rootY: useRoot ? Math.max(root.scrollTop, 0) : 0,
       ts: Date.now(),
       windowY: getWindowScrollY(),
     };
-    map[getKey()] = entry;
+  };
+
+  const capture = () => {
+    const entry = buildEntry();
     window.__LWF_SCROLL_ENTRY__ = entry;
+    return entry;
+  };
+
+  const persist = () => {
+    const map = readMap();
+    map[getKey()] = capture();
     writeMap(map);
   };
 
@@ -189,9 +198,16 @@ const scrollRestorationScript = String.raw`(() => {
   }
 
   let saveFrame = 0;
+  let saveTimer = 0;
   let restoreTimer = 0;
   let forceRevealTimer = 0;
   let settleRevealTimer = 0;
+
+  const clearSaveTimer = () => {
+    if (!saveTimer) return;
+    window.clearTimeout(saveTimer);
+    saveTimer = 0;
+  };
 
   const clearRestoreTimer = () => {
     if (!restoreTimer) return;
@@ -223,7 +239,12 @@ const scrollRestorationScript = String.raw`(() => {
     if (saveFrame) return;
     saveFrame = window.requestAnimationFrame(() => {
       saveFrame = 0;
-      save();
+      capture();
+      clearSaveTimer();
+      saveTimer = window.setTimeout(() => {
+        saveTimer = 0;
+        persist();
+      }, SAVE_SETTLE_MS);
     });
   };
 
@@ -332,8 +353,8 @@ const scrollRestorationScript = String.raw`(() => {
   };
 
   window.addEventListener("scroll", scheduleSave, { passive: true });
-  window.addEventListener("pagehide", save, { capture: true });
-  window.addEventListener("beforeunload", save, { capture: true });
+  window.addEventListener("pagehide", persist, { capture: true });
+  window.addEventListener("beforeunload", persist, { capture: true });
   window.addEventListener("load", () => restore(), { once: true });
   window.addEventListener("resize", () => restore());
   window.addEventListener("pageshow", () => restore());
@@ -346,7 +367,7 @@ const scrollRestorationScript = String.raw`(() => {
   }
 
   document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "hidden") save();
+    if (document.visibilityState === "hidden") persist();
   });
 
   attachRootListener();
