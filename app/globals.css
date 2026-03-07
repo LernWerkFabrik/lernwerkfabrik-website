@@ -221,6 +221,19 @@
     }
   }
 
+  @supports (-webkit-touch-callout: none) {
+    @media (max-width: 767px) {
+      .dark body.lp-bg {
+        background-color: hsl(var(--background));
+        background-image: url("/backgrounds/ios-mobile-glow.svg");
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        background-position: top center;
+        background-attachment: scroll;
+      }
+    }
+  }
+
   /* =========================================================
      Surface System
      ========================================================= */
