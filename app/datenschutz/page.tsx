@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { loadERecht24Document } from "@/lib/erecht24";
+import { PRIVACY_STATIC_HTML } from "@/app/datenschutz/privacyStaticHtml";
 
 export const metadata: Metadata = {
   title: "Datenschutz | LernWerkFabrik",
@@ -26,78 +26,7 @@ function Section({
   );
 }
 
-function PlaceholderPrivacy() {
-  return (
-    <>
-      <Section title="Verantwortlicher">
-        <p>
-          Verantwortlich fuer die Datenverarbeitung ist der Betreiber der Plattform LernWerkFabrik.
-          Die konkreten Kontaktdaten bitte im Impressum ergaenzen.
-        </p>
-      </Section>
-
-      <Section title="Welche Daten wir verarbeiten">
-        <div className="space-y-1.5">
-          <p>Bei der Wartelisten-Anmeldung koennen folgende Daten verarbeitet werden:</p>
-          <ul className="list-disc space-y-1 pl-5">
-            <li>E-Mail-Adresse</li>
-            <li>created_at (Zeitpunkt der Eintragung)</li>
-            <li>source (z. B. utm_source oder direct)</li>
-            <li>referrer</li>
-            <li>device_type (mobile/tablet/desktop)</li>
-            <li>country (2-stelliger Laendercode, sofern verfuegbar)</li>
-            <li>waitlist_position</li>
-          </ul>
-        </div>
-      </Section>
-
-      <Section title="Zweck und Rechtsgrundlage">
-        <p>
-          Die Verarbeitung erfolgt zur Verwaltung der Warteliste, zur Information ueber den Plattform-Launch und
-          zur technischen Absicherung gegen Missbrauch. Rechtsgrundlage ist in der Regel Art. 6 Abs. 1 lit. b
-          DSGVO (vorvertragliche Massnahmen) und/oder Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an
-          sicherem Betrieb und Messung von Kampagnenkanaelen).
-        </p>
-      </Section>
-
-      <Section title="Empfaenger und Auftragsverarbeitung">
-        <div className="space-y-1.5">
-          <p>
-            Zur Bereitstellung der Website und Speicherung der Wartelisten-Daten werden technische Dienstleister
-            eingesetzt (z. B. Hosting/Edge, Datenbank, Bot-Schutz).
-          </p>
-          <p>
-            Falls Daten ausserhalb der EU verarbeitet werden, erfolgen geeignete Garantien nach DSGVO
-            (z. B. Standardvertragsklauseln), soweit erforderlich.
-          </p>
-        </div>
-      </Section>
-
-      <Section title="Speicherdauer">
-        <p>
-          Wartelisten-Daten werden nur so lange gespeichert, wie sie fuer den genannten Zweck erforderlich sind
-          oder gesetzliche Aufbewahrungspflichten bestehen. Eine fruehere Loeschung ist auf Anfrage moeglich,
-          soweit keine gesetzlichen Gruende entgegenstehen.
-        </p>
-      </Section>
-
-      <Section title="Deine Rechte">
-        <div className="space-y-1.5">
-          <p>
-            Du hast das Recht auf Auskunft, Berichtigung, Loeschung, Einschraenkung der Verarbeitung,
-            Datenuertragbarkeit sowie Widerspruch gegen bestimmte Verarbeitungen.
-          </p>
-          <p>Zudem besteht ein Beschwerderecht bei einer Datenschutzaufsichtsbehoerde.</p>
-        </div>
-      </Section>
-    </>
-  );
-}
-
 export default async function DatenschutzPage() {
-  const privacy = await loadERecht24Document("privacyPolicy");
-  const hasApiPrivacy = privacy.html.length > 0;
-
   return (
     <main className="mx-auto w-full max-w-4xl px-4 py-10 md:px-6">
       <header className="space-y-2">
@@ -112,34 +41,12 @@ export default async function DatenschutzPage() {
       </header>
 
       <div className="mt-6 grid gap-4">
-        {hasApiPrivacy ? (
-          <Section title="Datenschutzerklaerung (eRecht24)">
-            <div
-              className="[&_a]:underline [&_a]:underline-offset-4 [&_h1]:mt-0 [&_h1]:text-2xl [&_h1]:font-semibold [&_h2]:mt-4 [&_h2]:text-lg [&_h2]:font-medium [&_p]:my-2 [&_p]:text-sm [&_strong]:font-semibold"
-              dangerouslySetInnerHTML={{ __html: privacy.html }}
-            />
-            {privacy.warnings ? (
-              <div
-                className="mt-4 rounded-xl border border-amber-500/40 bg-amber-500/10 p-3 text-xs leading-relaxed text-amber-200"
-                dangerouslySetInnerHTML={{ __html: privacy.warnings }}
-              />
-            ) : null}
-            {privacy.modified ? (
-              <p className="mt-3 text-xs text-muted-foreground">Zuletzt aktualisiert (eRecht24): {privacy.modified}</p>
-            ) : null}
-          </Section>
-        ) : (
-          <PlaceholderPrivacy />
-        )}
-
-        {!hasApiPrivacy && privacy.error ? (
-          <Section title="Hinweis">
-            <div>
-              Die automatische eRecht24-Datenschutzerklaerung konnte nicht geladen werden ({privacy.error}).
-              Der statische Fallback wird angezeigt.
-            </div>
-          </Section>
-        ) : null}
+        <Section title="Datenschutzerklaerung">
+          <div
+            className="[&_a]:underline [&_a]:underline-offset-4 [&_h1]:mt-0 [&_h1]:text-2xl [&_h1]:font-semibold [&_h2]:mt-6 [&_h2]:text-lg [&_h2]:font-medium [&_h3]:mt-4 [&_h3]:text-base [&_h3]:font-medium [&_h4]:mt-3 [&_h4]:text-sm [&_h4]:font-medium [&_li]:my-1 [&_p]:my-2 [&_p]:text-sm [&_strong]:font-semibold [&_ul]:list-disc [&_ul]:pl-5"
+            dangerouslySetInnerHTML={{ __html: PRIVACY_STATIC_HTML }}
+          />
+        </Section>
 
         <Card className="rounded-2xl border bg-background/75 shadow-sm backdrop-blur-sm">
           <CardContent className="space-y-3 p-5 text-sm text-muted-foreground">
