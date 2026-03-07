@@ -289,8 +289,8 @@ export default function HomeClient() {
                 </div>
 
                 {/* Mobile Outcomes */}
-                <div className="lp-mobile-card relative mt-1 overflow-hidden rounded-xl border bg-background/55 p-3 shadow-[0_12px_24px_-20px_rgba(15,23,42,0.3)] md:hidden">
-                  <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
+                <div className="lp-mobile-card lp-surface-shell lp-surface-card-plain relative mt-1 overflow-hidden rounded-xl border bg-background/55 p-3 shadow-[0_12px_24px_-20px_rgba(15,23,42,0.3)] md:hidden">
+                  <div className="lp-surface-accent-top lp-surface-accent-top-amber pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
                   <div className="relative">
                     <div className="text-sm font-medium">Zum Launch kannst du:</div>
                     <ul className="mt-2 space-y-1.5 text-sm text-muted-foreground">
@@ -309,8 +309,8 @@ export default function HomeClient() {
                     </ul>
 
                     <div className="mt-3 grid gap-2">
-                      <div className="relative overflow-hidden rounded-xl border border-black/16 bg-gradient-to-r from-sky-100/30 via-background/82 to-amber-100/40 p-3 text-center shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12 dark:shadow-[0_12px_24px_-18px_rgba(0,0,0,0.72)]">
-                        <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-xl bg-gradient-to-r from-transparent via-sky-400/65 to-transparent" />
+                      <div className="lp-surface-shell lp-surface-card-sky relative overflow-hidden rounded-xl border border-black/16 bg-gradient-to-r from-sky-100/30 via-background/82 to-amber-100/40 p-3 text-center shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12 dark:shadow-[0_12px_24px_-18px_rgba(0,0,0,0.72)]">
+                        <div className="lp-surface-accent-top lp-surface-accent-top-sky pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-xl bg-gradient-to-r from-transparent via-sky-400/65 to-transparent" />
                         <div className="text-xs font-semibold uppercase tracking-wide text-foreground/80">
                           Verstehen → Prüfen → Verbessern
                         </div>
@@ -330,8 +330,8 @@ export default function HomeClient() {
                         </ul>
                       </div>
 
-                      <div className="relative overflow-hidden rounded-xl border border-black/10 bg-gradient-to-r from-sky-100/24 via-background/76 to-amber-100/32 p-3 text-center shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12">
-                        <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-xl bg-gradient-to-r from-transparent via-sky-400/65 to-transparent" />
+                      <div className="lp-surface-shell lp-surface-card-sky relative overflow-hidden rounded-xl border border-black/10 bg-gradient-to-r from-sky-100/24 via-background/76 to-amber-100/32 p-3 text-center shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12">
+                        <div className="lp-surface-accent-top lp-surface-accent-top-sky pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-xl bg-gradient-to-r from-transparent via-sky-400/65 to-transparent" />
                         <div className="text-xs font-semibold uppercase tracking-wide text-foreground/80">Ergebnis</div>
                         <ul className="mt-2 space-y-1.5 text-left text-sm text-muted-foreground">
                           <li className="flex items-center justify-start gap-2">
@@ -451,8 +451,8 @@ export default function HomeClient() {
                         </ul>
                       </div>
 
-                      <div className="relative overflow-hidden rounded-xl border border-black/10 bg-gradient-to-r from-sky-100/24 via-background/76 to-amber-100/32 p-3 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12">
-                        <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-xl bg-gradient-to-r from-transparent via-sky-400/65 to-transparent" />
+                      <div className="lp-surface-shell lp-surface-card-sky relative overflow-hidden rounded-xl border border-black/10 bg-gradient-to-r from-sky-100/24 via-background/76 to-amber-100/32 p-3 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12">
+                        <div className="lp-surface-accent-top lp-surface-accent-top-sky pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-xl bg-gradient-to-r from-transparent via-sky-400/65 to-transparent" />
                         <div className="text-sm font-medium text-foreground/90">So hilft dir LernWerkFabrik:</div>
                         <ul className="mt-2 space-y-2 text-sm text-muted-foreground">
                           <li className="flex items-start gap-2">
