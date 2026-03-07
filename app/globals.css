@@ -455,30 +455,6 @@ main[data-scroll-root] {
   overflow-x: hidden;
   overscroll-behavior-y: contain;
   -webkit-overflow-scrolling: touch;
-  background-color: hsl(var(--background));
-}
-
-@media (hover: none) and (pointer: coarse) {
-  [data-scroll-header],
-  .backdrop-blur,
-  .backdrop-blur-sm {
-    -webkit-backdrop-filter: none !important;
-    backdrop-filter: none !important;
-  }
-
-  [data-scroll-header] {
-    background-color: hsl(var(--background) / 0.92);
-  }
-
-  body.lp-bg::after,
-  .lp-bg-3d {
-    display: none;
-  }
-
-  body.lp-bg::before,
-  .dark body.lp-bg::before {
-    background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--background)) 100%);
-  }
 }
 
 /* =========================================================

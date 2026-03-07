@@ -26,7 +26,15 @@ function isWindow(x: any): x is Window {
 /** ✅ Globaler ScrollRoot */
 export function getScrollRoot(): HTMLElement | null {
   if (typeof document === "undefined") return null;
-  return document.querySelector<HTMLElement>("[data-scroll-root]");
+  const root = document.querySelector<HTMLElement>("[data-scroll-root]");
+  if (!root) return null;
+
+  const style = window.getComputedStyle(root);
+  const oy = style.overflowY;
+  const isScrollable =
+    (oy === "auto" || oy === "scroll") && root.scrollHeight > root.clientHeight + 2;
+
+  return isScrollable ? root : null;
 }
 
 /** Fallback: erster scrollbarer Parent */

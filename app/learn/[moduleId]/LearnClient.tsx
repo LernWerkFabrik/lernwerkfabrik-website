@@ -252,9 +252,7 @@ function FormulaCardView({ md }: { md: string }) {
     const el = document.getElementById(id) as HTMLElement | null;
     if (!el) return;
 
-    const root =
-      getScrollRoot?.() ??
-      document.querySelector<HTMLElement>("[data-scroll-root]");
+    const root = getScrollRoot?.();
     const scroller = (root ?? window) as any;
 
     scrollToTarget(scroller, el, { behavior: "smooth" });

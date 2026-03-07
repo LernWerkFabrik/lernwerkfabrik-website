@@ -69,9 +69,9 @@ export default async function RootLayout({
     <html
       lang="de"
       suppressHydrationWarning
-      className={`h-svh overflow-hidden md:h-dvh${initialTheme === "dark" ? " dark" : ""}`}
+      className={`min-h-svh overflow-x-hidden md:h-dvh md:overflow-hidden${initialTheme === "dark" ? " dark" : ""}`}
     >
-      <body className="h-svh overflow-hidden bg-background text-foreground antialiased lp-bg md:h-dvh">
+      <body className="min-h-svh overflow-x-hidden bg-background text-foreground antialiased lp-bg md:h-dvh md:overflow-hidden">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -81,14 +81,14 @@ export default async function RootLayout({
         >
           <div aria-hidden="true" className="lp-bg-3d pointer-events-none fixed inset-0 -z-10" />
 
-          <div className="flex h-full flex-col">
+          <div className="flex min-h-svh flex-col md:h-full">
             <div className="shrink-0">
               <BrandHeader authed={authed} />
             </div>
 
             <main
               data-scroll-root
-              className="relative isolate z-0 flex-1 min-h-0 overflow-y-auto overflow-x-hidden"
+              className="relative isolate z-0 flex-1 overflow-x-hidden md:min-h-0 md:overflow-y-auto"
             >
               {children}
 

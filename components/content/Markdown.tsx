@@ -216,8 +216,7 @@ export default function Markdown({
 
     const root = contentRef.current;
 
-    const forced =
-      (getScrollRoot?.() ?? document.querySelector<HTMLElement>("[data-scroll-root]")) as HTMLElement | null;
+    const forced = getScrollRoot?.() as HTMLElement | null;
 
     const scroller: Window | HTMLElement = (forced ?? getBestScrollContainer(root as any)) as any;
 
@@ -601,7 +600,7 @@ export default function Markdown({
                         const el = document.getElementById(id) as HTMLElement | null;
                         if (!el) return;
 
-                        const root = getScrollRoot?.() ?? document.querySelector<HTMLElement>("[data-scroll-root]");
+                        const root = getScrollRoot?.();
                         const sc = (root ?? getBestScrollContainer(el)) as any;
 
                         scrollToTarget(sc, el, { behavior: "smooth" });
