@@ -1,68 +1,257 @@
 import { createClient } from "@supabase/supabase-js";
 
 type RuntimeEnvSource = Record<string, unknown> | null;
+type EnvSource = "process_env" | "cloudflare_binding" | "missing";
 
-function readStringEnv(
-  name: string,
-  aliases: string[] = [],
-  runtimeEnv: RuntimeEnvSource = null
-): string {
-  const candidates = [name, ...aliases];
+type EnvResolution = {
+  value: string;
+  source: EnvSource;
+  matchedName: string | null;
+  rawLength: number;
+  hadEdgeWhitespace: boolean;
+  hadOuterQuotes: boolean;
+};
 
-  for (const candidate of candidates) {
-    const processValue = process.env[candidate];
-    if (typeof processValue === "string" && processValue.trim()) {
-      return processValue;
-    }
+export type SupabaseEnvDiagnostics = {
+  runtime: {
+    available: boolean;
+    error: string | null;
+    workerName: string | null;
+    nextJsEnv: string | null;
+  };
+  url: {
+    source: EnvSource;
+    present: boolean;
+    matchedName: string | null;
+    host: string | null;
+    rawLength: number;
+    hadEdgeWhitespace: boolean;
+    hadOuterQuotes: boolean;
+  };
+  anonKey: {
+    source: EnvSource;
+    present: boolean;
+    matchedName: string | null;
+    length: number;
+    rawLength: number;
+    hadEdgeWhitespace: boolean;
+    hadOuterQuotes: boolean;
+  };
+  serviceRoleKey: {
+    source: EnvSource;
+    present: boolean;
+    matchedName: string | null;
+    length: number;
+    rawLength: number;
+    hadEdgeWhitespace: boolean;
+    hadOuterQuotes: boolean;
+  };
+  missing: string[];
+};
 
-    const runtimeValue = runtimeEnv?.[candidate];
-    if (typeof runtimeValue === "string" && runtimeValue.trim()) {
-      return runtimeValue;
-    }
+type SupabaseServerEnv = {
+  url: EnvResolution;
+  anonKey: EnvResolution;
+  serviceRoleKey: EnvResolution;
+  runtime: SupabaseEnvDiagnostics["runtime"];
+  missing: string[];
+};
+
+function normalizeEnvValue(value: string) {
+  const rawLength = value.length;
+  const hadEdgeWhitespace = value !== value.trim();
+
+  let normalized = value.trim();
+  let hadOuterQuotes = false;
+
+  if (
+    (normalized.startsWith('"') && normalized.endsWith('"')) ||
+    (normalized.startsWith("'") && normalized.endsWith("'"))
+  ) {
+    normalized = normalized.slice(1, -1).trim();
+    hadOuterQuotes = true;
   }
 
-  return "";
+  return {
+    normalized,
+    rawLength,
+    hadEdgeWhitespace,
+    hadOuterQuotes,
+  };
 }
 
-async function readCloudflareRuntimeEnv(): Promise<RuntimeEnvSource> {
+async function readCloudflareRuntimeEnv() {
   try {
     const { getCloudflareContext } = await import("@opennextjs/cloudflare");
     const context = await getCloudflareContext({ async: true });
-    return (context?.env ?? null) as RuntimeEnvSource;
+    const runtimeEnv = (context?.env ?? null) as RuntimeEnvSource;
+
+    return {
+      env: runtimeEnv,
+      diagnostics: {
+        available: Boolean(runtimeEnv),
+        error: null,
+        workerName:
+          runtimeEnv && typeof runtimeEnv.CF_WORKER_NAME === "string" ? runtimeEnv.CF_WORKER_NAME : null,
+        nextJsEnv:
+          runtimeEnv && typeof runtimeEnv.NEXTJS_ENV === "string" ? runtimeEnv.NEXTJS_ENV : null,
+      } satisfies SupabaseEnvDiagnostics["runtime"],
+    };
+  } catch (error) {
+    return {
+      env: null as RuntimeEnvSource,
+      diagnostics: {
+        available: false,
+        error: error instanceof Error ? error.message : "cloudflare_context_unavailable",
+        workerName: null,
+        nextJsEnv: null,
+      } satisfies SupabaseEnvDiagnostics["runtime"],
+    };
+  }
+}
+
+function resolveEnvValue(
+  name: string,
+  aliases: string[] = [],
+  runtimeEnv: RuntimeEnvSource = null
+): EnvResolution {
+  const candidates = [name, ...aliases];
+  let emptyCandidate: EnvResolution | null = null;
+
+  for (const candidate of candidates) {
+    const processValue = process.env[candidate];
+    if (typeof processValue === "string") {
+      const normalized = normalizeEnvValue(processValue);
+      if (normalized.normalized) {
+        return {
+          value: normalized.normalized,
+          source: "process_env",
+          matchedName: candidate,
+          rawLength: normalized.rawLength,
+          hadEdgeWhitespace: normalized.hadEdgeWhitespace,
+          hadOuterQuotes: normalized.hadOuterQuotes,
+        };
+      }
+      emptyCandidate ??= {
+        value: "",
+        source: "process_env",
+        matchedName: candidate,
+        rawLength: normalized.rawLength,
+        hadEdgeWhitespace: normalized.hadEdgeWhitespace,
+        hadOuterQuotes: normalized.hadOuterQuotes,
+      };
+    }
+
+    const runtimeValue = runtimeEnv?.[candidate];
+    if (typeof runtimeValue === "string") {
+      const normalized = normalizeEnvValue(runtimeValue);
+      if (normalized.normalized) {
+        return {
+          value: normalized.normalized,
+          source: "cloudflare_binding",
+          matchedName: candidate,
+          rawLength: normalized.rawLength,
+          hadEdgeWhitespace: normalized.hadEdgeWhitespace,
+          hadOuterQuotes: normalized.hadOuterQuotes,
+        };
+      }
+      emptyCandidate ??= {
+        value: "",
+        source: "cloudflare_binding",
+        matchedName: candidate,
+        rawLength: normalized.rawLength,
+        hadEdgeWhitespace: normalized.hadEdgeWhitespace,
+        hadOuterQuotes: normalized.hadOuterQuotes,
+      };
+    }
+  }
+
+  return (
+    emptyCandidate ?? {
+      value: "",
+      source: "missing",
+      matchedName: null,
+      rawLength: 0,
+      hadEdgeWhitespace: false,
+      hadOuterQuotes: false,
+    }
+  );
+}
+
+async function readSupabaseServerEnvAsync(): Promise<SupabaseServerEnv> {
+  const runtimeResult = await readCloudflareRuntimeEnv();
+  const url = resolveEnvValue("NEXT_PUBLIC_SUPABASE_URL", ["SUPABASE_URL"], runtimeResult.env);
+  const anonKey = resolveEnvValue("NEXT_PUBLIC_SUPABASE_ANON_KEY", [], runtimeResult.env);
+  const serviceRoleKey = resolveEnvValue("SUPABASE_SERVICE_ROLE_KEY", [], runtimeResult.env);
+  const missing: string[] = [];
+
+  if (!url.value) {
+    missing.push("NEXT_PUBLIC_SUPABASE_URL|SUPABASE_URL");
+  }
+  if (!anonKey.value) {
+    missing.push("NEXT_PUBLIC_SUPABASE_ANON_KEY");
+  }
+  if (!serviceRoleKey.value) {
+    missing.push("SUPABASE_SERVICE_ROLE_KEY");
+  }
+
+  return {
+    url,
+    anonKey,
+    serviceRoleKey,
+    runtime: runtimeResult.diagnostics,
+    missing,
+  };
+}
+
+function throwMissingEnv(prefix: string, missing: string[]): never {
+  throw new Error(`${prefix}:${missing.join(",")}`);
+}
+
+function readUrlHost(value: string): string | null {
+  if (!value) return null;
+
+  try {
+    return new URL(value).host || null;
   } catch {
     return null;
   }
 }
 
-type SupabaseServerEnv = {
-  url: string;
-  anonKey: string;
-  serviceRoleKey: string;
-  missing: string[];
-};
+export async function getSupabaseServerEnvDiagnosticsAsync(): Promise<SupabaseEnvDiagnostics> {
+  const env = await readSupabaseServerEnvAsync();
 
-async function readSupabaseServerEnvAsync(): Promise<SupabaseServerEnv> {
-  const runtimeEnv = await readCloudflareRuntimeEnv();
-  const url = readStringEnv("NEXT_PUBLIC_SUPABASE_URL", ["SUPABASE_URL"], runtimeEnv);
-  const anonKey = readStringEnv("NEXT_PUBLIC_SUPABASE_ANON_KEY", [], runtimeEnv);
-  const serviceRoleKey = readStringEnv("SUPABASE_SERVICE_ROLE_KEY", [], runtimeEnv);
-  const missing: string[] = [];
-
-  if (!url) {
-    missing.push("NEXT_PUBLIC_SUPABASE_URL|SUPABASE_URL");
-  }
-  if (!anonKey) {
-    missing.push("NEXT_PUBLIC_SUPABASE_ANON_KEY");
-  }
-  if (!serviceRoleKey) {
-    missing.push("SUPABASE_SERVICE_ROLE_KEY");
-  }
-
-  return { url, anonKey, serviceRoleKey, missing };
-}
-
-function throwMissingEnv(prefix: string, missing: string[]): never {
-  throw new Error(`${prefix}:${missing.join(",")}`);
+  return {
+    runtime: env.runtime,
+    url: {
+      source: env.url.source,
+      present: Boolean(env.url.value),
+      matchedName: env.url.matchedName,
+      host: readUrlHost(env.url.value),
+      rawLength: env.url.rawLength,
+      hadEdgeWhitespace: env.url.hadEdgeWhitespace,
+      hadOuterQuotes: env.url.hadOuterQuotes,
+    },
+    anonKey: {
+      source: env.anonKey.source,
+      present: Boolean(env.anonKey.value),
+      matchedName: env.anonKey.matchedName,
+      length: env.anonKey.value.length,
+      rawLength: env.anonKey.rawLength,
+      hadEdgeWhitespace: env.anonKey.hadEdgeWhitespace,
+      hadOuterQuotes: env.anonKey.hadOuterQuotes,
+    },
+    serviceRoleKey: {
+      source: env.serviceRoleKey.source,
+      present: Boolean(env.serviceRoleKey.value),
+      matchedName: env.serviceRoleKey.matchedName,
+      length: env.serviceRoleKey.value.length,
+      rawLength: env.serviceRoleKey.rawLength,
+      hadEdgeWhitespace: env.serviceRoleKey.hadEdgeWhitespace,
+      hadOuterQuotes: env.serviceRoleKey.hadOuterQuotes,
+    },
+    missing: env.missing,
+  };
 }
 
 export async function isSupabaseConfiguredServerAsync(): Promise<boolean> {
@@ -73,11 +262,11 @@ export async function isSupabaseConfiguredServerAsync(): Promise<boolean> {
 export async function createSupabaseAnonServerClientAsync() {
   const env = await readSupabaseServerEnvAsync();
 
-  if (!env.url || !env.anonKey) {
+  if (!env.url.value || !env.anonKey.value) {
     throwMissingEnv("missing_supabase_anon_env", env.missing);
   }
 
-  return createClient(env.url, env.anonKey, {
+  return createClient(env.url.value, env.anonKey.value, {
     auth: {
       persistSession: false,
       autoRefreshToken: false,
@@ -88,11 +277,11 @@ export async function createSupabaseAnonServerClientAsync() {
 export async function createSupabaseServiceRoleClientAsync() {
   const env = await readSupabaseServerEnvAsync();
 
-  if (!env.url || !env.serviceRoleKey) {
+  if (!env.url.value || !env.serviceRoleKey.value) {
     throwMissingEnv("missing_supabase_service_env", env.missing);
   }
 
-  return createClient(env.url, env.serviceRoleKey, {
+  return createClient(env.url.value, env.serviceRoleKey.value, {
     auth: {
       persistSession: false,
       autoRefreshToken: false,
