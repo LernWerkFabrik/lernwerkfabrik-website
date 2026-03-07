@@ -18,7 +18,6 @@ type BrandLogoProps = {
 export default function BrandLogo({ className, variant = "mark" }: BrandLogoProps) {
   return (
     <div
-      data-brand-logo={variant}
       className={clsx("flex items-center gap-4", className)}
       aria-label="LernWerkFabrik"
     >
@@ -47,7 +46,7 @@ export default function BrandLogo({ className, variant = "mark" }: BrandLogoProp
 
       {/* Veredelte Wortmarke */}
       {variant === "word" ? (
-        <div className="lp-android-header-word flex items-center text-[17px] tracking-tight text-foreground">
+        <div className="flex items-center text-[17px] tracking-tight text-foreground">
           <span className="font-medium">Lern</span>
 
           {/* Mikroabstand - unsichtbar, aber strukturiert */}

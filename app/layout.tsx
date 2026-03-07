@@ -6,7 +6,6 @@ import "./globals.css";
 import "katex/dist/katex.min.css";
 
 import BrandHeader from "./BrandHeader";
-import MobilePlatformHead from "./MobilePlatformHead";
 import RouteAwareFooter from "./RouteAwareFooter";
 import ScrollRestoration, { ScrollRestorationHead } from "./ScrollRestoration";
 import { normalizeTheme, THEME_STORAGE_KEY } from "./theme-config";
@@ -77,7 +76,6 @@ export default async function RootLayout({
       className={`min-h-svh overflow-x-hidden md:h-dvh md:overflow-hidden${initialTheme === "dark" ? " dark" : ""}`}
     >
       <head>
-        <MobilePlatformHead />
         <ScrollRestorationHead />
       </head>
       <body className="min-h-svh overflow-x-hidden bg-background text-foreground antialiased lp-bg md:h-dvh md:overflow-hidden">
