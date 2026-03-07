@@ -70,14 +70,14 @@ export default function RootLayout({
         >
           <div aria-hidden="true" className="lp-bg-3d pointer-events-none fixed inset-0 -z-10" />
 
-          <div className="flex min-h-svh flex-col md:h-full">
+          <div className="app-shell flex min-h-svh flex-col md:h-full">
             <div className="h-[calc(3.5rem+env(safe-area-inset-top))] shrink-0 md:h-16">
               <BrandHeader authed={false} />
             </div>
 
             <main
               data-scroll-root
-              className="relative isolate z-0 flex-1 overflow-x-hidden md:min-h-0 md:overflow-y-auto"
+              className="app-scroll-root relative isolate z-0 flex-1 overflow-x-hidden md:min-h-0 md:overflow-y-auto"
             >
               {children}
 

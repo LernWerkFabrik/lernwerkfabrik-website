@@ -18,6 +18,21 @@ import {
   AlertTriangle,
 } from "lucide-react";
 
+const HOME_SCROLL_FLAGS_SCRIPT = String.raw`(() => {
+  const root = document.documentElement;
+  const body = document.body;
+
+  if (root) {
+    root.setAttribute("data-home-route", "1");
+    root.setAttribute("data-native-home-scroll", "1");
+  }
+
+  if (body) {
+    body.setAttribute("data-home-route", "1");
+    body.setAttribute("data-native-home-scroll", "1");
+  }
+})();`;
+
 /**
  * Panel = "Exam-Style Surface"
  * - dezenter Verlauf (Sky -> Amber)
@@ -188,8 +203,31 @@ export default function HomeClient() {
   const heroBadgeClass =
     "rounded-full border-amber-300/60 bg-amber-50/80 text-amber-900 shadow-[0_6px_14px_-12px_rgba(180,83,9,0.36),inset_0_1px_0_rgba(255,255,255,0.72)] hover:-translate-y-0.5 hover:bg-amber-50/90 hover:shadow-[0_9px_16px_-12px_rgba(180,83,9,0.4),inset_0_1px_0_rgba(255,255,255,0.78)] dark:border-amber-200/14 dark:bg-amber-200/5 dark:text-amber-100/70 dark:shadow-[0_2px_6px_-10px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.02)] dark:hover:bg-amber-200/8 dark:hover:shadow-[0_3px_8px_-10px_rgba(0,0,0,0.48),inset_0_1px_0_rgba(255,255,255,0.03)] md:min-w-[13.5rem] md:justify-center md:px-5 md:py-1.5 md:text-sm max-md:shrink-0 max-md:whitespace-nowrap max-md:px-2 max-md:py-px max-md:text-xs";
 
+  React.useLayoutEffect(() => {
+    const root = document.documentElement;
+    const body = document.body;
+
+    root.setAttribute("data-home-route", "1");
+    root.setAttribute("data-native-home-scroll", "1");
+    body.setAttribute("data-home-route", "1");
+    body.setAttribute("data-native-home-scroll", "1");
+
+    return () => {
+      root.removeAttribute("data-home-route");
+      root.removeAttribute("data-native-home-scroll");
+      body.removeAttribute("data-home-route");
+      body.removeAttribute("data-native-home-scroll");
+    };
+  }, []);
+
   return (
-    <div className="lp-home relative overflow-visible md:overflow-hidden">
+    <>
+      <script
+        id="lwf-home-scroll-flags"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{ __html: HOME_SCROLL_FLAGS_SCRIPT }}
+      />
+      <div className="lp-home relative overflow-visible md:overflow-hidden">
       {/* Background grid + glows */}
       <div className="pointer-events-none absolute inset-0 -z-10 hidden md:block">
         <div
@@ -646,7 +684,7 @@ export default function HomeClient() {
           </Panel>
 
           {/* VALUE GRID */}
-          <section data-perf-section className="lp-mobile-panel space-y-4">
+          <section className="lp-mobile-panel space-y-4">
             <div className="md:hidden">
               <div className="space-y-2">
                 <LaunchCtaLead />
@@ -699,7 +737,7 @@ export default function HomeClient() {
           </section>
 
           {/* WORKFLOW */}
-          <section data-perf-section className="lp-mobile-panel space-y-4">
+          <section className="lp-mobile-panel space-y-4">
             <div className="space-y-2">
               <h2 className="text-xl font-semibold tracking-tight md:text-2xl">
                 <span className="whitespace-nowrap">Drei Schritte - ein sauberer Lernflow</span>
@@ -738,7 +776,7 @@ export default function HomeClient() {
           </section>
 
           {/* FOOTER CTA */}
-          <Panel className="mt-3 bg-background/90 p-6 md:p-8" accent="amber" data-perf-section>
+          <Panel className="mt-3 bg-background/90 p-6 md:p-8" accent="amber">
             <div className="md:hidden">
               <div className="flex flex-col gap-4">
                 <div>
@@ -813,6 +851,7 @@ export default function HomeClient() {
           </Panel>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
