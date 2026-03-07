@@ -92,8 +92,8 @@
 
   html {
     color-scheme: light dark;
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
   }
 
   html:not(.dark) {

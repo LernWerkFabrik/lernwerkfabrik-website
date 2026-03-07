@@ -4,6 +4,7 @@ const scrollRestorationHeadScript = String.raw`(() => {
   const STORAGE_KEY = "lwf:scroll:v1";
   const RESTORING_ATTR = "data-scroll-restoring";
   const key = window.location.pathname + window.location.search + window.location.hash;
+  const isMobileViewport = () => window.matchMedia("(max-width: 767px)").matches;
 
   const getScrollingElement = () =>
     document.scrollingElement || document.documentElement || document.body;
@@ -23,11 +24,13 @@ const scrollRestorationHeadScript = String.raw`(() => {
 
   try {
     if ("scrollRestoration" in window.history) {
-      window.history.scrollRestoration = "manual";
+      window.history.scrollRestoration = isMobileViewport() ? "auto" : "manual";
     }
   } catch {
     // ignore
   }
+
+  if (isMobileViewport()) return;
 
   if (window.location.hash) return;
 
@@ -61,6 +64,7 @@ const scrollRestorationScript = String.raw`(() => {
   const REVEAL_TIMEOUT_MS = 4000;
   const REVEAL_SETTLE_MS = 180;
   const SAVE_SETTLE_MS = 180;
+  const isMobileViewport = () => window.matchMedia("(max-width: 767px)").matches;
 
   const getKey = () => window.location.pathname + window.location.search + window.location.hash;
 
@@ -194,7 +198,12 @@ const scrollRestorationScript = String.raw`(() => {
   };
 
   if ("scrollRestoration" in window.history) {
-    window.history.scrollRestoration = "manual";
+    window.history.scrollRestoration = isMobileViewport() ? "auto" : "manual";
+  }
+
+  if (isMobileViewport()) {
+    clearRestoring();
+    return;
   }
 
   let saveFrame = 0;
