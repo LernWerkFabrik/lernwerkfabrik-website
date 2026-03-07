@@ -339,19 +339,19 @@ export default function HomeClient() {
                   <div className="ml-1 mt-2.5 border-l border-border/80 pl-3 text-[0.82rem] text-foreground/80 dark:text-white/85">
                     <ul className="space-y-2.5">
                       <li className="flex items-center gap-2">
-                        <span aria-hidden="true" className="text-foreground/70 dark:text-white/80">
+                        <span aria-hidden="true" className="text-amber-400">
                           ✓
                         </span>
                         <span>Für AP1 & AP2 entwickelt</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <span aria-hidden="true" className="text-foreground/70 dark:text-white/80">
+                        <span aria-hidden="true" className="text-amber-400">
                           ✓
                         </span>
                         <span>Prüfungsnah wie die echte Aufgabe</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <span aria-hidden="true" className="text-foreground/70 dark:text-white/80">
+                        <span aria-hidden="true" className="text-amber-400">
                           ✓
                         </span>
                         <span>Kein Auswendiglernen nötig</span>
@@ -912,19 +912,19 @@ export default function HomeClient() {
                   <div className="ml-1 border-l border-border/80 pl-3 text-[0.82rem] text-foreground/80 dark:text-white/85">
                     <ul className="space-y-2.5">
                       <li className="flex items-center gap-2">
-                        <span aria-hidden="true" className="text-foreground/70 dark:text-white/80">
+                        <span aria-hidden="true" className="text-amber-400">
                           ✓
                         </span>
                         <span>Für AP1 & AP2 entwickelt</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <span aria-hidden="true" className="text-foreground/70 dark:text-white/80">
+                        <span aria-hidden="true" className="text-amber-400">
                           ✓
                         </span>
                         <span>Prüfungsnah wie die echte Aufgabe</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <span aria-hidden="true" className="text-foreground/70 dark:text-white/80">
+                        <span aria-hidden="true" className="text-amber-400">
                           ✓
                         </span>
                         <span>Kein Auswendiglernen nötig</span>
