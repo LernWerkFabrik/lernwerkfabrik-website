@@ -50,7 +50,10 @@ export default async function DatenschutzPage() {
 
         <Card className="rounded-2xl border bg-background/75 shadow-sm backdrop-blur-sm">
           <CardContent className="space-y-3 p-5 text-sm text-muted-foreground">
-            <p>Fuer Anfragen zum Datenschutz nutze bitte die im Impressum genannten Kontaktdaten.</p>
+            <p>
+              Für Fragen zum Datenschutz können Sie sich jederzeit über die im Impressum angegebenen
+              Kontaktdaten an uns wenden.
+            </p>
             <div className="flex flex-wrap gap-3">
               <Link className="underline underline-offset-4 hover:text-foreground" href="/impressum">
                 Zum Impressum
