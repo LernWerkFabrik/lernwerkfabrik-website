@@ -229,23 +229,23 @@
 
       .lp-home .lp-surface-panel {
         background-image:
-          linear-gradient(to right, rgba(14, 165, 233, 0.10), transparent, rgba(245, 158, 11, 0.12)),
+          linear-gradient(to right, rgba(14, 165, 233, 0.10), transparent, rgba(245, 158, 11, 0.06)),
           radial-gradient(900px 420px at 15% 10%, rgba(255, 255, 255, 0.06), transparent 55%),
-          radial-gradient(900px 420px at 85% 20%, rgba(245, 158, 11, 0.08), transparent 60%);
+          radial-gradient(900px 420px at 85% 20%, rgba(245, 158, 11, 0.035), transparent 60%);
         background-repeat: no-repeat;
         background-size: 100% 100%;
       }
 
       .lp-home .lp-surface-card-amber {
         background-image:
-          linear-gradient(to right, rgba(14, 165, 233, 0.08), transparent, rgba(245, 158, 11, 0.10));
+          linear-gradient(to right, rgba(14, 165, 233, 0.08), transparent, rgba(245, 158, 11, 0.045));
         background-repeat: no-repeat;
         background-size: 100% 100%;
       }
 
       .lp-home .lp-surface-card-cool {
         background-image:
-          linear-gradient(to right, rgba(14, 165, 233, 0.12), transparent, rgba(56, 189, 248, 0.10));
+          linear-gradient(to right, rgba(14, 165, 233, 0.12), transparent, rgba(56, 189, 248, 0.08));
         background-repeat: no-repeat;
         background-size: 100% 100%;
       }
