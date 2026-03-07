@@ -513,13 +513,31 @@ html[data-scroll-active="1"] .backdrop-blur-lg {
   -webkit-backdrop-filter: none !important;
 }
 
-html[data-scroll-active="1"] .lp-bg-3d,
-html[data-scroll-active="1"] body.lp-bg::after {
-  opacity: 0.03 !important;
+html[data-scroll-active="1"] .lp-home .lp-mobile-panel,
+html[data-scroll-active="1"] .lp-home .lp-mobile-card {
+  box-shadow: none !important;
 }
 
-html[data-scroll-active="1"] body.lp-bg::before {
-  opacity: 0.82 !important;
+html[data-scroll-active="1"] .lp-home .lp-surface-overlay {
+  opacity: 0.28 !important;
+}
+
+html[data-scroll-active="1"] .lp-home .blur-3xl {
+  opacity: 0.4 !important;
+}
+
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 767px) {
+    html[data-scroll-active="1"] .lp-home .lp-surface-overlay {
+      opacity: 0.16 !important;
+    }
+
+    html[data-scroll-active="1"] .lp-home .lp-mobile-panel,
+    html[data-scroll-active="1"] .lp-home .lp-mobile-card {
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+    }
+  }
 }
 
 html[data-scroll-restoring="1"] main[data-scroll-root] {
@@ -597,10 +615,3 @@ body {
   overflow-x: hidden;
 }
 
-@supports (content-visibility: auto) {
-  [data-perf-section] {
-    content-visibility: auto;
-    contain: layout paint style;
-    contain-intrinsic-size: 1px 960px;
-  }
-}

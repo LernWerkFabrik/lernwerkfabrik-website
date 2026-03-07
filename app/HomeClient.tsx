@@ -67,7 +67,7 @@ function Panel({
       />
 
       {/* Gradient wash */}
-      <div className="pointer-events-none absolute inset-0 z-0">
+      <div className="lp-surface-overlay pointer-events-none absolute inset-0 z-0">
         {gradientWash.map((layerClassName) => (
           <div key={layerClassName} className={layerClassName} />
         ))}
@@ -425,7 +425,7 @@ export default function HomeClient() {
                 </div>
                 {/* Micro-Box (straffer) */}
                 <div className="lp-mobile-card relative mt-2 overflow-hidden rounded-2xl border bg-background/55 p-4 md:mt-3">
-                  <div className="pointer-events-none absolute inset-0">
+                  <div className="lp-surface-overlay pointer-events-none absolute inset-0">
                     <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
                   </div>
                   <div className="relative pt-1">
@@ -496,7 +496,7 @@ export default function HomeClient() {
                 <div className="grid gap-2.5 md:gap-3">
                   <div className="grid gap-2.5 md:grid-cols-3 md:gap-3">
                     <Card className="lp-mobile-card relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
-                      <div className="pointer-events-none absolute inset-0">
+                      <div className="lp-surface-overlay pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
                         <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
@@ -527,7 +527,7 @@ export default function HomeClient() {
                     </Card>
 
                     <Card className="lp-mobile-card relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
-                      <div className="pointer-events-none absolute inset-0">
+                      <div className="lp-surface-overlay pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
                         <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
@@ -557,7 +557,7 @@ export default function HomeClient() {
                       </CardContent>
                     </Card>
                     <Card className="lp-mobile-card relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
-                      <div className="pointer-events-none absolute inset-0">
+                      <div className="lp-surface-overlay pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
                         <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
@@ -590,7 +590,7 @@ export default function HomeClient() {
 
                   <div className="grid gap-2.5 md:grid-cols-2 md:gap-3">
                     <div className="lp-mobile-card relative overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.36)] backdrop-blur-none md:backdrop-blur-sm">
-                      <div className="pointer-events-none absolute inset-0">
+                      <div className="lp-surface-overlay pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/12 via-transparent to-sky-400/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
                         <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
@@ -621,7 +621,7 @@ export default function HomeClient() {
                     </div>
 
                     <div className="lp-mobile-card relative overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.36)] backdrop-blur-none md:backdrop-blur-sm">
-                      <div className="pointer-events-none absolute inset-0">
+                      <div className="lp-surface-overlay pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/12 via-transparent to-sky-400/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
                         <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
@@ -646,7 +646,7 @@ export default function HomeClient() {
           </Panel>
 
           {/* VALUE GRID */}
-          <section data-perf-section className="lp-mobile-panel space-y-4">
+          <section className="lp-mobile-panel space-y-4">
             <div className="md:hidden">
               <div className="space-y-2">
                 <LaunchCtaLead />
@@ -680,7 +680,7 @@ export default function HomeClient() {
                   key={it.title}
                   className="lp-mobile-card relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-none md:backdrop-blur-sm"
                 >
-                  <div className="pointer-events-none absolute inset-0">
+                  <div className="lp-surface-overlay pointer-events-none absolute inset-0">
                     <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
                     <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
                     <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
@@ -699,7 +699,7 @@ export default function HomeClient() {
           </section>
 
           {/* WORKFLOW */}
-          <section data-perf-section className="lp-mobile-panel space-y-4">
+          <section className="lp-mobile-panel space-y-4">
             <div className="space-y-2">
               <h2 className="text-xl font-semibold tracking-tight md:text-2xl">
                 <span className="whitespace-nowrap">Drei Schritte - ein sauberer Lernflow</span>
@@ -721,7 +721,7 @@ export default function HomeClient() {
                   key={x.t}
                   className="lp-mobile-card relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-none md:backdrop-blur-sm"
                 >
-                  <div className="pointer-events-none absolute inset-0">
+                  <div className="lp-surface-overlay pointer-events-none absolute inset-0">
                     <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
                     <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
                     <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
@@ -738,7 +738,7 @@ export default function HomeClient() {
           </section>
 
           {/* FOOTER CTA */}
-          <Panel className="mt-3 bg-background/90 p-6 md:p-8" accent="amber" data-perf-section>
+          <Panel className="mt-3 bg-background/90 p-6 md:p-8" accent="amber">
             <div className="md:hidden">
               <div className="flex flex-col gap-4">
                 <div>
