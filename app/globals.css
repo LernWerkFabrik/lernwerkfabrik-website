@@ -221,23 +221,6 @@
     }
   }
 
-  @supports (-webkit-touch-callout: none) {
-    @media (max-width: 767px) {
-      .lp-mobile-panel {
-        contain: paint;
-        isolation: isolate;
-        transform: translateZ(0);
-        -webkit-transform: translateZ(0);
-        backface-visibility: hidden;
-      }
-
-      .lp-mobile-card {
-        contain: paint;
-        isolation: isolate;
-      }
-    }
-  }
-
   /* =========================================================
      Surface System
      ========================================================= */
@@ -505,37 +488,23 @@ main[data-scroll-root] {
   -webkit-overflow-scrolling: touch;
 }
 
-html[data-scroll-active="1"] .backdrop-blur,
-html[data-scroll-active="1"] .backdrop-blur-sm,
-html[data-scroll-active="1"] .backdrop-blur-md,
-html[data-scroll-active="1"] .backdrop-blur-lg {
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}
-
-html[data-scroll-active="1"] .lp-home .lp-mobile-panel,
-html[data-scroll-active="1"] .lp-home .lp-mobile-card {
-  box-shadow: none !important;
-}
-
-html[data-scroll-active="1"] .lp-home .lp-surface-overlay {
-  opacity: 0.28 !important;
-}
-
-html[data-scroll-active="1"] .lp-home .blur-3xl {
-  opacity: 0.4 !important;
-}
-
 @supports (-webkit-touch-callout: none) {
   @media (max-width: 767px) {
-    html[data-scroll-active="1"] .lp-home .lp-surface-overlay {
-      opacity: 0.16 !important;
+    html[data-scroll-active="1"] .lp-home .backdrop-blur,
+    html[data-scroll-active="1"] .lp-home .backdrop-blur-sm,
+    html[data-scroll-active="1"] .lp-home .backdrop-blur-md,
+    html[data-scroll-active="1"] .lp-home .backdrop-blur-lg {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
     }
 
     html[data-scroll-active="1"] .lp-home .lp-mobile-panel,
     html[data-scroll-active="1"] .lp-home .lp-mobile-card {
-      transform: translateZ(0);
-      -webkit-transform: translateZ(0);
+      box-shadow: none !important;
+    }
+
+    html[data-scroll-active="1"] .lp-home .lp-surface-overlay {
+      opacity: 0.12 !important;
     }
   }
 }
