@@ -30,11 +30,13 @@ function Panel({
   children,
   className = "",
   accent = "amber",
+  washVariant = "default",
   ...props
 }: {
   children: React.ReactNode;
   className?: string;
   accent?: "amber" | "sky";
+  washVariant?: "default" | "cooler";
 } & React.ComponentPropsWithoutRef<"section">) {
   const shellClassName =
     "lp-mobile-panel relative overflow-hidden rounded-2xl border bg-background shadow-none md:bg-background/82 md:shadow-sm md:backdrop-blur-sm";
@@ -44,11 +46,18 @@ function Panel({
       ? "bg-gradient-to-r from-transparent via-sky-400/50 to-transparent md:via-sky-400/55"
       : "bg-gradient-to-r from-transparent via-amber-400/60 to-transparent md:via-amber-400/70";
 
-  const gradientWash = [
-    "absolute inset-0 bg-gradient-to-r from-sky-500/10 via-transparent to-amber-500/12",
-    "absolute inset-0 bg-[radial-gradient(900px_420px_at_15%_10%,rgba(255,255,255,0.06),transparent_55%)]",
-    "absolute inset-0 bg-[radial-gradient(900px_420px_at_85%_20%,rgba(245,158,11,0.08),transparent_60%)]",
-  ];
+  const gradientWash =
+    washVariant === "cooler"
+      ? [
+          "absolute inset-0 bg-gradient-to-r from-sky-500/10 via-transparent to-amber-500/7",
+          "absolute inset-0 bg-[radial-gradient(900px_420px_at_15%_10%,rgba(255,255,255,0.06),transparent_55%)]",
+          "absolute inset-0 bg-[radial-gradient(900px_420px_at_85%_20%,rgba(245,158,11,0.045),transparent_60%)]",
+        ]
+      : [
+          "absolute inset-0 bg-gradient-to-r from-sky-500/10 via-transparent to-amber-500/12",
+          "absolute inset-0 bg-[radial-gradient(900px_420px_at_15%_10%,rgba(255,255,255,0.06),transparent_55%)]",
+          "absolute inset-0 bg-[radial-gradient(900px_420px_at_85%_20%,rgba(245,158,11,0.08),transparent_60%)]",
+        ];
 
   return (
     <section
@@ -132,6 +141,25 @@ function LaunchCtaLead({ className = "" }: { className?: string }) {
     >
       Jetzt Platz sichern - und zum Launch direkt starten.
     </p>
+  );
+}
+
+function MobileStackCard({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <Card className={["lp-mobile-card relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-none", className].join(" ")}>
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
+        <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
+        <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
+      </div>
+      <CardContent className="relative p-0">{children}</CardContent>
+    </Card>
   );
 }
 
@@ -711,44 +739,83 @@ export default function HomeClient() {
               desc="Ruhiges UI, klare Schritte, messbarer Fortschritt - und sauber erweiterbar."
             />
 
-            <div className="grid gap-4 md:grid-cols-3">
-              {[
-                {
-                  title: "Einfach & praxisnah",
-                  label: "Didaktik",
-                  desc: "Schritt-für-Schritt mit Feedback - nicht akademisch, sondern Azubi-tauglich.",
-                },
-                {
-                  title: "Prüfungslogik im Fokus",
-                  label: "Ergebnis",
-                  desc: "Du trainierst genau das, was zählt: Teilpunkte, Zeitdruck, typische Fallen.",
-                },
-                {
-                  title: "Frühzugang mit Plan",
-                  label: "Launch",
-                  desc: "Zum Start erhältst du direkten Zugang und klare nächste Schritte per E-Mail.",
-                },
-              ].map((it) => (
-                <Card
-                  key={it.title}
-                  className="lp-mobile-card relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-none md:backdrop-blur-sm"
-                >
-                  <div className="lp-surface-overlay pointer-events-none absolute inset-0">
-                    <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
-                    <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
-                    <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
-                  </div>
-
-                  <CardContent className="relative p-6 max-md:py-1.5">
+            {showMobileOnly ? (
+              <MobileStackCard className={unresolvedLayout ? "md:hidden" : ""}>
+                {[
+                  {
+                    title: "Einfach & praxisnah",
+                    label: "Didaktik",
+                    desc: "Schritt-für-Schritt mit Feedback - nicht akademisch, sondern Azubi-tauglich.",
+                  },
+                  {
+                    title: "Prüfungslogik im Fokus",
+                    label: "Ergebnis",
+                    desc: "Du trainierst genau das, was zählt: Teilpunkte, Zeitdruck, typische Fallen.",
+                  },
+                  {
+                    title: "Frühzugang mit Plan",
+                    label: "Launch",
+                    desc: "Zum Start erhältst du direkten Zugang und klare nächste Schritte per E-Mail.",
+                  },
+                ].map((it, index, items) => (
+                  <div
+                    key={it.title}
+                    className={[
+                      "px-5 py-4",
+                      index !== 0 ? "border-t border-border/70" : "",
+                      index === items.length - 1 ? "pb-5" : "",
+                    ].join(" ")}
+                  >
                     <div className="flex items-center gap-2 text-sm font-medium">
                       <CheckCircle2 className="h-4 w-4 text-amber-300" /> {it.label}
                     </div>
-                    <div className="mt-2 text-xl font-semibold">{it.title}</div>
+                    <div className="mt-2 text-lg font-semibold">{it.title}</div>
                     <p className="mt-2 text-sm text-muted-foreground">{it.desc}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                  </div>
+                ))}
+              </MobileStackCard>
+            ) : null}
+
+            {showDesktopOnly ? (
+              <div className={unresolvedLayout ? "hidden gap-4 md:grid md:grid-cols-3" : "grid gap-4 md:grid-cols-3"}>
+                {[
+                  {
+                    title: "Einfach & praxisnah",
+                    label: "Didaktik",
+                    desc: "Schritt-für-Schritt mit Feedback - nicht akademisch, sondern Azubi-tauglich.",
+                  },
+                  {
+                    title: "Prüfungslogik im Fokus",
+                    label: "Ergebnis",
+                    desc: "Du trainierst genau das, was zählt: Teilpunkte, Zeitdruck, typische Fallen.",
+                  },
+                  {
+                    title: "Frühzugang mit Plan",
+                    label: "Launch",
+                    desc: "Zum Start erhältst du direkten Zugang und klare nächste Schritte per E-Mail.",
+                  },
+                ].map((it) => (
+                  <Card
+                    key={it.title}
+                    className="lp-mobile-card relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-none md:backdrop-blur-sm"
+                  >
+                    <div className="lp-surface-overlay pointer-events-none absolute inset-0">
+                      <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
+                      <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
+                      <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
+                    </div>
+
+                    <CardContent className="relative p-6 max-md:py-1.5">
+                      <div className="flex items-center gap-2 text-sm font-medium">
+                        <CheckCircle2 className="h-4 w-4 text-amber-300" /> {it.label}
+                      </div>
+                      <div className="mt-2 text-xl font-semibold">{it.title}</div>
+                      <p className="mt-2 text-sm text-muted-foreground">{it.desc}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            ) : null}
           </section>
 
           {/* WORKFLOW */}
@@ -764,34 +831,60 @@ export default function HomeClient() {
               </div>
             </div>
 
-            <div className="grid gap-4 md:grid-cols-3">
-              {[
-                { t: "1. Lernen", d: "Erklärung + Beispiel + Übung mit Lösung & Feedback." },
-                { t: "2. Prüfung", d: "Ohne Hilfe. Bewertet. Teilpunkte wie in der Prüfung." },
-                { t: "3. Fehlertraining", d: "Automatisch nur Schwächen üben - effizient & motivierend." },
-              ].map((x) => (
-                <Card
-                  key={x.t}
-                  className="lp-mobile-card relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-none md:backdrop-blur-sm"
-                >
-                  <div className="lp-surface-overlay pointer-events-none absolute inset-0">
-                    <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
-                    <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
-                    <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
-                  </div>
-                  <CardContent className="relative p-6 max-md:py-2 max-md:text-sm max-md:leading-snug">
+            {showMobileOnly ? (
+              <MobileStackCard className={unresolvedLayout ? "md:hidden" : ""}>
+                {[
+                  { t: "1. Lernen", d: "Erklärung + Beispiel + Übung mit Lösung & Feedback." },
+                  { t: "2. Prüfung", d: "Ohne Hilfe. Bewertet. Teilpunkte wie in der Prüfung." },
+                  { t: "3. Fehlertraining", d: "Automatisch nur Schwächen üben - effizient & motivierend." },
+                ].map((x, index, items) => (
+                  <div
+                    key={x.t}
+                    className={[
+                      "px-5 py-4",
+                      index !== 0 ? "border-t border-border/70" : "",
+                      index === items.length - 1 ? "pb-5" : "",
+                    ].join(" ")}
+                  >
                     <div className="text-sm font-medium">{x.t}</div>
                     <p className="mt-2 text-sm text-muted-foreground max-md:text-sm max-md:leading-snug">
                       {x.d}
                     </p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                  </div>
+                ))}
+              </MobileStackCard>
+            ) : null}
+
+            {showDesktopOnly ? (
+              <div className={unresolvedLayout ? "hidden gap-4 md:grid md:grid-cols-3" : "grid gap-4 md:grid-cols-3"}>
+                {[
+                  { t: "1. Lernen", d: "Erklärung + Beispiel + Übung mit Lösung & Feedback." },
+                  { t: "2. Prüfung", d: "Ohne Hilfe. Bewertet. Teilpunkte wie in der Prüfung." },
+                  { t: "3. Fehlertraining", d: "Automatisch nur Schwächen üben - effizient & motivierend." },
+                ].map((x) => (
+                  <Card
+                    key={x.t}
+                    className="lp-mobile-card relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-none md:backdrop-blur-sm"
+                  >
+                    <div className="lp-surface-overlay pointer-events-none absolute inset-0">
+                      <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
+                      <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
+                      <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
+                    </div>
+                    <CardContent className="relative p-6 max-md:py-2 max-md:text-sm max-md:leading-snug">
+                      <div className="text-sm font-medium">{x.t}</div>
+                      <p className="mt-2 text-sm text-muted-foreground max-md:text-sm max-md:leading-snug">
+                        {x.d}
+                      </p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            ) : null}
           </section>
 
           {/* FOOTER CTA */}
-          <Panel className="mt-3 bg-background/90 p-6 md:p-8" accent="amber">
+          <Panel className="mt-3 bg-background/90 p-6 md:p-8" accent="amber" washVariant="cooler">
             {showMobileOnly && (
             <div className={unresolvedLayout ? "md:hidden" : ""}>
               <div className="flex flex-col gap-4">
