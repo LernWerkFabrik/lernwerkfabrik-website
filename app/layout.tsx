@@ -69,9 +69,9 @@ export default async function RootLayout({
     <html
       lang="de"
       suppressHydrationWarning
-      className={`h-dvh overflow-hidden${initialTheme === "dark" ? " dark" : ""}`}
+      className={`h-svh overflow-hidden md:h-dvh${initialTheme === "dark" ? " dark" : ""}`}
     >
-      <body className="h-dvh overflow-hidden bg-background text-foreground antialiased lp-bg">
+      <body className="h-svh overflow-hidden bg-background text-foreground antialiased lp-bg md:h-dvh">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

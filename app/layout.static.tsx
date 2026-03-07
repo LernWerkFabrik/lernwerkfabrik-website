@@ -45,8 +45,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de" suppressHydrationWarning className="dark h-dvh overflow-hidden">
-      <body className="h-dvh overflow-hidden bg-background text-foreground antialiased lp-bg">
+    <html lang="de" suppressHydrationWarning className="dark h-svh overflow-hidden md:h-dvh">
+      <body className="h-svh overflow-hidden bg-background text-foreground antialiased lp-bg md:h-dvh">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
