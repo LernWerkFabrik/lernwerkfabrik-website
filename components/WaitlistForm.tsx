@@ -15,6 +15,7 @@ type WaitlistApiResponse = {
   message?: string;
   details?: string;
   error_codes?: string[];
+  missing?: string[];
 };
 
 type TurnstileRenderOptions = {
@@ -169,7 +170,10 @@ function mapApiError(payload: WaitlistApiResponse, statusCode: number) {
   }
 
   if (reason === "missing_supabase_server_env") {
-    return "Server-Konfiguration unvollständig (Supabase ENV). Bitte Deployment prüfen.";
+    const missing = (payload.missing || []).join(", ");
+    return missing
+      ? `Server-Konfiguration unvollständig (${missing}). Bitte Deployment prüfen.`
+      : "Server-Konfiguration unvollständig (Supabase ENV). Bitte Deployment prüfen.";
   }
 
   if (reason === "insert_failed") {

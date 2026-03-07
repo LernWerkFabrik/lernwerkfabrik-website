@@ -93,9 +93,18 @@ export async function POST(request: NextRequest) {
 
   try {
     supabaseServer = createSupabaseServerClient();
-  } catch {
+  } catch (error) {
+    const missing =
+      error instanceof Error && error.message.startsWith("missing_supabase_server_env:")
+        ? error.message
+            .slice("missing_supabase_server_env:".length)
+            .split(",")
+            .map((entry) => entry.trim())
+            .filter(Boolean)
+        : [];
+
     return NextResponse.json(
-      { status: "error", message: "missing_supabase_server_env" },
+      { status: "error", message: "missing_supabase_server_env", missing },
       { status: 500 }
     );
   }
