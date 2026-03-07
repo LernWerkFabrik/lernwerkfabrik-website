@@ -35,31 +35,40 @@ function Panel({
   className?: string;
   accent?: "amber" | "sky";
 }) {
+  const shellClassName =
+    "relative overflow-hidden rounded-2xl border bg-background/82 shadow-sm backdrop-blur-sm";
+
   const accentLine =
     accent === "sky"
-      ? "bg-gradient-to-r from-transparent via-sky-400/55 to-transparent"
-      : "bg-gradient-to-r from-transparent via-amber-400/70 to-transparent";
+      ? "bg-gradient-to-r from-transparent via-sky-400/50 to-transparent md:via-sky-400/55"
+      : "bg-gradient-to-r from-transparent via-amber-400/60 to-transparent md:via-amber-400/70";
+
+  const gradientWash = [
+    "absolute inset-0 bg-gradient-to-r from-sky-500/10 via-transparent to-amber-500/8",
+    "absolute inset-0 bg-[radial-gradient(900px_420px_at_15%_10%,rgba(255,255,255,0.06),transparent_55%)]",
+    "absolute inset-0 bg-[radial-gradient(900px_420px_at_85%_20%,rgba(245,158,11,0.05),transparent_60%)]",
+  ];
 
   return (
     <section
       className={[
-        "relative overflow-hidden rounded-2xl border bg-background/82 shadow-sm backdrop-blur-sm",
+        shellClassName,
         className,
       ].join(" ")}
     >
       {/* Top accent line */}
       <div
         className={[
-          "pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-2xl",
+          "pointer-events-none absolute inset-x-0 top-0 z-[2] h-[2px] rounded-t-2xl",
           accentLine,
         ].join(" ")}
       />
 
       {/* Gradient wash */}
-      <div className="pointer-events-none absolute inset-0 -z-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-sky-500/10 via-transparent to-amber-500/12" />
-        <div className="absolute inset-0 bg-[radial-gradient(900px_420px_at_15%_10%,rgba(255,255,255,0.06),transparent_55%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(900px_420px_at_85%_20%,rgba(245,158,11,0.08),transparent_60%)]" />
+      <div className="pointer-events-none absolute inset-0 z-0">
+        {gradientWash.map((layerClassName) => (
+          <div key={layerClassName} className={layerClassName} />
+        ))}
         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
       </div>
 
@@ -70,7 +79,7 @@ function Panel({
 
 function BrandMark() {
   return (
-    <div className="flex items-center gap-3.5 max-md:gap-5">
+    <div className="flex min-h-16 items-center gap-3.5 max-md:min-h-24 max-md:gap-5">
       <div className="relative h-16 w-16 shrink-0 max-md:h-24 max-md:w-24">
         <Image
           src="/brand/logo-lwf-dark.png"
@@ -78,7 +87,7 @@ function BrandMark() {
           fill
           sizes="(max-width: 768px) 96px, 64px"
           className="object-contain block dark:hidden"
-          priority={false}
+          priority
         />
         <Image
           src="/brand/logo-lwf-light.png"
@@ -86,7 +95,7 @@ function BrandMark() {
           fill
           sizes="(max-width: 768px) 96px, 64px"
           className="object-contain hidden dark:block"
-          priority={false}
+          priority
         />
       </div>
 
@@ -108,6 +117,19 @@ function Pill({ icon, label }: { icon: React.ReactNode; label: string }) {
       <span className="text-amber-400">{icon}</span>
       <span>{label}</span>
     </div>
+  );
+}
+
+function LaunchCtaLead({ className = "" }: { className?: string }) {
+  return (
+    <p
+      className={[
+        "mx-auto max-w-2xl text-center text-sm font-medium text-primary md:text-base",
+        className,
+      ].join(" ")}
+    >
+      Jetzt Platz sichern - und zum Launch direkt starten.
+    </p>
   );
 }
 
@@ -176,16 +198,17 @@ export default function HomeClient() {
             backgroundSize: "56px 56px",
           }}
         />
-        <div className="absolute -top-24 left-1/2 h-[440px] w-[640px] -translate-x-1/2 rounded-[999px] bg-amber-500/14 blur-3xl" />
+        <div className="absolute -top-24 left-1/2 h-[440px] w-[640px] -translate-x-1/2 rounded-[999px] bg-amber-500/9 blur-3xl" />
         <div className="absolute right-[-140px] top-[140px] h-[360px] w-[360px] rounded-full bg-sky-500/10 blur-3xl" />
         <div className="absolute -bottom-28 -left-28 h-[420px] w-[420px] rounded-full bg-slate-500/12 blur-3xl" />
       </div>
 
       {/* Centered container */}
-      <div className="mx-auto w-full max-w-6xl px-4 py-6">
+      <div className="mx-auto w-full max-w-6xl px-4 py-6 max-md:pt-[13.5px]">
         <div className="space-y-10">
           {/* HERO */}
-          <Panel className="p-6 md:p-8 max-md:p-4 max-md:pt-3" accent="amber">
+          <Panel className="bg-background/90 p-6 md:p-8 max-md:p-4 max-md:pt-3" accent="amber">
+            <div className="pointer-events-none absolute inset-x-0 top-[2px] h-20 bg-background/94 max-md:h-28" />
             {/* top row */}
             <div className="mb-4 flex items-center justify-start gap-3 max-md:mb-1 md:mx-auto md:w-full md:max-w-[78%]">
               <BrandMark />
@@ -232,9 +255,7 @@ export default function HomeClient() {
                     Für AP1/AP2: Prüfungslogik verstehen, Fehler erkennen und prüfungsnah trainieren.
                   </span>
                 </p>
-                <p className="mx-auto max-w-2xl text-center text-sm font-medium text-foreground/90 md:text-base">
-                  🚀 Jetzt Platz sichern – und zum Launch direkt starten.
-                </p>
+                <LaunchCtaLead />
 
                 {/* Mobile CTA (früh sichtbar) */}
                 <div className="md:hidden">
@@ -395,7 +416,7 @@ export default function HomeClient() {
                 {/* CTAs */}
                 <div className="hidden flex-wrap items-start gap-3 pt-2 md:flex md:justify-center">
                   <WaitlistForm
-                    buttonLabel="🚀 Jetzt Platz sichern"
+                    buttonLabel="🚀 Jetzt auf die Warteliste"
                     inputClassName="md:w-full md:flex-1"
                     className="min-w-[24rem]"
                   />
@@ -405,16 +426,14 @@ export default function HomeClient() {
                   <div className="pointer-events-none absolute inset-0">
                     <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
                   </div>
-                  <div className="relative">
-                    <div className="flex items-center gap-2 text-sm font-medium">
-                      <AlertTriangle className="h-4 w-4 text-amber-400" />
-                      Hier verlieren viele Punkte in der Prüfung
-                    </div>
-
-                    <div className="mt-3 grid gap-4 md:grid-cols-2">
-                      <div>
-                        <div className="text-sm font-medium text-foreground/90">Hier verlieren viele Punkte:</div>
-                        <ul className="mt-2 space-y-2 text-sm text-muted-foreground">
+                  <div className="relative pt-1">
+                    <div className="grid gap-4 md:grid-cols-2">
+                      <div className="pt-2">
+                        <div className="flex items-center gap-2 text-sm font-medium">
+                          <AlertTriangle className="h-4 w-4 text-amber-400" />
+                          Hier verlieren viele Punkte in der Prüfung:
+                        </div>
+                        <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
                           <li className="flex items-start gap-2">
                             <span className="mt-1.5 block size-2 flex-none rounded-full bg-amber-400" />
                             Einheiten & Vorzeichen → Ergebnis falsch
@@ -627,7 +646,10 @@ export default function HomeClient() {
           {/* VALUE GRID */}
           <section className="space-y-4">
             <div className="md:hidden">
-              <WaitlistForm />
+              <div className="space-y-2">
+                <LaunchCtaLead />
+                <WaitlistForm />
+              </div>
             </div>
             <SectionHeader
               title="Ein System, das sich wie Praxis anfühlt"
@@ -714,44 +736,75 @@ export default function HomeClient() {
           </section>
 
           {/* FOOTER CTA */}
-           <Panel className="mt-3 p-6 md:p-8" accent="sky">
-            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-              <div>
-                <div className="text-sm text-muted-foreground">Bald live</div>
-                <div className="mt-1 text-xl font-semibold md:whitespace-nowrap">Sichere dir jetzt den Platz zur LernWerkFabrik</div>
-                <div className="mt-2 text-sm text-muted-foreground">
-                  Die Plattform startet in Kürze. Trage dich ein und wir informieren
-                  <br />
-                  dich direkt zum Launch.
+          <Panel className="mt-3 bg-background/90 p-6 md:p-8" accent="amber">
+            <div className="md:hidden">
+              <div className="flex flex-col gap-4">
+                <div>
+                  <div className="text-sm text-muted-foreground">Bald live</div>
+                  <div className="mt-1 text-xl font-semibold">Sichere dir jetzt den Platz zur LernWerkFabrik</div>
+                  <div className="mt-2 text-[13px] leading-5 text-muted-foreground">
+                    Die Plattform startet in Kürze. Trage dich ein,
+                    <br />
+                    wir informieren dich direkt zum Launch.
+                  </div>
+                </div>
+                <div className="flex w-full flex-col gap-2">
+                  <LaunchCtaLead className="max-w-none md:text-sm" />
+                  <WaitlistForm
+                    buttonLabel="🚀 Jetzt auf die Warteliste"
+                  />
+                  <div className="ml-1 border-l border-border/80 pl-3 text-[0.82rem] text-foreground/80 dark:text-white/85">
+                    <ul className="space-y-2.5">
+                      <li className="flex items-center gap-2">
+                        <span aria-hidden="true" className="text-foreground/70 dark:text-white/80">
+                          ✓
+                        </span>
+                        <span>Für AP1 & AP2 entwickelt</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span aria-hidden="true" className="text-foreground/70 dark:text-white/80">
+                          ✓
+                        </span>
+                        <span>Prüfungsnah wie die echte Aufgabe</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span aria-hidden="true" className="text-foreground/70 dark:text-white/80">
+                          ✓
+                        </span>
+                        <span>Kein Auswendiglernen nötig</span>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
-              <div className="flex w-full flex-col gap-2 md:flex-1 md:items-end">
-                <WaitlistForm
-                  buttonLabel="🚀 Jetzt Platz sichern"
-                  inputClassName="md:w-[24rem]"
-                  className="md:ml-auto md:w-[36rem] md:[&>div]:justify-end [&>p]:md:text-right"
-                />
-                <div className="ml-1 border-l border-border/80 pl-3 text-[0.82rem] text-foreground/80 dark:text-white/85 md:hidden">
-                  <ul className="space-y-2.5">
-                    <li className="flex items-center gap-2">
-                      <span aria-hidden="true" className="text-foreground/70 dark:text-white/80">
-                        ✓
-                      </span>
-                      <span>Für AP1 & AP2 entwickelt</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span aria-hidden="true" className="text-foreground/70 dark:text-white/80">
-                        ✓
-                      </span>
-                      <span>Prüfungsnah wie die echte Aufgabe</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span aria-hidden="true" className="text-foreground/70 dark:text-white/80">
-                        ✓
-                      </span>
-                      <span>Kein Auswendiglernen nötig</span>
-                    </li>
-                  </ul>
+            </div>
+
+            <div className="hidden md:flex md:flex-col md:gap-4">
+              <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                <div>
+                  <div className="text-sm text-muted-foreground">Bald live</div>
+                  <div className="mt-1 text-xl font-semibold md:whitespace-nowrap">Sichere dir jetzt den Platz zur LernWerkFabrik</div>
+                  <div className="mt-2 text-[13px] leading-5 text-muted-foreground md:text-sm md:leading-normal">
+                    Die Plattform startet in Kürze. Trage dich ein und wir informieren
+                    <br />
+                    dich direkt zum Launch.
+                  </div>
+                </div>
+                <div className="flex w-full flex-col gap-2 md:flex-1 md:items-end">
+                  <WaitlistForm
+                    buttonLabel="🚀 Jetzt auf die Warteliste"
+                    helperText={
+                      <>
+                        <span className="block md:w-full md:text-justify md:[text-align-last:justify] md:[text-justify:inter-word]">
+                          Die Plattform startet bald. Sichere dir jetzt deinen Platz auf der Warteliste. Wir informieren dich{" "}
+                          <span className="whitespace-nowrap">zum Launch,</span>
+                        </span>
+                        <span className="block whitespace-nowrap md:text-right">ohne Spam.</span>
+                      </>
+                    }
+                    inputClassName="md:w-[24rem]"
+                    className="md:ml-auto md:w-[36rem] md:[&>div]:justify-end md:[&>p]:text-left md:[&>p]:text-[0.75rem] md:[&>p]:tracking-[-0.01em]"
+                  />
                 </div>
               </div>
             </div>

@@ -10,6 +10,8 @@ import BrandLogo from "./BrandLogo";
 import { Button } from "@/components/ui/button";
 import { getPlanClient, type Plan } from "@/lib/entitlements";
 
+const SCROLL_STORAGE_KEY = "lwf:scroll:v1";
+
 function subscribeCanGoBack(onStoreChange: () => void) {
   if (typeof window === "undefined") return () => {};
   const handler = () => onStoreChange();
@@ -35,6 +37,53 @@ function subscribePlan(onStoreChange: () => void) {
   };
   window.addEventListener("storage", handler);
   return () => window.removeEventListener("storage", handler);
+}
+
+function scrollPageToTop() {
+  if (typeof window === "undefined") return;
+
+  const root = document.querySelector("main[data-scroll-root]");
+  if (root instanceof HTMLElement) {
+    root.scrollTop = 0;
+  }
+
+  const scrollingElement = document.scrollingElement || document.documentElement || document.body;
+  if (scrollingElement) {
+    scrollingElement.scrollTop = 0;
+  }
+
+  document.documentElement.scrollTop = 0;
+  if (document.body) {
+    document.body.scrollTop = 0;
+  }
+
+  window.scrollTo(0, 0);
+}
+
+function clearStoredScroll(keys: string[]) {
+  if (typeof window === "undefined") return;
+
+  try {
+    const raw = window.sessionStorage.getItem(SCROLL_STORAGE_KEY);
+    if (!raw) return;
+
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object") return;
+
+    let changed = false;
+    for (const key of keys) {
+      if (key in parsed) {
+        delete parsed[key];
+        changed = true;
+      }
+    }
+
+    if (changed) {
+      window.sessionStorage.setItem(SCROLL_STORAGE_KEY, JSON.stringify(parsed));
+    }
+  } catch {
+    // ignore
+  }
 }
 
 /**
@@ -67,12 +116,42 @@ export default function BrandHeader({ authed }: { authed: boolean }) {
       canGoBack
   );
 
+  const handleHomeClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return;
+    }
+
+    const currentKey =
+      typeof window !== "undefined"
+        ? window.location.pathname + window.location.search + window.location.hash
+        : homeHref;
+
+    clearStoredScroll([homeHref, currentKey]);
+
+    if (pathname === "/") {
+      event.preventDefault();
+      scrollPageToTop();
+      return;
+    }
+
+    window.requestAnimationFrame(() => {
+      scrollPageToTop();
+    });
+  };
+
   return (
     <header
       data-scroll-header
-      className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/60 backdrop-blur"
+      className="fixed inset-x-0 top-0 z-50 w-full border-b border-border/60 bg-background/[0.985] shadow-[0_10px_28px_-24px_rgba(0,0,0,0.9)] backdrop-blur-none md:bg-background/60 md:shadow-none md:backdrop-blur"
     >
-      <div className="mx-auto grid h-14 max-w-6xl grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 px-4 md:h-16 md:px-6">
+      <div className="mx-auto grid h-[calc(3.5rem+env(safe-area-inset-top))] max-w-6xl grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 px-4 pt-[env(safe-area-inset-top)] md:h-16 md:px-6 md:pt-0">
         {/* LEFT - Back (mobile) or Brand */}
         <div className="flex items-center gap-2">
           {showBack ? (
@@ -95,12 +174,9 @@ export default function BrandHeader({ authed }: { authed: boolean }) {
             href={homeHref}
             aria-label="Zur Uebersicht"
             className="flex items-center"
+            onClick={handleHomeClick}
           >
-            {authed ? (
-              <BrandLogo variant="mark" className="scale-90" />
-            ) : (
-              <BrandLogo variant="word" />
-            )}
+            <BrandLogo variant="word" />
           </Link>
           <span className="sr-only">{pageTitle}</span>
         </div>

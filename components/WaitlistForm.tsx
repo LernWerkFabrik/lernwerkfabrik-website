@@ -183,11 +183,13 @@ function mapApiError(payload: WaitlistApiResponse, statusCode: number) {
 
 export default function WaitlistForm({
   className,
-  buttonLabel = "🚀 Jetzt Platz sichern",
+  buttonLabel = "🚀 Jetzt auf die Warteliste",
+  helperText,
   inputClassName,
 }: {
   className?: string;
   buttonLabel?: string;
+  helperText?: React.ReactNode;
   inputClassName?: string;
 }) {
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "";
@@ -197,7 +199,9 @@ export default function WaitlistForm({
 
   const [email, setEmail] = React.useState("");
   const [turnstileToken, setTurnstileToken] = React.useState("");
-  const [turnstileReady, setTurnstileReady] = React.useState(false);
+  const [turnstileStatus, setTurnstileStatus] = React.useState<"loading" | "ready" | "error">(
+    siteKey ? "loading" : "error"
+  );
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [message, setMessage] = React.useState<string | null>(null);
   const [state, setState] = React.useState<"idle" | "success" | "error" | "already">("idle");
@@ -223,6 +227,20 @@ export default function WaitlistForm({
     },
     [finalizeSubmission]
   );
+
+  const executeTurnstile = React.useCallback(() => {
+    if (!widgetIdRef.current || !window.turnstile) {
+      return false;
+    }
+
+    try {
+      window.turnstile.execute(widgetIdRef.current);
+      return true;
+    } catch {
+      failTurnstile("Spam-Schutz konnte nicht gestartet werden. Bitte spaeter erneut versuchen.");
+      return false;
+    }
+  }, [failTurnstile]);
 
   const submitWaitlist = React.useCallback(
     async (submission: PendingSubmission, token: string) => {
@@ -340,19 +358,27 @@ export default function WaitlistForm({
           theme: "auto",
           size: "invisible",
         });
-        setTurnstileReady(true);
+        setTurnstileStatus("ready");
+
+        if (pendingSubmissionRef.current) {
+          executeTurnstile();
+        }
       })
       .catch(() => {
         if (!cancelled) {
-          setTurnstileReady(false);
+          setTurnstileStatus("error");
           setTurnstileToken("");
+
+          if (pendingSubmissionRef.current) {
+            failTurnstile("Spam-Schutz konnte nicht geladen werden. Bitte spaeter erneut versuchen.");
+          }
         }
       });
 
     return () => {
       cancelled = true;
     };
-  }, [failTurnstile, siteKey, submitWaitlist]);
+  }, [executeTurnstile, failTurnstile, siteKey, submitWaitlist]);
 
   const messageClassName = React.useMemo(() => {
     if (state === "success") return "text-emerald-400";
@@ -379,9 +405,9 @@ export default function WaitlistForm({
       return;
     }
 
-    if (!turnstileReady || !widgetIdRef.current || !window.turnstile) {
+    if (turnstileStatus === "error") {
       setState("error");
-      setMessage("Spam-Schutz wird noch geladen. Bitte in wenigen Sekunden erneut versuchen.");
+      setMessage("Spam-Schutz konnte nicht geladen werden. Bitte spaeter erneut versuchen.");
       return;
     }
 
@@ -407,13 +433,11 @@ export default function WaitlistForm({
     setState("idle");
     pendingSubmissionRef.current = pendingSubmission;
 
-    const turnstile = window.turnstile;
-    try {
-      turnstile.execute(widgetIdRef.current);
-    } catch {
-      failTurnstile("Spam-Schutz konnte nicht gestartet werden. Bitte später erneut versuchen.");
+    if (turnstileStatus !== "ready") {
       return;
     }
+
+    executeTurnstile();
   };
 
   return (
@@ -441,7 +465,12 @@ export default function WaitlistForm({
       </div>
 
       <p className="text-center text-[0.78rem] leading-tight text-muted-foreground/90 md:text-left">
-        Die Plattform startet bald. Sichere dir jetzt deinen Platz auf der Warteliste – wir informieren dich zum Launch. Kein Spam.
+        {helperText ?? (
+          <>
+            Die Plattform startet bald. Sichere dir jetzt deinen Platz auf der Warteliste. Wir informieren dich zum Launch,{" "}
+            <span className="whitespace-nowrap">ohne Spam.</span>
+          </>
+        )}
       </p>
 
       {siteKey ? (
@@ -454,11 +483,6 @@ export default function WaitlistForm({
         <div className="text-xs text-amber-300/90">Turnstile Site Key fehlt.</div>
       )}
 
-      {siteKey && !turnstileReady ? (
-        <p className="text-center text-[0.78rem] leading-tight text-muted-foreground/80">
-          Spam-Schutz wird geladen...
-        </p>
-      ) : null}
       {message ? (
         <p role="status" className={cn("text-center text-xs md:text-left", messageClassName)}>
           {message}

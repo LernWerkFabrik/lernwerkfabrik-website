@@ -64,8 +64,6 @@ export default async function DatenschutzPage() {
             </div>
           </CardContent>
         </Card>
-
-        <p className="text-xs text-muted-foreground">Stand: 06.03.2026</p>
       </div>
     </main>
   );

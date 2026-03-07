@@ -51,10 +51,9 @@ function SocialIconLink({
 
 export default function BrandFooter() {
   const year = new Date().getFullYear();
-  const stand = new Date().toLocaleDateString("de-DE");
 
   return (
-    <footer className="mt-16 border-t bg-background/60 backdrop-blur">
+    <footer className="mt-[14px] border-t bg-background/60 backdrop-blur md:mt-16">
       <AccentLine />
 
       <div className="mx-auto w-full max-w-6xl px-4 py-10 md:px-6">
@@ -75,10 +74,10 @@ export default function BrandFooter() {
             <div className="mt-3 flex items-center gap-4">
               <SocialIconLink href="/out/c1" label="Einblicke Kanal 1">
                 <img
-                  src="/social/c1.svg?v=4"
+                  src="/social/c1.svg?v=5"
                   alt=""
                   aria-hidden="true"
-                  className="block h-[24px] w-[24px] object-contain md:h-[22px] md:w-[22px]"
+                  className="block h-[22px] w-[22px] object-contain md:h-5 md:w-5"
                 />
               </SocialIconLink>
               <SocialIconLink href="/out/c2" label="Einblicke Kanal 2">
@@ -105,7 +104,6 @@ export default function BrandFooter() {
       <div className="border-t">
         <div className="mx-auto max-w-6xl px-4 py-4 md:px-6">
           <div className="text-[11px] text-muted-foreground/50">© {year} LernWerkFabrik</div>
-          <div className="mt-1 text-[11px] text-muted-foreground/45">Stand: {stand}</div>
         </div>
       </div>
     </footer>

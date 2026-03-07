@@ -86,8 +86,6 @@ export default async function ImpressumPage() {
             Datenschutz
           </Link>
         </div>
-
-        <p className="text-xs text-muted-foreground">Stand: 06.03.2026</p>
       </div>
     </main>
   );

@@ -5,6 +5,7 @@ import "katex/dist/katex.min.css";
 
 import BrandHeader from "./BrandHeader";
 import RouteAwareFooter from "./RouteAwareFooter";
+import ScrollRestoration, { ScrollRestorationHead } from "./ScrollRestoration";
 import { THEME_STORAGE_KEY } from "./theme-config";
 import { ThemeProvider } from "./theme-provider";
 
@@ -50,7 +51,11 @@ export default function RootLayout({
       suppressHydrationWarning
       className="dark min-h-svh overflow-x-hidden md:h-dvh md:overflow-hidden"
     >
+      <head>
+        <ScrollRestorationHead />
+      </head>
       <body className="min-h-svh overflow-x-hidden bg-background text-foreground antialiased lp-bg md:h-dvh md:overflow-hidden">
+        <ScrollRestoration />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -61,7 +66,7 @@ export default function RootLayout({
           <div aria-hidden="true" className="lp-bg-3d pointer-events-none fixed inset-0 -z-10" />
 
           <div className="flex min-h-svh flex-col md:h-full">
-            <div className="shrink-0">
+            <div className="h-[calc(3.5rem+env(safe-area-inset-top))] shrink-0 md:h-16">
               <BrandHeader authed={false} />
             </div>
 
