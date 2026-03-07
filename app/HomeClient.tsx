@@ -36,7 +36,7 @@ function Panel({
   accent?: "amber" | "sky";
 }) {
   const shellClassName =
-    "relative overflow-hidden rounded-2xl border bg-background/82 shadow-sm backdrop-blur-none md:backdrop-blur-sm";
+    "relative overflow-hidden rounded-2xl border bg-background shadow-none md:bg-background/82 md:shadow-sm md:backdrop-blur-sm";
 
   const accentLine =
     accent === "sky"
@@ -187,9 +187,9 @@ export default function HomeClient() {
     "rounded-full border-amber-300/60 bg-amber-50/80 text-amber-900 shadow-[0_6px_14px_-12px_rgba(180,83,9,0.36),inset_0_1px_0_rgba(255,255,255,0.72)] hover:-translate-y-0.5 hover:bg-amber-50/90 hover:shadow-[0_9px_16px_-12px_rgba(180,83,9,0.4),inset_0_1px_0_rgba(255,255,255,0.78)] dark:border-amber-200/14 dark:bg-amber-200/5 dark:text-amber-100/70 dark:shadow-[0_2px_6px_-10px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.02)] dark:hover:bg-amber-200/8 dark:hover:shadow-[0_3px_8px_-10px_rgba(0,0,0,0.48),inset_0_1px_0_rgba(255,255,255,0.03)] md:min-w-[13.5rem] md:justify-center md:px-5 md:py-1.5 md:text-sm max-md:shrink-0 max-md:whitespace-nowrap max-md:px-2 max-md:py-px max-md:text-xs";
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-visible md:overflow-hidden">
       {/* Background grid + glows */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
+      <div className="pointer-events-none absolute inset-0 -z-10 hidden md:block">
         <div
           className="absolute inset-0 opacity-[0.45]"
           style={{
