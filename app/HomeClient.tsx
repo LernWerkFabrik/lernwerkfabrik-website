@@ -36,7 +36,7 @@ function Panel({
   accent?: "amber" | "sky";
 }) {
   const shellClassName =
-    "relative overflow-hidden rounded-2xl border bg-background/82 shadow-sm backdrop-blur-sm";
+    "relative overflow-hidden rounded-2xl border bg-background/82 shadow-sm backdrop-blur-none md:backdrop-blur-sm";
 
   const accentLine =
     accent === "sky"
@@ -44,9 +44,9 @@ function Panel({
       : "bg-gradient-to-r from-transparent via-amber-400/60 to-transparent md:via-amber-400/70";
 
   const gradientWash = [
-    "absolute inset-0 bg-gradient-to-r from-sky-500/10 via-transparent to-amber-500/8",
+    "absolute inset-0 bg-gradient-to-r from-sky-500/10 via-transparent to-amber-500/12",
     "absolute inset-0 bg-[radial-gradient(900px_420px_at_15%_10%,rgba(255,255,255,0.06),transparent_55%)]",
-    "absolute inset-0 bg-[radial-gradient(900px_420px_at_85%_20%,rgba(245,158,11,0.05),transparent_60%)]",
+    "absolute inset-0 bg-[radial-gradient(900px_420px_at_85%_20%,rgba(245,158,11,0.08),transparent_60%)]",
   ];
 
   return (
@@ -198,9 +198,9 @@ export default function HomeClient() {
             backgroundSize: "56px 56px",
           }}
         />
-        <div className="absolute -top-24 left-1/2 h-[440px] w-[640px] -translate-x-1/2 rounded-[999px] bg-amber-500/9 blur-3xl" />
-        <div className="absolute right-[-140px] top-[140px] h-[360px] w-[360px] rounded-full bg-sky-500/10 blur-3xl" />
-        <div className="absolute -bottom-28 -left-28 h-[420px] w-[420px] rounded-full bg-slate-500/12 blur-3xl" />
+        <div className="absolute -top-24 left-1/2 hidden h-[440px] w-[640px] -translate-x-1/2 rounded-[999px] bg-amber-500/9 blur-3xl md:block" />
+        <div className="absolute right-[-140px] top-[140px] hidden h-[360px] w-[360px] rounded-full bg-sky-500/10 blur-3xl md:block" />
+        <div className="absolute -bottom-28 -left-28 hidden h-[420px] w-[420px] rounded-full bg-slate-500/12 blur-3xl md:block" />
       </div>
 
       {/* Centered container */}
@@ -493,7 +493,7 @@ export default function HomeClient() {
               <div className="mx-auto w-full max-w-5xl">
                 <div className="grid gap-2.5 md:gap-3">
                   <div className="grid gap-2.5 md:grid-cols-3 md:gap-3">
-                    <Card className="relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-sm transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)]">
+                    <Card className="relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
                       <div className="pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
@@ -524,7 +524,7 @@ export default function HomeClient() {
                       </CardContent>
                     </Card>
 
-                    <Card className="relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-sm transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)]">
+                    <Card className="relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
                       <div className="pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
@@ -554,7 +554,7 @@ export default function HomeClient() {
                         </div>
                       </CardContent>
                     </Card>
-                    <Card className="relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-sm transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)]">
+                    <Card className="relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
                       <div className="pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
@@ -587,7 +587,7 @@ export default function HomeClient() {
                   </div>
 
                   <div className="grid gap-2.5 md:grid-cols-2 md:gap-3">
-                    <div className="relative overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.36)] backdrop-blur-sm">
+                    <div className="relative overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.36)] backdrop-blur-none md:backdrop-blur-sm">
                       <div className="pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/12 via-transparent to-sky-400/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
@@ -618,7 +618,7 @@ export default function HomeClient() {
                       </div>
                     </div>
 
-                    <div className="relative overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.36)] backdrop-blur-sm">
+                    <div className="relative overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.36)] backdrop-blur-none md:backdrop-blur-sm">
                       <div className="pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/12 via-transparent to-sky-400/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
@@ -676,7 +676,7 @@ export default function HomeClient() {
               ].map((it) => (
                 <Card
                   key={it.title}
-                  className="relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-sm"
+                  className="relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-none md:backdrop-blur-sm"
                 >
                   <div className="pointer-events-none absolute inset-0">
                     <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
@@ -717,7 +717,7 @@ export default function HomeClient() {
               ].map((x) => (
                 <Card
                   key={x.t}
-                  className="relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-sm"
+                  className="relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-none md:backdrop-blur-sm"
                 >
                   <div className="pointer-events-none absolute inset-0">
                     <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />

@@ -190,6 +190,29 @@
     opacity: 0.12;
   }
 
+  @media (max-width: 767px) {
+    body.lp-bg::before {
+      background:
+        radial-gradient(900px circle at 82% 28%, hsl(var(--accent-cool) / 0.09), transparent 58%),
+        linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--background)) 100%);
+    }
+
+    .dark body.lp-bg::before {
+      background:
+        radial-gradient(900px circle at 82% 28%, hsl(var(--accent-cool) / 0.09), transparent 58%),
+        linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--background)) 100%);
+    }
+
+    body.lp-bg::after {
+      display: none;
+    }
+
+    .lp-bg-3d {
+      opacity: 0.06;
+      mask-image: none;
+    }
+  }
+
   /* =========================================================
      Surface System
      ========================================================= */
