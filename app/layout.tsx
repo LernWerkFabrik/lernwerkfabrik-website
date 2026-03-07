@@ -91,14 +91,14 @@ export default async function RootLayout({
         >
           <div aria-hidden="true" className="lp-bg-3d pointer-events-none fixed inset-0 -z-10" />
 
-          <div className="app-shell flex min-h-svh flex-col md:h-full">
+          <div className="flex min-h-svh flex-col md:h-full">
             <div className="h-[calc(3.5rem+env(safe-area-inset-top))] shrink-0 md:h-16">
               <BrandHeader authed={authed} />
             </div>
 
             <main
               data-scroll-root
-              className="app-scroll-root relative isolate z-0 flex-1 overflow-x-hidden md:min-h-0 md:overflow-y-auto"
+              className="relative isolate z-0 flex-1 overflow-x-hidden md:min-h-0 md:overflow-y-auto"
             >
               {children}
 

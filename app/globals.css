@@ -522,41 +522,6 @@ html[data-scroll-active="1"] body.lp-bg::before {
   opacity: 0.82 !important;
 }
 
-html[data-scroll-active="1"] .lp-home .lp-mobile-panel,
-html[data-scroll-active="1"] .lp-home .lp-mobile-card {
-  box-shadow: none !important;
-  background-image: none !important;
-}
-
-html[data-scroll-active="1"] .lp-home .lp-mobile-panel > .pointer-events-none.absolute.inset-0,
-html[data-scroll-active="1"] .lp-home .lp-mobile-card > .pointer-events-none.absolute.inset-0 {
-  opacity: 0 !important;
-}
-
-html[data-scroll-active="1"] .lp-home .blur-3xl {
-  opacity: 0 !important;
-}
-
-@media (min-width: 768px) {
-  html[data-native-home-scroll="1"],
-  html[data-native-home-scroll="1"] body {
-    height: auto !important;
-    overflow-y: auto !important;
-  }
-
-  html[data-native-home-scroll="1"] body .app-shell {
-    min-height: 100svh;
-    height: auto !important;
-  }
-
-  html[data-native-home-scroll="1"] body .app-scroll-root {
-    flex: none !important;
-    min-height: 0 !important;
-    overflow: visible !important;
-    overscroll-behavior-y: auto !important;
-  }
-}
-
 html[data-scroll-restoring="1"] main[data-scroll-root] {
   visibility: hidden;
 }
@@ -630,4 +595,12 @@ body.lp-bg::after {
 html,
 body {
   overflow-x: hidden;
+}
+
+@supports (content-visibility: auto) {
+  [data-perf-section] {
+    content-visibility: auto;
+    contain: layout paint style;
+    contain-intrinsic-size: 1px 960px;
+  }
 }
