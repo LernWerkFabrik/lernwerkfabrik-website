@@ -223,26 +223,35 @@
 
   @supports (-webkit-touch-callout: none) {
     @media (max-width: 767px) {
-      .lp-home .lp-surface-shell {
-        background-color: hsl(var(--background) / 0.9) !important;
-        background-image:
-          linear-gradient(90deg, hsl(var(--accent-cool) / 0.10), transparent 44%, hsl(var(--primary) / 0.07)),
-          radial-gradient(860px 360px at 14% 10%, hsl(0 0% 100% / 0.045), transparent 56%),
-          radial-gradient(760px 320px at 86% 18%, hsl(var(--primary) / 0.045), transparent 60%);
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-        box-shadow: 0 14px 28px -24px rgba(0, 0, 0, 0.48);
-      }
-
-      .lp-home .lp-mobile-card.lp-surface-shell {
-        background-color: hsl(var(--background) / 0.78) !important;
-      }
-
       .lp-home .lp-surface-shell > .lp-surface-overlay {
         display: none;
       }
 
-      .lp-home .lp-surface-shell::before {
+      .lp-home .lp-surface-panel {
+        background-image:
+          linear-gradient(to right, rgba(14, 165, 233, 0.10), transparent, rgba(245, 158, 11, 0.12)),
+          radial-gradient(900px 420px at 15% 10%, rgba(255, 255, 255, 0.06), transparent 55%),
+          radial-gradient(900px 420px at 85% 20%, rgba(245, 158, 11, 0.08), transparent 60%);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+      }
+
+      .lp-home .lp-surface-card-amber {
+        background-image:
+          linear-gradient(to right, rgba(14, 165, 233, 0.08), transparent, rgba(245, 158, 11, 0.10));
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+      }
+
+      .lp-home .lp-surface-card-cool {
+        background-image:
+          linear-gradient(to right, rgba(14, 165, 233, 0.12), transparent, rgba(56, 189, 248, 0.10));
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+      }
+
+      .lp-home .lp-surface-card-amber::before,
+      .lp-home .lp-surface-card-cool::before {
         content: "";
         position: absolute;
         inset-inline: 0;
@@ -250,12 +259,12 @@
         z-index: 2;
         height: 2px;
         pointer-events: none;
-        border-top-left-radius: inherit;
-        border-top-right-radius: inherit;
-        background: linear-gradient(to right, transparent, rgba(251, 191, 36, 0.62), transparent);
+        background: linear-gradient(to right, transparent, rgba(251, 191, 36, 0.65), transparent);
       }
 
-      .lp-home .lp-surface-shell::after {
+      .lp-home .lp-surface-panel::after,
+      .lp-home .lp-surface-card-amber::after,
+      .lp-home .lp-surface-card-cool::after {
         content: "";
         position: absolute;
         inset: 0;

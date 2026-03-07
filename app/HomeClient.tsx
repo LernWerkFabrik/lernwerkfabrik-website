@@ -37,7 +37,7 @@ function Panel({
   accent?: "amber" | "sky";
 } & React.ComponentPropsWithoutRef<"section">) {
   const shellClassName =
-    "lp-mobile-panel lp-surface-shell relative overflow-hidden rounded-2xl border bg-background shadow-none md:bg-background/82 md:shadow-sm md:backdrop-blur-sm";
+    "lp-mobile-panel lp-surface-shell lp-surface-panel relative overflow-hidden rounded-2xl border bg-background shadow-none md:bg-background/82 md:shadow-sm md:backdrop-blur-sm";
 
   const accentLine =
     accent === "sky"
@@ -424,7 +424,7 @@ export default function HomeClient() {
                   />
                 </div>
                 {/* Micro-Box (straffer) */}
-                <div className="lp-mobile-card lp-surface-shell relative mt-2 overflow-hidden rounded-2xl border bg-background/55 p-4 md:mt-3">
+                <div className="lp-mobile-card lp-surface-shell lp-surface-card-amber relative mt-2 overflow-hidden rounded-2xl border bg-background/55 p-4 md:mt-3">
                   <div className="lp-surface-overlay pointer-events-none absolute inset-0">
                     <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
                   </div>
@@ -495,7 +495,7 @@ export default function HomeClient() {
               <div className="mx-auto w-full max-w-5xl">
                 <div className="grid gap-2.5 md:gap-3">
                   <div className="grid gap-2.5 md:grid-cols-3 md:gap-3">
-                    <Card className="lp-mobile-card lp-surface-shell relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
+                    <Card className="lp-mobile-card lp-surface-shell lp-surface-card-amber relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
                       <div className="lp-surface-overlay pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
@@ -526,7 +526,7 @@ export default function HomeClient() {
                       </CardContent>
                     </Card>
 
-                    <Card className="lp-mobile-card lp-surface-shell relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
+                    <Card className="lp-mobile-card lp-surface-shell lp-surface-card-amber relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
                       <div className="lp-surface-overlay pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
@@ -556,7 +556,7 @@ export default function HomeClient() {
                         </div>
                       </CardContent>
                     </Card>
-                    <Card className="lp-mobile-card lp-surface-shell relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
+                    <Card className="lp-mobile-card lp-surface-shell lp-surface-card-amber relative overflow-hidden rounded-2xl border bg-background/70 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] backdrop-blur-none transition hover:-translate-y-0.5 hover:shadow-[0_16px_28px_-18px_rgba(15,23,42,0.45)] md:backdrop-blur-sm">
                       <div className="lp-surface-overlay pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
@@ -589,7 +589,7 @@ export default function HomeClient() {
                   </div>
 
                   <div className="grid gap-2.5 md:grid-cols-2 md:gap-3">
-                    <div className="lp-mobile-card lp-surface-shell relative overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.36)] backdrop-blur-none md:backdrop-blur-sm">
+                    <div className="lp-mobile-card lp-surface-shell lp-surface-card-cool relative overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.36)] backdrop-blur-none md:backdrop-blur-sm">
                       <div className="lp-surface-overlay pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/12 via-transparent to-sky-400/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
@@ -620,7 +620,7 @@ export default function HomeClient() {
                       </div>
                     </div>
 
-                    <div className="lp-mobile-card lp-surface-shell relative overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.36)] backdrop-blur-none md:backdrop-blur-sm">
+                    <div className="lp-mobile-card lp-surface-shell lp-surface-card-cool relative overflow-hidden rounded-2xl border bg-background/55 p-4 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.36)] backdrop-blur-none md:backdrop-blur-sm">
                       <div className="lp-surface-overlay pointer-events-none absolute inset-0">
                         <div className="absolute inset-0 bg-gradient-to-r from-sky-500/12 via-transparent to-sky-400/10" />
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
@@ -678,7 +678,7 @@ export default function HomeClient() {
               ].map((it) => (
                 <Card
                   key={it.title}
-                  className="lp-mobile-card lp-surface-shell relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-none md:backdrop-blur-sm"
+                  className="lp-mobile-card lp-surface-shell lp-surface-card-amber relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-none md:backdrop-blur-sm"
                 >
                   <div className="lp-surface-overlay pointer-events-none absolute inset-0">
                     <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
@@ -719,7 +719,7 @@ export default function HomeClient() {
               ].map((x) => (
                 <Card
                   key={x.t}
-                  className="lp-mobile-card lp-surface-shell relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-none md:backdrop-blur-sm"
+                  className="lp-mobile-card lp-surface-shell lp-surface-card-amber relative overflow-hidden rounded-2xl border bg-background/75 shadow-sm backdrop-blur-none md:backdrop-blur-sm"
                 >
                   <div className="lp-surface-overlay pointer-events-none absolute inset-0">
                     <div className="absolute inset-0 bg-gradient-to-r from-sky-500/8 via-transparent to-amber-500/10" />
