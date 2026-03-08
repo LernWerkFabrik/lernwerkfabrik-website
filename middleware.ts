@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 const ALLOWED_ROUTES = new Set(["/", "/index", "/index.html", "/impressum", "/datenschutz"]);
+const ALLOWED_API_ROUTES = new Set(["/api/waitlist"]);
 
 function getRequestProtocol(request: NextRequest) {
   const forwardedProto = request.headers.get("x-forwarded-proto")?.trim().toLowerCase();
@@ -59,7 +60,7 @@ export function middleware(request: NextRequest) {
 
   const isAllowed =
     ALLOWED_ROUTES.has(effectivePath) ||
-    effectivePath.startsWith("/api/") ||
+    ALLOWED_API_ROUTES.has(effectivePath) ||
     effectivePath.startsWith("/_next") ||
     effectivePath.startsWith("/favicon") ||
     effectivePath.startsWith("/assets") ||
@@ -70,6 +71,13 @@ export function middleware(request: NextRequest) {
     /\.[a-zA-Z0-9]+$/.test(effectivePath);
 
   if (!isAllowed) {
+    if (effectivePath.startsWith("/api/")) {
+      return withCountryCookie(
+        request,
+        NextResponse.json({ error: "Not found" }, { status: 404 })
+      );
+    }
+
     // Guard against redirect loops on providers that normalize "/" differently.
     if (effectivePath === "/" || effectivePath === "/index" || effectivePath === "/index.html") {
       return withCountryCookie(request, NextResponse.next());
