@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "LernWerkFabrik",
     short_name: "LWF",
     description:
-      "LernWerkFabrik geht bald live. Sichere dir Early Access, trainiere pruefungsnah fuer AP1/AP2 und starte mit klarer Struktur.",
+      "LernWerkFabrik geht bald live. Sichere dir Early Access, trainiere prüfungsnah für AP1/AP2 und starte mit klarer Struktur.",
     start_url: "/",
     display: "standalone",
     background_color: "#020817",

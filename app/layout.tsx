@@ -15,9 +15,9 @@ import { ThemeProvider } from "./theme-provider";
 import DevTierSwitcher from "@/components/DevTierSwitcher";
 import { getSession } from "@/lib/auth";
 
-const seoTitle = "LernWerkFabrik | AP1/AP2 Lernplattform fuer Industriemechaniker";
+const seoTitle = "LernWerkFabrik | AP1/AP2 Prüfungsvorbereitung";
 const seoDescription =
-  "LernWerkFabrik geht bald live. Sichere dir Early Access, trainiere pruefungsnah fuer AP1/AP2 und starte mit klarer Struktur.";
+  "LernWerkFabrik geht bald live. Sichere dir Early Access, trainiere prüfungsnah für AP1/AP2 und starte mit klarer Struktur.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://lernwerkfabrik.de"),

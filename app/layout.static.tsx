@@ -10,7 +10,7 @@ import ScrollRestoration, { ScrollRestorationHead } from "./ScrollRestoration";
 import { THEME_STORAGE_KEY } from "./theme-config";
 import { ThemeProvider } from "./theme-provider";
 
-const seoTitle = "LernWerkFabrik | Warteliste fuer AP1/AP2 Lernplattform";
+const seoTitle = "LernWerkFabrik | AP1/AP2 Prüfungsvorbereitung";
 const seoDescription =
   "LernWerkFabrik geht bald live. Trage dich jetzt in die Warteliste ein und sichere dir Early Access.";
 
