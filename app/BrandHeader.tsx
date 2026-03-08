@@ -7,7 +7,7 @@ import { ChevronLeft } from "lucide-react";
 
 import ThemeToggle from "./theme-toggle";
 import BrandLogo from "./BrandLogo";
-import { resetHomeScroll, scrollPageToTop } from "./home-navigation";
+import { navigateHome } from "./home-navigation";
 import { Button } from "@/components/ui/button";
 
 function subscribeCanGoBack(onStoreChange: () => void) {
@@ -51,22 +51,14 @@ export default function BrandHeader() {
       return;
     }
 
+    event.preventDefault();
+
     const currentKey =
       typeof window !== "undefined"
         ? window.location.pathname + window.location.search + window.location.hash
         : homeHref;
 
-    resetHomeScroll(currentKey);
-
-    if (pathname === "/") {
-      event.preventDefault();
-      scrollPageToTop();
-      return;
-    }
-
-    window.requestAnimationFrame(() => {
-      scrollPageToTop();
-    });
+    navigateHome(router, pathname, currentKey, homeHref);
   };
 
   return (

@@ -1,4 +1,8 @@
-﻿export const HOME_SCROLL_STORAGE_KEY = "lwf:scroll:v1";
+export const HOME_SCROLL_STORAGE_KEY = "lwf:scroll:v1";
+
+type HomeRouter = {
+  push: (href: string) => void;
+};
 
 export function scrollPageToTop() {
   if (typeof window === "undefined") return;
@@ -19,6 +23,16 @@ export function scrollPageToTop() {
   }
 
   window.scrollTo(0, 0);
+}
+
+export function scheduleScrollPageToTop() {
+  if (typeof window === "undefined") return;
+
+  scrollPageToTop();
+  window.requestAnimationFrame(() => scrollPageToTop());
+  window.setTimeout(() => scrollPageToTop(), 0);
+  window.setTimeout(() => scrollPageToTop(), 80);
+  window.setTimeout(() => scrollPageToTop(), 220);
 }
 
 export function clearStoredScroll(keys: string[]) {
@@ -53,4 +67,19 @@ export function resetHomeScroll(currentKey?: string | null) {
     keys.push(currentKey);
   }
   clearStoredScroll(keys);
+}
+
+export function navigateHome(
+  router: HomeRouter,
+  pathname: string | null,
+  currentKey?: string | null,
+  href = "/"
+) {
+  resetHomeScroll(currentKey);
+  scheduleScrollPageToTop();
+
+  if (pathname !== href) {
+    router.push(href);
+    window.setTimeout(() => scheduleScrollPageToTop(), 24);
+  }
 }
