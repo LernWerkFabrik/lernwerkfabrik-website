@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { loadERecht24Document } from "@/lib/erecht24";
-
 export const metadata: Metadata = {
   title: "Impressum | LernWerkFabrik",
   description: "Impressum der LernWerkFabrik.",
   robots: { index: true, follow: true },
 };
-export const dynamic = "force-dynamic";
 
 function Section({
   title,
@@ -55,13 +52,7 @@ function PlaceholderImpressum() {
   );
 }
 
-export default async function ImpressumPage() {
-  const impressum = await loadERecht24Document("imprint");
-  console.info("[impressum] render mode", {
-    source: impressum.html ? "api" : "static",
-    error: impressum.error || null,
-  });
-
+export default function ImpressumPage() {
   return (
     <main className="mx-auto w-full max-w-4xl px-4 py-10 md:px-6">
       <header className="space-y-2">

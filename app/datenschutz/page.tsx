@@ -9,7 +9,6 @@ export const metadata: Metadata = {
   description: "Datenschutzhinweise der LernWerkFabrik.",
   robots: { index: true, follow: true },
 };
-export const dynamic = "force-dynamic";
 
 function Section({
   title,
@@ -26,7 +25,7 @@ function Section({
   );
 }
 
-export default async function DatenschutzPage() {
+export default function DatenschutzPage() {
   return (
     <main className="mx-auto w-full max-w-4xl px-4 py-10 md:px-6">
       <header className="space-y-2">
