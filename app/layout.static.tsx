@@ -10,6 +10,7 @@ import ScrollRestoration, { ScrollRestorationHead } from "./ScrollRestoration";
 import { THEME_STORAGE_KEY } from "./theme-config";
 import { ThemeProvider } from "./theme-provider";
 
+const ICON_VERSION = "20260308b";
 const seoTitle = "LernWerkFabrik | AP1/AP2 Prüfungsvorbereitung";
 const seoDescription =
   "LernWerkFabrik geht bald live. Trage dich jetzt in die Warteliste ein und sichere dir Early Access.";
@@ -20,13 +21,13 @@ export const metadata: Metadata = {
   description: seoDescription,
   icons: {
     icon: [
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/icon.png", sizes: "512x512", type: "image/png" },
-      { url: "/favicon.ico", sizes: "any" },
+      { url: `/favicon-16x16.png?v=${ICON_VERSION}`, sizes: "16x16", type: "image/png" },
+      { url: `/favicon-32x32.png?v=${ICON_VERSION}`, sizes: "32x32", type: "image/png" },
+      { url: `/icon.png?v=${ICON_VERSION}`, sizes: "512x512", type: "image/png" },
+      { url: `/favicon.ico?v=${ICON_VERSION}`, sizes: "any" },
     ],
-    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
-    shortcut: ["/favicon-32x32.png"],
+    apple: [{ url: `/apple-icon.png?v=${ICON_VERSION}`, sizes: "180x180", type: "image/png" }],
+    shortcut: [`/favicon-32x32.png?v=${ICON_VERSION}`],
   },
   openGraph: {
     title: seoTitle,
