@@ -7,7 +7,7 @@ import BrandHeader from "./BrandHeader";
 import MobilePlatformHead from "./MobilePlatformHead";
 import RouteAwareFooter from "./RouteAwareFooter";
 import ScrollRestoration, { ScrollRestorationHead } from "./ScrollRestoration";
-import { THEME_STORAGE_KEY } from "./theme-config";
+import { THEME_HEAD_SCRIPT, THEME_STORAGE_KEY } from "./theme-config";
 import { ThemeProvider } from "./theme-provider";
 
 const ICON_VERSION = "20260308e";
@@ -64,9 +64,14 @@ export default function RootLayout({
     <html
       lang="de"
       suppressHydrationWarning
-      className="dark min-h-svh overflow-x-hidden md:h-dvh md:overflow-hidden"
+      className="min-h-svh overflow-x-hidden md:h-dvh md:overflow-hidden"
     >
       <head>
+        <script
+          id="lwf-theme-head"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: THEME_HEAD_SCRIPT }}
+        />
         <MobilePlatformHead />
         <ScrollRestorationHead />
       </head>
@@ -83,7 +88,7 @@ export default function RootLayout({
 
           <div className="flex min-h-svh flex-col md:h-full">
             <div className="h-[calc(3.5rem+env(safe-area-inset-top))] shrink-0 md:h-16">
-              <BrandHeader authed={false} />
+              <BrandHeader />
             </div>
 
             <main

@@ -1,6 +1,4 @@
-﻿// app/layout.tsx
 import type { Metadata, Viewport } from "next";
-import { cookies } from "next/headers";
 
 import "./globals.css";
 import "katex/dist/katex.min.css";
@@ -9,11 +7,10 @@ import BrandHeader from "./BrandHeader";
 import MobilePlatformHead from "./MobilePlatformHead";
 import RouteAwareFooter from "./RouteAwareFooter";
 import ScrollRestoration, { ScrollRestorationHead } from "./ScrollRestoration";
-import { normalizeTheme, THEME_STORAGE_KEY } from "./theme-config";
+import { THEME_HEAD_SCRIPT, THEME_STORAGE_KEY } from "./theme-config";
 import { ThemeProvider } from "./theme-provider";
 
 import DevTierSwitcher from "@/components/DevTierSwitcher";
-import { getSession } from "@/lib/auth";
 
 const ICON_VERSION = "20260308e";
 const seoTitle = "LernWerkFabrik | AP1/AP2 Prüfungsvorbereitung";
@@ -65,29 +62,23 @@ export const viewport: Viewport = {
   ],
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const cookieStore = await cookies();
-
-  const sessionRes = await getSession({
-    cookies: {
-      get: (name: string) => cookieStore.get(name),
-    },
-  });
-
-  const authed = !!(sessionRes.ok && sessionRes.data);
-  const initialTheme = normalizeTheme(cookieStore.get(THEME_STORAGE_KEY)?.value);
-
   return (
     <html
       lang="de"
       suppressHydrationWarning
-      className={`min-h-svh overflow-x-hidden md:h-dvh md:overflow-hidden${initialTheme === "dark" ? " dark" : ""}`}
+      className="min-h-svh overflow-x-hidden md:h-dvh md:overflow-hidden"
     >
       <head>
+        <script
+          id="lwf-theme-head"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: THEME_HEAD_SCRIPT }}
+        />
         <MobilePlatformHead />
         <ScrollRestorationHead />
       </head>
@@ -104,7 +95,7 @@ export default async function RootLayout({
 
           <div className="flex min-h-svh flex-col md:h-full">
             <div className="h-[calc(3.5rem+env(safe-area-inset-top))] shrink-0 md:h-16">
-              <BrandHeader authed={authed} />
+              <BrandHeader />
             </div>
 
             <main

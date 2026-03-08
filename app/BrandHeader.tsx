@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import { useMemo, useSyncExternalStore } from "react";
@@ -8,7 +8,6 @@ import { ChevronLeft } from "lucide-react";
 import ThemeToggle from "./theme-toggle";
 import BrandLogo from "./BrandLogo";
 import { Button } from "@/components/ui/button";
-import { getPlanClient, type Plan } from "@/lib/entitlements";
 
 const SCROLL_STORAGE_KEY = "lwf:scroll:v1";
 
@@ -26,17 +25,6 @@ function subscribeCanGoBack(onStoreChange: () => void) {
 function getCanGoBackSnapshot() {
   if (typeof window === "undefined") return false;
   return window.history.length > 1;
-}
-
-function subscribePlan(onStoreChange: () => void) {
-  if (typeof window === "undefined") return () => {};
-  const handler = (event: StorageEvent) => {
-    if (!event.key || event.key === "lp.plan.v1" || event.key === "DEV_FORCE_PLAN") {
-      onStoreChange();
-    }
-  };
-  window.addEventListener("storage", handler);
-  return () => window.removeEventListener("storage", handler);
 }
 
 function scrollPageToTop() {
@@ -86,14 +74,7 @@ function clearStoredScroll(keys: string[]) {
   }
 }
 
-/**
- * BrandHeader (final)
- * -------------------
- * - Fokus auf Marke + Navigation
- * - Logo-Link ist "App-Home": authed -> /dashboard, sonst -> /
- * - Ruhig, professionell, produktionsreif
- */
-export default function BrandHeader({ authed }: { authed: boolean }) {
+export default function BrandHeader() {
   const router = useRouter();
   const pathname = usePathname();
   const canGoBack = useSyncExternalStore(
@@ -101,20 +82,10 @@ export default function BrandHeader({ authed }: { authed: boolean }) {
     getCanGoBackSnapshot,
     () => false
   );
-  useSyncExternalStore<Plan>(
-    subscribePlan,
-    () => (authed ? getPlanClient() : "free"),
-    () => "free"
-  );
 
   const homeHref = "/";
   const pageTitle = useMemo(() => getPageTitle(pathname), [pathname]);
-  const showBack = Boolean(
-    pathname &&
-      pathname !== "/" &&
-      pathname !== "/dashboard" &&
-      canGoBack
-  );
+  const showBack = Boolean(pathname && pathname !== "/" && pathname !== "/dashboard" && canGoBack);
 
   const handleHomeClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     if (
@@ -152,7 +123,6 @@ export default function BrandHeader({ authed }: { authed: boolean }) {
       className="fixed inset-x-0 top-0 z-50 w-full border-b border-border/60 bg-background shadow-[0_10px_28px_-24px_rgba(0,0,0,0.9)] backdrop-blur-none md:shadow-none"
     >
       <div className="mx-auto grid h-[calc(3.5rem+env(safe-area-inset-top))] max-w-6xl grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 px-4 pt-[env(safe-area-inset-top)] md:h-16 md:px-6 md:pt-0">
-        {/* LEFT - Back (mobile) or Brand */}
         <div className="flex items-center gap-2">
           {showBack ? (
             <Button
@@ -168,7 +138,6 @@ export default function BrandHeader({ authed }: { authed: boolean }) {
           ) : null}
         </div>
 
-        {/* CENTER - Branding */}
         <div className="flex items-center justify-center">
           <Link
             href={homeHref}
@@ -181,7 +150,6 @@ export default function BrandHeader({ authed }: { authed: boolean }) {
           <span className="sr-only">{pageTitle}</span>
         </div>
 
-        {/* RIGHT - Tools */}
         <div className="flex items-center justify-end gap-2">
           <ThemeToggle
             className="border-transparent bg-transparent shadow-none"
