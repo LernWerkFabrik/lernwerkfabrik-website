@@ -85,7 +85,7 @@ export default function BrandHeader() {
         <div className="flex items-center justify-center">
           <Link
             href={homeHref}
-            aria-label="Zur Uebersicht"
+            aria-label="Zur Übersicht"
             className="flex items-center"
             onClick={handleHomeClick}
           >

@@ -27,10 +27,9 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(
       {
         ok: false,
-        error:
-          "Supabase env vars fehlen. Erwartet: NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY.",
+        error: "Dienst ist gerade nicht verfügbar.",
       },
-      { status: 500 }
+      { status: 503 }
     );
   }
 
@@ -67,8 +66,8 @@ export async function GET(req: NextRequest) {
 
     if (existing.error) {
       return NextResponse.json(
-        { ok: false, error: `Display-Name-Check fehlgeschlagen: ${existing.error.message}` },
-        { status: 500 }
+        { ok: false, error: "Display-Name-Check ist gerade nicht verfügbar." },
+        { status: 503 }
       );
     }
 
@@ -88,8 +87,8 @@ export async function GET(req: NextRequest) {
 
   if (existing.error) {
     return NextResponse.json(
-      { ok: false, error: `Display-Name-Vorschlag fehlgeschlagen: ${existing.error.message}` },
-      { status: 500 }
+      { ok: false, error: "Display-Name-Vorschläge sind gerade nicht verfügbar." },
+      { status: 503 }
     );
   }
 

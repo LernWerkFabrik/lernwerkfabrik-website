@@ -23,7 +23,6 @@ type TurnstileVerifyResponse = {
 type WaitlistPositionRow = {
   id: string;
   waitlist_position: number | null;
-  created_at: string;
 };
 
 function normalizeEmail(value: unknown): string {
@@ -99,52 +98,65 @@ async function verifyTurnstileToken(token: string, remoteIp: string | null) {
   return { ok: true } as const;
 }
 
-async function compactWaitlistPositions(
-  supabaseServer: Awaited<ReturnType<typeof createSupabaseServiceRoleClientAsync>>
+async function resolveWaitlistPosition(
+  supabaseServer: Awaited<ReturnType<typeof createSupabaseServiceRoleClientAsync>>,
+  insertedId: string,
+  currentPosition: number | null
 ) {
   const rowsResult = await supabaseServer
     .from("waitlist")
-    .select("id, waitlist_position, created_at")
-    .order("created_at", { ascending: true })
+    .select("id, waitlist_position")
+    .order("waitlist_position", { ascending: true })
     .order("id", { ascending: true });
 
   if (rowsResult.error) {
-    console.error("waitlist: compact select failed", {
+    console.error("waitlist: position select failed", {
       code: rowsResult.error.code,
       message: rowsResult.error.message,
     });
-    return null;
+    return currentPosition;
   }
 
   const rows = (rowsResult.data ?? []) as WaitlistPositionRow[];
-  const positionsById = new Map<string, number>();
+  let targetPosition = 1;
 
-  for (let index = 0; index < rows.length; index += 1) {
-    const row = rows[index];
-    const expectedPosition = index + 1;
-    positionsById.set(row.id, expectedPosition);
-
-    if (row.waitlist_position === expectedPosition) {
+  for (const row of rows) {
+    if (row.id === insertedId) {
       continue;
     }
 
-    const updateResult = await supabaseServer
-      .from("waitlist")
-      .update({ waitlist_position: expectedPosition })
-      .eq("id", row.id);
-
-    if (updateResult.error) {
-      console.error("waitlist: compact update failed", {
-        id: row.id,
-        target: expectedPosition,
-        code: updateResult.error.code,
-        message: updateResult.error.message,
-      });
-      return null;
+    if (typeof row.waitlist_position !== "number" || row.waitlist_position < targetPosition) {
+      continue;
     }
+
+    if (row.waitlist_position === targetPosition) {
+      targetPosition += 1;
+      continue;
+    }
+
+    break;
   }
 
-  return positionsById;
+  if (currentPosition === targetPosition) {
+    return currentPosition;
+  }
+
+  const updateResult = await supabaseServer
+    .from("waitlist")
+    .update({ waitlist_position: targetPosition })
+    .eq("id", insertedId);
+
+  if (updateResult.error) {
+    console.error("waitlist: position update failed", {
+      id: insertedId,
+      target: targetPosition,
+      code: updateResult.error.code,
+      message: updateResult.error.message,
+    });
+    return currentPosition;
+  }
+
+  return targetPosition;
 }
 
 export async function POST(request: NextRequest) {
@@ -153,20 +165,8 @@ export async function POST(request: NextRequest) {
 
   try {
     supabaseServer = await createSupabaseServiceRoleClientAsync();
-  } catch (error) {
-    const missing =
-      error instanceof Error && error.message.startsWith("missing_supabase_service_env:")
-        ? error.message
-            .slice("missing_supabase_service_env:".length)
-            .split(",")
-            .map((entry) => entry.trim())
-            .filter(Boolean)
-        : [];
-
-    return NextResponse.json(
-      { status: "error", message: "missing_supabase_server_env", missing },
-      { status: 500 }
-    );
+  } catch {
+    return NextResponse.json({ status: "error", message: "service_unavailable" }, { status: 503 });
   }
 
   try {
@@ -195,13 +195,23 @@ export async function POST(request: NextRequest) {
       source: "source" in verification ? verification.source : undefined,
       errors: "errors" in verification ? verification.errors : [],
     });
+
+    if (verification.reason === "turnstile_verification_failed") {
+      return NextResponse.json(
+        {
+          status: "error",
+          message: "turnstile_verification_failed",
+        },
+        { status: 403 }
+      );
+    }
+
     return NextResponse.json(
       {
         status: "error",
-        message: verification.reason,
-        error_codes: "errors" in verification ? verification.errors : [],
+        message: "service_unavailable",
       },
-      { status: 403 }
+      { status: 503 }
     );
   }
 
@@ -222,24 +232,13 @@ export async function POST(request: NextRequest) {
       code: existingBeforeInsert.error.code,
       message: existingBeforeInsert.error.message,
     });
-    return NextResponse.json(
-      {
-        status: "error",
-        message: "lookup_failed",
-        details: existingBeforeInsert.error.message,
-      },
-      { status: 500 }
-    );
+    return NextResponse.json({ status: "error", message: "service_unavailable" }, { status: 503 });
   }
 
   if (existingBeforeInsert.data?.id) {
-    const compactedPositions = await compactWaitlistPositions(supabaseServer);
     return NextResponse.json({
       status: "already_registered",
-      waitlist_position:
-        compactedPositions?.get(existingBeforeInsert.data.id) ??
-        existingBeforeInsert.data.waitlist_position ??
-        null,
+      waitlist_position: existingBeforeInsert.data.waitlist_position ?? null,
     });
   }
 
@@ -274,25 +273,19 @@ export async function POST(request: NextRequest) {
       code: insertResult.error.code,
       message: insertResult.error.message,
     });
-    return NextResponse.json(
-      {
-        status: "error",
-        message: "insert_failed",
-        details: insertResult.error.message,
-      },
-      { status: 500 }
-    );
+    return NextResponse.json({ status: "error", message: "service_unavailable" }, { status: 503 });
   }
 
-  const compactedPositions = insertResult.data?.id
-    ? await compactWaitlistPositions(supabaseServer)
+  const resolvedPosition = insertResult.data?.id
+    ? await resolveWaitlistPosition(
+        supabaseServer,
+        insertResult.data.id,
+        insertResult.data.waitlist_position ?? null
+      )
     : null;
 
   return NextResponse.json({
     status: "ok",
-    waitlist_position:
-      (insertResult.data?.id ? compactedPositions?.get(insertResult.data.id) : null) ??
-      insertResult.data?.waitlist_position ??
-      null,
+    waitlist_position: resolvedPosition ?? insertResult.data?.waitlist_position ?? null,
   });
 }

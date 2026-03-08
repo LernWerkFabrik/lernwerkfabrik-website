@@ -13,9 +13,6 @@ type WaitlistApiResponse = {
   status?: "ok" | "already_registered" | "error";
   waitlist_position?: number | null;
   message?: string;
-  details?: string;
-  error_codes?: string[];
-  missing?: string[];
 };
 
 type TurnstileRenderOptions = {
@@ -155,35 +152,15 @@ function mapApiError(payload: WaitlistApiResponse, statusCode: number) {
   const reason = payload.message || "request_failed";
 
   if (reason === "turnstile_verification_failed") {
-    const codes = (payload.error_codes || []).join(", ");
-    return codes
-      ? `Turnstile-Prüfung fehlgeschlagen (${codes}). Bitte erneut bestätigen.`
-      : "Turnstile-Prüfung fehlgeschlagen. Bitte erneut bestätigen.";
+    return "Bestätigung fehlgeschlagen. Bitte erneut bestätigen.";
   }
 
   if (reason === "missing_turnstile_token") {
     return "Bitte bestätige kurz, dass du kein Bot bist.";
   }
 
-  if (reason === "turnstile_request_failed") {
-    return "Turnstile ist gerade nicht erreichbar. Bitte in 1-2 Minuten erneut versuchen.";
-  }
-
-  if (reason === "missing_turnstile_secret") {
-    return "Spam-Schutz serverseitig nicht konfiguriert. Bitte Deployment prüfen.";
-  }
-
-  if (reason === "missing_supabase_server_env") {
-    const missing = (payload.missing || []).join(", ");
-    return missing
-      ? `Server-Konfiguration unvollständig (${missing}). Bitte Deployment prüfen.`
-      : "Server-Konfiguration unvollständig (Supabase ENV). Bitte Deployment prüfen.";
-  }
-
-  if (reason === "insert_failed") {
-    return payload.details
-      ? `Eintrag konnte nicht gespeichert werden: ${payload.details}`
-      : "Eintrag konnte nicht gespeichert werden.";
+  if (reason === "service_unavailable") {
+    return "Anmeldung ist gerade nicht verfügbar. Bitte später erneut versuchen.";
   }
 
   return `Anfrage fehlgeschlagen (${statusCode}). Bitte später erneut versuchen.`;
@@ -245,7 +222,7 @@ export default function WaitlistForm({
       window.turnstile.execute(widgetIdRef.current);
       return true;
     } catch {
-      failTurnstile("Spam-Schutz konnte nicht gestartet werden. Bitte spaeter erneut versuchen.");
+      failTurnstile("Spam-Schutz konnte nicht gestartet werden. Bitte später erneut versuchen.");
       return false;
     }
   }, [failTurnstile]);
@@ -270,9 +247,7 @@ export default function WaitlistForm({
             payload = JSON.parse(rawBody) as WaitlistApiResponse;
           } catch {
             setState("error");
-            setMessage(
-              "Server-Antwort ist ungültig (kein JSON). Prüfe bitte, ob /api/waitlist erreichbar ist."
-            );
+            setMessage("Anfrage konnte nicht verarbeitet werden. Bitte später erneut versuchen.");
             return;
           }
         }
@@ -281,9 +256,7 @@ export default function WaitlistForm({
           const finalPath = new URL(response.url, window.location.origin).pathname;
           if (!finalPath.startsWith("/api/waitlist")) {
             setState("error");
-            setMessage(
-              `API-Aufruf wurde umgeleitet (${finalPath}). Bitte Deploy-Konfiguration prüfen.`
-            );
+            setMessage("Anfrage konnte nicht verarbeitet werden. Bitte später erneut versuchen.");
             return;
           }
         }
@@ -314,11 +287,10 @@ export default function WaitlistForm({
         }
 
         setState("error");
-        setMessage("Unerwartete Server-Antwort. Bitte /api/waitlist prüfen.");
-      } catch (error) {
-        const reason = error instanceof Error && error.message ? ` (${error.message})` : "";
+        setMessage("Anfrage konnte nicht verarbeitet werden. Bitte später erneut versuchen.");
+      } catch {
         setState("error");
-        setMessage(`Bitte später erneut versuchen${reason}.`);
+        setMessage("Bitte später erneut versuchen.");
       } finally {
         finalizeSubmission();
       }
@@ -378,7 +350,7 @@ export default function WaitlistForm({
           setTurnstileToken("");
 
           if (pendingSubmissionRef.current) {
-            failTurnstile("Spam-Schutz konnte nicht geladen werden. Bitte spaeter erneut versuchen.");
+            failTurnstile("Spam-Schutz konnte nicht geladen werden. Bitte später erneut versuchen.");
           }
         }
       });
@@ -409,13 +381,13 @@ export default function WaitlistForm({
 
     if (!siteKey) {
       setState("error");
-      setMessage("Spam-Schutz ist nicht konfiguriert. Bitte später erneut versuchen.");
+      setMessage("Anmeldung ist gerade nicht verfügbar. Bitte später erneut versuchen.");
       return;
     }
 
     if (turnstileStatus === "error") {
       setState("error");
-      setMessage("Spam-Schutz konnte nicht geladen werden. Bitte spaeter erneut versuchen.");
+      setMessage("Spam-Schutz konnte nicht geladen werden. Bitte später erneut versuchen.");
       return;
     }
 
@@ -488,7 +460,7 @@ export default function WaitlistForm({
           className="pointer-events-none absolute h-0 w-0 overflow-hidden opacity-0"
         />
       ) : (
-        <div className="text-xs text-amber-300/90">Turnstile Site Key fehlt.</div>
+        <div className="text-xs text-amber-300/90">Anmeldung ist gerade nicht verfügbar.</div>
       )}
 
       {message ? (

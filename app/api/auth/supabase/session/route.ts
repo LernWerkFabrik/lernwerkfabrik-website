@@ -25,10 +25,9 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(
       {
         ok: false,
-        error:
-          "Supabase env vars fehlen. Erwartet: NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY.",
+        error: "Sitzung ist gerade nicht verfügbar.",
       },
-      { status: 500 }
+      { status: 503 }
     );
   }
 

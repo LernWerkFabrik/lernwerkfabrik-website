@@ -41,7 +41,7 @@ export default function DatenschutzPage() {
       </header>
 
       <div className="mt-6 grid gap-4">
-        <Section title="Datenschutzerklaerung">
+        <Section title="Datenschutzerklärung">
           <div
             className="[&_a]:underline [&_a]:underline-offset-4 [&_h1]:mt-0 [&_h1]:text-2xl [&_h1]:font-semibold [&_h2]:mt-6 [&_h2]:text-lg [&_h2]:font-medium [&_h3]:mt-4 [&_h3]:text-base [&_h3]:font-medium [&_h4]:mt-3 [&_h4]:text-sm [&_h4]:font-medium [&_li]:my-1 [&_p]:my-2 [&_p]:text-sm [&_strong]:font-semibold [&_ul]:list-disc [&_ul]:pl-5"
             dangerouslySetInnerHTML={{ __html: PRIVACY_STATIC_HTML }}

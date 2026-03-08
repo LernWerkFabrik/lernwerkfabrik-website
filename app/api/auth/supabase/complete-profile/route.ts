@@ -18,10 +18,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         ok: false,
-        error:
-          "Supabase env vars fehlen. Erwartet: NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY.",
+        error: "Profilservice ist gerade nicht verfügbar.",
       },
-      { status: 500 }
+      { status: 503 }
     );
   }
 
@@ -65,8 +64,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: false, error: "Anzeigename ist bereits vergeben." }, { status: 409 });
     }
     return NextResponse.json(
-      { ok: false, error: `Profil konnte nicht vervollständigt werden: ${upsert.error.message}` },
-      { status: 500 }
+      { ok: false, error: "Profil konnte nicht vervollständigt werden." },
+      { status: 503 }
     );
   }
 

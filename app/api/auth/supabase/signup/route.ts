@@ -42,10 +42,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         ok: false,
-        error:
-          "Supabase env vars fehlen. Erwartet: NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY.",
+        error: "Anmeldung ist gerade nicht verfügbar.",
       },
-      { status: 500 }
+      { status: 503 }
     );
   }
 
@@ -91,8 +90,8 @@ export async function POST(req: NextRequest) {
 
   if (availability.error) {
     return NextResponse.json(
-      { ok: false, error: `Display-Name-Check fehlgeschlagen: ${availability.error.message}` },
-      { status: 500 }
+      { ok: false, error: "Anmeldung ist gerade nicht verfügbar." },
+      { status: 503 }
     );
   }
   if (Array.isArray(availability.data) && availability.data.length > 0) {
@@ -111,14 +110,14 @@ export async function POST(req: NextRequest) {
   });
 
   if (signUp.error) {
-    return NextResponse.json({ ok: false, error: signUp.error.message }, { status: 400 });
+    return NextResponse.json({ ok: false, error: "Registrierung fehlgeschlagen." }, { status: 400 });
   }
 
   const user = signUp.data.user;
   if (!user?.id) {
     return NextResponse.json(
-      { ok: false, error: "Supabase hat keinen User zurückgegeben." },
-      { status: 500 }
+      { ok: false, error: "Registrierung konnte nicht abgeschlossen werden." },
+      { status: 503 }
     );
   }
 
@@ -143,8 +142,8 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json(
-      { ok: false, error: `Profil konnte nicht erstellt werden: ${insertProfile.error.message}` },
-      { status: 500 }
+      { ok: false, error: "Profil konnte nicht erstellt werden." },
+      { status: 503 }
     );
   }
 
