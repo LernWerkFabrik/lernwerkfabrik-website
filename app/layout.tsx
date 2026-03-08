@@ -15,7 +15,7 @@ import { ThemeProvider } from "./theme-provider";
 import DevTierSwitcher from "@/components/DevTierSwitcher";
 import { getSession } from "@/lib/auth";
 
-const ICON_VERSION = "20260308c";
+const ICON_VERSION = "20260308d";
 const seoTitle = "LernWerkFabrik | AP1/AP2 Prüfungsvorbereitung";
 const seoDescription =
   "LernWerkFabrik geht bald live. Sichere dir Early Access, trainiere prüfungsnah für AP1/AP2 und starte mit klarer Struktur.";
