@@ -7,9 +7,8 @@ import { ChevronLeft } from "lucide-react";
 
 import ThemeToggle from "./theme-toggle";
 import BrandLogo from "./BrandLogo";
+import { resetHomeScroll, scrollPageToTop } from "./home-navigation";
 import { Button } from "@/components/ui/button";
-
-const SCROLL_STORAGE_KEY = "lwf:scroll:v1";
 
 function subscribeCanGoBack(onStoreChange: () => void) {
   if (typeof window === "undefined") return () => {};
@@ -25,53 +24,6 @@ function subscribeCanGoBack(onStoreChange: () => void) {
 function getCanGoBackSnapshot() {
   if (typeof window === "undefined") return false;
   return window.history.length > 1;
-}
-
-function scrollPageToTop() {
-  if (typeof window === "undefined") return;
-
-  const root = document.querySelector("main[data-scroll-root]");
-  if (root instanceof HTMLElement) {
-    root.scrollTop = 0;
-  }
-
-  const scrollingElement = document.scrollingElement || document.documentElement || document.body;
-  if (scrollingElement) {
-    scrollingElement.scrollTop = 0;
-  }
-
-  document.documentElement.scrollTop = 0;
-  if (document.body) {
-    document.body.scrollTop = 0;
-  }
-
-  window.scrollTo(0, 0);
-}
-
-function clearStoredScroll(keys: string[]) {
-  if (typeof window === "undefined") return;
-
-  try {
-    const raw = window.sessionStorage.getItem(SCROLL_STORAGE_KEY);
-    if (!raw) return;
-
-    const parsed = JSON.parse(raw);
-    if (!parsed || typeof parsed !== "object") return;
-
-    let changed = false;
-    for (const key of keys) {
-      if (key in parsed) {
-        delete parsed[key];
-        changed = true;
-      }
-    }
-
-    if (changed) {
-      window.sessionStorage.setItem(SCROLL_STORAGE_KEY, JSON.stringify(parsed));
-    }
-  } catch {
-    // ignore
-  }
 }
 
 export default function BrandHeader() {
@@ -104,7 +56,7 @@ export default function BrandHeader() {
         ? window.location.pathname + window.location.search + window.location.hash
         : homeHref;
 
-    clearStoredScroll([homeHref, currentKey]);
+    resetHomeScroll(currentKey);
 
     if (pathname === "/") {
       event.preventDefault();

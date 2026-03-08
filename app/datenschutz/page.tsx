@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import HomeResetLink from "@/app/HomeResetLink";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { PRIVACY_STATIC_HTML } from "@/app/datenschutz/privacyStaticHtml";
@@ -57,9 +58,9 @@ export default function DatenschutzPage() {
               <Link className="underline underline-offset-4 hover:text-foreground" href="/impressum">
                 Zum Impressum
               </Link>
-              <Link className="underline underline-offset-4 hover:text-foreground" href="/">
+              <HomeResetLink className="underline underline-offset-4 hover:text-foreground" href="/">
                 Zur Startseite
-              </Link>
+              </HomeResetLink>
             </div>
           </CardContent>
         </Card>

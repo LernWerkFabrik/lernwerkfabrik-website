@@ -4,6 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import HomeResetLink from "@/app/HomeResetLink";
 
 import Surface from "@/components/Surface";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -151,7 +152,7 @@ export default function ProfessionOnboardingClient() {
 
             <div className="flex flex-wrap items-center justify-between gap-2 pt-2">
               <Button variant="outline" asChild className="rounded-full">
-                <Link href="/">Zur Startseite</Link>
+                <HomeResetLink href="/">Zur Startseite</HomeResetLink>
               </Button>
 
               <Button onClick={save} className="rounded-full">

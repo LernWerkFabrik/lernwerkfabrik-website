@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import HomeResetLink from "@/app/HomeResetLink";
 
 export const metadata: Metadata = {
   title: "Impressum | LernWerkFabrik",
@@ -70,9 +71,9 @@ export default function ImpressumPage() {
         <PlaceholderImpressum />
 
         <div className="mt-2 flex flex-wrap gap-3 text-sm">
-          <Link className="underline underline-offset-4 text-muted-foreground hover:text-foreground" href="/">
+          <HomeResetLink className="underline underline-offset-4 text-muted-foreground hover:text-foreground" href="/">
             Zur Startseite
-          </Link>
+          </HomeResetLink>
           <Link className="underline underline-offset-4 text-muted-foreground hover:text-foreground" href="/datenschutz">
             Datenschutz
           </Link>
