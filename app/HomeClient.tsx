@@ -135,11 +135,14 @@ function LaunchCtaLead({ className = "" }: { className?: string }) {
   return (
     <p
       className={[
-        "mx-auto max-w-2xl text-center text-sm font-medium text-primary md:text-base",
+        "mx-auto max-w-2xl text-center font-medium text-primary max-md:text-[12.5px] max-md:leading-[1.35] md:text-base",
         className,
       ].join(" ")}
     >
-      Jetzt eintragen – die ersten 100 erhalten einen reduzierten Launch-Preis.
+      <span className="block">Jetzt eintragen</span>
+      <span className="block whitespace-nowrap">
+        Die ersten 100 erhalten einen reduzierten Launch-Preis.
+      </span>
     </p>
   );
 }
@@ -762,9 +765,9 @@ export default function HomeClient() {
                     key={it.title}
                     className={[
                       "px-5 py-4",
-                      index === 0 ? "pt-3" : "",
+                      index === 0 ? "pt-2" : "",
                       index !== 0 ? "border-t border-border/70" : "",
-                      index === items.length - 1 ? "pb-4" : "",
+                      index === items.length - 1 ? "pb-3" : "",
                     ].join(" ")}
                   >
                     <div className="flex items-center gap-2 text-sm font-medium">
@@ -843,9 +846,9 @@ export default function HomeClient() {
                     key={x.t}
                     className={[
                       "px-5 py-4",
-                      index === 0 ? "pt-3" : "",
+                      index === 0 ? "pt-2" : "",
                       index !== 0 ? "border-t border-border/70" : "",
-                      index === items.length - 1 ? "pb-4" : "",
+                      index === items.length - 1 ? "pb-3" : "",
                     ].join(" ")}
                   >
                     <div className="flex items-start gap-3">
