@@ -3,6 +3,7 @@ import type { NextRequest } from "next/server";
 
 const ALLOWED_ROUTES = new Set(["/", "/index", "/index.html", "/impressum", "/datenschutz"]);
 const ALLOWED_API_ROUTES = new Set(["/api/waitlist"]);
+const HTML_CACHE_CONTROL = "public, max-age=0, must-revalidate";
 
 function getRequestProtocol(request: NextRequest) {
   const forwardedProto = request.headers.get("x-forwarded-proto")?.trim().toLowerCase();
@@ -46,6 +47,14 @@ function withCountryCookie(request: NextRequest, response: NextResponse) {
   return response;
 }
 
+function withPublicHtmlCacheHeaders(response: NextResponse, pathname: string, method: string) {
+  if ((method === "GET" || method === "HEAD") && ALLOWED_ROUTES.has(pathname)) {
+    response.headers.set("Cache-Control", HTML_CACHE_CONTROL);
+  }
+
+  return response;
+}
+
 export function middleware(request: NextRequest) {
   if (shouldForceHttps(request)) {
     const redirectUrl = request.nextUrl.clone();
@@ -84,7 +93,11 @@ export function middleware(request: NextRequest) {
     }
     return withCountryCookie(request, NextResponse.redirect(new URL("/", request.url)));
   }
-  return withCountryCookie(request, NextResponse.next());
+
+  return withCountryCookie(
+    request,
+    withPublicHtmlCacheHeaders(NextResponse.next(), effectivePath, request.method)
+  );
 }
 
 export const config = {
