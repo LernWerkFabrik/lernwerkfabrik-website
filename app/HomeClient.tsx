@@ -407,7 +407,7 @@ export default function HomeClient() {
                         </ul>
                       </div>
 
-                      <div className="relative overflow-hidden rounded-xl border border-black/10 bg-gradient-to-r from-sky-100/24 via-background/76 to-amber-100/32 p-3 text-center shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12">
+                      <div className="relative overflow-hidden rounded-xl border border-black/16 bg-gradient-to-r from-sky-100/30 via-background/82 to-amber-100/40 p-3 text-center shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12">
                         <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-xl bg-gradient-to-r from-transparent via-sky-400/65 to-transparent" />
                         <div className="text-xs font-semibold uppercase tracking-wide text-foreground/80">Ergebnis</div>
                         <ul className="mt-2 space-y-1.5 text-left text-sm text-muted-foreground">
@@ -474,7 +474,7 @@ export default function HomeClient() {
                     </ul>
                   </div>
 
-                  <div className="relative overflow-hidden rounded-xl border border-black/10 bg-gradient-to-r from-sky-100/24 via-background/76 to-amber-100/32 p-3 text-center shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12">
+                  <div className="relative overflow-hidden rounded-xl border border-black/16 bg-gradient-to-r from-sky-100/30 via-background/82 to-amber-100/40 p-3 text-center shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12">
                     <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-xl bg-gradient-to-r from-transparent via-sky-400/65 to-transparent" />
                     <div className="text-xs font-semibold uppercase tracking-wide text-foreground/80">Ergebnis</div>
                     <ul className="mt-2 space-y-1.5 text-left text-sm text-muted-foreground">
@@ -533,7 +533,7 @@ export default function HomeClient() {
                         </ul>
                       </div>
 
-                      <div className="relative overflow-hidden rounded-xl border border-black/10 bg-gradient-to-r from-sky-100/24 via-background/76 to-amber-100/32 p-3 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12">
+                      <div className="relative overflow-hidden rounded-xl border border-black/16 bg-gradient-to-r from-sky-100/30 via-background/82 to-amber-100/40 p-3 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.38)] dark:border-white/10 dark:from-sky-500/10 dark:via-background/72 dark:to-amber-500/12">
                         <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] rounded-t-xl bg-gradient-to-r from-transparent via-sky-400/65 to-transparent" />
                         <div className="text-sm font-medium text-foreground/90">So hilft dir LernWerkFabrik:</div>
                         <ul className="mt-2 space-y-2 text-sm text-muted-foreground">
