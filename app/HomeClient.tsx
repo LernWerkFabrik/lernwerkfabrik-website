@@ -139,7 +139,7 @@ function LaunchCtaLead({ className = "" }: { className?: string }) {
         className,
       ].join(" ")}
     >
-      <span className="block">Jetzt eintragen</span>
+      <span className="block">Früh dabei sein lohnt sich:</span>
       <span className="block whitespace-nowrap">
         Die ersten 100 erhalten einen reduzierten Launch-Preis.
       </span>
