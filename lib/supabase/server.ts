@@ -1,9 +1,11 @@
 import "server-only";
 
 import { createClient } from "@supabase/supabase-js";
+
+import { getWorkerRuntimeEnvAsync, type WorkerRuntimeEnv } from "@/lib/cloudflare/env";
 import { SERVER_RUNTIME_ENV } from "@/lib/generated/server-runtime-env";
 
-type RuntimeEnvSource = Record<string, unknown> | null;
+type RuntimeEnvSource = WorkerRuntimeEnv | null;
 type EnvSource = "build_embedded" | "process_env" | "cloudflare_binding" | "missing";
 
 type EnvResolution = {
@@ -85,9 +87,7 @@ function normalizeEnvValue(value: string) {
 
 async function readCloudflareRuntimeEnv() {
   try {
-    const { getCloudflareContext } = await import("@opennextjs/cloudflare");
-    const context = await getCloudflareContext({ async: true });
-    const runtimeEnv = (context?.env ?? null) as RuntimeEnvSource;
+    const runtimeEnv = await getWorkerRuntimeEnvAsync();
 
     return {
       env: runtimeEnv,

@@ -1,7 +1,6 @@
 import "server-only";
 
-import { getCloudflareContext } from "@opennextjs/cloudflare";
-
+import { getWorkerRuntimeEnvAsync, type WorkerRuntimeEnv } from "@/lib/cloudflare/env";
 import { SERVER_RUNTIME_ENV } from "@/lib/generated/server-runtime-env";
 
 type EnvSource = "build_embedded" | "process_env" | "cloudflare_binding" | "missing";
@@ -26,12 +25,7 @@ function normalizeEnvValue(value: string) {
 }
 
 async function readCloudflareRuntimeEnv() {
-  try {
-    const context = await getCloudflareContext({ async: true });
-    return (context?.env ?? null) as Record<string, unknown> | null;
-  } catch {
-    return null;
-  }
+  return (await getWorkerRuntimeEnvAsync()) as WorkerRuntimeEnv | null;
 }
 
 async function resolveEnvValue(name: string): Promise<EnvResolution> {

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { sendWaitlistEmail } from "@/lib/resend/server";
 import { createSupabaseServiceRoleClientAsync } from "@/lib/supabase/server";
 import { getTurnstileSecretKeyServerAsync } from "@/lib/turnstile/server";
 
@@ -284,8 +285,23 @@ export async function POST(request: NextRequest) {
       )
     : null;
 
+  const finalPosition = resolvedPosition ?? insertResult.data?.waitlist_position ?? null;
+
+  const mailResult = await sendWaitlistEmail({
+    waitlistEmail: email,
+    waitlistPosition: finalPosition,
+  });
+
+  if (!mailResult.ok) {
+    console.error("waitlist: resend mail skipped", {
+      email,
+      waitlistPosition: finalPosition,
+      reason: mailResult.reason,
+    });
+  }
+
   return NextResponse.json({
     status: "ok",
-    waitlist_position: resolvedPosition ?? insertResult.data?.waitlist_position ?? null,
+    waitlist_position: finalPosition,
   });
 }
