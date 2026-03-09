@@ -49,9 +49,9 @@ function Panel({
   const gradientWash =
     washVariant === "cooler"
       ? [
-          "absolute inset-0 bg-gradient-to-r from-sky-500/10 via-transparent to-amber-500/7",
+          "absolute inset-0 bg-gradient-to-r from-sky-500/10 via-transparent to-amber-500/4",
           "absolute inset-0 bg-[radial-gradient(900px_420px_at_15%_10%,rgba(255,255,255,0.06),transparent_55%)]",
-          "absolute inset-0 bg-[radial-gradient(900px_420px_at_85%_20%,rgba(245,158,11,0.045),transparent_60%)]",
+          "absolute inset-0 bg-[radial-gradient(900px_420px_at_85%_20%,rgba(245,158,11,0.025),transparent_60%)]",
         ]
       : [
           "absolute inset-0 bg-gradient-to-r from-sky-500/10 via-transparent to-amber-500/12",
@@ -139,7 +139,7 @@ function LaunchCtaLead({ className = "" }: { className?: string }) {
         className,
       ].join(" ")}
     >
-      Jetzt Platz sichern - und zum Launch direkt starten.
+      Jetzt eintragen - nur die ersten 100 starten zum stark reduzierten Launch-Preis.
     </p>
   );
 }
@@ -580,7 +580,7 @@ export default function HomeClient() {
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
                         <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
                       </div>
-                      <CardContent className="relative p-4 max-md:py-1.5">
+                      <CardContent className="relative p-4 max-md:py-0.5">
                         <div className="flex items-start gap-3">
                           <div className="grid h-9 w-9 place-items-center rounded-xl border bg-amber-500/10">
                             <BookOpen className="h-4 w-4 text-amber-400" />
@@ -611,7 +611,7 @@ export default function HomeClient() {
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
                         <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
                       </div>
-                      <CardContent className="relative p-4 max-md:py-1.5">
+                      <CardContent className="relative p-4 max-md:py-0.5">
                         <div className="flex items-start gap-3">
                           <div className="grid h-9 w-9 place-items-center rounded-xl border bg-amber-500/10">
                             <Target className="h-4 w-4 text-amber-400" />
@@ -641,7 +641,7 @@ export default function HomeClient() {
                         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" />
                         <div className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-amber-400/65 to-transparent" />
                       </div>
-                      <CardContent className="relative p-4 max-md:py-1.5">
+                      <CardContent className="relative p-4 max-md:py-0.5">
                         <div className="flex items-start gap-3">
                           <div className="grid h-9 w-9 place-items-center rounded-xl border bg-amber-500/10">
                             <Brain className="h-4 w-4 text-amber-400" />
@@ -761,9 +761,9 @@ export default function HomeClient() {
                   <div
                     key={it.title}
                     className={[
-                      "px-5 py-4",
+                      "px-5 py-3",
                       index !== 0 ? "border-t border-border/70" : "",
-                      index === items.length - 1 ? "pb-5" : "",
+                      index === items.length - 1 ? "pb-4" : "",
                     ].join(" ")}
                   >
                     <div className="flex items-center gap-2 text-sm font-medium">
@@ -841,9 +841,9 @@ export default function HomeClient() {
                   <div
                     key={x.t}
                     className={[
-                      "px-5 py-4",
+                      "px-5 py-3",
                       index !== 0 ? "border-t border-border/70" : "",
-                      index === items.length - 1 ? "pb-5" : "",
+                      index === items.length - 1 ? "pb-4" : "",
                     ].join(" ")}
                   >
                     <div className="flex items-start gap-3">
