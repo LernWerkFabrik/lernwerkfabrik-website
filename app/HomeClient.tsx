@@ -139,7 +139,7 @@ function LaunchCtaLead({ className = "" }: { className?: string }) {
         className,
       ].join(" ")}
     >
-      Jetzt eintragen - nur die ersten 100 starten zum stark reduzierten Launch-Preis.
+      Jetzt eintragen – die ersten 100 erhalten einen reduzierten Launch-Preis.
     </p>
   );
 }
@@ -761,7 +761,8 @@ export default function HomeClient() {
                   <div
                     key={it.title}
                     className={[
-                      "px-5 py-3",
+                      "px-5 py-4",
+                      index === 0 ? "pt-3" : "",
                       index !== 0 ? "border-t border-border/70" : "",
                       index === items.length - 1 ? "pb-4" : "",
                     ].join(" ")}
@@ -841,7 +842,8 @@ export default function HomeClient() {
                   <div
                     key={x.t}
                     className={[
-                      "px-5 py-3",
+                      "px-5 py-4",
+                      index === 0 ? "pt-3" : "",
                       index !== 0 ? "border-t border-border/70" : "",
                       index === items.length - 1 ? "pb-4" : "",
                     ].join(" ")}
