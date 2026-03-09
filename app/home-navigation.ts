@@ -4,6 +4,17 @@ type HomeRouter = {
   push: (href: string) => void;
 };
 
+function normalizeHref(href?: string | null) {
+  if (!href) return "/";
+
+  try {
+    const url = new URL(href, typeof window !== "undefined" ? window.location.origin : "https://lernwerkfabrik.de");
+    return url.pathname + url.search + url.hash;
+  } catch {
+    return href;
+  }
+}
+
 export function scrollPageToTop() {
   if (typeof window === "undefined") return;
 
@@ -69,6 +80,30 @@ export function resetHomeScroll(currentKey?: string | null) {
   clearStoredScroll(keys);
 }
 
+export function resetScrollForTarget(href: string, currentKey?: string | null) {
+  const targetKey = normalizeHref(href);
+  const keys = [targetKey];
+  if (currentKey) {
+    keys.push(currentKey);
+  }
+  clearStoredScroll(keys);
+}
+
+export function navigateWithScrollReset(
+  router: HomeRouter,
+  pathname: string | null,
+  currentKey: string | null | undefined,
+  href: string
+) {
+  resetScrollForTarget(href, currentKey);
+  scheduleScrollPageToTop();
+
+  if (pathname !== href) {
+    router.push(href);
+    window.setTimeout(() => scheduleScrollPageToTop(), 24);
+  }
+}
+
 export function navigateHome(
   router: HomeRouter,
   pathname: string | null,
@@ -76,10 +111,5 @@ export function navigateHome(
   href = "/"
 ) {
   resetHomeScroll(currentKey);
-  scheduleScrollPageToTop();
-
-  if (pathname !== href) {
-    router.push(href);
-    window.setTimeout(() => scheduleScrollPageToTop(), 24);
-  }
+  navigateWithScrollReset(router, pathname, currentKey, href);
 }

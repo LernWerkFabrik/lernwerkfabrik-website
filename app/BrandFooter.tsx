@@ -1,7 +1,7 @@
 ﻿// app/BrandFooter.tsx
 "use client";
 
-import Link from "next/link";
+import ScrollResetLink from "@/app/ScrollResetLink";
 
 function AccentLine() {
   return (
@@ -17,12 +17,12 @@ function FooterLink({
   label: string;
 }) {
   return (
-    <Link
+    <ScrollResetLink
       href={href}
       className="block text-sm text-foreground/90 transition-colors duration-150 ease-out hover:text-foreground"
     >
       {label}
-    </Link>
+    </ScrollResetLink>
   );
 }
 

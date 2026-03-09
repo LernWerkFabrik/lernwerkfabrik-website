@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import HomeResetLink from "@/app/HomeResetLink";
+import ScrollResetLink from "@/app/ScrollResetLink";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { PRIVACY_STATIC_HTML } from "@/app/datenschutz/privacyStaticHtml";
@@ -55,9 +55,9 @@ export default function DatenschutzPage() {
               Kontaktdaten an uns wenden.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link className="underline underline-offset-4 hover:text-foreground" href="/impressum">
+              <ScrollResetLink className="underline underline-offset-4 hover:text-foreground" href="/impressum">
                 Zum Impressum
-              </Link>
+              </ScrollResetLink>
               <HomeResetLink className="underline underline-offset-4 hover:text-foreground" href="/">
                 Zur Startseite
               </HomeResetLink>
