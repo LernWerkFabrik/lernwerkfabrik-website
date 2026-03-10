@@ -99,9 +99,9 @@ function renderWaitlistConfirmationHtml(params: {
     "<div>",
     "<p>Hallo,</p>",
     "<p>deine Anmeldung zur Warteliste von LernWerkFabrik war erfolgreich.</p>",
-    "<p>Vielen Dank f?r dein Interesse. Wir informieren dich, sobald der Start bevorsteht und es Neuigkeiten gibt.</p>",
-    "<p>Zum Launch erhalten die ersten 100 einen reduzierten Preis.</p>",
-    "<p>Viele Gr??e<br />LernWerkFabrik</p>",
+    "<p>Vielen Dank für dein Interesse. Wir informieren dich, sobald der Start bevorsteht und es Neuigkeiten gibt.</p>",
+    "<p>Die ersten 100 können LernWerkFabrik kostenlos testen und erhalten zum Launch einen reduzierten Preis.</p>",
+    "<p>Viele Grüße<br />LernWerkFabrik</p>",
     "</div>",
   ].join("");
 }
@@ -113,10 +113,10 @@ function renderWaitlistConfirmationText(params: {
     "Hallo,",
     "",
     "deine Anmeldung zur Warteliste von LernWerkFabrik war erfolgreich.",
-    "Vielen Dank f?r dein Interesse. Wir informieren dich, sobald der Start bevorsteht und es Neuigkeiten gibt.",
-    "Zum Launch erhalten die ersten 100 einen reduzierten Preis.",
+    "Vielen Dank für dein Interesse. Wir informieren dich, sobald der Start bevorsteht und es Neuigkeiten gibt.",
+    "Die ersten 100 können LernWerkFabrik kostenlos testen und erhalten zum Launch einen reduzierten Preis.",
     "",
-    "Viele Gr??e",
+    "Viele Grüße",
     "LernWerkFabrik",
   ];
 
