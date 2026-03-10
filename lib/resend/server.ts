@@ -8,7 +8,7 @@ const RESEND_FROM_EMAIL = "waitlist@mail.lernwerkfabrik.de";
 const WAITLIST_ADMIN_RECIPIENT = "admin@lernwerkfabrik.de";
 const WAITLIST_REPLY_TO = "admin@lernwerkfabrik.de";
 const WAITLIST_ADMIN_SUBJECT = "Neue Wartelisten-Anmeldung";
-const WAITLIST_CONFIRMATION_SUBJECT = "Dein Platz auf der Warteliste von LernWerkFabrik";
+const WAITLIST_DOI_SUBJECT = "Bitte bestätige deine Anmeldung zu LernWerkFabrik";
 
 type ResendEnvSource = "cloudflare_binding" | "process_env" | "missing";
 
@@ -92,35 +92,39 @@ function renderWaitlistAdminHtml(params: {
   ].join("");
 }
 
-function renderWaitlistConfirmationHtml(params: {
-  waitlistPosition: number | null;
+function renderWaitlistDoiHtml(params: {
+  confirmUrl: string;
 }) {
+  const confirmUrl = escapeHtml(params.confirmUrl);
+
   return [
     "<div>",
     "<p>Hallo,</p>",
-    "<p>deine Anmeldung zur Warteliste von LernWerkFabrik war erfolgreich.</p>",
-    "<p>Vielen Dank für dein Interesse. Wir informieren dich, sobald der Start bevorsteht und es Neuigkeiten gibt.</p>",
+    "<p>fast geschafft: Bitte bestätige noch kurz deine E-Mail-Adresse, um deine Anmeldung zur Warteliste von LernWerkFabrik abzuschließen.</p>",
+    `<p><a href="${confirmUrl}" style="display:inline-block;padding:10px 16px;border-radius:999px;background:#f2cd14;color:#111827;text-decoration:none;font-weight:600;">Anmeldung bestätigen</a></p>`,
+    `<p>Falls der Button nicht funktioniert, kannst du auch diesen Link öffnen:<br /><a href="${confirmUrl}">${confirmUrl}</a></p>`,
     "<p>Die ersten 100 können LernWerkFabrik kostenlos testen und erhalten zum Launch einen reduzierten Preis.</p>",
     "<p>Viele Grüße<br />LernWerkFabrik</p>",
     "</div>",
   ].join("");
 }
 
-function renderWaitlistConfirmationText(params: {
-  waitlistPosition: number | null;
+function renderWaitlistDoiText(params: {
+  confirmUrl: string;
 }) {
-  const lines = [
+  return [
     "Hallo,",
     "",
-    "deine Anmeldung zur Warteliste von LernWerkFabrik war erfolgreich.",
-    "Vielen Dank für dein Interesse. Wir informieren dich, sobald der Start bevorsteht und es Neuigkeiten gibt.",
+    "fast geschafft: Bitte bestätige noch kurz deine E-Mail-Adresse, um deine Anmeldung zur Warteliste von LernWerkFabrik abzuschließen.",
+    "",
+    "Anmeldung bestätigen:",
+    params.confirmUrl,
+    "",
     "Die ersten 100 können LernWerkFabrik kostenlos testen und erhalten zum Launch einen reduzierten Preis.",
     "",
     "Viele Grüße",
     "LernWerkFabrik",
-  ];
-
-  return lines.join("\n");
+  ].join("\n");
 }
 
 export async function sendWaitlistAdminEmail(params: {
@@ -174,10 +178,9 @@ export async function sendWaitlistAdminEmail(params: {
   }
 }
 
-export async function sendWaitlistConfirmationEmail(params: {
+export async function sendWaitlistDoiEmail(params: {
   waitlistEmail: string;
-  waitlistPosition: number | null;
-  receivedAt: string;
+  confirmUrl: string;
 }) {
   const apiKey = await getResendApiKeyAsync();
   if (!apiKey.value) {
@@ -193,17 +196,16 @@ export async function sendWaitlistConfirmationEmail(params: {
       from: RESEND_FROM_EMAIL,
       to: params.waitlistEmail,
       replyTo: WAITLIST_REPLY_TO,
-      subject: WAITLIST_CONFIRMATION_SUBJECT,
-      html: renderWaitlistConfirmationHtml(params),
-      text: renderWaitlistConfirmationText(params),
+      subject: WAITLIST_DOI_SUBJECT,
+      html: renderWaitlistDoiHtml(params),
+      text: renderWaitlistDoiText(params),
     });
 
     if (response.error) {
-      console.error("waitlist: confirmation mail send failed", {
+      console.error("waitlist: doi mail send failed", {
         source: apiKey.source,
         waitlistEmail: params.waitlistEmail,
-        waitlistPosition: params.waitlistPosition,
-        receivedAt: params.receivedAt,
+        confirmUrl: params.confirmUrl,
         name: response.error.name,
         message: response.error.message,
       });
@@ -215,11 +217,10 @@ export async function sendWaitlistConfirmationEmail(params: {
       id: response.data?.id ?? null,
     };
   } catch (error) {
-    console.error("waitlist: confirmation mail request failed", {
+    console.error("waitlist: doi mail request failed", {
       source: apiKey.source,
       waitlistEmail: params.waitlistEmail,
-      waitlistPosition: params.waitlistPosition,
-      receivedAt: params.receivedAt,
+      confirmUrl: params.confirmUrl,
       message: error instanceof Error ? error.message : "unknown_error",
     });
     return { ok: false as const, reason: "resend_request_failed" as const };

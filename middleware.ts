@@ -1,7 +1,16 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-const ALLOWED_ROUTES = new Set(["/", "/index", "/index.html", "/impressum", "/datenschutz"]);
+const ALLOWED_ROUTES = new Set([
+  "/",
+  "/index",
+  "/index.html",
+  "/impressum",
+  "/datenschutz",
+  "/waitlist/confirm",
+  "/waitlist/confirmed",
+]);
+const CACHEABLE_HTML_ROUTES = new Set(["/", "/index", "/index.html", "/impressum", "/datenschutz"]);
 const ALLOWED_API_ROUTES = new Set(["/api/waitlist"]);
 const HTML_CACHE_CONTROL = "public, max-age=0, must-revalidate";
 
@@ -48,7 +57,7 @@ function withCountryCookie(request: NextRequest, response: NextResponse) {
 }
 
 function withPublicHtmlCacheHeaders(response: NextResponse, pathname: string, method: string) {
-  if ((method === "GET" || method === "HEAD") && ALLOWED_ROUTES.has(pathname)) {
+  if ((method === "GET" || method === "HEAD") && CACHEABLE_HTML_ROUTES.has(pathname)) {
     response.headers.set("Cache-Control", HTML_CACHE_CONTROL);
   }
 

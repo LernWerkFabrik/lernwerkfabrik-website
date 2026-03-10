@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { sendWaitlistAdminEmail, sendWaitlistConfirmationEmail } from "@/lib/resend/server";
+import { sendWaitlistDoiEmail } from "@/lib/resend/server";
 import { createSupabaseServiceRoleClientAsync } from "@/lib/supabase/server";
 import { getTurnstileSecretKeyServerAsync } from "@/lib/turnstile/server";
+import { generateWaitlistConfirmationToken } from "@/lib/waitlist/server";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/i;
 
@@ -21,10 +22,25 @@ type TurnstileVerifyResponse = {
   "error-codes"?: string[];
 };
 
-type WaitlistPositionRow = {
+type WaitlistRow = {
   id: string;
+  email: string;
+  status: "pending" | "confirmed" | null;
+  confirmation_token: string | null;
+  confirmed_position: number | null;
   waitlist_position: number | null;
 };
+
+type PendingSubmissionPayload = {
+  email: string;
+  source: string;
+  campaign: string | null;
+  referrer: string;
+  device_type: string | null;
+  country: string | null;
+};
+
+type SupabaseServerClient = Awaited<ReturnType<typeof createSupabaseServiceRoleClientAsync>>;
 
 function normalizeEmail(value: unknown): string {
   if (typeof value !== "string") return "";
@@ -54,6 +70,46 @@ function readRemoteIp(request: NextRequest): string | null {
 
   const firstHop = forwardedFor.split(",")[0]?.trim();
   return firstHop || null;
+}
+
+function getRequestProtocol(request: NextRequest) {
+  const forwardedProto = request.headers.get("x-forwarded-proto")?.trim().toLowerCase();
+  if (forwardedProto === "http" || forwardedProto === "https") {
+    return forwardedProto;
+  }
+
+  const cfVisitor = request.headers.get("cf-visitor");
+  if (cfVisitor) {
+    try {
+      const parsed = JSON.parse(cfVisitor) as { scheme?: string };
+      if (parsed.scheme === "http" || parsed.scheme === "https") {
+        return parsed.scheme;
+      }
+    } catch {
+      // ignore malformed cf-visitor header
+    }
+  }
+
+  return request.nextUrl.protocol.replace(":", "");
+}
+
+function getPublicBaseUrl(request: NextRequest) {
+  const protocol = getRequestProtocol(request);
+  const forwardedHost = request.headers.get("x-forwarded-host")?.trim();
+  const host = forwardedHost || request.headers.get("host")?.trim() || request.nextUrl.host;
+  return `${protocol}://${host}`;
+}
+
+function buildWaitlistConfirmUrl(request: NextRequest, token: string) {
+  return new URL(`/waitlist/confirm?token=${encodeURIComponent(token)}`, getPublicBaseUrl(request)).toString();
+}
+
+function normalizeConfirmedPosition(row: Pick<WaitlistRow, "confirmed_position" | "waitlist_position">) {
+  return row.confirmed_position ?? row.waitlist_position ?? null;
+}
+
+function getEffectiveWaitlistStatus(row: Pick<WaitlistRow, "status">) {
+  return row.status === "pending" ? "pending" : "confirmed";
 }
 
 async function verifyTurnstileToken(token: string, remoteIp: string | null) {
@@ -99,70 +155,118 @@ async function verifyTurnstileToken(token: string, remoteIp: string | null) {
   return { ok: true } as const;
 }
 
-async function resolveWaitlistPosition(
-  supabaseServer: Awaited<ReturnType<typeof createSupabaseServiceRoleClientAsync>>,
-  insertedId: string,
-  currentPosition: number | null
-) {
-  const rowsResult = await supabaseServer
-    .from("waitlist")
-    .select("id, waitlist_position")
-    .order("waitlist_position", { ascending: true })
-    .order("id", { ascending: true });
+async function sendPendingConfirmationEmail(params: {
+  supabaseServer: SupabaseServerClient;
+  request: NextRequest;
+  email: string;
+  source: string;
+  campaign: string | null;
+  referrer: string;
+  device_type: string | null;
+  country: string | null;
+  existingPendingId?: string;
+  existingConfirmationToken?: string | null;
+}) {
+  const confirmationToken = params.existingPendingId
+    ? params.existingConfirmationToken || generateWaitlistConfirmationToken()
+    : generateWaitlistConfirmationToken();
+  const confirmationSentAt = new Date().toISOString();
+  const confirmUrl = buildWaitlistConfirmUrl(params.request, confirmationToken);
 
-  if (rowsResult.error) {
-    console.error("waitlist: position select failed", {
-      code: rowsResult.error.code,
-      message: rowsResult.error.message,
+  if (params.existingPendingId) {
+    const updateResult = await params.supabaseServer
+      .from("waitlist")
+      .update({
+        source: params.source,
+        campaign: params.campaign,
+        referrer: params.referrer,
+        device_type: params.device_type,
+        country: params.country,
+        confirmation_token: confirmationToken,
+        confirmation_sent_at: confirmationSentAt,
+      })
+      .eq("id", params.existingPendingId)
+      .eq("status", "pending")
+      .select("id")
+      .maybeSingle();
+
+    if (updateResult.error) {
+      console.error("waitlist: pending resend update failed", {
+        id: params.existingPendingId,
+        email: params.email,
+        code: updateResult.error.code,
+        message: updateResult.error.message,
+      });
+      return NextResponse.json({ status: "error", message: "service_unavailable" }, { status: 503 });
+    }
+
+    if (!updateResult.data?.id) {
+      console.error("waitlist: pending resend lost pending state", {
+        id: params.existingPendingId,
+        email: params.email,
+      });
+      return NextResponse.json({ status: "error", message: "service_unavailable" }, { status: 503 });
+    }
+  } else {
+    const insertResult = await params.supabaseServer
+      .from("waitlist")
+      .insert({
+        email: params.email,
+        source: params.source,
+        campaign: params.campaign,
+        referrer: params.referrer,
+        device_type: params.device_type,
+        country: params.country,
+        status: "pending",
+        confirmation_token: confirmationToken,
+        confirmation_sent_at: confirmationSentAt,
+      })
+      .select("id")
+      .single();
+
+    if (insertResult.error) {
+      if (insertResult.error.code === "23505") {
+        return null;
+      }
+
+      console.error("waitlist: pending insert failed", {
+        email: params.email,
+        code: insertResult.error.code,
+        message: insertResult.error.message,
+      });
+      return NextResponse.json({ status: "error", message: "service_unavailable" }, { status: 503 });
+    }
+  }
+
+  const mailResult = await sendWaitlistDoiEmail({
+    waitlistEmail: params.email,
+    confirmUrl,
+  });
+
+  if (!mailResult.ok) {
+    console.error("waitlist: pending entry stored but confirmation mail failed", {
+      email: params.email,
+      pendingId: params.existingPendingId ?? null,
+      reason: mailResult.reason,
     });
-    return currentPosition;
+
+    return NextResponse.json(
+      {
+        status: "error",
+        message: "confirmation_mail_failed",
+      },
+      { status: 503 }
+    );
   }
 
-  const rows = (rowsResult.data ?? []) as WaitlistPositionRow[];
-  let targetPosition = 1;
-
-  for (const row of rows) {
-    if (row.id === insertedId) {
-      continue;
-    }
-
-    if (typeof row.waitlist_position !== "number" || row.waitlist_position < targetPosition) {
-      continue;
-    }
-
-    if (row.waitlist_position === targetPosition) {
-      targetPosition += 1;
-      continue;
-    }
-
-    break;
-  }
-
-  if (currentPosition === targetPosition) {
-    return currentPosition;
-  }
-
-  const updateResult = await supabaseServer
-    .from("waitlist")
-    .update({ waitlist_position: targetPosition })
-    .eq("id", insertedId);
-
-  if (updateResult.error) {
-    console.error("waitlist: position update failed", {
-      id: insertedId,
-      target: targetPosition,
-      code: updateResult.error.code,
-      message: updateResult.error.message,
-    });
-    return currentPosition;
-  }
-
-  return targetPosition;
+  return NextResponse.json({
+    status: "pending_confirmation",
+  });
 }
 
 export async function POST(request: NextRequest) {
   let body: WaitlistBody;
-  let supabaseServer: Awaited<ReturnType<typeof createSupabaseServiceRoleClientAsync>>;
+  let supabaseServer: SupabaseServerClient;
 
   try {
     supabaseServer = await createSupabaseServiceRoleClientAsync();
@@ -216,112 +320,139 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const source = normalizeText(body.source, 120) || "direct";
-  const campaign = normalizeText(body.campaign, 160);
-  const referrer = normalizeText(body.referrer, 1024) || "direct";
-  const deviceType = normalizeText(body.device_type, 32);
-  const country = normalizeCountry(body.country);
+  const submission: PendingSubmissionPayload = {
+    email,
+    source: normalizeText(body.source, 120) || "direct",
+    campaign: normalizeText(body.campaign, 160),
+    referrer: normalizeText(body.referrer, 1024) || "direct",
+    device_type: normalizeText(body.device_type, 32),
+    country: normalizeCountry(body.country),
+  };
 
-  const existingBeforeInsert = await supabaseServer
+  const existingResult = await supabaseServer
     .from("waitlist")
-    .select("id, waitlist_position")
+    .select("id, email, status, confirmation_token, confirmed_position, waitlist_position")
     .eq("email", email)
     .maybeSingle();
 
-  if (existingBeforeInsert.error) {
+  if (existingResult.error) {
     console.error("waitlist: existing lookup failed", {
-      code: existingBeforeInsert.error.code,
-      message: existingBeforeInsert.error.message,
+      email,
+      code: existingResult.error.code,
+      message: existingResult.error.message,
     });
     return NextResponse.json({ status: "error", message: "service_unavailable" }, { status: 503 });
   }
 
-  if (existingBeforeInsert.data?.id) {
-    return NextResponse.json({
-      status: "already_registered",
-      waitlist_position: existingBeforeInsert.data.waitlist_position ?? null,
-    });
-  }
+  if (existingResult.data?.id) {
+    const existingRow = existingResult.data as WaitlistRow;
+    const existingStatus = getEffectiveWaitlistStatus(existingRow);
 
-  const insertResult = await supabaseServer
-    .from("waitlist")
-    .insert({
-      email,
-      source,
-      campaign,
-      referrer,
-      device_type: deviceType,
-      country,
-    })
-    .select("id, waitlist_position")
-    .single();
-
-  if (insertResult.error) {
-    if (insertResult.error.code === "23505") {
-      const existing = await supabaseServer
-        .from("waitlist")
-        .select("waitlist_position")
-        .eq("email", email)
-        .maybeSingle();
-
+    if (existingStatus === "confirmed") {
       return NextResponse.json({
         status: "already_registered",
-        waitlist_position: existing.data?.waitlist_position ?? null,
+        waitlist_position: normalizeConfirmedPosition(existingRow),
       });
     }
 
-    console.error("waitlist: insert failed", {
-      code: insertResult.error.code,
-      message: insertResult.error.message,
+    const pendingResponse = await sendPendingConfirmationEmail({
+      supabaseServer,
+      request,
+      existingPendingId: existingRow.id,
+      existingConfirmationToken: existingRow.confirmation_token,
+      ...submission,
+    });
+
+    if (pendingResponse) {
+      return pendingResponse;
+    }
+
+    const refreshedResult = await supabaseServer
+      .from("waitlist")
+      .select("id, email, status, confirmation_token, confirmed_position, waitlist_position")
+      .eq("email", email)
+      .maybeSingle();
+
+    if (refreshedResult.error) {
+      console.error("waitlist: existing refresh failed", {
+        email,
+        code: refreshedResult.error.code,
+        message: refreshedResult.error.message,
+      });
+      return NextResponse.json({ status: "error", message: "service_unavailable" }, { status: 503 });
+    }
+
+    if (refreshedResult.data?.id) {
+      const refreshedRow = refreshedResult.data as WaitlistRow;
+      const refreshedStatus = getEffectiveWaitlistStatus(refreshedRow);
+
+      if (refreshedStatus === "confirmed") {
+        return NextResponse.json({
+          status: "already_registered",
+          waitlist_position: normalizeConfirmedPosition(refreshedRow),
+        });
+      }
+
+      return NextResponse.json(
+        {
+          status: "error",
+          message: "service_unavailable",
+        },
+        { status: 503 }
+      );
+    }
+
+    return NextResponse.json({ status: "error", message: "service_unavailable" }, { status: 503 });
+  }
+
+  const pendingResponse = await sendPendingConfirmationEmail({
+    supabaseServer,
+    request,
+    ...submission,
+  });
+
+  if (pendingResponse) {
+    return pendingResponse;
+  }
+
+  const duplicateAfterInsertResult = await supabaseServer
+    .from("waitlist")
+    .select("id, email, status, confirmation_token, confirmed_position, waitlist_position")
+    .eq("email", email)
+    .maybeSingle();
+
+  if (duplicateAfterInsertResult.error) {
+    console.error("waitlist: duplicate recovery lookup failed", {
+      email,
+      code: duplicateAfterInsertResult.error.code,
+      message: duplicateAfterInsertResult.error.message,
     });
     return NextResponse.json({ status: "error", message: "service_unavailable" }, { status: 503 });
   }
 
-  const resolvedPosition = insertResult.data?.id
-    ? await resolveWaitlistPosition(
-        supabaseServer,
-        insertResult.data.id,
-        insertResult.data.waitlist_position ?? null
-      )
-    : null;
+  if (duplicateAfterInsertResult.data?.id) {
+    const duplicateRow = duplicateAfterInsertResult.data as WaitlistRow;
+    const duplicateStatus = getEffectiveWaitlistStatus(duplicateRow);
 
-  const finalPosition = resolvedPosition ?? insertResult.data?.waitlist_position ?? null;
-  const receivedAt = new Date().toISOString();
+    if (duplicateStatus === "confirmed") {
+      return NextResponse.json({
+        status: "already_registered",
+        waitlist_position: normalizeConfirmedPosition(duplicateRow),
+      });
+    }
 
-  const mailResult = await sendWaitlistAdminEmail({
-    waitlistEmail: email,
-    waitlistPosition: finalPosition,
-    receivedAt,
-  });
-
-  if (!mailResult.ok) {
-    console.error("waitlist: insert succeeded but admin mail failed", {
-      insertedId: insertResult.data?.id ?? null,
-      email,
-      waitlistPosition: finalPosition,
-      receivedAt,
-      reason: mailResult.reason,
+    const resendResponse = await sendPendingConfirmationEmail({
+      supabaseServer,
+      request,
+      existingPendingId: duplicateRow.id,
+      existingConfirmationToken: duplicateRow.confirmation_token,
+      ...submission,
     });
+
+    if (resendResponse) {
+      return resendResponse;
+    }
   }
 
-  const confirmationMailResult = await sendWaitlistConfirmationEmail({
-    waitlistEmail: email,
-    waitlistPosition: finalPosition,
-    receivedAt,
-  });
-
-  if (!confirmationMailResult.ok) {
-    console.error("waitlist: insert succeeded but confirmation mail failed", {
-      insertedId: insertResult.data?.id ?? null,
-      email,
-      waitlistPosition: finalPosition,
-      receivedAt,
-      reason: confirmationMailResult.reason,
-    });
-  }
-
-  return NextResponse.json({
-    status: "ok",
-    waitlist_position: finalPosition,
-  });
+  return NextResponse.json({ status: "error", message: "service_unavailable" }, { status: 503 });
 }

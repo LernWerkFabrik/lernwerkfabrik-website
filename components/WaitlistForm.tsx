@@ -7,10 +7,11 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/i;
-const TURNSTILE_SCRIPT_SRC = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+const TURNSTILE_SCRIPT_SRC =
+  "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
 
 type WaitlistApiResponse = {
-  status?: "ok" | "already_registered" | "error";
+  status?: "ok" | "pending_confirmation" | "already_registered" | "error";
   waitlist_position?: number | null;
   message?: string;
 };
@@ -91,7 +92,10 @@ function getCookie(name: string): string | null {
 function detectDeviceType(userAgent: string): "mobile" | "tablet" | "desktop" {
   const ua = userAgent.toLowerCase();
 
-  if (/ipad|tablet|playbook|silk|kindle/.test(ua) || (/android/.test(ua) && !/mobile/.test(ua))) {
+  if (
+    /ipad|tablet|playbook|silk|kindle/.test(ua) ||
+    (/android/.test(ua) && !/mobile/.test(ua))
+  ) {
     return "tablet";
   }
   if (/mobi|iphone|ipod|android/.test(ua)) {
@@ -116,36 +120,12 @@ function readCampaignFromUrl(): string | null {
   return campaign || null;
 }
 
-function buildSuccessMessage(position: number | null | undefined) {
-  if (typeof position === "number" && Number.isFinite(position) && position > 0) {
-    if (position <= 20) {
-      return `Du bist auf der Warteliste (Platz #${position}). Early Access startet bald.`;
-    }
-
-    if (position <= 100) {
-      return "Du bist unter den ersten 100 auf der Warteliste. Wir informieren dich zum Launch.";
-    }
-
-    return "Du bist auf der Warteliste! Wir informieren dich zum Launch.";
-  }
-
-  return "Du bist auf der Warteliste! Wir informieren dich zum Launch.";
+function buildPendingConfirmationMessage() {
+  return "Fast geschafft - bitte bestätige jetzt noch kurz deine E-Mail-Adresse. Wir haben dir gerade einen Bestätigungslink geschickt.";
 }
 
-function buildAlreadyRegisteredMessage(position: number | null | undefined) {
-  if (typeof position === "number" && Number.isFinite(position) && position > 0) {
-    if (position <= 20) {
-      return `Du bist schon eingetragen (Platz #${position}).`;
-    }
-
-    if (position <= 100) {
-      return "Du bist bereits unter den ersten 100 auf der Warteliste.";
-    }
-
-    return "Du bist bereits auf der Warteliste.";
-  }
-
-  return "Du bist bereits auf der Warteliste.";
+function buildAlreadyRegisteredMessage() {
+  return "Du bist bereits bestätigt und auf der Warteliste.";
 }
 
 function mapApiError(payload: WaitlistApiResponse, statusCode: number) {
@@ -157,6 +137,10 @@ function mapApiError(payload: WaitlistApiResponse, statusCode: number) {
 
   if (reason === "missing_turnstile_token") {
     return "Bitte bestätige kurz, dass du kein Bot bist.";
+  }
+
+  if (reason === "confirmation_mail_failed") {
+    return "Wir konnten die Bestätigungs-Mail gerade nicht senden. Bitte versuche es gleich noch einmal.";
   }
 
   if (reason === "service_unavailable") {
@@ -269,13 +253,13 @@ export default function WaitlistForm({
 
         if (payload.status === "already_registered") {
           setState("already");
-          setMessage(buildAlreadyRegisteredMessage(payload.waitlist_position));
+          setMessage(buildAlreadyRegisteredMessage());
           return;
         }
 
-        if (payload.status === "ok") {
+        if (payload.status === "pending_confirmation" || payload.status === "ok") {
           setState("success");
-          setMessage(buildSuccessMessage(payload.waitlist_position));
+          setMessage(buildPendingConfirmationMessage());
           setEmail("");
           return;
         }
@@ -305,7 +289,14 @@ export default function WaitlistForm({
 
     ensureTurnstileScript()
       .then(() => {
-        if (cancelled || !window.turnstile || !widgetContainerRef.current || widgetIdRef.current) return;
+        if (
+          cancelled ||
+          !window.turnstile ||
+          !widgetContainerRef.current ||
+          widgetIdRef.current
+        ) {
+          return;
+        }
 
         widgetIdRef.current = window.turnstile.render(widgetContainerRef.current, {
           sitekey: siteKey,
@@ -394,7 +385,9 @@ export default function WaitlistForm({
     const source = readSourceFromUrl();
     const campaign = readCampaignFromUrl();
     const referrer =
-      typeof document !== "undefined" && document.referrer.trim() ? document.referrer.trim() : "direct";
+      typeof document !== "undefined" && document.referrer.trim()
+        ? document.referrer.trim()
+        : "direct";
     const deviceType =
       typeof navigator !== "undefined" ? detectDeviceType(navigator.userAgent || "") : "desktop";
     const country = getCookie("lw_country");
@@ -433,7 +426,7 @@ export default function WaitlistForm({
           placeholder="name@beispiel.de"
           className={cn("h-11 rounded-full md:w-[20rem] md:min-w-0", inputClassName)}
           aria-label="E-Mail für Warteliste"
-          pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+          pattern="^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
         />
         <Button
           type="submit"
@@ -447,8 +440,8 @@ export default function WaitlistForm({
       <p className="text-center text-[0.78rem] leading-tight text-muted-foreground/90 md:text-left">
         {helperText ?? (
           <>
-            Die Plattform startet bald. Sichere dir jetzt deinen Platz auf der Warteliste. Wir informieren dich zum Launch,{" "}
-            <span className="whitespace-nowrap">ohne Spam.</span>
+            Die Plattform startet bald. Sichere dir jetzt deinen Platz auf der Warteliste. Wir
+            informieren dich zum Launch, <span className="whitespace-nowrap">ohne Spam.</span>
           </>
         )}
       </p>
