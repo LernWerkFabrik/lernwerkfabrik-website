@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { sendWaitlistAdminEmail } from "@/lib/resend/server";
+import { sendWaitlistAdminEmail, sendWaitlistConfirmationEmail } from "@/lib/resend/server";
 import { createSupabaseServiceRoleClientAsync } from "@/lib/supabase/server";
 import { getTurnstileSecretKeyServerAsync } from "@/lib/turnstile/server";
 
@@ -301,6 +301,22 @@ export async function POST(request: NextRequest) {
       waitlistPosition: finalPosition,
       receivedAt,
       reason: mailResult.reason,
+    });
+  }
+
+  const confirmationMailResult = await sendWaitlistConfirmationEmail({
+    waitlistEmail: email,
+    waitlistPosition: finalPosition,
+    receivedAt,
+  });
+
+  if (!confirmationMailResult.ok) {
+    console.error("waitlist: insert succeeded but confirmation mail failed", {
+      insertedId: insertResult.data?.id ?? null,
+      email,
+      waitlistPosition: finalPosition,
+      receivedAt,
+      reason: confirmationMailResult.reason,
     });
   }
 
