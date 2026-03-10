@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import WaitlistConfirmedTracker from "./WaitlistConfirmedTracker";
+
 export const metadata: Metadata = {
   title: "Warteliste bestätigt | LernWerkFabrik",
   description: "Bestätigung der Wartelisten-Anmeldung bei LernWerkFabrik.",
@@ -76,6 +78,8 @@ export default async function WaitlistConfirmedPage({
   return (
     <main className="mx-auto flex min-h-[calc(100vh-10rem)] w-full max-w-3xl items-center px-4 py-10 md:px-6">
       <section className="w-full rounded-3xl border bg-background/70 p-6 shadow-sm backdrop-blur md:p-8">
+        <WaitlistConfirmedTracker status={normalizedStatus} />
+
         <div className="space-y-4">
           <StatusContent status={normalizedStatus} />
 

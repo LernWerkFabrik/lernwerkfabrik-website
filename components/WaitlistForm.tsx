@@ -4,6 +4,7 @@ import * as React from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { captureWaitlistEvent } from "@/lib/posthog";
 import { cn } from "@/lib/utils";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/i;
@@ -14,6 +15,8 @@ type WaitlistApiResponse = {
   status?: "ok" | "pending_confirmation" | "already_registered" | "error";
   waitlist_position?: number | null;
   message?: string;
+  duplicate?: boolean;
+  duplicate_status?: "pending" | "confirmed";
 };
 
 type TurnstileRenderOptions = {
@@ -167,7 +170,7 @@ export default function WaitlistForm({
   const pendingSubmissionRef = React.useRef<PendingSubmission | null>(null);
 
   const [email, setEmail] = React.useState("");
-  const [turnstileToken, setTurnstileToken] = React.useState("");
+  const [, setTurnstileToken] = React.useState("");
   const [turnstileStatus, setTurnstileStatus] = React.useState<"loading" | "ready" | "error">(
     siteKey ? "loading" : "error"
   );
@@ -246,18 +249,33 @@ export default function WaitlistForm({
         }
 
         if (!response.ok) {
+          if (payload.duplicate) {
+            captureWaitlistEvent("waitlist_duplicate_email", {
+              status: payload.duplicate_status ?? "pending",
+            });
+          }
           setState("error");
           setMessage(mapApiError(payload, response.status));
           return;
         }
 
         if (payload.status === "already_registered") {
+          captureWaitlistEvent("waitlist_duplicate_email", {
+            status: payload.duplicate_status ?? "confirmed",
+          });
           setState("already");
           setMessage(buildAlreadyRegisteredMessage());
           return;
         }
 
         if (payload.status === "pending_confirmation" || payload.status === "ok") {
+          if (payload.duplicate) {
+            captureWaitlistEvent("waitlist_duplicate_email", {
+              status: payload.duplicate_status ?? "pending",
+            });
+          } else {
+            captureWaitlistEvent("waitlist_submit_success");
+          }
           setState("success");
           setMessage(buildPendingConfirmationMessage());
           setEmail("");

@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import * as React from "react";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import WaitlistForm from "@/components/WaitlistForm";
+import { captureWaitlistEvent } from "@/lib/posthog";
 import {
   BookOpen,
   Brain,
@@ -247,6 +247,10 @@ export default function HomeClient() {
   const unresolvedLayout = layoutMode === "unknown";
   const heroBadgeClass =
     "rounded-full border-amber-300/60 bg-amber-50/80 text-amber-900 shadow-[0_6px_14px_-12px_rgba(180,83,9,0.36),inset_0_1px_0_rgba(255,255,255,0.72)] hover:-translate-y-0.5 hover:bg-amber-50/90 hover:shadow-[0_9px_16px_-12px_rgba(180,83,9,0.4),inset_0_1px_0_rgba(255,255,255,0.78)] dark:border-amber-200/14 dark:bg-amber-200/5 dark:text-amber-100/70 dark:shadow-[0_2px_6px_-10px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.02)] dark:hover:bg-amber-200/8 dark:hover:shadow-[0_3px_8px_-10px_rgba(0,0,0,0.48),inset_0_1px_0_rgba(255,255,255,0.03)] md:min-w-[13.5rem] md:justify-center md:px-5 md:py-1.5 md:text-sm max-md:shrink-0 max-md:whitespace-nowrap max-md:px-2 max-md:py-px max-md:text-xs";
+
+  React.useEffect(() => {
+    captureWaitlistEvent("waitlist_page_view");
+  }, []);
 
   return (
     <div className="lp-home relative overflow-visible md:overflow-hidden">

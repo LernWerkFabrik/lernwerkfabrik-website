@@ -42,6 +42,28 @@ type PendingSubmissionPayload = {
 
 type SupabaseServerClient = Awaited<ReturnType<typeof createSupabaseServiceRoleClientAsync>>;
 
+function buildPendingDuplicateMeta(isDuplicate: boolean) {
+  if (!isDuplicate) {
+    return {};
+  }
+
+  return {
+    duplicate: true,
+    duplicate_status: "pending" as const,
+  };
+}
+
+function buildAlreadyRegisteredResponse(
+  row: Pick<WaitlistRow, "confirmed_position" | "waitlist_position">
+) {
+  return NextResponse.json({
+    status: "already_registered",
+    waitlist_position: normalizeConfirmedPosition(row),
+    duplicate: true,
+    duplicate_status: "confirmed" as const,
+  });
+}
+
 function normalizeEmail(value: unknown): string {
   if (typeof value !== "string") return "";
   return value.trim().toLowerCase();
@@ -166,6 +188,7 @@ async function sendPendingConfirmationEmail(params: {
   country: string | null;
   existingPendingId?: string;
   existingConfirmationToken?: string | null;
+  isDuplicate?: boolean;
 }) {
   const confirmationToken = params.existingPendingId
     ? params.existingConfirmationToken || generateWaitlistConfirmationToken()
@@ -197,7 +220,14 @@ async function sendPendingConfirmationEmail(params: {
         code: updateResult.error.code,
         message: updateResult.error.message,
       });
-      return NextResponse.json({ status: "error", message: "service_unavailable" }, { status: 503 });
+      return NextResponse.json(
+        {
+          status: "error",
+          message: "service_unavailable",
+          ...buildPendingDuplicateMeta(Boolean(params.isDuplicate)),
+        },
+        { status: 503 }
+      );
     }
 
     if (!updateResult.data?.id) {
@@ -205,7 +235,14 @@ async function sendPendingConfirmationEmail(params: {
         id: params.existingPendingId,
         email: params.email,
       });
-      return NextResponse.json({ status: "error", message: "service_unavailable" }, { status: 503 });
+      return NextResponse.json(
+        {
+          status: "error",
+          message: "service_unavailable",
+          ...buildPendingDuplicateMeta(Boolean(params.isDuplicate)),
+        },
+        { status: 503 }
+      );
     }
   } else {
     const insertResult = await params.supabaseServer
@@ -254,6 +291,7 @@ async function sendPendingConfirmationEmail(params: {
       {
         status: "error",
         message: "confirmation_mail_failed",
+        ...buildPendingDuplicateMeta(Boolean(params.isDuplicate)),
       },
       { status: 503 }
     );
@@ -261,6 +299,7 @@ async function sendPendingConfirmationEmail(params: {
 
   return NextResponse.json({
     status: "pending_confirmation",
+    ...buildPendingDuplicateMeta(Boolean(params.isDuplicate)),
   });
 }
 
@@ -349,10 +388,7 @@ export async function POST(request: NextRequest) {
     const existingStatus = getEffectiveWaitlistStatus(existingRow);
 
     if (existingStatus === "confirmed") {
-      return NextResponse.json({
-        status: "already_registered",
-        waitlist_position: normalizeConfirmedPosition(existingRow),
-      });
+      return buildAlreadyRegisteredResponse(existingRow);
     }
 
     const pendingResponse = await sendPendingConfirmationEmail({
@@ -360,6 +396,7 @@ export async function POST(request: NextRequest) {
       request,
       existingPendingId: existingRow.id,
       existingConfirmationToken: existingRow.confirmation_token,
+      isDuplicate: true,
       ...submission,
     });
 
@@ -387,10 +424,7 @@ export async function POST(request: NextRequest) {
       const refreshedStatus = getEffectiveWaitlistStatus(refreshedRow);
 
       if (refreshedStatus === "confirmed") {
-        return NextResponse.json({
-          status: "already_registered",
-          waitlist_position: normalizeConfirmedPosition(refreshedRow),
-        });
+        return buildAlreadyRegisteredResponse(refreshedRow);
       }
 
       return NextResponse.json(
@@ -435,10 +469,7 @@ export async function POST(request: NextRequest) {
     const duplicateStatus = getEffectiveWaitlistStatus(duplicateRow);
 
     if (duplicateStatus === "confirmed") {
-      return NextResponse.json({
-        status: "already_registered",
-        waitlist_position: normalizeConfirmedPosition(duplicateRow),
-      });
+      return buildAlreadyRegisteredResponse(duplicateRow);
     }
 
     const resendResponse = await sendPendingConfirmationEmail({
@@ -446,6 +477,7 @@ export async function POST(request: NextRequest) {
       request,
       existingPendingId: duplicateRow.id,
       existingConfirmationToken: duplicateRow.confirmation_token,
+      isDuplicate: true,
       ...submission,
     });
 
