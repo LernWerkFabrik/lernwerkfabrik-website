@@ -95,19 +95,13 @@ function renderWaitlistAdminHtml(params: {
 function renderWaitlistConfirmationHtml(params: {
   waitlistPosition: number | null;
 }) {
-  const waitlistPosition =
-    typeof params.waitlistPosition === "number"
-      ? `<p>Du bist aktuell auf Platz ${params.waitlistPosition}.</p>`
-      : "";
-
   return [
     "<div>",
     "<p>Hallo,</p>",
     "<p>deine Anmeldung zur Warteliste von LernWerkFabrik war erfolgreich.</p>",
-    waitlistPosition,
+    "<p>Vielen Dank f?r dein Interesse. Wir informieren dich, sobald der Start bevorsteht und es Neuigkeiten gibt.</p>",
     "<p>Zum Launch erhalten die ersten 100 einen reduzierten Preis.</p>",
-    "<p>Wir informieren dich, sobald es losgeht und es Neuigkeiten gibt.</p>",
-    "<p>Viele Grüße<br />LernWerkFabrik</p>",
+    "<p>Viele Gr??e<br />LernWerkFabrik</p>",
     "</div>",
   ].join("");
 }
@@ -119,19 +113,12 @@ function renderWaitlistConfirmationText(params: {
     "Hallo,",
     "",
     "deine Anmeldung zur Warteliste von LernWerkFabrik war erfolgreich.",
-  ];
-
-  if (typeof params.waitlistPosition === "number") {
-    lines.push(`Du bist aktuell auf Platz ${params.waitlistPosition}.`);
-  }
-
-  lines.push(
+    "Vielen Dank f?r dein Interesse. Wir informieren dich, sobald der Start bevorsteht und es Neuigkeiten gibt.",
     "Zum Launch erhalten die ersten 100 einen reduzierten Preis.",
-    "Wir informieren dich, sobald es losgeht und es Neuigkeiten gibt.",
     "",
-    "Viele Grüße",
-    "LernWerkFabrik"
-  );
+    "Viele Gr??e",
+    "LernWerkFabrik",
+  ];
 
   return lines.join("\n");
 }
