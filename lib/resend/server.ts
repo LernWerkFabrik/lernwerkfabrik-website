@@ -5,9 +5,8 @@ import { Resend } from "resend";
 import { getWorkerRuntimeEnvAsync } from "@/lib/cloudflare/env";
 
 const RESEND_FROM_EMAIL = "waitlist@mail.lernwerkfabrik.de";
-const WAITLIST_TEST_RECIPIENT = "admin@lernwerkfabrik.de";
-const WAITLIST_TEST_SUBJECT = "Testmail LernWerkFabrik";
-const WAITLIST_TEST_HTML = "<p>Resend mit eigener Domain funktioniert.</p>";
+const WAITLIST_ADMIN_RECIPIENT = "admin@lernwerkfabrik.de";
+const WAITLIST_ADMIN_SUBJECT = "Neue Wartelisten-Anmeldung";
 
 type ResendEnvSource = "cloudflare_binding" | "process_env" | "missing";
 
@@ -60,9 +59,41 @@ async function getResendApiKeyAsync(): Promise<ResendApiKeyResolution> {
   };
 }
 
-export async function sendWaitlistEmail(params: {
+function escapeHtml(value: string) {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+function renderWaitlistAdminHtml(params: {
   waitlistEmail: string;
   waitlistPosition: number | null;
+  receivedAt: string;
+}) {
+  const email = escapeHtml(params.waitlistEmail);
+  const receivedAt = escapeHtml(params.receivedAt);
+  const waitlistPosition =
+    typeof params.waitlistPosition === "number"
+      ? `<p><strong>Wartelisten-Platz:</strong> ${params.waitlistPosition}</p>`
+      : "";
+
+  return [
+    "<div>",
+    "<p>Neue Wartelisten-Anmeldung auf LernWerkFabrik</p>",
+    `<p><strong>E-Mail:</strong> ${email}</p>`,
+    waitlistPosition,
+    `<p><strong>Zeitstempel:</strong> ${receivedAt}</p>`,
+    "</div>",
+  ].join("");
+}
+
+export async function sendWaitlistAdminEmail(params: {
+  waitlistEmail: string;
+  waitlistPosition: number | null;
+  receivedAt: string;
 }) {
   const apiKey = await getResendApiKeyAsync();
   if (!apiKey.value) {
@@ -76,16 +107,18 @@ export async function sendWaitlistEmail(params: {
     const resend = new Resend(apiKey.value);
     const response = await resend.emails.send({
       from: RESEND_FROM_EMAIL,
-      to: WAITLIST_TEST_RECIPIENT,
-      subject: WAITLIST_TEST_SUBJECT,
-      html: WAITLIST_TEST_HTML,
+      to: WAITLIST_ADMIN_RECIPIENT,
+      replyTo: WAITLIST_ADMIN_RECIPIENT,
+      subject: WAITLIST_ADMIN_SUBJECT,
+      html: renderWaitlistAdminHtml(params),
     });
 
     if (response.error) {
-      console.error("waitlist: resend send failed", {
+      console.error("waitlist: admin mail send failed", {
         source: apiKey.source,
         waitlistEmail: params.waitlistEmail,
         waitlistPosition: params.waitlistPosition,
+        receivedAt: params.receivedAt,
         name: response.error.name,
         message: response.error.message,
       });
@@ -97,10 +130,11 @@ export async function sendWaitlistEmail(params: {
       id: response.data?.id ?? null,
     };
   } catch (error) {
-    console.error("waitlist: resend request failed", {
+    console.error("waitlist: admin mail request failed", {
       source: apiKey.source,
       waitlistEmail: params.waitlistEmail,
       waitlistPosition: params.waitlistPosition,
+      receivedAt: params.receivedAt,
       message: error instanceof Error ? error.message : "unknown_error",
     });
     return { ok: false as const, reason: "resend_request_failed" as const };

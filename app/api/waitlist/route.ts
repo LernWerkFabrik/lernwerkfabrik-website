@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { sendWaitlistEmail } from "@/lib/resend/server";
+import { sendWaitlistAdminEmail } from "@/lib/resend/server";
 import { createSupabaseServiceRoleClientAsync } from "@/lib/supabase/server";
 import { getTurnstileSecretKeyServerAsync } from "@/lib/turnstile/server";
 
@@ -286,16 +286,20 @@ export async function POST(request: NextRequest) {
     : null;
 
   const finalPosition = resolvedPosition ?? insertResult.data?.waitlist_position ?? null;
+  const receivedAt = new Date().toISOString();
 
-  const mailResult = await sendWaitlistEmail({
+  const mailResult = await sendWaitlistAdminEmail({
     waitlistEmail: email,
     waitlistPosition: finalPosition,
+    receivedAt,
   });
 
   if (!mailResult.ok) {
-    console.error("waitlist: resend mail skipped", {
+    console.error("waitlist: insert succeeded but admin mail failed", {
+      insertedId: insertResult.data?.id ?? null,
       email,
       waitlistPosition: finalPosition,
+      receivedAt,
       reason: mailResult.reason,
     });
   }
