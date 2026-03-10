@@ -5,6 +5,7 @@ import "katex/dist/katex.min.css";
 
 import BrandHeader from "./BrandHeader";
 import MobilePlatformHead from "./MobilePlatformHead";
+import PostHogPublicEnvScript from "./PostHogPublicEnvScript";
 import RouteAwareFooter from "./RouteAwareFooter";
 import ScrollRestoration, { ScrollRestorationHead } from "./ScrollRestoration";
 import { THEME_HEAD_SCRIPT, THEME_STORAGE_KEY } from "./theme-config";
@@ -79,6 +80,7 @@ export default function RootLayout({
           suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: THEME_HEAD_SCRIPT }}
         />
+        <PostHogPublicEnvScript />
         <MobilePlatformHead />
         <ScrollRestorationHead />
       </head>

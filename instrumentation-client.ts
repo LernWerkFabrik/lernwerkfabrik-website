@@ -1,11 +1,10 @@
 import posthog from "posthog-js";
 
-import { setPostHogEnabled } from "@/lib/posthog";
-
-const postHogKey = process.env.NEXT_PUBLIC_POSTHOG_KEY?.trim();
-const postHogHost = process.env.NEXT_PUBLIC_POSTHOG_HOST?.trim();
+import { readPostHogPublicConfig, setPostHogEnabled } from "@/lib/posthog";
 
 if (typeof window !== "undefined") {
+  const { key: postHogKey, host: postHogHost } = readPostHogPublicConfig();
+
   if (postHogKey && postHogHost) {
     try {
       posthog.init(postHogKey, {

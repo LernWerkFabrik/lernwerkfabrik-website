@@ -6,12 +6,35 @@ export type WaitlistEventName =
   | "waitlist_duplicate_email"
   | "waitlist_doi_confirmed";
 
+type PublicPostHogEnv = {
+  NEXT_PUBLIC_POSTHOG_HOST?: string;
+  NEXT_PUBLIC_POSTHOG_KEY?: string;
+};
+
 type WaitlistEventProperties = Record<string, string | number | boolean | null | undefined>;
 
 declare global {
   interface Window {
+    __LWF_PUBLIC_ENV__?: PublicPostHogEnv;
     __lwfPostHogEnabled?: boolean;
   }
+}
+
+function normalizePublicValue(value: string | undefined) {
+  return typeof value === "string" ? value.trim() : "";
+}
+
+export function readPostHogPublicConfig() {
+  const runtimeEnv = typeof window !== "undefined" ? window.__LWF_PUBLIC_ENV__ : undefined;
+
+  return {
+    key:
+      normalizePublicValue(process.env.NEXT_PUBLIC_POSTHOG_KEY) ||
+      normalizePublicValue(runtimeEnv?.NEXT_PUBLIC_POSTHOG_KEY),
+    host:
+      normalizePublicValue(process.env.NEXT_PUBLIC_POSTHOG_HOST) ||
+      normalizePublicValue(runtimeEnv?.NEXT_PUBLIC_POSTHOG_HOST),
+  };
 }
 
 export function setPostHogEnabled(enabled: boolean) {
