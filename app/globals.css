@@ -231,6 +231,33 @@
           linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--background)) 100%);
         background-attachment: scroll;
       }
+
+      html[data-mobile-os="ios"] .lp-home .lp-mobile-panel,
+      html[data-mobile-os="ios"] .lp-home .lp-mobile-card {
+        contain: paint;
+        background-color: hsl(var(--background) / 0.88) !important;
+        box-shadow: 0 10px 24px -20px rgba(15, 23, 42, 0.28) !important;
+      }
+
+      html[data-mobile-os="ios"] .lp-home .lp-surface-overlay {
+        opacity: 0.72;
+      }
+
+      html[data-mobile-os="ios"] .lp-home .backdrop-blur,
+      html[data-mobile-os="ios"] .lp-home .backdrop-blur-sm,
+      html[data-mobile-os="ios"] .lp-home .backdrop-blur-md,
+      html[data-mobile-os="ios"] .lp-home .backdrop-blur-lg,
+      html[data-mobile-os="ios"] [data-scroll-header] .backdrop-blur,
+      html[data-mobile-os="ios"] [data-scroll-header] .backdrop-blur-sm,
+      html[data-mobile-os="ios"] [data-scroll-header] .backdrop-blur-md,
+      html[data-mobile-os="ios"] [data-scroll-header] .backdrop-blur-lg,
+      html[data-mobile-os="ios"] footer .backdrop-blur,
+      html[data-mobile-os="ios"] footer .backdrop-blur-sm,
+      html[data-mobile-os="ios"] footer .backdrop-blur-md,
+      html[data-mobile-os="ios"] footer .backdrop-blur-lg {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
     }
   }
 
