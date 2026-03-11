@@ -232,7 +232,7 @@
         background-attachment: scroll;
       }
 
-      html[data-mobile-os="ios"] .lp-home .lp-mobile-panel,
+      html[data-mobile-os="ios"] .lp-home .lp-mobile-panel.rounded-2xl.border,
       html[data-mobile-os="ios"] .lp-home .lp-mobile-card {
         contain: paint;
         background-color: hsl(var(--surface-1)) !important;
