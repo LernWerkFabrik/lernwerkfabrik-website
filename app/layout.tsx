@@ -22,6 +22,17 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://lernwerkfabrik.de"),
   title: seoTitle,
   description: seoDescription,
+  alternates: {
+    canonical: "./",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   icons: {
     icon: [
       { url: `/favicon-16x16.png?v=${ICON_VERSION}`, sizes: "16x16", type: "image/png" },
@@ -35,6 +46,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: seoTitle,
     description: seoDescription,
+    url: "https://lernwerkfabrik.de",
     type: "website",
     locale: "de_DE",
     siteName: "LernWerkFabrik",
