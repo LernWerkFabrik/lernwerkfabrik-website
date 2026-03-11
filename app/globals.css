@@ -232,7 +232,15 @@
         background-attachment: scroll;
       }
 
-      html[data-mobile-os="ios"] .lp-home .lp-mobile-panel.rounded-2xl.border,
+      html[data-mobile-os="ios"] .lp-home .lp-mobile-panel.rounded-2xl.border {
+        background-color: hsl(var(--surface-1)) !important;
+        background-image: linear-gradient(
+          180deg,
+          hsl(var(--surface-2)) 0%,
+          hsl(var(--background)) 100%
+        ) !important;
+      }
+
       html[data-mobile-os="ios"] .lp-home .lp-mobile-card {
         contain: paint;
         background-color: hsl(var(--surface-1)) !important;
@@ -244,7 +252,7 @@
         box-shadow: 0 10px 24px -20px rgba(15, 23, 42, 0.28) !important;
       }
 
-      html[data-mobile-os="ios"] .lp-home .lp-surface-overlay {
+      html[data-mobile-os="ios"] .lp-home .lp-mobile-card .lp-surface-overlay {
         opacity: 0.58;
       }
 
@@ -253,9 +261,9 @@
         background-color: hsl(var(--surface-1)) !important;
         background-image: linear-gradient(
           90deg,
-          hsl(212 22% 14%) 0%,
+          hsl(210 26% 16%) 0%,
           hsl(var(--surface-1)) 48%,
-          hsl(32 24% 14%) 100%
+          hsl(220 22% 13%) 100%
         ) !important;
       }
 
@@ -264,9 +272,9 @@
         background-color: hsl(var(--surface-1)) !important;
         background-image: linear-gradient(
           90deg,
-          hsl(208 18% 92%) 0%,
+          hsl(206 24% 92%) 0%,
           hsl(var(--surface-1)) 48%,
-          hsl(38 30% 91%) 100%
+          hsl(214 16% 90%) 100%
         ) !important;
       }
 
