@@ -223,12 +223,12 @@
 
   @supports (-webkit-touch-callout: none) {
     @media (max-width: 767px) {
-      .dark body.lp-bg {
+      html[data-mobile-os="ios"].dark body.lp-bg {
         background-color: hsl(var(--background));
-        background-image: url("/backgrounds/ios-mobile-glow.svg");
-        background-repeat: no-repeat;
-        background-size: 100% auto;
-        background-position: top center;
+        background-image:
+          radial-gradient(780px circle at 85% 24%, hsl(var(--accent-cool) / 0.16), transparent 54%),
+          radial-gradient(560px circle at 16% 8%, hsl(var(--primary) / 0.11), transparent 52%),
+          linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--background)) 100%);
         background-attachment: scroll;
       }
     }
@@ -503,21 +503,12 @@ main[data-scroll-root] {
 
 @supports (-webkit-touch-callout: none) {
   @media (max-width: 767px) {
-    html[data-scroll-active="1"] .lp-home .backdrop-blur,
-    html[data-scroll-active="1"] .lp-home .backdrop-blur-sm,
-    html[data-scroll-active="1"] .lp-home .backdrop-blur-md,
-    html[data-scroll-active="1"] .lp-home .backdrop-blur-lg {
+    html[data-mobile-os="ios"][data-scroll-active="1"] .lp-home .backdrop-blur,
+    html[data-mobile-os="ios"][data-scroll-active="1"] .lp-home .backdrop-blur-sm,
+    html[data-mobile-os="ios"][data-scroll-active="1"] .lp-home .backdrop-blur-md,
+    html[data-mobile-os="ios"][data-scroll-active="1"] .lp-home .backdrop-blur-lg {
       backdrop-filter: none !important;
       -webkit-backdrop-filter: none !important;
-    }
-
-    html[data-scroll-active="1"] .lp-home .lp-mobile-panel,
-    html[data-scroll-active="1"] .lp-home .lp-mobile-card {
-      box-shadow: none !important;
-    }
-
-    html[data-scroll-active="1"] .lp-home .lp-surface-overlay {
-      opacity: 0.12 !important;
     }
   }
 }

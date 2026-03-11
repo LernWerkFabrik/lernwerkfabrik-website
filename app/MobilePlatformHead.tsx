@@ -3,10 +3,13 @@ const mobilePlatformScript = String.raw`(() => {
     const ua = navigator.userAgent || "";
     const root = document.documentElement;
     const isAndroid = /Android/i.test(ua);
+    const isIos = /iPhone|iPad|iPod/i.test(ua);
     const isLanding = window.location.pathname === "/";
 
     if (isAndroid) {
       root.setAttribute("data-mobile-os", "android");
+    } else if (isIos) {
+      root.setAttribute("data-mobile-os", "ios");
     } else {
       root.removeAttribute("data-mobile-os");
     }
