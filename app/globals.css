@@ -205,21 +205,26 @@
     }
 
     html[data-mobile-os="android"] body.lp-bg {
-      background:
+      background-color: hsl(var(--background));
+      background-image:
         radial-gradient(
-          980px circle at 84% 30%,
-          hsl(var(--accent-cool) / 0.14) 0%,
-          hsl(var(--accent-cool) / 0.09) 28%,
-          hsl(var(--accent-cool) / 0.05) 46%,
-          transparent 74%
+          1120px circle at 82% 32%,
+          hsl(var(--accent-cool) / 0.11) 0%,
+          hsl(var(--accent-cool) / 0.07) 28%,
+          hsl(var(--accent-cool) / 0.035) 50%,
+          transparent 78%
         ),
         radial-gradient(
-          760px circle at 14% 12%,
-          hsl(var(--primary) / 0.055) 0%,
-          hsl(var(--primary) / 0.025) 30%,
-          transparent 66%
+          900px circle at 20% 4%,
+          hsl(210 34% 24% / 0.08) 0%,
+          transparent 64%
         ),
-        linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--background)) 100%);
+        linear-gradient(
+          180deg,
+          hsl(var(--background)) 0%,
+          hsl(222 24% 7%) 46%,
+          hsl(var(--background)) 100%
+        );
       background-attachment: scroll;
     }
 
