@@ -204,6 +204,25 @@
       background-attachment: scroll;
     }
 
+    html[data-mobile-os="android"] body.lp-bg {
+      background:
+        radial-gradient(
+          980px circle at 84% 30%,
+          hsl(var(--accent-cool) / 0.14) 0%,
+          hsl(var(--accent-cool) / 0.09) 28%,
+          hsl(var(--accent-cool) / 0.05) 46%,
+          transparent 74%
+        ),
+        radial-gradient(
+          760px circle at 14% 12%,
+          hsl(var(--primary) / 0.055) 0%,
+          hsl(var(--primary) / 0.025) 30%,
+          transparent 66%
+        ),
+        linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--background)) 100%);
+      background-attachment: scroll;
+    }
+
     body.lp-bg::before {
       display: none;
     }
