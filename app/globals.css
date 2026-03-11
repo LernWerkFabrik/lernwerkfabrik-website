@@ -235,12 +235,58 @@
       html[data-mobile-os="ios"] .lp-home .lp-mobile-panel,
       html[data-mobile-os="ios"] .lp-home .lp-mobile-card {
         contain: paint;
-        background-color: hsl(var(--background) / 0.88) !important;
+        background-color: hsl(var(--surface-1)) !important;
+        background-image: linear-gradient(
+          180deg,
+          hsl(var(--surface-2)) 0%,
+          hsl(var(--surface-1)) 100%
+        ) !important;
         box-shadow: 0 10px 24px -20px rgba(15, 23, 42, 0.28) !important;
       }
 
       html[data-mobile-os="ios"] .lp-home .lp-surface-overlay {
-        opacity: 0.72;
+        opacity: 0.58;
+      }
+
+      html[data-mobile-os="ios"] .lp-home .rounded-xl.border[class*="bg-gradient-to-r"],
+      html[data-mobile-os="ios"] .lp-home .rounded-2xl.border[class*="bg-gradient-to-r"] {
+        background-color: hsl(var(--surface-1)) !important;
+        background-image: linear-gradient(
+          90deg,
+          hsl(212 22% 14%) 0%,
+          hsl(var(--surface-1)) 48%,
+          hsl(32 24% 14%) 100%
+        ) !important;
+      }
+
+      html[data-mobile-os="ios"]:not(.dark) .lp-home .rounded-xl.border[class*="bg-gradient-to-r"],
+      html[data-mobile-os="ios"]:not(.dark) .lp-home .rounded-2xl.border[class*="bg-gradient-to-r"] {
+        background-color: hsl(var(--surface-1)) !important;
+        background-image: linear-gradient(
+          90deg,
+          hsl(208 18% 92%) 0%,
+          hsl(var(--surface-1)) 48%,
+          hsl(38 30% 91%) 100%
+        ) !important;
+      }
+
+      html[data-mobile-os="ios"] .lp-home .inline-flex.rounded-full.border[class*="bg-background/"],
+      html[data-mobile-os="ios"] [data-scroll-header] .inline-flex.rounded-full.border[class*="bg-background/"] {
+        background-color: hsl(var(--surface-1)) !important;
+        background-image: linear-gradient(
+          180deg,
+          hsl(var(--surface-2)) 0%,
+          hsl(var(--surface-1)) 100%
+        ) !important;
+      }
+
+      html[data-mobile-os="ios"] footer {
+        background-color: hsl(var(--surface-1)) !important;
+        background-image: linear-gradient(
+          180deg,
+          hsl(var(--surface-2)) 0%,
+          hsl(var(--surface-1)) 100%
+        ) !important;
       }
 
       html[data-mobile-os="ios"] .lp-home .backdrop-blur,
