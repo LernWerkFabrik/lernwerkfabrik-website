@@ -219,10 +219,15 @@
           hsl(210 34% 24% / 0.08) 0%,
           transparent 64%
         ),
+        radial-gradient(
+          1180px circle at 50% 118%,
+          hsl(222 24% 7% / 0.34) 0%,
+          hsl(222 24% 7% / 0.18) 30%,
+          transparent 68%
+        ),
         linear-gradient(
           180deg,
           hsl(var(--background)) 0%,
-          hsl(222 24% 7%) 46%,
           hsl(var(--background)) 100%
         );
       background-attachment: scroll;
