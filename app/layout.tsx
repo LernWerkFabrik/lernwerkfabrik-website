@@ -12,8 +12,6 @@ import { THEME_HEAD_SCRIPT, THEME_STORAGE_KEY } from "./theme-config";
 import { ThemeProvider } from "./theme-provider";
 
 import DevTierSwitcher from "@/components/DevTierSwitcher";
-
-const ICON_VERSION = "20260308e";
 const seoTitle = "LernWerkFabrik | AP1/AP2 Prüfungsvorbereitung";
 const seoDescription =
   "LernWerkFabrik geht bald live. Sichere dir Early Access, trainiere prüfungsnah für AP1/AP2 und starte mit klarer Struktur.";
@@ -35,13 +33,15 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: `/favicon-16x16.png?v=${ICON_VERSION}`, sizes: "16x16", type: "image/png" },
-      { url: `/favicon-32x32.png?v=${ICON_VERSION}`, sizes: "32x32", type: "image/png" },
-      { url: `/icon.png?v=${ICON_VERSION}`, sizes: "512x512", type: "image/png" },
-      { url: `/favicon.ico?v=${ICON_VERSION}`, sizes: "any" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
     ],
-    apple: [{ url: `/apple-icon.png?v=${ICON_VERSION}`, sizes: "180x180", type: "image/png" }],
-    shortcut: [`/favicon-32x32.png?v=${ICON_VERSION}`],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+    shortcut: ["/favicon.ico"],
   },
   openGraph: {
     title: seoTitle,
