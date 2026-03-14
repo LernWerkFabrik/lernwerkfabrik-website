@@ -8,6 +8,7 @@ export function middleware(request: NextRequest) {
   const isAllowed =
     allowedRoutes.includes(pathname) ||
     pathname.startsWith("/_next") ||
+    pathname.startsWith("/out") ||
     pathname.startsWith("/assets") ||
     pathname.startsWith("/brand") ||
     pathname.startsWith("/social") ||

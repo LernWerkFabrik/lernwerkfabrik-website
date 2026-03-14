@@ -80,6 +80,7 @@ export function middleware(request: NextRequest) {
     ALLOWED_ROUTES.has(effectivePath) ||
     ALLOWED_API_ROUTES.has(effectivePath) ||
     effectivePath.startsWith("/_next") ||
+    effectivePath.startsWith("/out") ||
     effectivePath.startsWith("/favicon") ||
     effectivePath.startsWith("/assets") ||
     effectivePath.startsWith("/images") ||
